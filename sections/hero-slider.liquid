@@ -385,6 +385,7 @@
   </div>
 </div>
 
+{% if section.blocks.size > 1 %}
 <script>
   function initHeroSlider_{{ section.id | replace: "-", "" | replace: "--", "" }}() {
     try {
@@ -417,6 +418,7 @@
 
   document.addEventListener('DOMContentLoaded', initHeroSlider_{{ section.id | replace: "-", "" | replace: "--", "" }});
 </script>
+{% endif %}
 
 {% schema %}
 {
