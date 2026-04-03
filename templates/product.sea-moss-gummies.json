@@ -1,0 +1,525 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "sea_moss_gummies_ERxAVy": {
+      "type": "product-sea-moss-gummies",
+      "blocks": {
+        "judge_me_reviews_preview_badge_rpRNXP": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "short_description_fmEVPi": {
+          "type": "short-description",
+          "settings": {
+            "short_description": "<p>Juicy, <strong>nourishing gummies </strong>to help you stay fueled, <strong>focused, and ready for the day.</strong></p>"
+          }
+        },
+        "choose_flavour_tKzqea": {
+          "type": "choose-flavour",
+          "settings": {
+            "heading": "Choose Quantity & Flavor:"
+          }
+        },
+        "buy_button_iqCRDE": {
+          "type": "buy-button",
+          "settings": {
+            "button_text": "Get Started"
+          }
+        },
+        "icon_with_text_yYPaYm": {
+          "type": "icon-with-text",
+          "settings": {
+            "icon_1": "shopify://shop_images/stars-icon.svg",
+            "text_1": "<p>Natural Fruit Flavors</p>",
+            "icon_2": "shopify://shop_images/gift-icon.svg",
+            "text_2": "<p>FREE GIFT 30-Day Money</p>",
+            "icon_3": "shopify://shop_images/guarnatee-icon.svg",
+            "text_3": "<p>30-Day Money Back Guarantee</p>"
+          }
+        },
+        "trust_badges_jdRHar": {
+          "type": "trust-badges",
+          "settings": {
+            "trust_icon_1": "shopify://shop_images/flag-icon.svg",
+            "trust_text_1": "USA Manufactured",
+            "trust_icon_2": "shopify://shop_images/box-icon.svg",
+            "trust_text_2": "Ships Within 24 Hours Mon-Fri",
+            "trust_icon_3": "shopify://shop_images/Huge-icon.svg",
+            "trust_text_3": "Out of Stock Protection"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_preview_badge_rpRNXP",
+        "title",
+        "short_description_fmEVPi",
+        "choose_flavour_tKzqea",
+        "buy_button_iqCRDE",
+        "icon_with_text_yYPaYm",
+        "trust_badges_jdRHar"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "section_background": "#FAF7F3",
+        "image_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "enable_zoom": true,
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 32,
+        "padding_bottom": 48
+      }
+    },
+    "wellness_benefits_9JwiVi": {
+      "type": "wellness-benefits",
+      "blocks": {
+        "text_Eb3Kgk": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/Natural_Energy_20450d81-8496-4939-a698-1cf764ac7791.svg",
+            "title": "<p>Energy <br/>Production</p>"
+          }
+        },
+        "text_weUnQg": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/Gut_Harmony_fc3f9b86-d0ab-47d5-94e6-3d504a064de8.svg",
+            "title": "<p>Gut <br/>Health</p>"
+          }
+        },
+        "text_dF43pn": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/Bulletproof_Immunity_eca45810-7893-4501-9ac8-a054c4ab939c.svg",
+            "title": "<p>Immune <br/>Defence</p>"
+          }
+        },
+        "text_9E4TGk": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/Mental_Clarity_0817aa47-d84a-4315-8983-f61ed5d8ef97.svg",
+            "title": "<p>Brighter <br/>Brain & Mood</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_Eb3Kgk",
+        "text_weUnQg",
+        "text_dF43pn",
+        "text_9E4TGk"
+      ],
+      "name": "Wellness Benefit",
+      "settings": {
+        "sub_heading": "Wellness, Made Easy",
+        "heading": "<h2>One Ritual. <strong><br/>All the Benefits.</strong></h2>",
+        "description": "Just two gummies a day deliver full-body support.",
+        "wave_image_desktop": "shopify://shop_images/wave-desktop.svg",
+        "wave_image_mobile": "shopify://shop_images/wave-mobile.svg",
+        "button_label": "TRY SEA MOSS Gummies Today",
+        "button_link": "",
+        "guarantee_text": "30-Day Money Back Guarantee",
+        "background_color": "linear-gradient(90deg, rgba(121, 163, 158, 1), rgba(73, 130, 124, 1) 100%)",
+        "background_color_mobile": "linear-gradient(0deg, rgba(73, 130, 124, 1) 0.05%, rgba(121, 163, 158, 1) 99.95%)",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32
+      }
+    },
+    "gummies_real_result_GNWc3T": {
+      "type": "gummies-real-result",
+      "blocks": {
+        "text_p3qc4b": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/testimonial-03.png",
+            "rating_icon": "shopify://shop_images/star-rating.png",
+            "title": "\"Best sea moss I've had!\"",
+            "review_content": "<p>You’ll start to feel the benefits by the bottom of your first bag. We recommend staying consistent for 70 days and drinking 2 scoops a day for faster results.</p>",
+            "name": "Adam M.",
+            "verify_text": "Verified Buyer"
+          }
+        },
+        "text_qPfw9j": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/testimonial-02.png",
+            "rating_icon": "shopify://shop_images/star-rating.png",
+            "title": "\"Best sea moss I've had!\"",
+            "review_content": "<p>You’ll start to feel the benefits by the bottom of your first bag. We recommend staying consistent for 70 days and drinking 2 scoops a day for faster results.</p>",
+            "name": "Adam M.",
+            "verify_text": "Verified Buyer"
+          }
+        },
+        "text_ipj83H": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/testimonial-01_f042333f-6fc9-4371-9a55-e5ab8276578d.png",
+            "rating_icon": "shopify://shop_images/star-rating.png",
+            "title": "\"Best sea moss I've had!\"",
+            "review_content": "<p>You’ll start to feel the benefits by the bottom of your first bag. We recommend staying consistent for 70 days and drinking 2 scoops a day for faster results.</p>",
+            "name": "Adam M.",
+            "verify_text": "Verified Buyer"
+          }
+        },
+        "text_LmRnxY": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/testimonial-03.png",
+            "rating_icon": "shopify://shop_images/star-rating.png",
+            "title": "\"Best sea moss I've had!\"",
+            "review_content": "<p>You’ll start to feel the benefits by the bottom of your first bag. We recommend staying consistent for 70 days and drinking 2 scoops a day for faster results.</p>",
+            "name": "Adam M.",
+            "verify_text": "Verified Buyer"
+          }
+        },
+        "text_eHHXXy": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/testimonial-01_f042333f-6fc9-4371-9a55-e5ab8276578d.png",
+            "rating_icon": "shopify://shop_images/star-rating.png",
+            "title": "\"Best sea moss I've had!\"",
+            "review_content": "<p>You’ll start to feel the benefits by the bottom of your first bag. We recommend staying consistent for 70 days and drinking 2 scoops a day for faster results.</p>",
+            "name": "Adam M.",
+            "verify_text": "Verified Buyer"
+          }
+        },
+        "text_UyBFW7": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/testimonial-02.png",
+            "rating_icon": "shopify://shop_images/star-rating.png",
+            "title": "\"Best sea moss I've had!\"",
+            "review_content": "<p>You’ll start to feel the benefits by the bottom of your first bag. We recommend staying consistent for 70 days and drinking 2 scoops a day for faster results.</p>",
+            "name": "Adam M.",
+            "verify_text": "Verified Buyer"
+          }
+        }
+      },
+      "block_order": [
+        "text_p3qc4b",
+        "text_qPfw9j",
+        "text_ipj83H",
+        "text_LmRnxY",
+        "text_eHHXXy",
+        "text_UyBFW7"
+      ],
+      "name": "Gummies Real Result",
+      "settings": {
+        "sub_heading": "150K+ Five Star Reviews",
+        "heading": "<h2>Real Stories. <strong>Real Results.</strong></h2>",
+        "description": "<p>From the first bite to a lasting habit - their words say it best.</p>",
+        "rating_icon": "shopify://shop_images/star-rating.png",
+        "rating_text": "+150,000 Reviews",
+        "button_label": "TRY SEA MOSS Gummies Today",
+        "button_link": "",
+        "guarantee_text": "30-Day Money Back Guarantee",
+        "background_color": "#faf7f3",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32
+      }
+    },
+    "product_benefits_v2_d8GGTJ": {
+      "type": "product-benefits-v2",
+      "blocks": {
+        "benefits_K4dHrf": {
+          "type": "benefits",
+          "settings": {
+            "heading_1": "Refreshing Flavor",
+            "description_1": "<ul><li>Refreshing and light texture</li><li>Delicious fruity notes</li><li>Smooth and slightly sweet</li></ul>",
+            "heading_2": "Everyday Ritual",
+            "description_2": "<p>All the same nourishment from sea moss, in a form that follows you anywhere. No prep, no mess.</p>"
+          }
+        },
+        "icon_with_content_Li6zRA": {
+          "type": "icon-with-content",
+          "settings": {
+            "icon": "shopify://shop_images/sustainable-energy_0643799f-766a-4267-b6be-16c57bf79b52.svg",
+            "heading": "Steady Energy",
+            "description": "<p>Ocean-born minerals nourish your body at the root, so you can stay alert with gentle, grounded energy.</p>"
+          }
+        },
+        "icon_with_content_VDwz7X": {
+          "type": "icon-with-content",
+          "settings": {
+            "icon": "shopify://shop_images/stars-01_756c205b-4832-4063-9abc-4bd242a20dd8.svg",
+            "heading": "Brighter <br>Moods",
+            "description": "<p>Iodine, zinc, and antioxidants from sea moss help maintain natural, balanced emotional rhythms.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefits_K4dHrf",
+        "icon_with_content_Li6zRA",
+        "icon_with_content_VDwz7X"
+      ],
+      "name": "Product benefits v2",
+      "settings": {
+        "background_color": "#E7F0E4",
+        "image_direction": "row",
+        "subheading": "immunity  |  gut health  |  energy",
+        "heading": "<h2>Take A Healthier <strong>Step Forward</strong></h2>",
+        "description": "<p>Our nutritious Sea Moss Gummies will help sharpen your mind and fuel your natural drive - without the crash or sugar fog.</p>",
+        "image": "shopify://shop_images/step-forward-new.jpg",
+        "button_text": "TRY SEA MOSS Gummies Today",
+        "button_url": "",
+        "guarantee_text": "30-Day Money Back Guarantee",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "padding_top-mobile": 32,
+        "padding_bottom-mobile": 32,
+        "divider": "shopify://shop_images/product-benefits__divider.png",
+        "mobile_divider": "shopify://shop_images/product-benefits__mobile-divider.png"
+      }
+    },
+    "product_key_feature_qcYdmg": {
+      "type": "product-key-feature",
+      "blocks": {
+        "text_nHErEf": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/Gluten-free_f6cef342-73a4-4e02-9a22-cab224256e49.png",
+            "title": "<p>Gluten <br/>free</p>"
+          }
+        },
+        "text_X9XWii": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/100_-vegan_7a4b5b2b-ba1a-42fd-ab98-ab3c88ae08ee.png",
+            "title": "<p>100% <br/>vegan</p>"
+          }
+        },
+        "text_LEPzFR": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/non-gmo_e50bc626-48d9-478f-880c-901f444d79b1.png",
+            "title": "<p>non <br/>gmo</p>"
+          }
+        },
+        "text_Lp8wDA": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/dairy-free_24926913-94c5-4c72-a391-9ac6825b9fec.png",
+            "title": "<p>dairy <br/>free</p>"
+          }
+        },
+        "text_yac9P7": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/soy-free_35f0d0c2-a00a-4559-b2a9-744c567b55a9.png",
+            "title": "<p>soy <br/>free</p>"
+          }
+        },
+        "text_UKHxjb": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/Paleo-Friendly.png",
+            "title": "<p>Paleo-<br/>Friendly</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_nHErEf",
+        "text_X9XWii",
+        "text_LEPzFR",
+        "text_Lp8wDA",
+        "text_yac9P7",
+        "text_UKHxjb"
+      ],
+      "name": "Product Key Feature",
+      "settings": {
+        "background_color": "linear-gradient(90deg, rgba(121, 163, 158, 1), rgba(73, 130, 124, 1) 100%)",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32
+      }
+    },
+    "trust_gurantee_AjT7Lf": {
+      "type": "trust-gurantee",
+      "name": "Trust Guarantee",
+      "settings": {
+        "background_color": "#E7F0E4",
+        "guarantee_icon": "shopify://shop_images/Huge-icon_68a5292d-95aa-4bdc-a72c-b02ee94336e8.svg",
+        "subheading": "Try it for 30 days",
+        "heading": "<h2>You Will Love It. <strong>Guaranteed.</strong></h2>",
+        "description": "<p>No love, no pay. Simple refund policy.</p>",
+        "button_text": "TRY SEA MOSS Gummies Today",
+        "button_url": "",
+        "guarantee_text": "30-Day Money Back Guarantee",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "padding_top-mobile": 32,
+        "padding_bottom-mobile": 32
+      }
+    },
+    "how_to_use_XcL7YB": {
+      "type": "how-to-use",
+      "blocks": {
+        "item_AmFeHC": {
+          "type": "item",
+          "settings": {
+            "step": "<p>Take 1-2 tablespoons of Sea Moss Gel.</p>"
+          }
+        },
+        "item_LTabJE": {
+          "type": "item",
+          "settings": {
+            "step": "<p>Enjoy straight from the jar, or mix into your favorite beverage or food. (e.g., smoothies, juice, yogurt, oatmeal).</p>"
+          }
+        },
+        "item_37i3PP": {
+          "type": "item",
+          "settings": {
+            "step": "<p>If mixing, stir until fully dissolved or blended.</p>"
+          }
+        },
+        "item_ywxVeg": {
+          "type": "item",
+          "settings": {
+            "step": "<p>Enjoy daily for magical benefits!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_AmFeHC",
+        "item_LTabJE",
+        "item_37i3PP",
+        "item_ywxVeg"
+      ],
+      "name": "How To Use",
+      "settings": {
+        "background_color": "#FAF7F3",
+        "image": "shopify://shop_images/made-easy.png",
+        "subheading": "Quick  |  Easy  |  Delicious",
+        "heading": "<h2>Daily Routine, <strong>Made Easy</strong></h2>",
+        "button_text": "TRY SEA MOSS Gummies Today",
+        "button_url": "#mainProduct",
+        "guarantee_text": "30-Day Money Back Guarantee",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "padding_top-mobile": 32,
+        "padding_bottom-mobile": 32
+      }
+    },
+    "quick_answer_XQrbQx": {
+      "type": "quick-answer",
+      "blocks": {
+        "accordion_c7kktT": {
+          "type": "accordion",
+          "settings": {
+            "heading": "So, what is Sea Moss?",
+            "description": "<p>Sea Moss is a type of red algae found on the Atlantic coasts of Europe, North America, and the Caribbean. It's very nutrient-rich, naturally loaded with vitamins and minerals, making it a fantastic natural supplement (or superfood) for boosting overall health and wellness. It has been used for centuries to support immunity levels and cover vitamin gaps, particularly in tribes in Ireland and the Caribbean.</p>"
+          }
+        },
+        "accordion_ifW8HT": {
+          "type": "accordion",
+          "settings": {
+            "heading": "How should I consume Sea Moss?",
+            "description": "<p>The recommended dosage is 2 tablespoons a day for an ordinary person. You’ll need 2 jars of True Sea Moss Superfood per month to stay consistent in covering your nutritional gaps and providing your body with essential nutrients. Enjoy it by the spoonful, or add it to your smoothies, soups, teas, or use it as a thickening agent in recipes. It’s versatile and easy to incorporate into your diet.</p>"
+          }
+        },
+        "accordion_HTLbKR": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Can I use Sea Moss on my skin or hair?",
+            "description": "<p>Absolutely! Wildcrafted Sea Moss Gel is amazing for skincare. Use it as a face mask or add a bit to your skin or hair care products (creams, serums, shampoos) to hydrate and nourish your skin, reduce inflammation, and improve your skin’s or hair’s texture. For the best results, use it both inside and out, because skincare starts from within.</p>"
+          }
+        },
+        "accordion_EyptEf": {
+          "type": "accordion",
+          "settings": {
+            "heading": "What are the benefits of taking Sea Moss?",
+            "description": "<p>Wildcrafted True Sea Moss is a natural source of essential nutrients and minerals like iodine, calcium, potassium, and vitamins A, C, and K, designed for the body’s daily intake. It’s like a 100% natural multivitamin with no synthetics, proven by history to help cover your vitamin gaps. It supports your immune system, promotes healthy skin, aids digestion.</p>"
+          }
+        },
+        "accordion_RPQpaV": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Why is it important to use Sea Moss with no added sugar?",
+            "description": "<p>Using Sea Moss with no added sugar ensures you get the right balance between taste and preserving the vitamin content. At True Sea Moss, we use natural fruits and berries to enhance the flavor without compromising its nutritional value. Other Sea Moss products with added sugar can diminish its benefits, but our special formula doubles the nutrients with the power of natural fruits and berries.</p>"
+          }
+        },
+        "accordion_98Xbbi": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Where do you source your Sea Moss from?",
+            "description": "<p>We are proud to say that our sea moss is sourced from a Marine-Protected Area off the coast of Nha Trang Bay, Vietnam - one of the most pristine and coveted bays in the world. Our local team collects the sea moss in the wild and dries it under the sun right on the shore, ensuring the highest quality and sustainability. We take the safety and quality of our product seriously, and that's why we have all the necessary documents from our supplier, including the certificate of origin, Phytosanitary certificate, and Certificate of Analysis. Furthermore, our products have been checked by the FDA at customs to ensure they meet the highest standards.</p>"
+          }
+        },
+        "accordion_6et3FT": {
+          "type": "accordion",
+          "settings": {
+            "heading": "How does True Sea Moss taste and what is the texture like?",
+            "description": "<p>True Sea Moss has a uniquely developed formula created with top food developers in California to perfect the taste and texture. It doesn’t taste like typical Sea Moss; many of our customers compare it to applesauce or baby food. It’s like a fresh, natural jam right out of the fridge, making it enjoyable and easy to consume.</p>"
+          }
+        },
+        "accordion_NgBXWR": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Is Sea Moss safe for everyone?",
+            "description": "<p>Sea Moss is generally safe for most people when used in moderation. However, every body is unique. If you have thyroid issues, seaweed allergies, or specific health concerns, it’s best to consult with your healthcare provider first.</p>"
+          }
+        },
+        "accordion_WUBq4i": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Can I use Sea Moss while breastfeeding or being pregnant?",
+            "description": "<p>We do not recommend Sea Moss for breastfeeding and pregnant women without consulting first with your healthcare provider. This is a particularly delicate, so it is best to ask a professional about activities that may affect the health of you and the baby.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_c7kktT",
+        "accordion_ifW8HT",
+        "accordion_HTLbKR",
+        "accordion_EyptEf",
+        "accordion_RPQpaV",
+        "accordion_98Xbbi",
+        "accordion_6et3FT",
+        "accordion_NgBXWR",
+        "accordion_WUBq4i"
+      ],
+      "name": "Quick answer",
+      "settings": {
+        "background_color": "#E7F0E4",
+        "subheading": "TRUE SEA MOSS FAQs",
+        "heading": "<h2>Frequently Asked <strong>Questions</strong></h2>",
+        "button_text": "TRY SEA MOSS Gummies Today",
+        "button_url": "",
+        "guarantee_text": "30-Day Money Back Guarantee",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "padding_top-mobile": 32,
+        "padding_bottom-mobile": 32,
+        "divider": "shopify://shop_images/quick-answer__divider.png",
+        "mobile_divider": "shopify://shop_images/quick-answer__mobile-divider.png"
+      }
+    }
+  },
+  "order": [
+    "sea_moss_gummies_ERxAVy",
+    "wellness_benefits_9JwiVi",
+    "gummies_real_result_GNWc3T",
+    "product_benefits_v2_d8GGTJ",
+    "product_key_feature_qcYdmg",
+    "trust_gurantee_AjT7Lf",
+    "how_to_use_XcL7YB",
+    "quick_answer_XQrbQx"
+  ]
+}

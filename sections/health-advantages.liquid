@@ -1,0 +1,553 @@
+<style>
+.health-advantage-{{ section.id }}{
+  background:{{ section.settings.background_color  }};
+  padding-top:{{ section.settings.padding_top_mobile }}px;
+  padding-bottom:{{ section.settings.padding_bottom_mobile }}px;
+}
+
+.health-advantage-{{ section.id }}  .health_advantage_main-heading h2{
+  color:{{ section.settings.heading_color }};
+}
+
+.health-advantage-{{ section.id }} .unique_global--button a{
+  background-color:{{ section.settings.button_bg_color }};
+  color:{{ section.settings.button_text_color }};
+}
+
+.health-advantage-{{ section.id }} .unique_global--button a:hover{
+  color:{{ section.settings.button_text_hover_color }};
+}
+
+.health-advantage-{{ section.id }} .unique_global--button a:before {
+  background-color: {{ section.settings.button_bg_hover_color }};
+}
+
+@media only screen and (min-width:768px){
+.health-advantage-{{ section.id }}{
+  padding-top:{{ section.settings.padding_top }}px;
+  padding-bottom:{{ section.settings.padding_bottom }}px;
+}
+}
+
+.health_advantage_section {
+  overflow: hidden;
+}
+.health_advantage_section .wrapper {
+  position: relative;
+}
+
+.health_advantage_section .health_advantage_image {
+  position: absolute;
+  z-index: 12;
+  right: -180px;
+  bottom: 75px;
+  height: 170px;
+  width: 100%;
+}
+
+.health_advantage_section .health_advantage_image img {
+  width: 100%;
+  height: 100%;
+}
+
+.health_advantage_main-heading h2 {
+  font-size: 36px;
+  font-weight: 500;
+  max-width: 720px;
+  line-height: 1;
+  font-family: Yanone Kaffeesatz, sans-serif;
+  margin: 0 0 30px;
+  padding: 0 15px;
+  text-align: center;
+}
+
+.health_advantage_block--item {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  padding: 15px;
+	box-sizing: border-box;
+  background: #fff;
+}
+
+
+.health_advantage_block--item-title h3 {
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: 700;
+  font-family: "HarmoniaSansProCyr", sans-serif;
+  margin: 0;
+}
+
+.health_advantage_block--title-wrapper .mouse_icon {
+  display: none;
+  width: 30px;
+  height: 30px;
+}
+
+.health_advantage_block--title-wrapper .mouse_icon img {
+  max-width: 100%;
+  width: 100%;
+}
+
+.health_advantage_block--item-text {
+  padding:0;
+}
+
+.health_advantage_block--item-text {
+  padding: 0 0 15px;
+}
+
+.health_advantage_block--item-text p {
+  font-size: 14px;
+  line-height: 16.8px;
+  font-weight: 400;
+  font-family: "HarmoniaSansProCyr", sans-serif;
+  margin: 0;
+}
+
+.health_advantage_block--item-number {
+  margin-top: auto;
+}
+
+.health_advantage_block--item-number span {
+  font-size: 36px;
+  line-height: 1;
+  color: #e5c48d;
+  margin-top: auto;
+  font-family: "HarmoniaSansProCyr", sans-serif;
+  font-weight: 300;
+}
+
+.health_advantage_section .unique_global--button a {
+  padding: 10px 10px;
+  max-width: 220px;
+  z-index: 10;
+  border-radius: 10px;
+  border: 1px solid #f5742b;
+  text-align: center;
+  width: 100%;
+  font-weight: 600;
+  font-size: 24px;
+  letter-spacing: 2px;
+  font-family: "HarmoniaSansProCyr", sans-serif;
+  text-transform: uppercase;
+  margin: 100px auto 0;
+  min-height: 60px;
+}
+
+.health_advantage_section .unique_global--button a:hover {
+  border: 1px solid #fff;
+}
+
+.health-advantage-{{ section.id }} .health_advantage_block--item {
+  height: 174px;
+}
+
+
+@media only screen and (min-width:768px) {
+  .health_advantage_wrapper_block {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+.health-advantage-{{ section.id }} .health_advantage_block--item {
+  height: 314px;
+}
+  .health_advantage_block--item {
+    max-width: calc(50% - 10px);
+  }
+
+  .health_advantage_block--item-text {
+  padding: 15px 0;
+}
+
+  .health_advantage_section .unique_global--button a {
+    max-width: 422px;
+    padding: 12px 10px;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 30px auto 0;
+    min-height: 80px;
+  }
+}
+
+@media only screen and (min-width:769px) {
+  .health_advantage_section .health_advantage_image {
+    bottom: 80px;
+    right: -12%;
+    width: 66%;
+    height: unset;
+    z-index: 2;
+  }
+
+  .health_advantage_block--item {
+    padding: 30px 30px 20px;
+  }
+
+  .health_advantage_main-heading h2 {
+    font-size: 40px;
+    margin: 0 0 20px;
+    text-align: left;
+    padding:0;
+  }
+
+  .health_advantage_block--item-title h3 {
+    font-size: 26px;
+    line-height: 31px;
+  }
+
+  .health_advantage_block--item-text p {
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  .health_advantage_block--item-number span {
+    font-size: 63px;
+  }
+}
+
+@media only screen and (min-width:1300px) {
+  .health_advantage_main-heading h2 {
+    font-size: 64px;
+  }
+}
+
+@media only screen and (min-width:1100px) {
+  .health_advantage_section .health_advantage_image {
+    right: -22%;
+    width: 60%;
+  }
+
+  .health_advantage_block--item {
+    max-width: calc(33.3333% - 10px);
+  }
+
+}
+
+@media only screen and (max-width:768px) {
+  .health_advantage_section .wrapper {
+    padding: 0;
+  }
+
+  .health_advantage_block--title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+
+  .health_advantage_block--title-wrapper .mouse_icon {
+    display: block;
+  }
+
+}
+
+@media only screen and (max-width:575px) {
+
+  .health_advantage_main-heading{
+  max-width:280px;
+  margin:0 auto;
+  }
+
+} 
+@media only screen and (min-width: 1100px) and (max-width: 1340px) {
+  .health-advantage-{{ section.id }} .health_advantage_block--item {
+    height: 404px;
+  }
+}
+</style>
+
+<div class="health_advantage_section health-advantage-{{ section.id }}">
+  <div class="wrapper">
+    {% if section.settings.image != blank %}
+      <div class="health_advantage_image">
+        <img src="{{ section.settings.image | image_url: width: 950 }}" loading="lazy" alt="{{ section.settings.image.alt }}">
+      </div>
+    {% endif %}
+    {% if section.settings.heading != blank %}
+      <div class="health_advantage_main-heading">
+        <h2>{{ section.settings.heading }}</h2>
+      </div>
+    {% endif %}
+    <div class="health_advantage_wrapper">
+      <div class="swiper swiper-{{ section.id }}">
+        <div class="swiper-wrapper health_advantage_wrapper_block">
+          {% for block in section.blocks %}
+            <div class="health_advantage_block--item swiper-slide" style="background-color:{{ block.settings.card_bg_color }}">
+              <div class="health_advantage_block--item-content">
+                {% if block.settings.title != blank %}
+                  <div class="health_advantage_block--title-wrapper">
+                    <div class="health_advantage_block--item-title">
+                      <h3 style="color:{{ block.settings.title_color }}">{{ block.settings.title }}</h3>
+                    </div>
+                    {% if block.settings.icon != blank %}
+                    <div class="mouse_icon">
+                      <img src="{{ block.settings.icon | image_url }}" alt="{{ block.settings.icon.alt | default: 'With Sea Moss You may notice and feel significant differences'}}">
+                    </div>
+                {% endif %}
+                  </div>
+                {% endif %}
+                {% if block.settings.text != blank %}
+                  <div class="health_advantage_block--item-text">
+                    <p style="color:{{ block.settings.text_color }}">
+                      {{ block.settings.text | replace: '<p>', '' | replace: '</p>', '' }}
+                    </p>
+                  </div>
+                {% endif %}
+              </div>
+              {% if block.settings.text != blank %}
+                <div class="health_advantage_block--item-number">
+                  <span>
+                    {%- if forloop.index <= 9 %} 0{{ forloop.index }}{% else %} {{ forloop.index }} {% endif -%}
+                  </span>
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% if section.settings.button_label != blank %}
+      <div class="unique_global--button">
+        <a href="{{ section.settings.button_link }}" class="scrollable--button">{{ section.settings.button_label -}}</a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<script>
+  const section_scripts_{{ section.id | replace: "-", "" | replace: "--", "" }} = {
+    section: null,
+    slider: null,
+
+    init() {
+      try {
+        if (typeof Swiper === 'undefined') {
+          setTimeout(() => this.init(), 100);
+          return;
+        }
+
+        if (!this.section) {
+          this.section = document.querySelector(".health-advantage-{{ section.id }}");
+        }
+
+        if (window.innerWidth >= 768 || this.slider || !this.section) return;
+
+        const swiperContainer = this.section.querySelector(".swiper-{{ section.id }}");
+        if (!swiperContainer) return;
+
+        this.slider = new Swiper(swiperContainer, {
+          speed: 1000,
+          grabCursor: true,
+          loop: false,
+          slidesPerView: 1.2,
+          slidesOffsetBefore: 15,
+          slidesOffsetAfter: 15,
+          spaceBetween: 15,
+        });
+      } catch (error) {
+        setTimeout(() => this.init(), 100);
+      }
+    },
+
+    destroy() {
+      try {
+        if (this.slider) {
+          this.slider.destroy(true, true);
+          this.slider = null;
+        }
+      } catch (error) {
+        // Silent fail
+      }
+    },
+
+    {% comment %} setEqualHeight() {
+      const slides = this.section.querySelectorAll('.swiper-slide');
+      let maxHeight = 0;
+      slides.forEach(slide => {
+        const h = slide.offsetHeight;
+        if (h > maxHeight) maxHeight = h;
+      });
+      slides.forEach(slide => (slide.style.height = `${maxHeight}px`));
+    } {% endcomment %}
+  };
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const sec = section_scripts_{{ section.id | replace: "-", "" | replace: "--", "" }};
+
+    function handleResize() {
+      if (window.innerWidth < 768) {
+        sec.init();
+      } else {
+        sec.destroy();
+      }
+    }
+    handleResize(); 
+    window.addEventListener("resize", handleResize);
+  });
+</script>
+
+
+
+{% schema %}
+{
+  "name": "Health Advantage",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Select a image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "heading"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "button Link"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color_background",
+      "id": "background_color",
+      "label": "Background",
+      "default": "linear-gradient(#FBF4DC,#fbf9de, #bde2d6)"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#4b4b4b"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background Color",
+      "default": "#FF790B"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_hover_color",
+      "label": "Button Background Hover Color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "button_text_hover_color",
+      "label": "Button Text Hover Color",
+      "default": "#FF790B"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 116
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top mobile",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding bottom mobile",
+      "default": 25
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Card",
+      "settings": [
+        {
+        "type": "image_picker",
+        "id": "icon",
+        "label": "Select a icon"
+       },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "color",
+          "id": "card_bg_color",
+          "label": "Card Background Color",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title Color",
+          "default": "#f5742b"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#4b4b4b"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Health Advantage"
+    }
+  ]
+}
+{% endschema %}

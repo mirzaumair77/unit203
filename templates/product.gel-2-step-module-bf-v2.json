@@ -1,0 +1,795 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "product_gel_main_2_step_noslide_bf_v2_ERxAVy": {
+      "type": "product-gel-main-2-step-noslide-BF-v2",
+      "blocks": {
+        "title_D984Tw": {
+          "type": "title",
+          "settings": {}
+        },
+        "judge_me_reviews_preview_badge_JTt6pQ": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "popup_form_gq83T6": {
+          "type": "popup_form",
+          "settings": {
+            "image": "shopify://shop_images/3-jars-superfood.png",
+            "discount_text": "UP TO 50% OFF",
+            "popup_button": "Try it now"
+          }
+        },
+        "collapsible_tab_rkfRJY": {
+          "type": "collapsible_tab",
+          "disabled": true,
+          "settings": {
+            "heading": "Ingredient Profile",
+            "content": "<p>Vegetable of (Coconut), Tapioca syrup, Pectin Citric acid, Camauba wax, cane sugar, Natural Elderberry juice, Grape Juice, Natural Flavours (Grape), Sea Moss Gel</p>"
+          }
+        },
+        "product_tabs_WgFGYK": {
+          "type": "product_tabs",
+          "settings": {
+            "tab_1": "What is it",
+            "flavours_nutrition_1": true,
+            "open_by_default": false,
+            "title": "Nutrition Facts",
+            "tab_content_1": "<p>Wildcrafted Sea Moss is a natural algae superfood that contains over 90 essential nutrients and minerals, helping the human body to cover vitamin gaps that occur throughout daily life. The true magic of sea moss lies not just in its individual nutrients but in the synergy they create together.</p>",
+            "tab_2": "Benefits",
+            "tab_content_2": "<p>Wildcrafted Sea Moss is a natural algae superfood that contains over 90 essential nutrients and minerals.</p>",
+            "tab_3": "How to take",
+            "tab_content_3": "<p>The true magic of sea moss lies not just in its individual nutrients but in the synergy they create together.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "title_D984Tw",
+        "judge_me_reviews_preview_badge_JTt6pQ",
+        "popup_form_gq83T6",
+        "collapsible_tab_rkfRJY",
+        "product_tabs_WgFGYK"
+      ],
+      "name": "Product Gel 2 Step BF",
+      "settings": {
+        "enable_sticky_info": true,
+        "section_background": "#FAF7F3",
+        "image_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "enable_zoom": false,
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "media-review": false,
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "gel_bf_drawer_M4tmxX": {
+      "type": "gel-bf-drawer-v2",
+      "name": "Gel BF Drawer v2",
+      "settings": {
+        "chose_pack_size": "Choose Serving Size",
+        "process_text_taste_step": "Choose | more",
+        "final_text_taste_step": "Good choice!",
+        "global_max_quantity": 3,
+        "plug_image": "shopify://shop_images/mangopineapple-nobg.webp",
+        "quantity_heading": "Select Quantity",
+        "flavour_heading": "Select Flavour",
+        "name_quantity_1": "1 Jar:",
+        "sub_name_quantity_1": "",
+        "text_badge_1": "30% OFF",
+        "text_badge_one-time_1": "",
+        "bg_color_1": "#f5742b",
+        "text_color_1": "#ffffff",
+        "ex_text_badge_1": "",
+        "ex_bg_color_1": "linear-gradient(90deg, rgba(121, 163, 158, 1), rgba(73, 130, 124, 1) 100%)",
+        "ex_text_color_1": "#ffffff",
+        "name_quantity_2": "2 Jars:",
+        "sub_name_quantity_2": "",
+        "text_badge_2": "40% OFF",
+        "text_badge_one-time_2": "",
+        "bg_color_2": "#f5742b",
+        "text_color_2": "#ffffff",
+        "ex_text_badge_2": "MOST POPULAR",
+        "ex_bg_color_2": "linear-gradient(90deg, rgba(121, 163, 158, 1), rgba(73, 130, 124, 1) 100%)",
+        "ex_text_color_2": "#ffffff",
+        "name_quantity_3": "3 Jars:",
+        "sub_name_quantity_3": "",
+        "text_badge_3": "50% OFF",
+        "text_badge_one-time_3": "",
+        "bg_color_3": "#f5742b",
+        "text_color_3": "#ffffff",
+        "ex_text_badge_3": "",
+        "ex_bg_color_3": "linear-gradient(90deg, rgba(121, 163, 158, 1), rgba(73, 130, 124, 1) 100%)",
+        "ex_text_color_3": "#ffffff",
+        "clarity_try_it_now_id": "try_it_now_id_v2",
+        "clarity_try_it_now_theme": "try_it_now_theme_v2",
+        "clarity_choose_flavor_id": "choose_flavor_id_v2",
+        "clarity_choose_flavor_theme": "choose_flavor_theme_v2",
+        "clarity_add_to_cart_first_id": "add_to_cart_first_id_v2",
+        "clarity_add_to_cart_first_theme": "add_to_cart_first_theme_v2",
+        "clarity_add_to_cart_id": "add_to_cart_id_v2",
+        "clarity_add_to_cart_theme": "add_to_cart_theme_v2",
+        "clarity_show_cart_id": "show_cart_id_v2",
+        "clarity_show_cart_theme": "show_cart_theme_v2",
+        "datalayer_try_it_now": "try_it_now_id_v2",
+        "datalayer_choose_flavor": "choose_flavor_id_v2",
+        "datalayer_add_to_cart_first": "add_to_cart_first_id_v2",
+        "datalayer_add_to_cart": "add_to_cart_id_v2",
+        "datalayer_show_cart": "show_cart_id_v2"
+      }
+    },
+    "immunity_benefits_v2_RUpTjB": {
+      "type": "immunity-benefits-v2",
+      "blocks": {
+        "text_YUQ6WM": {
+          "type": "text",
+          "settings": {
+            "open_by_default": true,
+            "icon": "shopify://shop_images/cellular-fuel.svg",
+            "title": "Cellular Fuel",
+            "description": "<p>Sea moss enhances immunity with its rich array of nutrients, providing a potent shield against sickness and infections, ensuring you cover all the vitamin gaps.</p>",
+            "background_color": "#FFF",
+            "title_color": "#253937",
+            "description_color": "#253937"
+          }
+        },
+        "text_6WgBcV": {
+          "type": "text",
+          "settings": {
+            "open_by_default": false,
+            "icon": "shopify://shop_images/digestive-harmony.svg",
+            "title": "Digestive Harmony",
+            "description": "<p>Natural prebiotic properties help feed beneficial gut bacteria, supporting comfortable digestion and a happy microbiome.</p>",
+            "background_color": "#FFF",
+            "title_color": "#253937",
+            "description_color": "#253937"
+          }
+        },
+        "text_GXQY89": {
+          "type": "text",
+          "settings": {
+            "open_by_default": false,
+            "icon": "shopify://shop_images/everyday-support.svg",
+            "title": "Everyday Support",
+            "description": "<p>A broad spectrum of nutrients helps your body stay ready supporting normal immune function through daily nourishment.</p>",
+            "background_color": "#FFF",
+            "title_color": "#253937",
+            "description_color": "#253937"
+          }
+        },
+        "text_m3ehEL": {
+          "type": "text",
+          "settings": {
+            "open_by_default": false,
+            "icon": "shopify://shop_images/calm-focus_clear-routine.svg",
+            "title": "Calm Focus & Clear Routine",
+            "description": "<p>Consistent mineral intake helps you feel centered and clear, supporting a steady daily rhythm and focus.</p>",
+            "background_color": "#FFF",
+            "title_color": "#253937",
+            "description_color": "#253937"
+          }
+        },
+        "text_3pKfHP": {
+          "type": "text",
+          "settings": {
+            "open_by_default": false,
+            "icon": "shopify://shop_images/glow-from-within.svg",
+            "title": "Glow from Within",
+            "description": "<p>Whole-food minerals support normal collagen pathways and skin barrier health so you look as good as you feel.</p>",
+            "background_color": "#FFF",
+            "title_color": "#253937",
+            "description_color": "#253937"
+          }
+        }
+      },
+      "block_order": [
+        "text_YUQ6WM",
+        "text_6WgBcV",
+        "text_GXQY89",
+        "text_m3ehEL",
+        "text_3pKfHP"
+      ],
+      "name": "Immunity Benefits",
+      "settings": {
+        "image": "shopify://shop_images/immunity-naturally.png",
+        "mobile_image": "shopify://shop_images/immunity-naturally__mobile.png",
+        "heading": "<h2>Take A Healthier <strong>Step Forward</strong></h2>",
+        "text": "Smooth energy, mental clarity, and digestion support in every delicious scoop.",
+        "title": "",
+        "text_bottom": "",
+        "btn": "Try Sea Moss Gel Today",
+        "btn_url": "",
+        "btn_atc": "<p>30-Day Money Back Guarantee</p>",
+        "background_color": "#E7F0E4",
+        "background_color_mb": "#E7F0E4",
+        "heading_color": "#253937",
+        "heading_color_mb": "#253937",
+        "text_color": "#253937",
+        "text_color_mb": "#253937",
+        "title_color": "#ffffff",
+        "text_bottom_color": "#ffffff",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "member_review_v2_Ur7kkB": {
+      "type": "member-review-v2",
+      "blocks": {
+        "judge_me_reviews_preview_badge_enQMeK": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "reviews_item_8RMUTn": {
+          "type": "reviews_item",
+          "settings": {
+            "title": "“ ABSOLUTELY FANTASTIC TASTE”",
+            "name": "Jonathan K.",
+            "content": "<p> I’ve tried other sea moss and kept coming back to this one. Tastes great and fits my routine keeping it on subscription.</p>",
+            "published_at": "6 h",
+            "text_1": "Like",
+            "text_2": "Reply",
+            "text_3": "Message",
+            "icon_like": true,
+            "like_count": 500,
+            "icon_heart": true,
+            "icon_smile": false
+          }
+        },
+        "reviews_item_BeiYwC": {
+          "type": "reviews_item",
+          "settings": {
+            "title": "“TASTES GREAT AND FITS MY ROUTINE”",
+            "image": "shopify://shop_images/ex-author.png",
+            "name": "Angelica M.",
+            "content": "<p> Shipping was fast. I enjoyed it right away and it’s easy to add to my day straight from the jar or in a smoothie.</p>",
+            "published_at": "6 h",
+            "text_1": "Like",
+            "text_2": "Reply",
+            "text_3": "Message",
+            "icon_like": true,
+            "like_count": 51,
+            "icon_heart": true,
+            "icon_smile": true
+          }
+        },
+        "reviews_item_fegwmK": {
+          "type": "reviews_item",
+          "settings": {
+            "title": "“FEELS GREAT IN MY ROUTINE”",
+            "name": "Johanna S.",
+            "content": "<p> I’ve been using the gel for a few months. I feel more balanced day to day, and I love the taste.</p>",
+            "published_at": "1 wk",
+            "text_1": "Like",
+            "text_2": "Reply",
+            "text_3": "Message",
+            "icon_like": true,
+            "like_count": 38,
+            "icon_heart": false,
+            "icon_smile": true
+          }
+        },
+        "reviews_item_DPrWWz": {
+          "type": "reviews_item",
+          "settings": {
+            "title": "“FEELING BETTER DAY TO DAY”",
+            "name": "Hollis K.",
+            "content": "<p> I use it daily with a pinch of sea salt and notice a difference in how I feel. My skin looks smoother too.</p>",
+            "published_at": "3 mo",
+            "text_1": "Like",
+            "text_2": "Reply",
+            "text_3": "Message",
+            "icon_like": true,
+            "like_count": 123,
+            "icon_heart": false,
+            "icon_smile": false
+          }
+        },
+        "reviews_item_arRLTq": {
+          "type": "reviews_item",
+          "disabled": true,
+          "settings": {
+            "title": "“A STAPLE FOR OUR FAMILY”",
+            "name": "Kelly A.",
+            "content": "<p>After trying it, we decided to keep it in our routine. Simple, tasty, and easy to stick with.</p>",
+            "published_at": "1 year",
+            "text_1": "Like",
+            "text_2": "Reply",
+            "text_3": "Message",
+            "icon_like": true,
+            "like_count": 137,
+            "icon_heart": true,
+            "icon_smile": true
+          }
+        },
+        "reviews_item_nMAWqB": {
+          "type": "reviews_item",
+          "disabled": true,
+          "settings": {
+            "title": "“NOTICEABLE DAY-TO-DAY BENEFITS”",
+            "name": "Barbara Sims",
+            "content": "<p> With regular use I feel good, my hair looks fuller, and my skin has a healthy glow.</p>",
+            "published_at": "3 h",
+            "text_1": "Like",
+            "text_2": "Reply",
+            "text_3": "Message",
+            "icon_like": true,
+            "like_count": 25,
+            "icon_heart": true,
+            "icon_smile": false
+          }
+        },
+        "reviews_item_bytQNe": {
+          "type": "reviews_item",
+          "disabled": true,
+          "settings": {
+            "title": "“GENTLE ON MY STOMACH”",
+            "name": "Ann Berndt",
+            "content": "<p> It’s easy on my system and a nice part of my daily routine especially after long days at work.</p>",
+            "published_at": "6 mo",
+            "text_1": "Like",
+            "text_2": "Reply",
+            "text_3": "Message",
+            "icon_like": true,
+            "like_count": 199,
+            "icon_heart": true,
+            "icon_smile": true
+          }
+        },
+        "reviews_item_tHyVqG": {
+          "type": "reviews_item",
+          "disabled": true,
+          "settings": {
+            "title": "\"LOVE THE TASTE\"",
+            "name": "Tine B.",
+            "content": "<p>Great product apple cinnamon is my favorite. It’s become part of my morning ritual.</p>",
+            "published_at": "1 wk",
+            "text_1": "Like",
+            "text_2": "Reply",
+            "text_3": "Message",
+            "icon_like": true,
+            "like_count": 31,
+            "icon_heart": true,
+            "icon_smile": false
+          }
+        },
+        "reviews_item_kntUp6": {
+          "type": "reviews_item",
+          "disabled": true,
+          "settings": {
+            "title": "\"STANDS OUT FROM OTHER BRANDS\"",
+            "name": "Britt S.",
+            "content": "<p> I’ve tried others and this one really stands out great flavor, thoughtful packaging, consistent quality. I kept my subscription.</p>",
+            "published_at": "2 wks",
+            "text_1": "Like",
+            "text_2": "Reply",
+            "text_3": "Message",
+            "icon_like": true,
+            "like_count": 46,
+            "icon_heart": false,
+            "icon_smile": false
+          }
+        },
+        "reviews_item_yjN3wz": {
+          "type": "reviews_item",
+          "disabled": true,
+          "settings": {
+            "title": "“NATURAL PART OF MY ROUTINE”",
+            "name": "Cheryl B.",
+            "content": "<p> I’d been looking for something simple that felt good on my system. This gel tastes great and has become a daily staple.</p>",
+            "published_at": "11 h",
+            "text_1": "Like",
+            "text_2": "Reply",
+            "text_3": "Message",
+            "icon_like": true,
+            "like_count": 68,
+            "icon_heart": false,
+            "icon_smile": true
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_preview_badge_enQMeK",
+        "reviews_item_8RMUTn",
+        "reviews_item_BeiYwC",
+        "reviews_item_fegwmK",
+        "reviews_item_DPrWWz",
+        "reviews_item_arRLTq",
+        "reviews_item_nMAWqB",
+        "reviews_item_bytQNe",
+        "reviews_item_tHyVqG",
+        "reviews_item_kntUp6",
+        "reviews_item_yjN3wz"
+      ],
+      "name": "Member Review",
+      "settings": {
+        "heading": "<h2>The Reviews <strong>Are In</strong></h2>",
+        "show_reviews_app": true,
+        "total_reviews": "4272 Reviews",
+        "show_button": "",
+        "hide_button": "Hide Reviews",
+        "background_color": "linear-gradient(90deg, rgba(121, 163, 158, 1), rgba(73, 130, 124, 1) 100%)",
+        "heading_color": "#ffffff",
+        "button_bg_color": "#2c533f",
+        "button_text_color": "#ffffff",
+        "button_bg_hover_color": "#ffffff",
+        "button_text_hover_color": "#285234",
+        "hide_button_bg_color": "#2c533f",
+        "hide_button_text_color": "#ffffff",
+        "hide_button_bg_hover_color": "#ffffff",
+        "hide_button_text_hover_color": "#285234",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "single_product_W4tJgY": {
+      "type": "single-product",
+      "disabled": true,
+      "name": "Single Product",
+      "settings": {
+        "product": "starter-kit",
+        "badge": "shopify://shop_images/featured-badge.svg",
+        "title": "Prefer a short trip over a long journey?",
+        "subtitle": "Get our True Starter Kit",
+        "bundle_text_1": "1 Bestseller Jar",
+        "bundle_text_2": "5 flavored samples",
+        "button_label": "Add to cart",
+        "background_color": "linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(229, 196, 141, 1) 100%)",
+        "button_bg_color": "#ff790b",
+        "button_text_color": "#ffffff",
+        "button_bg_hover_color": "#ffffff",
+        "button_text_hover_color": "#ff790b",
+        "padding_top": 136,
+        "padding_bottom": 76,
+        "padding_top_mobile": 35,
+        "padding_bottom_mobile": 30
+      }
+    },
+    "health_advantages_v2_TY6tjG": {
+      "type": "health-advantages-v2",
+      "blocks": {
+        "text_RTqWf3": {
+          "type": "text",
+          "settings": {
+            "icon": "shopify://shop_images/arrow-gif-tr.gif",
+            "title": "More Everyday Energy:",
+            "text": "<p>Minerals in sea moss including natural iodine and iron help support normal energy production and oxygen transport.</p>",
+            "card_bg_color": "#e7f0e4",
+            "title_color": "#49827c",
+            "text_color": "#253937"
+          }
+        },
+        "text_dzWtdk": {
+          "type": "text",
+          "settings": {
+            "title": "Everyday Immune Support:",
+            "text": "<p>A broad spectrum of vitamins and trace minerals helps support your body’s normal immune function and can help cover common nutrient gaps.</p>",
+            "card_bg_color": "#e7f0e4",
+            "title_color": "#49827c",
+            "text_color": "#253937"
+          }
+        },
+        "text_PCaR6r": {
+          "type": "text",
+          "settings": {
+            "title": "Balanced Digestion:",
+            "text": "<p>Natural prebiotic properties help nourish beneficial gut bacteria, supporting regularity and a happy microbiome.</p>",
+            "card_bg_color": "#e7f0e4",
+            "title_color": "#49827c",
+            "text_color": "#253937"
+          }
+        },
+        "text_nTTetz": {
+          "type": "text",
+          "settings": {
+            "title": "Relaxed Evenings & Balance:",
+            "text": "<p>Potassium and magnesium help maintain healthy fluid and ealectrolyte balance and support normal muscle and nerve function great for unwinding at night.</p>",
+            "card_bg_color": "#e7f0e4",
+            "title_color": "#49827c",
+            "text_color": "#253937"
+          }
+        },
+        "text_FqwWXc": {
+          "type": "text",
+          "settings": {
+            "title": "Metabolic & Thyroid Support:",
+            "text": "<p>Naturally occurring iodine supports normal thyroid hormone production and a healthy metabolism.</p>",
+            "card_bg_color": "#e7f0e4",
+            "title_color": "#49827c",
+            "text_color": "#253937"
+          }
+        }
+      },
+      "block_order": [
+        "text_RTqWf3",
+        "text_dzWtdk",
+        "text_PCaR6r",
+        "text_nTTetz",
+        "text_FqwWXc"
+      ],
+      "disabled": true,
+      "name": "Health Advantage",
+      "settings": {
+        "heading": "<h2>With Sea Moss You May Notice & <strong>Feel Differences</strong></h2>",
+        "button_label": "BUY IT NOW",
+        "button_link": "shopify://collections/all",
+        "background_color": "#FAF7F3",
+        "heading_color": "#253937",
+        "button_bg_color": "#ff790b",
+        "button_text_color": "#ffffff",
+        "button_bg_hover_color": "#ffffff",
+        "button_text_hover_color": "#4b4b4b",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
+    "wellness_ingredients_jkzH6X": {
+      "type": "wellness-ingredients",
+      "blocks": {
+        "ingredients_Ud63Hw": {
+          "type": "ingredients",
+          "settings": {
+            "column_direction": "column",
+            "image_1": "shopify://shop_images/MINERALS.png",
+            "heading_1": "MINERALS",
+            "subheading_1": "Immunity",
+            "description_1": "<p>Contains iodine, calcium, and magnesium to support thyroid function and bone health.</p>",
+            "image_2": "shopify://shop_images/PREBIOTIC.png",
+            "heading_2": "PREBIOTIC",
+            "subheading_2": "Gut Health",
+            "description_2": "<p>Natural carrageenan fiber supports beneficial bacteria in your digestive system.</p>",
+            "image_3": "shopify://shop_images/ANTIOXIDANTS.png",
+            "heading_3": "ANTIOXIDANTS",
+            "subheading_3": "Recovery",
+            "description_3": "<p>Contains naturally occurring phytonutrients and antioxidant compounds.</p>"
+          }
+        },
+        "ingredients_BLCN89": {
+          "type": "ingredients",
+          "settings": {
+            "column_direction": "column-reverse",
+            "image_1": "shopify://shop_images/TRACE-ELEMENTS.png",
+            "heading_1": "TRACE ELEMENTS",
+            "subheading_1": "Daily Wellness",
+            "description_1": "<p>Provides zinc, selenium, and iron to complement a balanced daily diet.</p>",
+            "image_2": "shopify://shop_images/VITAMINS.png",
+            "heading_2": "VITAMINS",
+            "subheading_2": "Energy",
+            "description_2": "<p>Provides vitamin C, B vitamins, and vitamin K for daily nutritional wellness.</p>",
+            "image_3": "shopify://shop_images/MUCILAGE.png",
+            "heading_3": "MUCILAGE",
+            "subheading_3": "Hydration",
+            "description_3": "<p>Natural gel-forming compounds support moisture balance for skin.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "ingredients_Ud63Hw",
+        "ingredients_BLCN89"
+      ],
+      "name": "Wellness Ingredients",
+      "settings": {
+        "background_color": "#e7f0e4",
+        "sub_heading": "immunity  |  gut health  |  energy",
+        "heading": "<h2>Ingredients Come <strong>First</strong></h2>",
+        "description": "<p>Wild-harvested purity meets daily wellness.</p>",
+        "button_label": "Try Sea Moss Gel Today",
+        "button_link": "",
+        "guarantee_text": "30-Day Money Back Guarantee",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32
+      }
+    },
+    "trust_gurantee_AjT7Lf": {
+      "type": "trust-gurantee",
+      "name": "Trust Guarantee",
+      "settings": {
+        "background_color": "#FAF7F3",
+        "guarantee_icon": "shopify://shop_images/Huge-icon_68a5292d-95aa-4bdc-a72c-b02ee94336e8.svg",
+        "subheading": "Try it for 30 days",
+        "heading": "<h2>You Will Love It. <strong>Guaranteed.</strong></h2>",
+        "description": "<p>No love, no pay. Simple refund policy.</p>",
+        "button_text": "TRY SEA MOSS Gummies Today",
+        "button_url": "",
+        "guarantee_text": "30-Day Money Back Guarantee",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "padding_top-mobile": 32,
+        "padding_bottom-mobile": 32
+      }
+    },
+    "how_to_use_XcL7YB": {
+      "type": "how-to-use",
+      "blocks": {
+        "item_AmFeHC": {
+          "type": "item",
+          "settings": {
+            "step": "<p>Take 1-2 tablespoons of Sea Moss Gel.</p>"
+          }
+        },
+        "item_LTabJE": {
+          "type": "item",
+          "settings": {
+            "step": "<p>Enjoy straight from the jar, or mix into your favorite beverage or food. (e.g., smoothies, juice, yogurt, oatmeal).</p>"
+          }
+        },
+        "item_37i3PP": {
+          "type": "item",
+          "settings": {
+            "step": "<p>If mixing, stir until fully dissolved or blended.</p>"
+          }
+        },
+        "item_ywxVeg": {
+          "type": "item",
+          "settings": {
+            "step": "<p>Enjoy daily for magical benefits!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_AmFeHC",
+        "item_LTabJE",
+        "item_37i3PP",
+        "item_ywxVeg"
+      ],
+      "name": "How To Use",
+      "settings": {
+        "background_color": "#FAF7F3",
+        "image": "shopify://shop_images/made-easy.png",
+        "subheading": "Quick  |  Easy  |  Delicious",
+        "heading": "<h2>Daily Routine, <strong>Made Easy</strong></h2>",
+        "button_text": "TRY SEA MOSS Gummies Today",
+        "button_url": "#mainProduct",
+        "guarantee_text": "30-Day Money Back Guarantee",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "padding_top-mobile": 32,
+        "padding_bottom-mobile": 32
+      }
+    },
+    "quick_answer_XQrbQx": {
+      "type": "quick-answer",
+      "blocks": {
+        "accordion_c7kktT": {
+          "type": "accordion",
+          "settings": {
+            "heading": "So, what is Sea Moss?",
+            "description": "<p>Sea Moss is a type of red algae found on the Atlantic coasts of Europe, North America, and the Caribbean. It's very nutrient-rich, naturally loaded with vitamins and minerals, making it a fantastic natural supplement (or superfood) for boosting overall health and wellness. It has been used for centuries to support immunity levels and cover vitamin gaps, particularly in tribes in Ireland and the Caribbean.</p>"
+          }
+        },
+        "accordion_ifW8HT": {
+          "type": "accordion",
+          "settings": {
+            "heading": "How should I consume Sea Moss?",
+            "description": "<p>The recommended dosage is 2 tablespoons a day for an ordinary person. You’ll need 2 jars of True Sea Moss Superfood per month to stay consistent in covering your nutritional gaps and providing your body with essential nutrients. Enjoy it by the spoonful, or add it to your smoothies, soups, teas, or use it as a thickening agent in recipes. It’s versatile and easy to incorporate into your diet.</p>"
+          }
+        },
+        "accordion_HTLbKR": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Can I use Sea Moss on my skin or hair?",
+            "description": "<p>Absolutely! Wildcrafted Sea Moss Gel is amazing for skincare. Use it as a face mask or add a bit to your skin or hair care products (creams, serums, shampoos) to hydrate and nourish your skin, reduce inflammation, and improve your skin’s or hair’s texture. For the best results, use it both inside and out, because skincare starts from within.</p>"
+          }
+        },
+        "accordion_EyptEf": {
+          "type": "accordion",
+          "settings": {
+            "heading": "What are the benefits of taking Sea Moss?",
+            "description": "<p>Wildcrafted True Sea Moss is a natural source of essential nutrients and minerals like iodine, calcium, potassium, and vitamins A, C, and K, designed for the body’s daily intake. It’s like a 100% natural multivitamin with no synthetics, proven by history to help cover your vitamin gaps. It supports your immune system, promotes healthy skin, aids digestion.</p>"
+          }
+        },
+        "accordion_RPQpaV": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Why is it important to use Sea Moss with no added sugar?",
+            "description": "<p>Using Sea Moss with no added sugar ensures you get the right balance between taste and preserving the vitamin content. At True Sea Moss, we use natural fruits and berries to enhance the flavor without compromising its nutritional value. Other Sea Moss products with added sugar can diminish its benefits, but our special formula doubles the nutrients with the power of natural fruits and berries.</p>"
+          }
+        },
+        "accordion_98Xbbi": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Where do you source your Sea Moss from?",
+            "description": "<p>We are proud to say that our sea moss is sourced from a Marine-Protected Area off the coast of Nha Trang Bay, Vietnam - one of the most pristine and coveted bays in the world. Our local team collects the sea moss in the wild and dries it under the sun right on the shore, ensuring the highest quality and sustainability. We take the safety and quality of our product seriously, and that's why we have all the necessary documents from our supplier, including the certificate of origin, Phytosanitary certificate, and Certificate of Analysis. Furthermore, our products have been checked by the FDA at customs to ensure they meet the highest standards.</p>"
+          }
+        },
+        "accordion_6et3FT": {
+          "type": "accordion",
+          "settings": {
+            "heading": "How does True Sea Moss taste and what is the texture like?",
+            "description": "<p>True Sea Moss has a uniquely developed formula created with top food developers in California to perfect the taste and texture. It doesn’t taste like typical Sea Moss; many of our customers compare it to applesauce or baby food. It’s like a fresh, natural jam right out of the fridge, making it enjoyable and easy to consume.</p>"
+          }
+        },
+        "accordion_NgBXWR": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Is Sea Moss safe for everyone?",
+            "description": "<p>Sea Moss is generally safe for most people when used in moderation. However, every body is unique. If you have thyroid issues, seaweed allergies, or specific health concerns, it’s best to consult with your healthcare provider first.</p>"
+          }
+        },
+        "accordion_WUBq4i": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Can I use Sea Moss while breastfeeding or being pregnant?",
+            "description": "<p>We do not recommend Sea Moss for breastfeeding and pregnant women without consulting first with your healthcare provider. This is a particularly delicate, so it is best to ask a professional about activities that may affect the health of you and the baby.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_c7kktT",
+        "accordion_ifW8HT",
+        "accordion_HTLbKR",
+        "accordion_EyptEf",
+        "accordion_RPQpaV",
+        "accordion_98Xbbi",
+        "accordion_6et3FT",
+        "accordion_NgBXWR",
+        "accordion_WUBq4i"
+      ],
+      "name": "Quick answer",
+      "settings": {
+        "background_color": "#E7F0E4",
+        "subheading": "TRUE SEA MOSS FAQs",
+        "heading": "<h2>Frequently Asked <strong>Questions</strong></h2>",
+        "button_text": "TRY SEA MOSS Gummies Today",
+        "button_url": "",
+        "guarantee_text": "30-Day Money Back Guarantee",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "padding_top-mobile": 32,
+        "padding_bottom-mobile": 32,
+        "divider": "shopify://shop_images/quick-answer__divider.png",
+        "mobile_divider": "shopify://shop_images/quick-answer__mobile-divider.png"
+      }
+    },
+    "175994211857113bf5": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_mTRBA7": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_mTRBA7"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "product_gel_main_2_step_noslide_bf_v2_ERxAVy",
+    "gel_bf_drawer_M4tmxX",
+    "immunity_benefits_v2_RUpTjB",
+    "member_review_v2_Ur7kkB",
+    "single_product_W4tJgY",
+    "health_advantages_v2_TY6tjG",
+    "wellness_ingredients_jkzH6X",
+    "trust_gurantee_AjT7Lf",
+    "how_to_use_XcL7YB",
+    "quick_answer_XQrbQx",
+    "175994211857113bf5"
+  ]
+}

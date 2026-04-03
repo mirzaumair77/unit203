@@ -1,0 +1,28 @@
+@font-face {
+  font-family: 'larken-bold';
+  src: url('https://cdn.shopify.com/s/files/1/0603/0209/8587/files/Larken-Bold.woff?v=1752595762') format('woff2'),
+         url('https://cdn.shopify.com/s/files/1/0603/0209/8587/files/Larken-Bold.woff2?v=1752595762') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+  font-family: 'larken-extrabold';
+  src: url('https://cdn.shopify.com/s/files/1/0603/0209/8587/files/larken-extrabold-webfont.woff2?v=1752241387') format('woff2'),
+         url('https://cdn.shopify.com/s/files/1/0603/0209/8587/files/larken-extrabold-webfont.woff?v=1752241387') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.larken-bold {
+  font-family: 'larken-bold';
+}
+
+.larken-extrabold {
+  font-family: 'larken-extrabold';
+}
+
+/* Global CSS Variables */
+:root {
+  --larken-bold-font: "larken-bold", sans-serif;
+  --larken-extra-bold-font: "larken-extrabold", sans-serif;
+}

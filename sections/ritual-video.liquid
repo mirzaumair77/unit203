@@ -1,0 +1,580 @@
+{% liquid
+  assign bg_color = section.settings.background_color
+  assign padding_top = section.settings.padding_top
+  assign padding_bottom = section.settings.padding_bottom
+  assign padding_top_mobile = section.settings.padding_top_mobile
+  assign padding_bottom_mobile = section.settings.padding_bottom_mobile
+%}
+
+{% style %}
+  .ritual_video_{{ section.id }}{
+  background:{{ bg_color }};
+  padding-top:{{ padding_top_mobile }}px;
+  padding-bottom:{{ padding_bottom_mobile }}px;
+  }
+
+  @media only screen and (min-width: 769px) {
+
+
+  .ritual_video_{{ section.id }}{
+  padding-top:{{ padding_top }}px;
+  padding-bottom:{{ padding_bottom }}px;
+  }
+
+  }
+{% endstyle %}
+
+<style>
+.ritual_video--header p.section-heading__label-text {
+  margin: 0;
+}
+
+.ritual_video--header {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.ritual_video_slider_wrapper {
+  padding: 0 0 32px;
+  position: relative;
+}
+
+.ritual_video__slide--video {
+  position: relative;
+}
+
+.ritual_video--cover-wrap {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.ritual_video__cover {
+  display: flex;
+}
+
+.ritual_video__cover img {
+  max-width: 100%;
+  width: 100%;
+  display: flex;
+  border-radius: 24px;
+}
+
+.ritual_video__play--button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.ritual_video__video video {
+  width: 100%;
+  height: auto;
+  display: flex;
+  border-radius: 24px;
+}
+
+.ritual_video__play--button svg {
+    width: 64px;
+    height: 64px;
+    display: flex;
+}
+
+.ritual_video--button-slider {
+  display: none;
+}
+
+.ritual_video_section .custom-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 24px;
+}
+
+.ritual_video_section .custom-pagination .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: #ABAFB5;
+  border-radius: 50%;
+  cursor: pointer;
+  border-radius: 999px;
+  margin: 0 !important;
+}
+
+.ritual_video_section .custom-pagination .swiper-pagination-bullet-active {
+  background: #49827C;
+}
+
+.ritual_video_bottom {
+  padding: 0 15px;
+}
+
+.ritual_video--block.swiper-slide {
+  width: 100%;
+  max-width: 260px;
+}
+
+.ritual_video_bottom.button-main {
+  margin: 0 auto;
+}
+
+
+@media only screen and (min-width: 769px) {
+
+  .ritual_video--header-heading * br {
+    display: none;
+  }
+
+  .ritual_video_slider_wrapper {
+    padding: 0 0 48px;
+  }
+
+  .ritual_video_slider_wrapper:before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    background: linear-gradient(270deg, rgba(250, 247, 243, 0.00) 0%, #FAF7F3 80%);
+    width: 200px;
+    height: 700px;
+    z-index: 2;
+  }
+
+  .ritual_video_slider_wrapper:after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: 0;
+    background: linear-gradient(270deg, rgba(250, 247, 243, 0.00) 0%, #FAF7F3 80%);
+    rotate: 180deg;
+    width: 200px;
+    height: 700px;
+    z-index: 2;
+  }
+
+  .ritual_video--button-slider {
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translatey(-50%);
+    z-index: 10;
+    cursor: pointer;
+  }
+
+  .ritual_video--button-prev {
+    left: 20px;
+  }
+
+  .ritual_video--button-next {
+    right: 20px;
+  }
+
+  .ritual_video_section .custom-pagination {
+    display: none;
+  }
+
+  .ritual_video__cover img {
+  border-radius: 32px;
+}
+
+.ritual_video__video video {
+  border-radius: 32px;
+}
+
+.ritual_video__play--button svg {
+    width: 72px;
+    height: 72px;
+}
+
+}
+
+@media only screen and (max-width: 768px) {
+  .ritual_video--header-description.section-heading__description p {
+    font-size: 18px;
+    line-height: 27px;
+  }
+
+}
+</style>
+
+<section class="ritual_video_section ritual_video_{{ section.id }}">
+  <div class="wrapper-full">
+    {% if section.settings.sub_heading != blank or section.settings.heading != blank or section.settings.description != blank %}
+      <div class="ritual_video--header section-header__main">
+        {% if section.settings.sub_heading != blank %}
+          <div class="ritual_video--header-sub-heading section-heading__label">
+            <p class="section-heading__label-text">{{ section.settings.sub_heading }}</p>
+          </div>
+        {% endif %}
+        {% if section.settings.heading != blank %}
+          <div class="ritual_video--header-heading section-heading__title">
+            {{ section.settings.heading }}
+          </div>
+        {% endif %}
+        {% if section.settings.description != blank %}
+          <div class="ritual_video--header-description section-heading__description">
+            <p>{{ section.settings.description }}</p>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="ritual_video_slider_wrapper">
+      <div class="ritual_video_item swiper">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="ritual_video--block swiper-slide">
+              {% if block.settings.video != blank %}
+                <div class="ritual_video__slide--video">
+                  <div class="ritual_video--cover-wrap">
+                    {% if block.settings.cover_image != blank %}
+                      <div class="ritual_video__cover">
+                        <img
+                          src="{{ block.settings.cover_image | image_url: width: 1200 }}"
+                          alt="Video cover"
+                          loading="lazy"
+                        >
+                      </div>
+                    {% else %}
+                      <div class="ritual_video__cover">
+                        <img
+                          src="{{ block.settings.video.preview_image | image_url: width: 1200 }}"
+                          alt="Video preview"
+                          class="video-placeholder"
+                          loading="lazy"
+                        >
+                      </div>
+                    {% endif %}
+                    <div class="ritual_video__play--button">
+                      <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <foreignObject x="-16" y="-16" width="104" height="104"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(8px);clip-path:url(#bgblur_0_3661_5872_clip_path);height:100%;width:100%"></div></foreignObject><g data-figma-bg-blur-radius="16">
+                        <path d="M0 36C0 16.1178 16.1178 0 36 0C55.8823 0 72 16.1178 72 36C72 55.8823 55.8823 72 36 72C16.1178 72 0 55.8823 0 36Z" fill="#FAF7F3" fill-opacity="0.3"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M33.5062 26.8027C33.5182 26.8106 33.5302 26.8186 33.5422 26.8267L44.091 33.8591C44.3962 34.0626 44.6792 34.2512 44.8965 34.4265C45.1234 34.6094 45.3908 34.8631 45.5447 35.2342C45.7481 35.7247 45.7481 36.276 45.5447 36.7665C45.3908 37.1376 45.1234 37.3913 44.8965 37.5742C44.6792 37.7495 44.3962 37.9381 44.091 38.1415L33.5063 45.198C33.1332 45.4468 32.7977 45.6705 32.513 45.8248C32.2282 45.9791 31.8372 46.1555 31.3808 46.1283C30.797 46.0934 30.2578 45.8048 29.905 45.3385C29.6292 44.9738 29.559 44.5507 29.5295 44.228C29.4999 43.9056 29.5 43.5024 29.5 43.054L29.5 28.99C29.5 28.9755 29.5 28.9611 29.5 28.9467C29.5 28.4984 29.4999 28.0952 29.5295 27.7727C29.559 27.4501 29.6292 27.0269 29.905 26.6623C30.2578 26.1959 30.797 25.9073 31.3808 25.8724C31.8372 25.8452 32.2282 26.0216 32.513 26.176C32.7977 26.3302 33.1332 26.5539 33.5062 26.8027Z" fill="#FAF7F3"/>
+                        </g>
+                        <defs>
+                        <clipPath id="bgblur_0_3661_5872_clip_path" transform="translate(16 16)"><path d="M0 36C0 16.1178 16.1178 0 36 0C55.8823 0 72 16.1178 72 36C72 55.8823 55.8823 72 36 72C16.1178 72 0 55.8823 0 36Z"/>
+                        </clipPath></defs>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="ritual_video__video">
+                    {{
+                      block.settings.video
+                      | video_tag:
+                        controls: section.settings.show_video_controls,
+                        autoplay: false,
+                        loop: true,
+                        muted: section.settings.mute_video,
+                        playsinline: true,
+                        loading: 'lazy'
+                    }}
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="ritual_video--button-prev ritual_video--button-slider">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <path d="M44 24C44 33.4281 44 38.1421 41.0711 41.0711C38.1421 44 33.4281 44 24 44C14.5719 44 9.85786 44 6.92893 41.0711C4 38.1421 4 33.4281 4 24C4 14.5719 4 9.85787 6.92894 6.92893C9.85787 4 14.5719 4 24 4C33.4281 4 38.1421 4 41.0711 6.92894C44 9.85787 44 14.5719 44 24Z" fill="#E7F0E4" stroke="#49827C" stroke-width="2.5"/>
+          <path d="M32.0039 24C22.6313 24 25.3765 24 16.0039 24M16.0039 24L22.0039 30M16.0039 24L22.0039 18" stroke="#49827C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="ritual_video--button-next ritual_video--button-slider">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <path d="M4 24C4 14.5719 4 9.85786 6.92893 6.92893C9.85786 4 14.5719 4 24 4C33.4281 4 38.1421 4 41.0711 6.92893C44 9.85786 44 14.5719 44 24C44 33.4281 44 38.1421 41.0711 41.0711C38.1421 44 33.4281 44 24 44C14.5719 44 9.85786 44 6.92893 41.0711C4 38.1421 4 33.4281 4 24Z" fill="#E7F0E4" stroke="#49827C" stroke-width="2.5"/>
+          <path d="M15.9961 24C25.3687 24 22.6235 24 31.9961 24M31.9961 24L25.9961 18M31.9961 24L25.9961 30" stroke="#49827C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="custom-pagination"></div>
+    </div>
+    {% if section.settings.button_label != blank or section.settings.guarantee_text != blank %}
+      <div class="ritual_video_bottom button-main">
+        {% if section.settings.button_label != blank %}
+          <div class="ritual_video--button">
+            <a href="{{ section.settings.button_link }}" class="button-primary">
+              {{- section.settings.button_label }}
+              <span class="ritual_video--button-arrow button-primary__arrow-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M7.5 4.16675L12.5 10.0001L7.5 15.8334" stroke="#FAF7F3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </a>
+          </div>
+        {% endif %}
+        {% if section.settings.guarantee_text != blank %}
+          <div class="ritual_video--guarantee-text button-primary__guarantee">
+            <div class="ritual_video--guarantee-text-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M10 0.833252C4.93743 0.833252 0.833374 4.93731 0.833374 9.99992C0.833374 15.0625 4.93743 19.1666 10 19.1666C15.0626 19.1666 19.1667 15.0625 19.1667 9.99992C19.1667 4.93731 15.0626 0.833252 10 0.833252ZM14.3393 8.08917C14.6647 7.76374 14.6647 7.2361 14.3393 6.91066C14.0139 6.58523 13.4862 6.58523 13.1608 6.91066L8.75004 11.3214L6.8393 9.41066C6.51386 9.08523 5.98622 9.08523 5.66078 9.41066C5.33535 9.7361 5.33535 10.2637 5.66078 10.5892L8.16078 13.0892C8.48622 13.4146 9.01386 13.4146 9.3393 13.0892L14.3393 8.08917Z" fill="#49827C"/>
+              </svg>
+            </div>
+            <p>{{ section.settings.guarantee_text }}</p>
+          </div>
+        {% endif %}
+
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+<script>
+  (function () {
+    const ritualVideoSectionId = "{{ section.id }}";
+    const sectionClass = `.ritual_video_${ritualVideoSectionId}`;
+    const initFlag = "reviewSliderInitialized";
+    const maxRetries = 20;
+    let retryCount = 0;
+
+    function initReviewSlider() {
+      try {
+        const ritualVideoSection = document.querySelector(sectionClass);
+        if (!ritualVideoSection) return;
+
+        if (ritualVideoSection.dataset[initFlag]) return;
+
+        if (typeof Swiper === "undefined") {
+          if (retryCount < maxRetries) {
+            retryCount++;
+            setTimeout(initReviewSlider, 100);
+          }
+          return;
+        }
+
+        const videoSwiperContainer = ritualVideoSection.querySelector(".ritual_video_item");
+        if (!videoSwiperContainer) return;
+
+        ritualVideoSection.dataset[initFlag] = "true";
+        retryCount = 0;
+
+        const videoSwiperPaginationEl = ritualVideoSection.querySelector(".custom-pagination");
+        const videoSwipernextEl = ritualVideoSection.querySelector(".ritual_video--button-next");
+        const videoSwiperprevEl = ritualVideoSection.querySelector(".ritual_video--button-prev");
+
+        const videoSwiper = new Swiper(videoSwiperContainer, {
+          loop: true,
+          centeredSlides: true,
+          slidesPerView: "auto",
+          spaceBetween: 24,
+          pagination: videoSwiperPaginationEl
+            ? {
+                el: videoSwiperPaginationEl,
+                clickable: true,
+              }
+            : undefined,
+          navigation:
+            videoSwipernextEl && videoSwiperprevEl
+              ? {
+                  nextEl: videoSwipernextEl,
+                  prevEl: videoSwiperprevEl,
+                }
+              : undefined,
+          breakpoints: {
+            320: { spaceBetween: 16 },
+            768: { spaceBetween: 20, centeredSlides: false },
+            991: { spaceBetween: 24, centeredSlides: false },
+          },
+        });
+
+        function resetAllSlides() {
+          const slides = ritualVideoSection.querySelectorAll(".ritual_video--block");
+          slides.forEach((slide) => {
+            const cover = slide.querySelector(".ritual_video--cover-wrap");
+            const video = slide.querySelector("video");
+
+            if (cover) cover.style.display = "flex";
+
+            if (video) {
+              video.pause();
+              video.currentTime = 0;
+            }
+          });
+        }
+
+        ritualVideoSection.addEventListener("click", function (e) {
+          const playBtn = e.target.closest(".ritual_video__play--button");
+          if (!playBtn) return;
+
+          const clickedSlide = playBtn.closest(".ritual_video--block");
+          if (!clickedSlide) return;
+
+          resetAllSlides();
+
+          const cover = clickedSlide.querySelector(".ritual_video--cover-wrap");
+          const video = clickedSlide.querySelector("video");
+
+          if (cover) cover.style.display = "none";
+
+          if (video) {
+            video.play().catch((err) => {
+              console.warn("Video play prevented:", err);
+            });
+
+            video.onended = () => {
+              resetAllSlides();
+            };
+          }
+        });
+
+        videoSwiper.on("slideChange", function () {
+          resetAllSlides();
+        });
+
+      } catch (err) {
+        console.error("Review Slider Init Error:", err);
+
+        if (retryCount < maxRetries) {
+          retryCount++;
+          setTimeout(initReviewSlider, 100);
+        }
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", initReviewSlider);
+
+    document.addEventListener("shopify:section:load", function (e) {
+      const videoSection = e.target.querySelector(sectionClass);
+      if (!videoSection) return;
+
+      delete videoSection.dataset[initFlag];
+      retryCount = 0;
+
+      initReviewSlider();
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Ritual Video",
+  "settings": [
+    {
+      "type": "text",
+      "id": "sub_heading",
+      "label": "Sub Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "heading"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "button Link"
+    },
+    {
+      "type": "text",
+      "id": "guarantee_text",
+      "label": "Guarantee text"
+    },
+    {
+      "type": "header",
+      "content": "Video Controls"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_video_controls",
+      "label": "Show video controls",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "mute_video",
+      "label": "Mute video by default",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#FAF7F3"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top mobile",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding bottom mobile",
+      "default": 32
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Select the video"
+        },
+        {
+          "type": "image_picker",
+          "id": "cover_image",
+          "label": "Select the video cover image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ritual Video"
+    }
+  ]
+}
+{% endschema %}

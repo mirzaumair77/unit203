@@ -1,0 +1,671 @@
+<style>
+
+.immunity_benefit__{{ section.id }}{
+  background:{{ section.settings.background_color_mb  }};
+  padding-top:{{ section.settings.padding_top_mobile }}px;
+  padding-bottom:{{ section.settings.padding_bottom_mobile }}px;
+}
+
+.immunity_benefit__{{ section.id }}  .immunity_benefit_wrapper--block-heading h2{
+  color:{{ section.settings.heading_color_mb }};
+}
+.immunity_benefit_wrapper--block-text p{
+  color:{{ section.settings.text_color_mb }};
+}
+
+.immunity_benefit_wrapper--bottom-content-title span{
+  color:{{ section.settings.title_color }};
+}
+
+.immunity_benefit_wrapper--bottom-content-text p{
+  color:{{ section.settings.text_bottom_color }};
+}
+
+.immunity_benefit__{{ section.id }} .unique_global--button a{
+  background-color:{{ section.settings.button_bg_color }};
+  color:{{ section.settings.button_text_color }};
+}
+
+.immunity_benefit__{{ section.id }} .unique_global--button a:hover{
+  color:{{ section.settings.button_text_hover_color }};
+}
+
+.immunity_benefit__{{ section.id }} .unique_global--button a:before {
+  background-color: {{ section.settings.button_bg_hover_color }};
+}
+
+
+@media only screen and (min-width:768px){
+  .immunity_benefit__{{ section.id }}{
+    background:{{ section.settings.background_color }};
+    padding-top:{{ section.settings.padding_top }}px;
+    padding-bottom:{{ section.settings.padding_bottom }}px;
+  }
+
+}
+
+@media only screen and (min-width:769px){
+
+  .immunity_benefit__{{ section.id }}  .immunity_benefit_wrapper--block-heading h2{
+    color:{{ section.settings.heading_color }}
+  }
+  .immunity_benefit_wrapper--block-text p{
+    color:{{ section.settings.text_color }}
+  }
+}
+
+ .immunity_benefit_wrapper--block-heading h2 {
+  font-size: 45px;
+  line-height: 1;
+  font-weight: 500;
+  font-family: Yanone Kaffeesatz, sans-serif;
+  margin: 0;
+  text-align: center;
+}
+
+.immunity_benefit_wrapper--block-text {
+  margin: 15px 0 25px;
+}
+
+.immunity_benefit_wrapper--block-text p {
+  font-size: 18px;
+  line-height: 21px;
+  font-weight: 400;
+  font-family: "HarmoniaSansProCyr", sans-serif;
+  margin: 0;
+  text-align: center;
+}
+
+.immunity_benefit_wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.immunity_benefit_image {
+  max-width: 100%;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.immunity_benefit_image .first_image {
+  position: relative;
+  max-width: 70%;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+.immunity_benefit_image .second_image {
+  position: absolute;
+  z-index: -1;
+  max-width: 100%;
+  top: -26%;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.immunity_benefit_wrapper--block-content {
+  max-width: 100%;
+  width: 100%;
+}
+
+.immunity_benefit_wrapper--block-main {
+  max-width: 460px;
+  margin: 0 auto;
+}
+
+.immunity_benefit--accordion-block-item {
+  border-radius: 10px;
+}
+
+.immunity_benefit--accordion-block-item-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 50px 7px 20px;
+  cursor: pointer;
+}
+
+.immunity_benefit--accordion-content {
+  display: grid;
+  grid-template-columns: 40px auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.immunity_benefit--accordion-gif-icon img {
+  width: 100%;
+  height: auto;
+  display: flex;
+}
+
+.immunity_benefit--accordion_title h3 {
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: 700;
+  font-family: "HarmoniaSansProCyr", sans-serif;
+  margin: 0;
+}
+
+.immunity_benefit--accordion-block {
+  position: relative;
+  display: grid;
+  gap: 7px;
+}
+
+.immunity_benefit--accordion_arrow-icon {
+  position: absolute;
+  right: 20px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 50%;
+  justify-content: center;
+  transition: 0.3s;
+}
+
+.immunity_benefit--accordion-block-item.open .immunity_benefit--accordion_arrow-icon svg {
+  rotate: 180deg;
+}
+
+.immunity_benefit_wrapper--accordion_description {
+  overflow: hidden;
+  max-height: 0;
+  transition: 0.4s ease;
+  padding: 0 20px;
+}
+
+.immunity_benefit--accordion-block-item.open .immunity_benefit_wrapper--accordion_description {
+  padding: 15px 20px;
+  position: relative;
+}
+
+.immunity_benefit--accordion-block-item.open .immunity_benefit_wrapper--accordion_description::after {
+  width: calc(100% - 40px);
+  left: 20px;
+  background-color: #4b4b4b;
+  opacity: 0.2;
+  top: 0;
+  position: absolute;
+  content: "";
+  height: 1px;
+  display: block;
+}
+
+.immunity_benefit_wrapper--accordion_description p {
+  font-size: 14px;
+  line-height: 16.8px;
+  font-weight: 400;
+  font-family: "HarmoniaSansProCyr", sans-serif;
+  margin: 0;
+}
+
+.immunity_benefit_wrapper--bottom-content-title span {
+  display: block;
+  font-size: 18px;
+  line-height: 21px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: "HarmoniaSansProCyr", sans-serif;
+  text-align: center;
+}
+
+.immunity_benefit_wrapper--bottom-content-text {
+  margin: 0 auto;
+  max-width: 415px;
+}
+
+.immunity_benefit_wrapper--bottom-content-text p {
+  opacity: 0.5;
+  font-size: 9px;
+  line-height: 10px;
+  font-weight: 400;
+  text-align: center;
+  font-family: "HarmoniaSansProCyr", sans-serif;
+  margin: 0;
+}
+
+.immunity_benefit_section .unique_global--button a {
+  padding: 10px 10px;
+  max-width: 220px;
+  z-index: 10;
+  border-radius: 10px;
+  border: 1px solid #f5742b;
+  text-align: center;
+  width: 100%;
+  font-weight: 600;
+  font-size: 24px;
+  letter-spacing: 2px;
+  font-family: "HarmoniaSansProCyr", sans-serif;
+  text-transform: uppercase;
+  margin: 20px auto 30px;
+  min-height: 60px;
+}
+
+.immunity_benefit_section .unique_global--button a:hover {
+  border: 1px solid #fff;
+}
+
+@media only screen and (min-width: 768px) {
+  .immunity_benefit_section .unique_global--button a {
+    padding: 12px 10px;
+    max-width: 100%;
+    font-size: 30px;
+    font-weight: 700;
+    margin: 20px 0 30px;
+    min-height: 80px;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .immunity_benefit_wrapper--block-heading h2 {
+    font-size: 40px;
+    text-align: left;
+  }
+
+  .immunity_benefit_wrapper--block-text p {
+    font-size: 22px;
+    line-height: 26px;
+    text-align: left;
+  }
+
+  .immunity_benefit_wrapper--bottom-content-title span {
+    font-size: 24px;
+    line-height: 29px;
+    margin-top: 25px;
+    text-align: left;
+  }
+
+  .immunity_benefit_wrapper--block-main {
+    margin: unset;
+  }
+
+  .immunity_benefit_wrapper--bottom-content-text {
+    margin: unset;
+  }
+
+  .immunity_benefit_wrapper--bottom-content-text p {
+    font-size: 12px;
+    line-height: 15px;
+    text-align: left;
+  }
+
+  .immunity_benefit_wrapper {
+    gap: 55px;
+    flex-direction: row;
+  }
+
+  .immunity_benefit_image {
+    max-width: 50%;
+  }
+
+  .immunity_benefit_wrapper--block-content {
+    max-width: 50%;
+  }
+
+  .immunity_benefit--accordion-gif-icon {
+    max-width: 62px;
+  }
+
+  .immunity_benefit--accordion_title h3 {
+    font-size: 24px;
+    line-height: 26px;
+  }
+
+  .immunity_benefit_wrapper--accordion_description p {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  .immunity_benefit_wrapper--block-heading h2 {
+    font-size: 64px;
+  }
+}
+</style>
+
+<div class="immunity_benefit_section immunity_benefit__{{ section.id }}">
+  <div class="wrapper">
+    <div class="immunity_benefit_wrapper">
+      {% if section.settings.image != blank or section.settings.image_second != blank %}
+        <div class="immunity_benefit_image">
+          {% if section.settings.image != blank %}<img src="{{ section.settings.image | image_url: width:600 }}" alt="{{ section.settings.image.alt | default: 'Take A Healthier Step Forward' }}"  loading="lazy" class="first_image">{% endif %}
+          {% if section.settings.image_second != blank %}<img src="{{ section.settings.image_second | image_url: width:700 }}"  alt="{{ section.settings.image_second.alt | default: 'Take A Healthier Step Forward'  }}" loading="lazy" class="second_image">{% endif %}
+        </div>
+      {% endif %}
+      <div class="immunity_benefit_wrapper--block-content">
+        <div class="immunity_benefit_wrapper--block-main">
+          {% if section.settings.heading != blank %}
+            <div class="immunity_benefit_wrapper--block-heading">
+              <h2>{{ section.settings.heading }}</h2>
+            </div>
+          {% endif %}
+          {% if section.settings.text != blank %}
+            <div class="immunity_benefit_wrapper--block-text">
+              <p>{{ section.settings.text }}</p>
+            </div>
+          {% endif %}
+        </div>
+        <div class="immunity_benefit--accordion-block">
+          {% for block in section.blocks %}
+            <div  class="immunity_benefit--accordion-block-item {% if block.settings.open_by_default  %}open{% endif %}" style="background:{{ block.settings.background_color }};">
+              <div class="immunity_benefit--accordion-block-item-head">
+                <div class="immunity_benefit--accordion-content">
+                  {% if block.settings.icon != blank %}
+                    <div class="immunity_benefit--accordion-gif-icon">
+                      <img src="{{ block.settings.icon | image_url: width:70 }}" loading="lazy" alt="{{ block.settings.icon.alt }}">
+                    </div>
+                  {% endif %}
+                  {% if block.settings.title != blank %}
+                    <div class="immunity_benefit--accordion_title">
+                      <h3 style="color:{{ block.settings.title_color }}">{{ block.settings.title }}</h3>
+                    </div>
+                  {% endif %}
+                </div>
+                {% if block.settings.title != blank %}
+                  <div class="immunity_benefit--accordion_arrow-icon">
+                    <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M1 1L6 6L11 1" stroke="#2C533F" stroke-width="2"></path>
+                    </svg>
+                  </div>
+                {% endif %}
+              </div>
+              {% if block.settings.description != blank %}
+                <div class="immunity_benefit_wrapper--accordion_description">
+                  <p style="color:{{ block.settings.description_color }};">
+                    {{ block.settings.description | replace: '<p>', '' | replace: '</p>', '' }}
+                  </p>
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+        <div class="immunity_benefit_wrapper--block-bottom-content">
+          {% if section.settings.title != blank %}
+            <div class="immunity_benefit_wrapper--bottom-content-title">
+              <span>{{ section.settings.title }}</span>
+            </div>
+          {% endif %}
+          {% if section.settings.text_bottom != blank %}
+            <div class="immunity_benefit_wrapper--bottom-content-text">{{ section.settings.text_bottom }}</div>
+          {% endif %}
+          {% if section.settings.button_label != blank %}
+            <div class="unique_global--button">
+              <a href="{{ section.settings.button_link }}" class="scrollable--button">{{ section.settings.button_label -}}</a>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function initImmunityAccordion() {
+    const accordionItems = document.querySelectorAll('.immunity_benefit--accordion-block-item');
+    if (!accordionItems.length) return;
+
+    accordionItems.forEach((item) => {
+      const header = item.querySelector('.immunity_benefit--accordion-block-item-head');
+      const content = item.querySelector('.immunity_benefit_wrapper--accordion_description');
+
+      if (item.classList.contains('open') && content) {
+        content.style.maxHeight = content.scrollHeight + 30 + 'px';
+      }
+
+      header.addEventListener('click', function () {
+        const isOpen = item.classList.contains('open');
+
+        if (isOpen) {
+          // Close current item
+          item.classList.remove('open');
+          if (content) content.style.maxHeight = null;
+        } else {
+          // Open current item (others remain open)
+          item.classList.add('open');
+          if (content) content.style.maxHeight = content.scrollHeight + 30 + 'px';
+        }
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initImmunityAccordion);
+  document.addEventListener('shopify:section:load', initImmunityAccordion);
+</script>
+
+{% schema %}
+{
+  "name": "Immunity Benefits",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Select a Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_second",
+      "label": "Select a Second Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "header",
+      "content": "Bottom Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "text_bottom",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "button Link"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color_background",
+      "id": "background_color",
+      "label": "Background",
+      "default": "linear-gradient(#fbf4dce6, #d4f6e0, #bde2d6, #2c533f, #2c533f)"
+    },
+    {
+      "type": "color_background",
+      "id": "background_color_mb",
+      "label": "Background Mobile",
+      "default": "linear-gradient(#fbf4dce6, #d4f6e0, #bde2d6, #2c533f, #2c533f)"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#2c533f"
+    },
+    {
+      "type": "color",
+      "id": "heading_color_mb",
+      "label": "Heading Color Mobile",
+      "default": "#d3eeb9"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#4b4b4b"
+    },
+    {
+      "type": "color",
+      "id": "text_color_mb",
+      "label": "Text Color Mobile",
+      "default": "#fff"
+    },
+    {
+      "type": "header",
+      "content": "Bottom Content Style"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "text_bottom_color",
+      "label": "Text Color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background Color",
+      "default": "#FF790B"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_hover_color",
+      "label": "Button Background Hover Color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "button_text_hover_color",
+      "label": "Button Text Hover Color",
+      "default": "#FF790B"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top mobile",
+      "default": 35
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding bottom mobile",
+      "default": 35
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Accodrion",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "open_by_default",
+          "label": "Open By Deafult"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Select a icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "color_background",
+          "id": "background_color",
+          "label": "Background",
+          "default": "linear-gradient(#ffffff, #e0b979e0)"
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title Color",
+          "default": "#4b4b4b"
+        },
+        {
+          "type": "color",
+          "id": "description_color",
+          "label": "Description Color",
+          "default": "#4b4b4b"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Immunity Benefits"
+    }
+  ]
+}
+{% endschema %}

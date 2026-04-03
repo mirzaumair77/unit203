@@ -1,0 +1,215 @@
+{% liquid
+  assign padding_top = section.settings.padding_top
+  assign padding_bottom = section.settings.padding_bottom
+  assign padding_top_mobile = section.settings['padding_top-mobile']
+  assign padding_bottom_mobile = section.settings['padding_bottom-mobile']
+
+  assign background_color = section.settings.background_color
+  assign marquee_speed = section.settings.marquee_speed
+  assign text_color = section.settings.text_color
+  assign text_size = section.settings.text_size
+  assign mobile_text_size = section.settings.mobile_text_size
+%}
+
+<style>
+  .running-line__{{ section.id }} {
+    background: {{ background_color }};
+    padding-top: {{ padding_top_mobile }}px;
+    padding-bottom: {{ padding_bottom_mobile }}px;
+  }
+
+  .running-line__{{ section.id }} .running-line__slide--text * {
+    color: {{ text_color }};
+    font-size: {{ mobile_text_size }}px;
+  }
+
+  .running-line__{{ section.id }} .running-line__slide--icon svg circle {
+    fill: {{ text_color }};
+  }
+
+  @media only screen and (min-width: 769px) {
+
+    .running-line__{{ section.id }} {
+      padding-top: {{ padding_top }}px;
+      padding-bottom: {{ padding_bottom }}px;
+    }
+
+    .running-line__{{ section.id }} .running-line__slide--text * {
+      font-size: {{ text_size }}px;
+    }
+  }
+
+  .running-line__slide {
+    display: grid;
+    grid-template-columns: auto 6px;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .running-line__slide--text {
+    position: relative;
+    top: 2px;
+  }
+
+  .running-line__slide--text span {
+    font-family: var(--FONT-STACK-BODY);
+    font-weight: 600;
+  }
+
+  .running-line__slide--icon {
+    display: flex;
+  }
+</style>
+
+<div class="running-line overflow-x running-line__{{ section.id }}">
+  <div
+    class="running-line__main js-marquee marquee"
+    style="--marquee-speed-pps: {{ section.settings.marquee_speed }}"
+    aria-label="Scrolling marquee"
+    data-direction="left"
+    data-pause="hover"
+  >
+    <div class="running-line__marquee--track marquee--track marquee__viewport">
+      <div class="running-line__marquee--group marquee--group marquee__track" role="presentation">
+        <div class="marquee__segment">
+          {% for i in (1..5) %}
+            {% for block in section.blocks %}
+              {% assign text = block.settings.text %}
+              {% if text != blank %}
+                <div class="running-line__slide">
+                  <div class="running-line__slide--text">
+                    <span>{{ text }}</span>
+                  </div>
+                  <div class="running-line__slide--icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" viewBox="0 0 6 6" fill="none">
+                      <circle cx="3" cy="3" r="3" fill="#222222"></circle>
+                    </svg>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Running line",
+  "class": "running--line",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "color_background",
+      "id": "background_color",
+      "label": "Background",
+      "default": "linear-gradient(#ffffff, #ffffff)"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "marquee_speed",
+      "label": "Marquee Speed (pixels per second)",
+      "default": 120,
+      "min": 20,
+      "max": 500,
+      "step": 10
+    },
+    {
+      "type": "header",
+      "content": "Font size settings"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "min": 0,
+      "max": 35,
+      "step": 1,
+      "unit": "px",
+      "label": "Desktop Text",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "mobile_text_size",
+      "min": 0,
+      "max": 35,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Text",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_top-mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding top mobile",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom-mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding bottom mobile",
+      "default": 10
+    }
+  ],
+  "blocks": [
+    {
+      "type": "block",
+      "name": "Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Running line"
+    }
+  ]
+}
+{% endschema %}

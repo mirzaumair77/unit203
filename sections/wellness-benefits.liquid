@@ -1,0 +1,359 @@
+{% liquid
+  assign bg_color = section.settings.background_color
+  assign bg_color_mb = section.settings.background_color_mobile
+  assign padding_top = section.settings.padding_top
+  assign padding_bottom = section.settings.padding_bottom
+  assign padding_top_mobile = section.settings.padding_top_mobile
+  assign padding_bottom_mobile = section.settings.padding_bottom_mobile
+%}
+
+{% style %}
+  .wellness_benefit_{{ section.id }}{
+  background:{{ bg_color_mb }};
+  padding-top:{{ padding_top_mobile }}px;
+  padding-bottom:{{ padding_bottom_mobile }}px;
+  }
+
+  @media only screen and (min-width: 769px) {
+
+
+  .wellness_benefit_{{ section.id }}{
+  background:{{ bg_color }};
+  padding-top:{{ padding_top }}px;
+  padding-bottom:{{ padding_bottom }}px;
+  }
+
+  }
+{% endstyle %}
+
+<style>
+ .wellness_benefit--wave_images {
+  width: 100%;
+  margin-bottom: -2px;
+}
+
+.wellness_wave_image_mobile {
+  display: block;
+}
+
+.wellness_wave_image_desktop {
+  display: none;
+}
+
+.wellness_benefit--wave_images img {
+  width: 100%;
+}
+
+.wellness_benefit--header p.section-heading__label-text {
+  background: #E7F0E4;
+  color: #49827C;
+  margin: 0;
+}
+
+
+.wellness_benefit--header-heading h2,
+.wellness_benefit--header-heading h2 strong,
+.wellness_benefit--header-description p {
+  color: #FAF7F3;
+  margin: 0;
+}
+
+.wellness_benefit--header-description p {
+  letter-spacing: -0.4px;
+}
+
+
+.wellness_benefit_wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px 24px;
+  padding: 0 0 32px;
+}
+
+.wellness_benefit--block {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+  text-align: center;
+}
+
+.wellness_benefit--block-icon {
+  width: 48px;
+  height: 48px
+}
+
+.wellness_benefit--block-icon img {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+}
+
+.wellness_benefit--block-title * {
+  color: #FAF7F3;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: 0;
+}
+
+.wellness_benefit--guarantee-text-icon svg {
+  display: flex;
+}
+
+
+.wellness_benefit_bottom.button-main {
+  margin: 0 auto;
+}
+
+
+@media only screen and (min-width: 769px) {
+
+  .wellness_wave_image_mobile {
+    display: none;
+  }
+
+  .wellness_wave_image_desktop {
+    display: block;
+  }
+
+  .wellness_benefit--header-description p {
+    letter-spacing: 0;
+  }
+
+  .wellness_benefit--header-heading * br {
+    display: none;
+
+  }
+
+  .wellness_benefit_wrapper {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    padding: 0 0 48px;
+  }
+
+  .wellness_benefit--block {
+    flex-direction: row;
+    text-align: left;
+
+  }
+
+  .wellness_benefit--block-icon {
+    width: 64px;
+    height: 64px
+  }
+
+  .wellness_benefit--block-title * {
+    font-size: 24px;
+  }
+
+
+}
+</style>
+
+<div class="wellness_benefit--wave_images">
+  {% if section.settings.wave_image_desktop != blank %}
+    <img src="{{ section.settings.wave_image_desktop | image_url }}"  alt="{{ section.settings.wave_image_desktop.alt }}" loading="lazy" class="wellness_wave_image_desktop" >
+  {% endif %}
+  {% if section.settings.wave_image_mobile != blank %}
+    <img src="{{ section.settings.wave_image_mobile | image_url }}" alt="{{ section.settings.wave_image_mobile.alt }}" loading="lazy" class="wellness_wave_image_mobile">
+  {% elsif section.settings.wave_image_desktop != blank %}
+    <img src="{{ section.settings.wave_image_desktop | image_url }}"   alt="{{ section.settings.wave_image_mobile.alt }}" loading="lazy" class="wellness_wave_image_mobile">
+  {% endif %}
+</div>
+<section class="wellness_benefit_section wellness_benefit_{{ section.id }}">
+  <div class="wrapper">
+    <div class="wellness_benefit--header section-header__main">
+     {% if section.settings.sub_heading != blank %} 
+      <div class="wellness_benefit--header-sub-heading section-heading__label">
+        <p class="section-heading__label-text">{{ section.settings.sub_heading }}</p>
+      </div>
+    {% endif %}
+    {% if section.settings.heading != blank %}  
+      <div class="wellness_benefit--header-heading section-heading__title">
+        {{ section.settings.heading }}
+      </div>
+    {% endif
+     %}
+    {% if section.settings.description != blank %}  
+      <div class="wellness_benefit--header-description section-heading__description">
+        <p>{{ section.settings.description }}</p>
+      </div>
+    {% endif %}
+    </div>
+    <div class="wellness_benefit_wrapper">
+      {% for block in section.blocks %}
+        <div class="wellness_benefit--block" {{ block.shopify_attributes }}>
+        {% if block.settings.icon != blank %}  
+          <div class="wellness_benefit--block-icon">
+            <img src="{{ block.settings.icon | image_url }}" alt="{{ block.settings.title }}" loading="lazy">
+          </div>
+        {% endif %}
+        {%if block.settings.title != blank %}
+          <div class="wellness_benefit--block-title">
+            {{ block.settings.title }}
+          </div>
+        {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+    <div class="wellness_benefit_bottom button-main">
+      {% if section.settings.button_label != blank %}
+      <div class="wellness_benefit--button ">
+        <a href="{{ section.settings.button_link }}" class="button-white-color">
+          {{- section.settings.button_label }}
+          <span class="wellness_benefit--button-arrow button-white__arrow-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M7.5 4.16663L12.5 9.99996L7.5 15.8333" stroke="#49827C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </a>
+      </div>
+    {% endif %}
+    {% if section.settings.guarantee_text != blank %} 
+      <div class="wellness_benefit--guarantee-text button-white__guarantee">
+        <div class="wellness_benefit--guarantee-text-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M10 0.833374C4.93743 0.833374 0.833374 4.93743 0.833374 10C0.833374 15.0626 4.93743 19.1667 10 19.1667C15.0626 19.1667 19.1667 15.0626 19.1667 10C19.1667 4.93743 15.0626 0.833374 10 0.833374ZM14.3393 8.0893C14.6647 7.76386 14.6647 7.23622 14.3393 6.91078C14.0139 6.58535 13.4862 6.58535 13.1608 6.91078L8.75004 11.3215L6.8393 9.41078C6.51386 9.08535 5.98622 9.08535 5.66078 9.41078C5.33535 9.73622 5.33535 10.2639 5.66078 10.5893L8.16078 13.0893C8.48622 13.4147 9.01386 13.4147 9.3393 13.0893L14.3393 8.0893Z" fill="#FAF7F3"/>
+          </svg>
+        </div>
+        <p>{{ section.settings.guarantee_text }}</p>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Wellness Benefit",
+  "settings": [
+    {
+      "type": "text",
+      "id": "sub_heading",
+      "label": "Sub Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "heading"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "wave_image_desktop",
+      "label": "Wave Image Desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "wave_image_mobile",
+      "label": "Wave Image Mobile"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "button Link"
+    },
+    {
+      "type": "text",
+      "id": "guarantee_text",
+      "label": "Guarantee text"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color_background",
+      "id": "background_color",
+      "label": "Background",
+      "default": "linear-gradient(90deg, #79A39E 0%, #49827C 100%)"
+    },
+    {
+      "type": "color_background",
+      "id": "background_color_mobile",
+      "label": "Background Mobile",
+      "default": "linear-gradient(0deg, #49827C -0.05%, #79A39E 99.95%)"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top mobile",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding bottom mobile",
+      "default": 32
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Select the Icon"
+        },
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "Title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Wellness Benefit"
+    }
+  ]
+}
+{% endschema %}

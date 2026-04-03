@@ -1,0 +1,896 @@
+<style>
+     .single_product_{{ section.id }} {
+       background: {{ section.settings.background_color }};
+       padding-top: {{ section.settings.padding_top_mobile }}px;
+       padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+     }
+
+     .single_product_{{ section.id }} .unique_global--button a {
+       background-color: {{ section.settings.button_bg_color }};
+       color: {{ section.settings.button_text_color }};
+     }
+
+     .single_product_{{ section.id }} .unique_global--button a:hover {
+       color: {{ section.settings.button_text_hover_color }};
+     }
+
+     .single_product_{{ section.id }} .unique_global--button a:before {
+       background-color: {{ section.settings.button_bg_hover_color }};
+     }
+
+     @media only screen and (min-width: 769px) {
+       .single_product_{{ section.id }} {
+         padding-top: {{ section.settings.padding_top }}px;
+         padding-bottom: {{ section.settings.padding_bottom }}px;
+       }
+     }
+
+  .single_product_section .hide_mobile {
+    display: none;
+  }
+
+  .single_product_section .hide_desktop {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .single_product_wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .single_product--media-wrapper {
+    width: 100%;
+    max-width: 660px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .single_product--badge {
+    position: absolute;
+    max-width: 33.3%;
+    top: 0;
+    z-index: 5;
+    right: 58%;
+  }
+
+  .single_product--badge img {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .single_product_media img {
+    width: 100%;
+    height: auto;
+    display: flex;
+  }
+
+  .single_product-info-head-title h2 {
+    font-family: Yanone Kaffeesatz, sans-serif !important;
+    color: #3b7865;
+    font-size: 36px;
+    line-height: 1;
+    font-weight: 500;
+    text-align: center;
+    margin: 0 0 10px;
+  }
+
+  .single_product-info-head-subtitle p {
+    font-family: "HarmoniaSansProCyr", sans-serif;
+    color: #222;
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 700;
+    text-align: center;
+    margin: 0 0 15px;
+  }
+
+  .single_product-info-bundle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .single_product-info-bundle-text span {
+    display: inline-block;
+    border: 1px solid #E5C48D;
+    border-radius: 20px;
+    font-family: "HarmoniaSansProCyr", sans-serif;
+    color: #222;
+    font-size: 14px;
+    line-height: 21.6px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .single_product--bundle-second span {
+    padding: 5px 15px 5px 20px;
+  }
+
+  .single_product--bundle-first span {
+    margin-right: -6px;
+    padding: 5px 20px 5px 15px;
+  }
+
+  .single_product-info-bundle-content {
+    position: relative;
+  }
+
+  .single_product-info-bundle-divider {
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    background-color: #e5c48d;
+    right: -13px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    top: calc(50% - 11px);
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media only screen and (min-width:1025px) {
+    .single_product_wrapper {
+      grid-template-columns: 50% auto;
+      gap: 60px;
+    }
+
+    .single_product--media-wrapper {
+      max-width: 100%;
+    }
+
+    .single_product_wrapper-info {
+      max-width: 460px;
+      width: 100%;
+    }
+
+   .single_product_section .hide_mobile {
+      display: block;
+    }
+
+   .single_product_section .hide_desktop {
+      display: none;
+    }
+
+    .single_product-info-head-title h2 {
+      text-align: left;
+    }
+
+    .single_product-info-head-subtitle p {
+      text-align: left;
+    }
+
+    .single_product-info-bundle {
+      justify-content: left;
+    }
+  }
+
+  @media only screen and (min-width:769px) {
+    .single_product-info-head-title h2 {
+      font-size: 64px;
+      line-height: 63.49px;
+    }
+
+    .single_product-info-head-subtitle p {
+      font-size: 22px;
+      line-height: 26.4px;
+    }
+
+    .single_product-info-bundle-text span {
+      font-size: 18px;
+    }
+
+    .single_product--badge {
+      max-width: 185px;
+    }
+  }
+
+
+
+
+
+  {% comment %}subcription widget css {% endcomment %}
+   .subcription_tab_row {
+      border-radius: 10px 10px 0 0;
+      border: 1px solid #fff;
+      display: flex;
+  }
+  .subcription_tab {
+      padding: 21px 10px;
+      width: 50%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      cursor: pointer;
+  }
+  .subcription_tab.subscribe {
+      border-radius: 10px 0px 0 0;
+  }
+  .subcription_tab.one_time {
+      border-radius: 0px 10px 0 0;
+  }
+  .subcription_tab.active_plan {
+      background: #fff;
+  }
+  .subcription_tab_content {
+      background: #fff;
+  }
+  .subcription_tab_price {
+      padding: 20px 15px 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+  }
+  .subcription_price {
+      font-style: normal;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1;
+      color: #4b4b4b;
+  }
+  .subcription_compare_price {
+      font-size: 32px;
+      font-weight: 400;
+      line-height: 1;
+      color: #4b4b4b;
+      opacity: .3;
+      text-decoration: line-through;
+  }
+  .subcription_discount {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1;
+      text-align: left;
+      padding: 3px 10px;
+      align-items: center;
+      gap: 5px;
+      display: inline-flex;
+      color: #fff;
+      background-color: #f5742b;
+      border-radius: 28px;
+  }
+  .guarantee__item-wrapper {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 15px;
+      border-top: 1px solid #E1EEF9;
+  }
+  .guarantee__item {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      max-width: 50%;
+      width: 100%;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 19.2px;
+      gap: 10px;
+      padding: 15px 0;
+  }
+  .subcription_tab_one {
+      padding: 0 20px;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      display: flex;
+  }
+  .subcription_develiry_left {
+      flex: 1 1 calc(50% - 1px);
+      border-right: .5px solid #e1e1e1;
+      display: flex;
+      flex-direction: column;
+      padding-top: 20px;
+      padding-right: 15px;
+  }
+  .subcription_develiry_right {
+      flex: 1 1 calc(50% - 1px);
+      border-left: 0 solid #e1e1e1;
+      padding-top: 50px;
+  }
+  .discount_price {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      column-gap: 10px;
+      row-gap: 5px;
+      flex-wrap: wrap;
+      margin: 0;
+      color: #ff914f;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: normal;
+      font-style: normal;
+  }
+  .develiry_price_month {
+      font-weight: 600;
+  }
+  #save_price {
+      border-radius: 10px;
+      background: #d02e2e;
+      color: #fff;
+      font-size: 10px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      padding: 5px 7px;
+  }
+  .benefit-price--regular {
+      color: #222;
+      font-size: 14px;
+      text-decoration-line: line-through;
+      text-transform: capitalize;
+      margin: 10px 0 20px;
+  }
+  #compare_price {
+      padding-left: 20px;
+      color: #ff914f;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+  }
+  .subcription_tab.active_plan:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      width: calc(100% - 40px);
+      left: 20px;
+      background-color: #e1eef9;
+      height: 1px;
+      display: block;
+  }
+  .subscribe_atc {
+      width: 100%;
+      border-radius: 0 0 8px 8px;
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 23.81px;
+      font-family: Yanone Kaffeesatz, sans-serif !important;
+      letter-spacing: .1em;
+      text-align: center;
+      border-color: transparent;
+      color: #fff;
+      background-color: #357a57;
+      height: 80px;
+      text-transform: uppercase;
+      cursor: pointer;
+      position:relative;
+      overflow: hidden;
+      will-change: color, border, background;
+      transition: color .3s
+  ease, border .3s
+  ease, background 0s
+  linear 0s;
+      z-index: 1;
+      -webkit-tap-highlight-color: initial;
+  }
+  .subscribe_atc:before{
+      content: "";
+      position: absolute;
+      display: flex;
+      left: -1px;
+      top: 0;
+      right: -1px;
+      bottom: 0;
+      background: #fff;
+      transform: scaleY(0);
+      transform-origin: top center;
+      will-change: transform;
+      z-index: -1;
+      transition: transform .3s
+  ease;
+  }
+  .subscribe_atc:hover{
+  color: #285234;
+      background-color: #285234;
+      border-color: #285234;
+      transition: color .3s
+  ease, border .3s
+  ease, background 0s
+  linear .3s;
+  }
+  .subscribe_atc:hover:before{
+  transform-origin: bottom center;
+      transform: none;
+  }
+  .subcription_tab_content{
+   display:none
+  }
+  .subcription_tab_content.active_plan {
+      display: block;
+  }
+
+  @media(min-width:769px) {
+  
+  .subcription_widget {
+    margin-top: 25px;
+  }
+
+  @media(max-width:768px){
+  .subcription_price {
+      font-size: 24px;
+  }
+  .subcription_compare_price {
+      font-size: 24px;
+  }
+  .subcription_discount {
+      font-size: 14px;
+  }
+  .guarantee__item {
+      font-size: 10px;
+  }
+  .discount_price {
+      font-size: 16px;
+  }
+  #save_price {
+      font-size: 14px;
+  }
+  .benefit-price--regular {
+      margin: 5px 0 20px;
+  }
+  #compare_price {
+      padding-left: 15px;
+      font-size: 16px;
+  }
+  .subscribe_atc {
+      height: 60px;
+  }
+  }
+</style>
+
+{% assign product = all_products[section.settings.product] %}
+<div class="single_product_section single_product_{{ section.id }}">
+  <div class="wrapper">
+    <div class="single_product_wrapper--info-head hide_desktop">
+      {% if section.settings.title != blank %}
+        <div class="single_product-info-head-title">
+          <h2>{{ section.settings.title }}</h2>
+        </div>
+      {% endif %}
+      {% if section.settings.subtitle != blank %}
+        <div class="single_product-info-head-subtitle">
+          <p>{{ section.settings.subtitle }}</p>
+        </div>
+      {% endif %}
+      {% if section.settings.bundle_text_1 != blank or section.settings.bundle_text_2 != blank %}
+        <div class="single_product-info-bundle">
+          <div class="single_product-info-bundle-content">
+            <div class="single_product-info-bundle-text single_product--bundle-first">
+              <span>{{ section.settings.bundle_text_1 }}</span>
+            </div>
+            <div class="single_product-info-bundle-divider">
+              <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3.90039" y="0.300781" width="1.2" height="8.4" fill="#4B4B4B"></rect>
+                <rect x="0.300293" y="5.10059" width="1.2" height="8.4" transform="rotate(-90 0.300293 5.10059)" fill="#4B4B4B"></rect>
+              </svg>
+            </div>
+          </div>
+          <div class="single_product-info-bundle-text single_product--bundle-second">
+            <span>{{ section.settings.bundle_text_2 }}</span>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+    <div class="single_product_wrapper">
+      <div class="single_product--media-wrapper">
+        {% if section.settings.badge != blank %}
+          <div class="single_product--badge">
+            <img
+              src="{{  section.settings.badge | image_url: width: 200 }}"
+              loading="lazy"
+              alt="{{  section.settings.badge.alt }}"
+            >
+          </div>
+        {% endif %}
+        {% if product.featured_image != blank %}
+          <div class="single_product_media">
+            <img
+              src="{{ product.featured_image | image_url: width: 700 }}"
+              loading="lazy"
+              alt="{{ product.featured_image.alt }}"
+            >
+          </div>
+        {% endif %}
+      </div>
+      <div class="single_product_wrapper-info">
+        <div class="single_product_wrapper--info-head ">
+          <div class="hide_mobile">
+            {% if section.settings.title != blank %}
+              <div class="single_product-info-head-title ">
+                <h2>{{ section.settings.title }}</h2>
+              </div>
+            {% endif %}
+            {% if section.settings.subtitle != blank %}
+              <div class="single_product-info-head-subtitle ">
+                <p>{{ section.settings.subtitle }}</p>
+              </div>
+            {% endif %}
+            {% if section.settings.bundle_text_1 != blank or section.settings.bundle_text_2 != blank %}
+              <div class="single_product-info-bundle ">
+                <div class="single_product-info-bundle-content">
+                  <div class="single_product-info-bundle-text single_product--bundle-first">
+                    <span>{{ section.settings.bundle_text_1 }}</span>
+                  </div>
+                  <div class="single_product-info-bundle-divider">
+                    <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="3.90039" y="0.300781" width="1.2" height="8.4" fill="#4B4B4B"></rect>
+                      <rect x="0.300293" y="5.10059" width="1.2" height="8.4" transform="rotate(-90 0.300293 5.10059)" fill="#4B4B4B"></rect>
+                    </svg>
+                  </div>
+                </div>
+                <div class="single_product-info-bundle-text single_product--bundle-second">
+                  <span>{{ section.settings.bundle_text_2 }}</span>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+          <div class="subcription_widget">
+            <div class="subcription_tab_row">
+              {% assign variant = product.selected_or_first_available_variant %}
+               {% assign variant_id = variant.id %}
+              {% if variant.selling_plan_allocations.size > 0 %}
+  {% assign selling_id = variant.selling_plan_allocations.first.selling_plan.id %}
+{% endif %}
+              <div class="subcription_tab subscribe active_plan" data-tab="subscribe" data-selling="{{ selling_id }}" data-variant="{{ variant_id }}">Subscribe</div>
+              <div class="subcription_tab one_time" data-tab="one_time" data-variant="{{ variant_id }}">One-time</div>
+            </div>
+            <div class="subcription_tab_content active_plan" data-content="subscribe">
+              <div class="subcription_tab_price">
+                <span class="subcription_price">$57.75</span>
+                <span class="subcription_compare_price">$82.50</span>
+                <span class="subcription_discount"
+                >
+                  <span class="position-relative">30% OFF TODAY</span>
+                    <svg width="14" height="19" viewBox="0 0 14 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g filter="url(#filter0_i_3662_1324)">
+                      <path d="M13.1913 9.50958C13.1598 9.3044 13.0151 9.13382 12.8143 9.06443L8.39862 7.53903L12.4609 1.75073C12.6249 1.51686 12.5918 1.20535 12.3823 1.01475C12.1742 0.825242 11.8497 0.81175 11.6197 0.98538L9.71993 2.44494L1.09984 8.95142C0.929514 9.08033 0.843267 9.28761 0.875022 9.49226C0.906572 9.69744 1.0512 9.86802 1.25204 9.93741L5.66775 11.4628L1.60545 17.2511C1.44144 17.485 1.47456 17.7965 1.68406 17.9871C1.8935 18.1769 2.21595 18.1902 2.44666 18.0165L4.33278 16.5928L12.9665 10.0504C13.1368 9.92151 13.2231 9.71423 13.1913 9.50958Z" fill="#FFE272"></path>
+                      <path d="M13.5484 9.18797C13.5159 8.98489 13.3707 8.81554 13.1699 8.74603L8.75522 7.21787L12.7816 1.51082C12.9442 1.28022 12.9096 0.971984 12.6996 0.782542C12.491 0.594192 12.167 0.579418 11.9383 0.750134L10.0492 2.18535L4.74119 16.1546L13.3267 9.72187C13.496 9.59514 13.5811 9.39051 13.5484 9.18797Z" fill="#FFC945"></path>
+                    </g>
+                    <defs>
+                      <filter id="filter0_i_3662_1324" x="0.868652" y="0.630859" width="12.6865" height="17.5078" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend>
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
+                        <feOffset dy="1.55172"></feOffset>
+                        <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"></feComposite>
+                        <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.5 0"></feColorMatrix>
+                        <feBlend mode="normal" in2="shape" result="effect1_innerShadow_3662_1324"></feBlend>
+                      </filter>
+                    </defs>
+                  </svg>
+                </span>
+              </div>
+              <div class="guarantee__item-wrapper">
+                <div class="guarantee__item">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="10" cy="10" r="10" fill="#A0A0A0"></circle>
+                    <path d="M6.08691 10.4349L8.40575 13.0436L13.0434 7.82617" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                  <span>Auto-Refill in 30 days</span>
+                </div>
+                <div class="guarantee__item">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="10" cy="10" r="10" fill="#A0A0A0"></circle>
+                    <path d="M6.08691 10.4349L8.40575 13.0436L13.0434 7.82617" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                  <span>Manage It Any Time</span>
+                </div>
+              </div>
+            </div>
+            <div class="subcription_tab_content" data-content="one_time">
+              <div class="subcription_tab_one">
+                <div class="subcription_develiry_left">
+                  <p class="discount_price">
+                    <span class="develiry_price_month">$57.75/ month</span><span id="save_price">Save $24.75</span>
+                  </p>
+                  <p class="benefit-price--regular">$82.50</p>
+                </div>
+                <div class="subcription_develiry_right">
+                  <span id="compare_price" data-price="$82.50" class="delivery-purchase-right-main-price">$82.50 </span>
+                </div>
+              </div>
+            </div>
+            <button class="subscribe_atc">{{ section.settings.button_label }}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const tabs = document.querySelectorAll('.subcription_tab');
+    const contents = document.querySelectorAll('.subcription_tab_content');
+
+    // default: add .active_plan to the first tab/content if not already
+    if (!document.querySelector('.subcription_tab.active_plan')) {
+      tabs[0].classList.add('active_plan');
+    }
+    if (!document.querySelector('.subcription_tab_content.active_plan')) {
+      contents[0].classList.add('active_plan');
+    }
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.tab;
+
+        // remove active from all tabs and contents
+        tabs.forEach((t) => t.classList.remove('active_plan'));
+        contents.forEach((c) => c.classList.remove('active_plan'));
+
+        // add active to clicked tab and matching content
+        tab.classList.add('active_plan');
+        const matchedContent = document.querySelector(`.subcription_tab_content[data-content="${target}"]`);
+        if (matchedContent) matchedContent.classList.add('active_plan');
+      });
+    });
+  });
+</script>
+<script>
+document.addEventListener('click', async (e) => {
+  const btn = e.target.closest('.subscribe_atc');
+  const loading_spinner = document.querySelector('#product-cart-loading');
+  
+
+  if (!btn) return;
+
+  // basic guard against double click
+  if (btn.dataset.loading === 'true') return;
+  btn.dataset.loading = 'true';
+  btn.classList.add('is-loading');
+  loading_spinner.classList.add('product-cart-loading--loading');
+
+  try {
+    const activePlan = document.querySelector('.subcription_tab.active_plan');
+    if (!activePlan) throw new Error('No active subscription plan selected.');
+
+    const variantId = activePlan.dataset.variant;
+    const sellingPlanId = activePlan.dataset.selling;
+
+    if (!variantId) throw new Error('Variant ID missing on active plan.');
+
+    // Prepare payload
+    const payload = { id: Number(variantId), quantity: 1 };
+    if (sellingPlanId) payload.selling_plan = Number(sellingPlanId);
+
+    // 1) Add to cart
+    const addRes = await fetch('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+
+    if (!addRes.ok) {
+      // try to read Shopify error message
+      const errBody = await addRes.json().catch(() => null);
+      throw new Error(errBody?.description || 'Add to cart failed');
+    }
+
+    await addRes.json(); // response about added item (not used further)
+
+    // 2) Get latest cart data (for count, etc.)
+    const cartRes = await fetch('/cart.js');
+    if (!cartRes.ok) throw new Error('Failed to fetch cart data.');
+    const cartData = await cartRes.json();
+
+    // 3) Fetch updated cart drawer section HTML
+    const sectionsRes = await fetch('/?sections=cart-drawer');
+    if (!sectionsRes.ok) throw new Error('Failed to fetch cart drawer section.');
+    const sectionsJson = await sectionsRes.json();
+
+    // find the drawer HTML string in the returned JSON (robust lookup)
+    let drawerHtml = sectionsJson['cart-drawer'] ??
+                     Object.values(sectionsJson).find(v => typeof v === 'string' && v.includes('cart-drawer'));
+
+    if (!drawerHtml) throw new Error('Cart drawer HTML not found in section response.');
+
+    // parse the HTML and locate the cart-drawer element (or fallback class)
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(drawerHtml, 'text/html');
+    const parsedDrawer = doc.querySelector('cart-drawer') || doc.querySelector('.cart-drawer') || doc.body.firstElementChild;
+
+    if (!parsedDrawer) throw new Error('Parsed cart drawer element not found.');
+
+    // 4) Replace existing drawer or append if it's not on page (fixes "first add" case)
+    const existingDrawer = document.querySelector('cart-drawer') || document.querySelector('.cart-drawer');
+
+    if (existingDrawer) {
+      existingDrawer.replaceWith(parsedDrawer);
+    } else {
+      // append near end of body (Dawn places drawer at page end normally)
+      document.body.appendChild(parsedDrawer);
+    }
+
+    // 5) Update cart count badges (common selectors — adjust if your theme uses a different one)
+    const updateCartCount = (count) => {
+      const selectors = [
+        '.cart-count-bubble',
+        '.header__cart-bubble',
+        '[data-cart-count]',
+        '.header__icon--cart .count',
+        '.cart-count'
+      ];
+      selectors.forEach(sel => {
+        const el = document.querySelector(sel);
+        if (el) el.textContent = String(count);
+      });
+    };
+    updateCartCount(cartData.item_count ?? 0);
+
+    // 6) Open drawer AFTER it is inserted (and upgraded)
+    const drawerEl = document.querySelector('cart-drawer') || document.querySelector('.cart-drawer');
+    if (drawerEl && typeof drawerEl.open === 'function') {
+      // If it's a custom element with an open() method — call it.
+      drawerEl.open();
+    } else {
+      // fallback: dispatch Dawn-like events so other scripts can react
+      document.dispatchEvent(new CustomEvent('cart:refresh', { detail: { cart: cartData }, bubbles: true }));
+      document.dispatchEvent(new CustomEvent('cart:updated', { detail: { cart: cartData }, bubbles: true }));
+      // last-resort visual fallback (you may need to style this)
+      document.body.classList.add('drawer-open');
+    }
+
+  } catch (err) {
+    console.error('Subscribe add-to-cart error:', err);
+    // show friendly error — replace with your toast system if you have one
+    if (typeof window.__displayThemeToast === 'function') {
+      window.__displayThemeToast(err.message || 'Could not add item to cart');
+    } else {
+      alert(err.message || 'Could not add item to cart');
+    }
+  } finally {
+    btn.dataset.loading = 'false';
+    btn.classList.remove('is-loading');
+    loading_spinner.classList.remove('product-cart-loading--loading');
+  }
+});
+
+
+</script>
+{% schema %}
+{
+  "name": "Single Product",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "image_picker",
+      "id": "badge",
+      "label": "Badge"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "header",
+      "content": "Bundle Text"
+    },
+    {
+      "type": "text",
+      "id": "bundle_text_1",
+      "label": "Bundle Text"
+    },
+    {
+      "type": "text",
+      "id": "bundle_text_2",
+      "label": "Bundle Text"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Text"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color_background",
+      "id": "background_color",
+      "label": "Background",
+      "default": "linear-gradient(#edfcfa, #edfcfa)"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background Color",
+      "default": "#FF790B"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_hover_color",
+      "label": "Button Background Hover Color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "button_text_hover_color",
+      "label": "Button Text Hover Color",
+      "default": "#FF790B"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 136
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top mobile",
+      "default": 35
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding bottom mobile",
+      "default": 35
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Guarantee",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Guarantee Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Single Product"
+    }
+  ]
+}
+{% endschema %}

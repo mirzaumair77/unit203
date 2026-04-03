@@ -1,0 +1,259 @@
+{%- assign listMedia = product.metafields.custom.product_custom_images_list.value -%}
+{%- assign items = listMedia -%}
+{%- if items == blank -%}
+  {%- assign items = product.media -%}
+{%- endif -%}
+
+<div class="product-media-gallery product-media--{{ template.suffix }}">
+  <div class="product-media-gallery__images--wrapper swiper">
+    <div class="product-media__main--images swiper-wrapper">
+      {%- for media in items -%}
+        <div class="product-media__image swiper-slide">
+          {%- if media.preview_image -%}
+            {%- assign img = media.preview_image -%}
+          {%- else -%}
+            {%- assign img = media -%}
+          {%- endif -%}
+
+          {{
+            img
+            | image_url: width: 1200
+            | image_tag:
+              alt: img.alt,
+              loading: 'lazy',
+              widths: '600, 900, 1200',
+              sizes: '(max-width: 768px) 100vw, 1200px',
+              class: 'media-image'
+          }}
+
+          {% if section.settings.enable_zoom == true %}
+            {%- assign href = img | image_url: width: 2048 -%}
+            {%- assign w = img.width | default: 1200 -%}
+            {%- assign h = img.height | default: 1200 -%}
+
+            {%- if href != blank -%}
+              <a
+                href="{{ href }}"
+                class="product-single__media-link"
+                data-pswp-width="{{ w }}"
+                data-pswp-height="{{ h }}"
+                data-pswp-index="{{ forloop.index0 }}"
+                aria-label="Open image in lightbox"
+              >
+                <span class="visually-hidden">Open image lightbox</span>
+              </a>
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+
+  <div class="product-media-gallery__thumbnails--wrapper swiper">
+    <div class="product-media__main--thumbnails swiper-wrapper">
+      {%- for media in items -%}
+        <div class="product-media__thumbnail swiper-slide">
+          {%- if media.preview_image -%}
+            {%- assign thumb = media.preview_image -%}
+          {%- else -%}
+            {%- assign thumb = media -%}
+          {%- endif -%}
+
+          {{
+            thumb
+            | image_url: width: 300
+            | image_tag:
+              alt: thumb.alt,
+              loading: 'lazy',
+              widths: '150,200,300',
+              sizes: '(max-width:480px) 50vw, 300px',
+              class: 'media-thumbnail'
+          }}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% if section.settings['media-review'] == true %}
+  <!-- Custom code -->
+  <div class="swiper-media-review deskstop-review swiper">
+    <div class="media-review__wrapper swiper-wrapper">
+      {% for item in product.metafields.custom.media_reviews.value %}
+        <div class="media-review__item swiper-slide">
+          <div class="media-review__content">
+            <div class="media-review__text">
+              {{ item.review | metafield_tag }}
+            </div>
+
+            <div class="media-review__author">
+              <div class="media-review__author-info">
+                {% if item.review_author_image != blank %}
+                  <div class="media-review__author-image">
+                    {{ item.review_author_image | media_tag }}
+                  </div>
+                {% endif %}
+                <div class="media-review__author-name">
+                  <span>{{ item.name.value }}</span>
+                </div>
+              </div>
+
+              <div class="media-review__author-badge">
+                <div class="media-review__badge-icon">
+                  <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.5304 10L18.7888 7.77695L19.1607 5L16.5161 3.92652L15.4187 1.33977L12.5797 1.70348L10.3069 0L8.03422 1.70348L5.19522 1.33977L4.09775 3.92652L1.4532 5L1.82504 7.77691L0.0834961 10L1.82504 12.223L1.4532 15L4.09775 16.0735L5.19522 18.6602L8.03422 18.2965L10.3069 20L12.5797 18.2965L15.4187 18.6602L16.5161 16.0735L19.1607 15L18.7888 12.2231L20.5304 10ZM17.4178 14.0157L15.2938 14.8779L14.4124 16.9555L12.1323 16.6634L10.3069 18.0315L8.48157 16.6634L6.20143 16.9555L5.31997 14.8779L3.19605 14.0157L3.49469 11.7854L2.09596 10L3.49465 8.21453L3.19601 5.98422L5.32001 5.12203L6.20143 3.04449L8.48157 3.3366L10.3069 1.96848L12.1323 3.3366L14.4124 3.04449L15.2939 5.12207L17.4179 5.98426L17.1192 8.21457L18.5179 10L17.1192 11.7855L17.4178 14.0157Z" fill="#4999E3"/>
+                    <path d="M9.12864 10.9104L7.32792 9.21638L6.21729 10.2612L9.12864 13L14.396 8.04484L13.2854 7L9.12864 10.9104Z" fill="#4999E3"/>
+                  </svg>
+                </div>
+                <div class="media-review__badge-text">
+                  <span>Verified Buyer</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="swiper_navigation">
+      <div class="swiper-button-prev swiper-button-prev-media-reviews">
+        <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path opacity="0.5" d="M7 11L2 6L7 1" stroke="#444444" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <div class="swiper-button-next swiper-button-next-media-reviews">
+        <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path opacity="0.5" d="M1 1L6 6L1 11" stroke="#444444" stroke-width="1.5"/>
+        </svg>
+      </div>
+    </div>
+    <div class="swiper-pagination-media-reviews"></div>
+  </div>
+{% endif %}
+
+<style>
+  .product-media__image { position: relative; }
+  .product-single__media-link { position: absolute; inset: 0; z-index: 2; display: block; }
+</style>
+
+<script>
+  function initProductGallerySlider() {
+    try {
+      if (typeof Swiper === 'undefined') {
+        setTimeout(initProductGallerySlider, 100);
+        return;
+      }
+
+      const thumbsContainer = document.querySelector('.product-media-gallery__thumbnails--wrapper.swiper');
+      const mainContainer = document.querySelector('.product-media-gallery__images--wrapper.swiper');
+      if (!thumbsContainer || !mainContainer) return;
+
+      console.log('[product] DOMContentLoaded — init Swiper');
+
+      {% if template.suffix contains 'green-powder' %}
+        const seeMossThumbImages = new Swiper(thumbsContainer, {
+          spaceBetween: 10,
+          slidesPerView: 'auto',
+          freeMode: true,
+          watchSlidesProgress: true,
+        });
+
+      {% elsif template.suffix contains 'gel-2-step-module-bf-v2' %}
+        const seeMossThumbImages = new Swiper(thumbsContainer, {
+          spaceBetween: 5,
+          slidesPerView: 12,
+          freeMode: true,
+          watchSlidesProgress: true,
+          breakpoints: {
+            300: {
+              spaceBetween: 12,
+              slidesPerView: 5
+            },
+            768: {
+              spaceBetween: 12,
+              slidesPerView: 5
+            },
+            1024: {
+              spaceBetween: 16,
+              slidesPerView: 5
+            }
+          }
+        });
+
+      {% else %}
+        const seeMossThumbImages = new Swiper(thumbsContainer, {
+          spaceBetween: 10,
+          slidesPerView: 7,
+          freeMode: true,
+          watchSlidesProgress: true,
+          breakpoints: {
+            300: {
+              spaceBetween: 14,
+              slidesPerView: 'auto'
+            },
+            768: {
+              spaceBetween: 20,
+              slidesPerView: 8
+            },
+            1024: {
+              spaceBetween: 20,
+              slidesPerView: 6
+            }
+          }
+        });
+      {% endif %}
+
+      const seeMossMainImages = new Swiper(mainContainer, {
+        spaceBetween: 10,
+        loop: false,
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+        thumbs: { swiper: seeMossThumbImages }
+      });
+
+      console.log('[product] Swiper initialized — slides:', seeMossMainImages.slides ? seeMossMainImages.slides.length : 'unknown');
+
+      // Notify theme-level Photoswipe initializer
+      document.dispatchEvent(new CustomEvent('photoswipe:ready'));
+    } catch (error) {
+      setTimeout(initProductGallerySlider, 100);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', initProductGallerySlider);
+
+  {% if section.settings.media-review == true %}
+    function initMediaReviewSliders() {
+      try {
+        if (typeof Swiper === 'undefined') {
+          setTimeout(initMediaReviewSliders, 100);
+          return;
+        }
+
+        const mediaReviewContainers = document.querySelectorAll('.swiper-media-review');
+        if (!mediaReviewContainers.length) return;
+
+        mediaReviewContainers.forEach((container) => {
+          new Swiper(container, {
+            loop: true,
+            paginationClickable: true,
+            navigation: {
+              nextEl: '.swiper-button-next-media-reviews',
+              prevEl: '.swiper-button-prev-media-reviews',
+            },
+            pagination: {
+              el: '.swiper-pagination-media-reviews',
+              clickable: true,
+            },
+          });
+        });
+      } catch (error) {
+        setTimeout(initMediaReviewSliders, 100);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', initMediaReviewSliders);
+  {% endif %}
+</script>
+  

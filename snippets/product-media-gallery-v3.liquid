@@ -1,0 +1,141 @@
+{%- assign listMedia = product.metafields.custom.product_custom_images_list.value -%}
+{%- assign items = listMedia -%}
+{%- if items == blank -%}
+  {%- assign items = product.media -%}
+{%- endif -%}
+
+<div class="product-media-gallery product-media--{{ template.suffix }}">
+  <div class="product-media-gallery__images--wrapper swiper">
+    <div class="product-media__main--images swiper-wrapper">
+      {%- for media in items -%}
+        <div class="product-media__image swiper-slide">
+          {%- if media.preview_image -%}
+            {%- assign img = media.preview_image -%}
+          {%- else -%}
+            {%- assign img = media -%}
+          {%- endif -%}
+
+          {{
+            img
+            | image_url: width: 1200
+            | image_tag:
+              alt: img.alt,
+              loading: 'lazy',
+              widths: '600, 900, 1200',
+              sizes: '(max-width: 768px) 100vw, 1200px',
+              class: 'media-image'
+          }}
+
+          {% if section.settings.enable_zoom == true %}
+            {%- assign href = img | image_url: width: 2048 -%}
+            {%- assign w = img.width | default: 1200 -%}
+            {%- assign h = img.height | default: 1200 -%}
+
+            {%- if href != blank -%}
+              <a
+                href="{{ href }}"
+                class="product-single__media-link"
+                data-pswp-width="{{ w }}"
+                data-pswp-height="{{ h }}"
+                data-pswp-index="{{ forloop.index0 }}"
+                aria-label="Open image in lightbox"
+              >
+                <span class="visually-hidden">Open image lightbox</span>
+              </a>
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <div class="swiper-button-prev">
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+        <path d="M4 24C4 14.5719 4 9.85786 6.92893 6.92893C9.85786 4 14.5719 4 24 4C33.4281 4 38.1421 4 41.0711 6.92893C44 9.85786 44 14.5719 44 24C44 33.4281 44 38.1421 41.0711 41.0711C38.1421 44 33.4281 44 24 44C14.5719 44 9.85786 44 6.92893 41.0711C4 38.1421 4 33.4281 4 24Z" fill="#E7F0E4" stroke="#49827C" stroke-width="2.5"/>
+        <path d="M31.9961 24C22.6235 24 25.3687 24 15.9961 24M15.9961 24L21.9961 18M15.9961 24L21.9961 30" stroke="#49827C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="swiper-button-next">
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+        <path d="M44 24C44 33.4281 44 38.1421 41.0711 41.0711C38.1421 44 33.4281 44 24 44C14.5719 44 9.85786 44 6.92893 41.0711C4 38.1421 4 33.4281 4 24C4 14.5719 4 9.85787 6.92894 6.92893C9.85787 4 14.5719 4 24 4C33.4281 4 38.1421 4 41.0711 6.92894C44 9.85787 44 14.5719 44 24Z" fill="#E7F0E4" stroke="#49827C" stroke-width="2.5"/>
+        <path d="M16.0039 24C25.3765 24 22.6313 24 32.0039 24M32.0039 24L26.0039 30M32.0039 24L26.0039 18" stroke="#49827C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="product-media-gallery__thumbnails--wrapper swiper">
+    <div class="product-media__main--thumbnails swiper-wrapper">
+      {%- for media in items -%}
+        <div class="product-media__thumbnail swiper-slide">
+          {%- if media.preview_image -%}
+            {%- assign thumb = media.preview_image -%}
+          {%- else -%}
+            {%- assign thumb = media -%}
+          {%- endif -%}
+
+          {{
+            thumb
+            | image_url: width: 300
+            | image_tag:
+              alt: thumb.alt,
+              loading: 'lazy',
+              widths: '150,200,300',
+              sizes: '(max-width:480px) 50vw, 300px',
+              class: 'media-thumbnail'
+          }}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+<style>
+  .product-media__image { position: relative; }
+  .product-single__media-link { position: absolute; inset: 0; z-index: 2; display: block; }
+</style>
+
+<script>
+  function initProductGallerySlider() {
+    try {
+      if (typeof Swiper === 'undefined') {
+        setTimeout(initProductGallerySlider, 100);
+        return;
+      }
+
+      const thumbsContainer = document.querySelector('.product-media-gallery__thumbnails--wrapper.swiper');
+      const mainContainer = document.querySelector('.product-media-gallery__images--wrapper.swiper');
+      if (!thumbsContainer || !mainContainer) return;
+
+      console.log('[product] DOMContentLoaded — init Swiper');
+      const seeMossThumbImages = new Swiper(thumbsContainer, {
+        spaceBetween: 8,
+        slidesPerView: 5,
+        freeMode: true,
+        watchSlidesProgress: true,
+        breakpoints: {
+          768: {
+            spaceBetween: 16,
+          },
+        },
+      });
+
+      const seeMossMainImages = new Swiper(mainContainer, {
+        spaceBetween: 10,
+        loop: false,
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+        thumbs: { swiper: seeMossThumbImages },
+      });
+
+      console.log(
+        '[product] Swiper initialized — slides:',
+        seeMossMainImages.slides ? seeMossMainImages.slides.length : 'unknown'
+      );
+
+      // Notify theme-level Photoswipe initializer
+      document.dispatchEvent(new CustomEvent('photoswipe:ready'));
+    } catch (error) {
+      setTimeout(initProductGallerySlider, 100);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', initProductGallerySlider);
+</script>

@@ -1,0 +1,308 @@
+<style>
+.pdp_custom_accordion_{{ section.id }}{
+  background:{{ section.settings.background_color  }};
+  padding-top:{{ section.settings.padding_top_mobile }}px;
+  padding-bottom:{{ section.settings.padding_bottom_mobile }}px;
+}
+
+.pdp_custom_accordion_{{ section.id }} .pdp_custom_accordion--main-heading h2{
+  color:{{ section.settings.heading_color }};
+}
+
+  {% for block in section.blocks %}
+  .desc_{{ block.id }}.pdp_custom_accordion_wrapper--item-desc p{
+    color:{{ block.settings.description_color_mb }};
+  }
+{% endfor %}  
+
+@media only screen and (min-width:769px){
+  .pdp_custom_accordion_{{ section.id }}{
+    padding-top:{{ section.settings.padding_top }}px;
+    padding-bottom:{{ section.settings.padding_bottom }}px;
+  }  
+
+    {% for block in section.blocks %}
+  .desc_{{ block.id }}.pdp_custom_accordion_wrapper--item-desc p{
+    color:{{ block.settings.description_color }};
+  }
+{% endfor %}  
+
+}  
+
+.pdp_custom_accordion--main-heading h2 {
+  font-size: 36px;
+  line-height: 1;
+  font-weight: 500;
+  font-family: Yanone Kaffeesatz, sans-serif;
+  margin: 40px 0 20px;
+  text-align: left;
+}
+
+.pdp_custom_accordion_wrapper--item-wrapper {
+  cursor: pointer;
+  position: relative;
+  padding: 15px 20px 15px 0;
+  border-top: 1px solid white;
+}
+
+.pdp_custom_accordion_wrapper--block-item:last-child {
+  border-bottom: 1px solid white;
+
+}
+
+.pdp_custom_accordion_wrapper--item-heading {
+  position: relative;
+}
+
+.pdp_custom_accordion_wrapper--item-heading h2 {
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 400;
+  font-family: "HarmoniaSansProCyr", sans-serif;
+  margin: 0;
+}
+
+.pdp_custom_accordion_wrapper--item-heading::before {
+  content: "";
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  width: 15px;
+  height: 1px;
+  background-color: #4b4b4b;
+  transform: rotate(90deg);
+  transition: transform .3s ease-in-out;
+}
+
+.pdp_custom_accordion_wrapper--item-heading::after {
+  content: "";
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  width: 15px;
+  height: 1px;
+  background-color: #4b4b4b;
+  transform: rotate(180deg);
+  transition: transform .3s ease-in-out;
+}
+
+.pdp_custom_accordion_wrapper--block-item.open .pdp_custom_accordion_wrapper--item-heading::before {
+  transform: rotate(0deg);
+}
+
+.pdp_custom_accordion_wrapper--item-desc {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.pdp_custom_accordion_wrapper--block-item.open .pdp_custom_accordion_wrapper--item-desc {
+  padding: 15px 0;
+}
+
+.pdp_custom_accordion_wrapper--item-desc p {
+  font-size: 14px;
+  line-height: 16.8px;
+  font-weight: 400;
+  margin: 0;
+
+
+}
+
+@media only screen and (min-width:769px) {
+  .pdp_custom_accordion--main-heading h2 {
+    font-size: 64px;
+    line-height: 1.25;
+    margin: 0;
+  }
+
+  .pdp_custom_accordion_wrapper--item-wrapper {
+    padding: 20px 20px 20px 0;
+  }
+
+
+  .pdp_custom_accordion_wrapper--item-heading h2 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .pdp_custom_accordion_wrapper--item-desc p {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+}  
+</style>
+
+<div class="pdp_custom_accordion_section pdp_custom_accordion_{{ section.id }}">
+  <div class="wrapper">
+    {% if section.settings.heading != blank %}
+    <div class="pdp_custom_accordion--main-heading">
+      <h2>{{ section.settings.heading }}</h2>
+    </div>
+  {% endif %}
+    <div class="pdp_custom_accordion_wrapper">
+        {% for block in section.blocks %}
+          <div class="pdp_custom_accordion_wrapper--block-item">
+            {% if block.settings.heading != blank %}
+              <div class="pdp_custom_accordion_wrapper--item-wrapper">
+                <div class="pdp_custom_accordion_wrapper--item-heading">
+                  <h2 style="color:{{ block.settings.heading_color }};">{{ block.settings.heading }}</h2>
+                </div>
+                <span class="pdp_custom_accordion_wrapper--item-icon"></span>
+              </div>
+            {% endif %}
+            {% if block.settings.description != blank %}
+              <div class="pdp_custom_accordion_wrapper--item-desc desc_{{ block.id }}">
+                <p>{{ block.settings.description | replace: '<p>', '' | replace: '</p>', '' }}</p>
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const accordionItems = document.querySelectorAll('.pdp_custom_accordion_wrapper--block-item');
+
+  accordionItems.forEach((item) => {
+    const accordionHeader = item.querySelector('.pdp_custom_accordion_wrapper--item-wrapper');
+    const accordionContent = item.querySelector('.pdp_custom_accordion_wrapper--item-desc');
+
+    accordionHeader.addEventListener('click', function() {
+      const isOpen = item.classList.contains('open');
+
+      if (isOpen) {
+        // close if already open
+        item.classList.remove('open');
+        accordionContent.style.maxHeight = null;
+      } else {
+        // open it
+        item.classList.add('open');
+        accordionContent.style.maxHeight = accordionContent.scrollHeight + 30 + "px";
+      }
+    });
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Pdp Custom Accordion",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "heading"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color_background",
+      "id": "background_color",
+      "label": "Background",
+      "default": "linear-gradient(#edfcfa, #edfcfa)"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#3b7865"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top mobile",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding bottom mobile",
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Accodrion",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "color",
+          "id": "heading_color",
+          "label": "Heading Color",
+          "default": "#000"
+        },
+        {
+          "type": "color",
+          "id": "description_color",
+          "label": "Description Color",
+          "default": "#222222"
+        },
+        {
+          "type": "color",
+          "id": "description_color_mb",
+          "label": "Description Color Mobile",
+          "default": "#4b4b4b"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pdp Custom Accordion"
+    }
+  ]
+}
+{% endschema %}

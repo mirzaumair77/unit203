@@ -1,0 +1,1214 @@
+
+
+{% liquid
+    assign image_size = section.settings.image_size
+%}
+
+<product-info
+  id="MainProduct-{{ section.id }}"
+  class="section-{{ section.id }}-padding product--redesign main--{{ template.suffix }}"
+  data-section="{{ section.id }}"
+  data-product-id="{{ product.id }}"
+  data-update-url="true"
+  data-url="{{ product.url }}"
+>
+  {{ 'section-main-gel.css' | asset_url | stylesheet_tag }}
+
+  {%- style -%}
+
+    #shopify-section-{{ section.id }} {
+    	background: {{ section.settings.section_background }};
+    }
+
+    #shopify-section-{{ section.id }} {
+    {% comment %}
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    {% endcomment %}
+      padding-bottom: 50px;
+    }
+    
+    @media screen and (min-width: 769px) {
+      #shopify-section-{{ section.id }} {
+        padding-top: 10px;
+      }
+    }
+
+    @media screen and (min-width: 1024px) {
+      #shopify-section-{{ section.id }} {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+  {%- endstyle -%}
+ 
+  <div class="wrapper">
+    <div class="product product-gel-step-noslide {% if image_size %} product__wrapper--{{ image_size }}{% endif %}">
+      <div class="product__media-wrapper">
+        {% render 'product-media-gallery-v2', product: product %}
+      </div>
+      <div class="product__info-wrapper{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        <section
+          id="ProductInfo-{{ section.id }}"
+          class="product__info-container{% if section.settings.enable_sticky_info %} product__column-sticky{% endif %}"
+        >
+          {%- assign product_form_id = 'product-form-' | append: section.id -%}
+
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when '@app' -%}
+                {% render block %}
+              {%- when 'text' -%}
+                <p
+                  class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
+                  {{ block.shopify_attributes }}
+                >
+                  {{- block.settings.text -}}
+                </p>
+              {%- when 'title' -%}
+                <div class="product__title" {{ block.shopify_attributes }}>
+                  <h1>{{ product.title | escape }}</h1>
+                </div>
+              {%- when 'price' -%}
+                <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
+                  {%- render 'price', product: product, use_variant: true, show_badges: true, price_class: 'price--large' -%}
+                </div>
+                {%- if product.quantity_price_breaks_configured? -%}
+                  <div class="volume-pricing-note" id="Volume-Note-{{ section.id }}">
+                    <span>{{ 'products.product.volume_pricing.note' | t }}</span>
+                  </div>
+                {%- endif -%}
+                {%- if cart.taxes_included or cart.duties_included or shop.shipping_policy.body != blank -%}
+                  <div class="product__tax caption rte">
+                    {%- if cart.duties_included and cart.taxes_included -%}
+                      {{ 'products.product.duties_and_taxes_included' | t }}
+                    {%- elsif cart.taxes_included -%}
+                      {{ 'products.product.taxes_included' | t }}
+                    {%- elsif cart.duties_included -%}
+                      {{ 'products.product.duties_included' | t }}
+                    {%- endif -%}
+                    {%- if shop.shipping_policy.body != blank -%}
+                      {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+                <div {{ block.shopify_attributes }}>
+                  {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
+                  {%- form 'product', product, id: product_form_installment_id, class: 'installment caption-large' -%}
+                    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                    {{ form | payment_terms }}
+                  {%- endform -%}
+                </div>
+                <p
+                  class="product__inventory{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}"
+                  {{ block.shopify_attributes }}
+                  id="Inventory-{{ section.id }}"
+                  role="status"
+                >
+                  {%- if product.selected_or_first_available_variant.inventory_management == 'shopify' -%}
+                    {%- if product.selected_or_first_available_variant.inventory_quantity > 0 -%}
+                      {%- if product.selected_or_first_available_variant.inventory_quantity
+                          <= block.settings.inventory_threshold
+                      -%}
+                        <span class="svg-wrapper" style="color: rgb(238, 148, 65)">
+                          {{- 'icon-inventory-status.svg' | inline_asset_content -}}
+                        </span>
+                        {%- if block.settings.show_inventory_quantity -%}
+                          {{-
+                            'products.product.inventory_low_stock_show_count'
+                            | t: quantity: product.selected_or_first_available_variant.inventory_quantity
+                          -}}
+                        {%- else -%}
+                          {{- 'products.product.inventory_low_stock' | t -}}
+                        {%- endif -%}
+                      {%- else -%}
+                        <span class="svg-wrapper" style="color: rgb(62, 214, 96)">
+                          {{- 'icon-inventory-status.svg' | inline_asset_content -}}
+                        </span>
+                        {%- if block.settings.show_inventory_quantity -%}
+                          {{-
+                            'products.product.inventory_in_stock_show_count'
+                            | t: quantity: product.selected_or_first_available_variant.inventory_quantity
+                          -}}
+                        {%- else -%}
+                          {{- 'products.product.inventory_in_stock' | t -}}
+                        {%- endif -%}
+                      {%- endif -%}
+                    {%- else -%}
+                      {%- if product.selected_or_first_available_variant.inventory_policy == 'continue' -%}
+                        <span class="svg-wrapper" style="color: rgb(62, 214, 96)">
+                          {{- 'icon-inventory-status.svg' | inline_asset_content -}}
+                        </span>
+                        {{- 'products.product.inventory_out_of_stock_continue_selling' | t -}}
+                      {%- else -%}
+                        <span class="svg-wrapper" style="color: rgb(200, 200, 200)">
+                          {{- 'icon-inventory-status.svg' | inline_asset_content -}}
+                        </span>
+                        {{- 'products.product.inventory_out_of_stock' | t -}}
+                      {%- endif -%}
+                    {%- endif -%}
+                  {%- endif -%}
+                </p>
+              {%- when 'description' -%}
+                {%- if product.description != blank -%}
+                  <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
+                    {{ product.description }}
+                  </div>
+                {%- endif -%}
+
+                <p
+                  class="product__sku{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.sku.size == 0 %} visibility-hidden{% endif %}"
+                  id="Sku-{{ section.id }}"
+                  role="status"
+                  {{ block.shopify_attributes }}
+                >
+                  <span class="visually-hidden">{{ 'products.product.sku' | t }}:</span>
+                  {{- product.selected_or_first_available_variant.sku -}}
+                </p>
+              {%- when 'custom_liquid' -%}
+                {{ block.settings.custom_liquid }}
+                {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
+              {%- when 'buy_buttons' -%}
+                {%- render 'buy-buttons',
+                  block: block,
+                  product: product,
+                  product_form_id: product_form_id,
+                  section_id: section.id,
+                  show_pickup_availability: true
+                -%}
+                {% render 'icon-with-text', block: block %}
+
+              {%- when 'info_popup' -%}
+                <div class="info_popup">
+                  {% if block.settings.info_text != blank %}
+                    <div class="info_popup__info--text">
+                      {{ block.settings.info_text }}
+                    </div>
+                  {% endif %}
+                  {% if block.settings.trigger_text != blank %}
+                    <div class="info_popup__trigger--button open-popup-btn">
+                      <button type="button">{{ block.settings.trigger_text }}</button>
+                    </div>
+                  {% endif %}
+                </div>
+
+              {%- when 'popup_form' -%}
+                {% assign image = block.settings.image %}
+                {% assign popup_button = block.settings.popup_button %}
+
+                <div id="scroll_anchor"></div>
+                <div class="popup-form">
+                  <div class="popup-form__info">
+                    <div class="popup-form__content">
+                      <div class="popup-form__heading">
+                        <h4>Starting at:</h4>
+                      </div>
+                      {% assign selected_variant = product.selected_or_first_available_variant %}
+
+                      {%- assign variant_price = selected_variant.price -%}
+                      {%- assign variant_compare = selected_variant.compare_at_price -%}
+                      {%- assign product_price = product.price -%}
+                      {%- assign product_compare = product.compare_at_price_max -%}
+
+                      {% assign image_popup_alt = image.alt | default: product.title %}
+
+                      {%- if variant_compare > variant_price and variant_compare > 0 -%}
+                        {%- assign sale_percent = 0 -%}
+                        {% assign show_variant_offer = true %}
+                      {%- elsif product_compare > product_price and product_compare > 0 -%}
+                        {% assign sale_percent = product_compare
+                          | minus: product_price
+                          | times: 100
+                          | divided_by: product_compare
+                        %}
+                        {% assign show_variant_offer = false %}
+                      {%- else -%}
+                        {% assign sale_percent = 0 %}
+                        {% assign show_variant_offer = false %}
+                      {%- endif %}
+
+                      <div class="popup-form__price--main">
+                        {% if variant_compare > variant_price and variant_compare > 0 %}
+                          <div class="popup-form__price">
+                            <span>{{ selected_variant.price | money }}</span>
+                          </div>
+                          <div class="popup-form__compare--price">
+                            <span>{{ selected_variant.compare_at_price | money }}</span>
+                          </div>
+                        {% else %}
+                          <div class="popup-form__price">
+                            <span>{{ selected_variant.price | money }}</span>
+                          </div>
+                        {% endif %}
+                      </div>
+
+                      <div class="popup-form__sale--percent">
+                        {% if show_variant_offer %}
+                          <span class="position-relative">{{block.settings.popup_discount}}</span>
+                        {% elsif sale_percent > 0 %}
+                          <span class="position-relative">UP TO {{ sale_percent | round }}% OFF</span>
+                        {% endif %}
+                      </div>
+                    </div>
+                    
+                    {% if image != blank %}
+                    <div class="popup-form__image">
+                     {{ image 
+                      | image_url: width: 250 
+                      | image_tag: 
+                        alt: image_popup_alt, 
+                        loading: "lazy", 
+                        widths: "150, 200, 250, 300, 400", 
+                        sizes: "(max-width: 480px) 200px, (max-width: 768px) 250px, 250px"
+                      }}
+                    </div>
+                    {% endif %}
+                  </div>
+                  {% if popup_button != blank %}
+                    {% if template.suffix == 'gel-2-step-module-bf' %}
+                    <div class="popup-form__popup--button" data-trigger>
+                      <span>{{ popup_button }}</span>
+                    </div>
+                    {% comment %}<form method="post" action="/cart/add"></form>{% endcomment %}
+                    {% else %}
+                      <div class="popup-form__popup--button" data-trigger>
+                      <span>{{ popup_button }}</span>
+                    </div>
+                      {% endif %}
+                  {% endif %}
+                </div>
+
+              {%- when 'gift_banner' -%}
+                <style>
+                  .block-{{ block.id }}.gift-banner {
+                    background-color: {{ block.settings.background_color }};
+                    border: 2px solid {{ block.settings.border_color }};
+                  }
+
+                  .block-{{ block.id }} .gift-banner__title h4 {
+                    color: {{ block.settings.title_color }};
+                  }
+
+                  .block-{{ block.id }} .gift-banner__price * {
+                    color: {{ block.settings.price_color }};
+                  }
+                  
+                  .block-{{ block.id }} .gift-banner__compare--price * {
+                    color: {{ block.settings.compare_price_color }};
+                  }
+                 
+                  .block-{{ block.id }} .gift-banner__subtitle * {
+                    color: {{ block.settings.sub_title_color }};
+                  }
+
+                </style>
+
+                {% assign image = block.settings.image %}
+                {% assign alt = block.settings.image.alt | default: product.title %}
+                {% assign title = block.settings.title %}
+                {% assign price = block.settings.price %}
+                {% assign compare_at_price = block.settings.compare_at_price %}
+                {% assign subtitle = block.settings.subtitle %}
+
+                <div class="gift-banner block-{{ block.id }}">
+                  {% if image != blank %}
+                  <div class="gift-banner__image">
+                    {{ image 
+                      | image_url: width: 150 
+                      | image_tag: 
+                        alt: alt, 
+                        loading: "lazy", 
+                        widths: "100,150,300", 
+                        sizes: "(max-width: 480px) 50vw, 150px"
+                    }}
+                  </div>
+                  {% endif %}
+                  <div class="gift-banner__content">
+                    {% if title != blank %}
+                    <div class="gift-banner__title">
+                      <h4>{{ title }}</h4>
+                    </div>
+                    {% endif %}
+                    {% if price != blank or compare_at_price != blank %}
+                    <div class="gift-banner__price--main">
+                      <div class="gift-banner__price">
+                        <span>{{ price }}</span>
+                      </div>
+                      <div class="gift-banner__compare--price">
+                        <span>{{ compare_at_price }}</span>
+                      </div>
+                    </div>
+                    {% endif %}
+                    {% if subtitle != blank %}
+                    <div class="gift-banner__subtitle">
+                      {{ subtitle }}
+                    </div>
+                    {% endif %}
+                  </div>
+                </div>
+
+              {%- when 'product_tabs' -%}
+                {% liquid
+                  assign tab_meta_content = product.metafields.custom.tab_section.value
+
+                  if product.metafields.custom.tab_section.value != blank
+                    assign tab_1 = product.metafields.custom.tab_section.value.tab_1_name
+                    assign tab_2 = product.metafields.custom.tab_section.value.tab_2_name
+                    assign tab_3 = product.metafields.custom.tab_section.value.tab_3_name
+                    
+                    assign content_1 = block.settings.tab_content_1
+                    assign content_2 = block.settings.tab_content_2
+                    assign content_3 = block.settings.tab_content_3
+                  else
+                    assign tab_1 = block.settings.tab_1
+                    assign tab_2 = block.settings.tab_2
+                    assign tab_3 = block.settings.tab_3
+
+                    assign content_1 = block.settings.tab_content_1
+                    assign content_2 = block.settings.tab_content_2
+                    assign content_3 = block.settings.tab_content_3
+                  endif
+
+                    assign tab_icon_alt = item.image.alt | default: product.title
+                %}
+
+                <div class="product-tabs">
+                  <div class="product-tabs__head--main">
+                    {% if tab_1 != blank %}
+                    <div class="product_tabs__tab">
+                      <span>{{ tab_1 }}</span>
+                    </div>
+                    {% endif %}
+                    {% if tab_2 != blank %}
+                    <div class="product_tabs__tab">
+                      <span>{{ tab_2 }}</span>
+                    </div>
+                    {% endif %}
+                    {% if tab_3 != blank %}
+                    <div class="product_tabs__tab">
+                      <span>{{ tab_3 }}</span>
+                    </div>
+                    {% endif %}
+                  </div>
+                  {% if block.settings.tab_1_content != blank or tab_meta_content != blank %}
+                    <div class="product-tabs__main--content">
+                      {% if tab_meta_content != blank %}
+                        {% if block.settings.flavours_nutrition_1 %}
+                          {% assign meta_content_split = tab_meta_content.tab_1_content | metafield_text | split: 'Texture:' | last %}
+                          <div class="whatisit-wrapper">
+                            <div class="nutrition-facts-accordion-wrapper {% if block.settings.open_by_default  %}open{% endif %}">
+                              <div class="nutrition-facts-accordion-head">
+                                <div class="nutrition-facts-accordion-header">
+                                  {% if block.settings.title != blank %}
+                                    <div class="nutrition-facts-accordion-icon">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M7 12H6C4.11438 12 3.17157 12 2.58579 12.5858C2 13.1716 2 14.1144 2 16V18C2 19.8856 2 20.8284 2.58579 21.4142C3.17157 22 4.11438 22 6 22H8C9.88562 22 10.8284 22 11.4142 21.4142C12 20.8284 12 19.8856 12 18V17" stroke="#253937" stroke-opacity="0.8" stroke-width="1.5"/>
+                                        <path d="M12 7H11C9.11438 7 8.17157 7 7.58579 7.58579C7 8.17157 7 9.11438 7 11V13C7 14.8856 7 15.8284 7.58579 16.4142C8.17157 17 9.11438 17 11 17H13C14.8856 17 15.8284 17 16.4142 16.4142C17 15.8284 17 14.8856 17 13V12" stroke="#253937" stroke-opacity="0.8" stroke-width="1.5"/>
+                                        <path d="M12 6C12 4.11438 12 3.17157 12.5858 2.58579C13.1716 2 14.1144 2 16 2H18C19.8856 2 20.8284 2 21.4142 2.58579C22 3.17157 22 4.11438 22 6V8C22 9.88562 22 10.8284 21.4142 11.4142C20.8284 12 19.8856 12 18 12H16C14.1144 12 13.1716 12 12.5858 11.4142C12 10.8284 12 9.88562 12 8V6Z" stroke="#253937" stroke-opacity="0.8" stroke-width="1.5"/>
+                                      </svg>
+                                    </div>
+                                  {% endif %}
+                                  {% if block.settings.title != blank %}
+                                    <div class="nutrition-facts-accordion-title">
+                                      <h3>{{ block.settings.title }}</h3>
+                                    </div>
+                                  {% endif %}
+                                </div>
+                                {% if block.settings.title != blank %}
+                                  <div class="nutrition-facts-accordion_arrow-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                      <path d="M5 15L12 9L19 15" stroke="#253937" stroke-opacity="0.8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                  </div>
+                                {% endif %}
+                              </div>
+                              {% if block.settings.description == blank %}{% endif %}
+                                <div class="nutrition-facts-accordion-content">
+                                  {% assign flavor_products = product.metafields.custom.product_list_for_tastes.value %}
+                                  {% for flavor in flavor_products %}
+                                    <div class="flavor-product-item">
+                                      <div class="flavor-item-card-accordion">
+                                        <div class="flavor-item-card-header">
+                                          <div class="flavor-product-image">
+                                            {% assign flavour_image = flavor.product.metafields.custom.picture_of_a_can | default: flavor.product.featured_image  %}
+                                            <img src="{{ flavour_image | image_url: width: 100 }}" loading="lazy" alt="{{ flavor.product.title }} image" width="" height=""/>
+                                          </div>
+                                          <div class="flavor-product-content">
+                                            {% assign flavor_product_title = flavor.product.title | downcase | remove: ' sea moss' %}  
+                                            <h3 class="flavor-product-title">{{ flavor_product_title | capitalize }}, Sea Moss Gel</h3>
+                                          </div>
+                                          <div class="flavor-item-accordion-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                              <path d="M5 15L12 9L19 15" stroke="#253937" stroke-opacity="0.8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                          </div>
+                                        </div>
+                                        
+                                          <div class="flavor-product-nutrition-content">
+                                            <div class="nutrition-facts-image">
+                                              {% if flavor.product.metafields.custom.dawn_nutrition_facts_image != blank %}
+                                              {{
+                                                flavor.product.metafields.custom.dawn_nutrition_facts_image
+                                                | image_url: width: 400
+                                                | image_tag:
+                                                  alt: flavor.product.metafields.custom.dawn_nutrition_facts_image.alt,
+                                                  loading: 'lazy',
+                                                  widths: '100, 150, 200, 300, 400'
+                                              }}
+                                              {% else %}
+                                                <img src="{{ 'nutrition_facts_figma_image.png' | file_url }}"
+                                                loading="lazy" width="" height="" alt="nutrition facts sample image">
+                                              {%endif %}
+                                            </div>
+                                            <div class="nutritional-ingredients">
+                                              <p>
+                                                <strong>Ingredients:</strong>
+                                                {{ flavor.product.metafields.custom.ingridients
+                                                  | metafield_text
+                                                  | newline_to_br
+                                                  | replace: '<br />', ' '
+                                                }}
+                                              </p>
+                                            </div>
+                                          </div>
+                                        
+                                      </div>
+                                      
+                                      
+                                    </div>
+                                  {% endfor %}
+                                </div>
+                              
+                            </div>
+                            <div class="nutrition-meta-content">
+                              <p>
+                                <strong>Texture:</strong><br>
+                                {{ meta_content_split }}
+                              </p>
+                            </div>
+                          </div>
+                        {% elsif tab_meta_content.tab_1_content != blank %}
+                          <div class="product_tabs__content">
+                            {{ tab_meta_content.tab_1_content | metafield_tag }}
+                          </div>
+                        {% elsif tab_meta_content.tab_1_content_list.value != blank %}
+                          <div class="product_tabs__icon--content--wrapper">
+                            {% for item in tab_meta_content.tab_1_content_list.value %}
+                              <div class="product_tabs__icon--content-main">
+                                <div class="product_tabs__icon">
+                                  {{
+                                    item.image
+                                    | image_url: width: 65
+                                    | image_tag:
+                                      alt: tab_icon_alt,
+                                      loading: 'lazy',
+                                      widths: '32, 48, 65, 96, 128',
+                                      sizes: '(max-width: 480px) 48px, (max-width: 768px) 65px, 65px'
+                                  }}
+                                </div>
+                                <div class="product_tabs__content">
+                                  {{ item.text | metafield_tag }}
+                                </div>
+                              </div>
+                            {% endfor %}
+                          </div>
+                        {% endif %}
+                      {% elsif content_1 != blank %}
+                        <div class="product_tabs__content">
+                          {{ content_1 }}
+                        </div>
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                {% if block.settings.content_2 != blank or tab_meta_content != blank %}
+                  <div class="product-tabs__main--content">
+                    {% if tab_meta_content != blank %}
+                      {% if tab_meta_content.tab_2_content_rich != blank %}
+                        <div class="product_tabs__content">
+                          {{ tab_meta_content.tab_2_content_rich | metafield_tag }}
+                        </div>
+                      {% elsif tab_meta_content.tab_2_content.value != blank %}
+                        <div class="product_tabs__icon--content--wrapper">
+                          {% for item in tab_meta_content.tab_2_content.value %}
+                            <div class="product_tabs__icon--content-main">
+                              <div class="product_tabs__icon">
+                                {{ item.image 
+                                  | image_url: width: 65 
+                                  | image_tag: 
+                                    alt: tab_icon_alt, 
+                                    loading: "lazy", 
+                                    widths: "32, 48, 65, 96, 128", 
+                                    sizes: "(max-width: 480px) 48px, (max-width: 768px) 65px, 65px"
+                                }}
+                              </div>
+                              <div class="product_tabs__content">
+                                {{ item.text | metafield_tag }}
+                              </div>
+                            </div>
+                          {% endfor %}
+                        </div>
+                      {% endif %}
+                    {% elsif content_2 != blank %}
+                      <div class="product_tabs__content">
+                        {{ content_2 }}
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+                {% if block.settings.content_3 != blank or tab_meta_content != blank %}
+                  <div class="product-tabs__main--content">
+                    {% if tab_meta_content != blank %}
+                      {% if tab_meta_content.tab_3_content_rich != blank %}
+                        <div class="product_tabs__content">
+                          {{ tab_meta_content.tab_3_content_rich | metafield_tag }}
+                        </div>
+                      {% elsif tab_meta_content.tab_3_content.value != blank %}
+                        <div class="product_tabs__icon--content--wrapper">
+                          {% for item in tab_meta_content.tab_3_content.value %}
+                            <div class="product_tabs__icon--content-main">
+                              <div class="product_tabs__icon">
+                                {{ item.image 
+                                  | image_url: width: 65 
+                                  | image_tag: 
+                                    alt: tab_icon_alt, 
+                                    loading: "lazy", 
+                                    widths: "32, 48, 65, 96, 128", 
+                                    sizes: "(max-width: 480px) 48px, (max-width: 768px) 65px, 65px"
+                                }}
+                              </div>
+                              <div class="product_tabs__content">
+                                {{ item.text | metafield_tag }}
+                              </div>
+                            </div>
+                          {% endfor %}
+                        </div>
+                      {% endif %}
+                    {% elsif content_3 != blank %}
+                      <div class="product_tabs__content">
+                        {{ content_3 }}
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              </div>
+            {%- endcase -%}
+          {%- endfor -%}
+          {% if section.settings.media-review == true %}
+          <!-- Custom code -->
+          <div class="swiper-media-review mobile-review swiper">
+            <div class="media-review__wrapper swiper-wrapper">
+            {% for item in product.metafields.custom.media_reviews.value %}
+              <div class="media-review__item swiper-slide">
+                <div class="media-review__content">
+                  <div class="media-review__text">
+                    {{ item.review | metafield_tag }}
+                  </div>
+
+                  <div class="media-review__author">
+                    <div class="media-review__author-info">
+                      {% if item.review_author_image != blank %}
+                        <div class="media-review__author-image">
+                          {{ item.review_author_image | media_tag }}
+                        </div>
+                      {% endif %}
+                      <div class="media-review__author-name">
+                        <span>{{ item.name.value }}</span>
+                      </div>
+                    </div>
+
+                    <div class="media-review__author-badge">
+                      <div class="media-review__badge-icon">
+                        <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M20.5304 10L18.7888 7.77695L19.1607 5L16.5161 3.92652L15.4187 1.33977L12.5797 1.70348L10.3069 0L8.03422 1.70348L5.19522 1.33977L4.09775 3.92652L1.4532 5L1.82504 7.77691L0.0834961 10L1.82504 12.223L1.4532 15L4.09775 16.0735L5.19522 18.6602L8.03422 18.2965L10.3069 20L12.5797 18.2965L15.4187 18.6602L16.5161 16.0735L19.1607 15L18.7888 12.2231L20.5304 10ZM17.4178 14.0157L15.2938 14.8779L14.4124 16.9555L12.1323 16.6634L10.3069 18.0315L8.48157 16.6634L6.20143 16.9555L5.31997 14.8779L3.19605 14.0157L3.49469 11.7854L2.09596 10L3.49465 8.21453L3.19601 5.98422L5.32001 5.12203L6.20143 3.04449L8.48157 3.3366L10.3069 1.96848L12.1323 3.3366L14.4124 3.04449L15.2939 5.12207L17.4179 5.98426L17.1192 8.21457L18.5179 10L17.1192 11.7855L17.4178 14.0157Z" fill="#4999E3"/>
+                          <path d="M9.12864 10.9104L7.32792 9.21638L6.21729 10.2612L9.12864 13L14.396 8.04484L13.2854 7L9.12864 10.9104Z" fill="#4999E3"/>
+                        </svg>
+                      </div>
+                      <div class="media-review__badge-text">
+                        <span>Verified Buyer</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+            </div>
+            <div class="swiper_navigation">
+              <div class="swiper-button-prev swiper-button-prev-media-reviews">
+                <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path opacity="0.5" d="M7 11L2 6L7 1" stroke="#444444" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <div class="swiper-button-next swiper-button-next-media-reviews">
+                <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path opacity="0.5" d="M1 1L6 6L1 11" stroke="#444444" stroke-width="1.5"/>
+                </svg>
+              </div>
+            </div>
+            <div class="swiper-pagination-media-reviews"></div>
+          </div>
+          {% endif %}
+        </section>
+      </div>
+    </div>
+
+    <script type="application/ld+json">
+      {{ product | structured_data }}
+    </script>
+  </div>
+</product-info>
+
+{% if section.settings.enable_zoom == true %}
+<script type="module">
+  import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5/dist/photoswipe-lightbox.esm.min.js';
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: '.product-media__main--images',
+      children: 'a.product-single__media-link',
+      pswpModule: () => import('https://unpkg.com/photoswipe@5/dist/photoswipe.esm.min.js'),
+      zoom: true
+    });
+
+    // ✅ Register UI event before init()
+    lightbox.on('uiRegister', () => {
+      lightbox.pswp?.on('change', () => {
+        document.body.classList.add('pswp-open');
+
+        const closeBtn = document.querySelector('.pswp__button--close');
+        if (closeBtn && !closeBtn.dataset.iconChanged) {
+          closeBtn.innerHTML = `
+            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 25 25">
+              <path d="M11.374 12.167L1.236 22.304a1.09 1.09 0 001.543 1.543L12.917 13.71l10.137 10.138a1.09 1.09 0 001.543-1.543L14.46 12.167 24.597 2.029A1.09 1.09 0 0023.054.486L12.917 10.624 2.779.486A1.09 1.09 0 001.236 2.03l10.138 10.138z"></path>
+            </svg>
+          `;
+          closeBtn.dataset.iconChanged = "true";
+        }
+      });
+
+      // Remove class when lightbox closes
+      lightbox.pswp?.on('close', () => {
+        document.body.classList.remove('pswp-open');
+      });
+    });
+
+    // ✅ Initialize after event registration
+    lightbox.init();
+  });
+</script>
+{% endif %}
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+  const scrollButtons = document.querySelectorAll('.scrollable--button');
+
+  if (scrollButtons.length > 0) {
+    scrollButtons.forEach((button) => {
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const scrollAnchor = document.querySelector('#scroll_anchor');
+        const formProduct = document.querySelector('.popup-form');
+
+        if (scrollAnchor) {
+          const scrollPosition =
+            scrollAnchor.getBoundingClientRect().top + window.pageYOffset;
+
+          window.scrollTo({
+            top: scrollPosition,
+            behavior: 'smooth',
+          });
+        } else if (formProduct) {
+          formProduct.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  }
+});
+</script>
+
+<script>
+  // Product Tabs
+  document.addEventListener('DOMContentLoaded', function () {
+    const tabButtons = document.querySelectorAll('.product_tabs__tab');
+    const tabContents = document.querySelectorAll('.product-tabs__main--content');
+
+    if (!tabButtons.length || !tabContents.length) return;
+
+    // ✅ Default active second tab (index 1)
+    tabButtons[1]?.classList.add('active');
+    tabContents[1]?.classList.add('active');
+
+    tabButtons.forEach((button, index) => {
+      button.addEventListener('click', () => {
+        // Remove active classes
+        tabButtons.forEach((btn) => btn.classList.remove('active'));
+        tabContents.forEach((content) => content.classList.remove('active'));
+
+        // Add active class to clicked tab and its content
+        button.classList.add('active');
+        tabContents[index].classList.add('active');
+      });
+    });
+  });
+</script> 
+
+<script>
+  function initnutritionAccordion() {
+    const nutritionAccordionItems = document.querySelectorAll('.nutrition-facts-accordion-wrapper');
+    if (!nutritionAccordionItems.length) return;
+
+    nutritionAccordionItems.forEach((item) => {
+      const nutritionAccordionHeader = item.querySelector('.nutrition-facts-accordion-head');
+      const nutritionAccordionContent = item.querySelector('.nutrition-facts-accordion-content');
+
+      if (item.classList.contains('open') && nutritionAccordionContent) {
+        nutritionAccordionContent.style.maxHeight = nutritionAccordionContent.scrollHeight + 30 + 'px';
+      }
+
+      nutritionAccordionHeader.addEventListener('click', function () {
+        const isOpen = item.classList.contains('open');
+
+        if (isOpen) {
+          // Close current item
+          item.classList.remove('open');
+          if (nutritionAccordionContent) nutritionAccordionContent.style.maxHeight = null;
+        } else {
+          // Open current item (others remain open)
+          item.classList.add('open');
+          if (nutritionAccordionContent) nutritionAccordionContent.style.maxHeight = nutritionAccordionContent.scrollHeight + 30 + 'px';
+        }
+      });
+    });
+
+    const flavorProductNutrition = document.querySelectorAll('.flavor-item-card-accordion');
+    if (!flavorProductNutrition.length) return;
+
+    flavorProductNutrition.forEach((flavorItem) => {
+      const nutritionProductHeader = flavorItem.querySelector('.flavor-item-card-header');
+      const nutritionProductContent = flavorItem.querySelector('.flavor-product-nutrition-content');
+
+      if (flavorItem.classList.contains('active') && nutritionProductContent) {
+        nutritionProductContent.style.maxHeight = nutritionProductContent.scrollHeight + 30 + 'px';
+      }
+
+      nutritionProductHeader.addEventListener('click', function () {
+        const isOpen = flavorItem.classList.contains('active');
+
+        if (isOpen) {
+          // Close current item
+          flavorItem.classList.remove('active');
+          flavorItem.closest('.flavor-product-item').classList.remove('active');
+          if (nutritionProductContent) nutritionProductContent.style.maxHeight = null;
+        } else {
+          // Open current item (others remain open)
+          flavorItem.classList.add('active');
+          flavorItem.closest('.flavor-product-item').classList.add('active');
+          if (nutritionProductContent) nutritionProductContent.style.maxHeight = nutritionProductContent.scrollHeight + 30 + 'px';
+        }
+      });
+    });
+
+  }
+
+  document.addEventListener('DOMContentLoaded', initnutritionAccordion);
+  document.addEventListener('shopify:section:load', initnutritionAccordion);
+</script>
+
+{% render 'info-popup', block: block %}
+
+{% schema %}
+{
+  "name": "Product Gel 2 Step BF",
+  "tag": "section",
+  "class": "gel-step-bf",
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "text",
+      "name": "t:sections.main-product.blocks.text.name",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "default": "t:sections.main-product.blocks.text.settings.text.default",
+          "label": "t:sections.main-product.blocks.text.settings.text.label"
+        },
+        {
+          "type": "select",
+          "id": "text_style",
+          "options": [
+            {
+              "value": "body",
+              "label": "t:sections.main-product.blocks.text.settings.text_style.options__1.label"
+            },
+            {
+              "value": "subtitle",
+              "label": "t:sections.main-product.blocks.text.settings.text_style.options__2.label"
+            },
+            {
+              "value": "uppercase",
+              "label": "t:sections.main-product.blocks.text.settings.text_style.options__3.label"
+            }
+          ],
+          "default": "body",
+          "label": "t:sections.main-product.blocks.text.settings.text_style.label"
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "name": "t:sections.main-product.blocks.title.name",
+      "limit": 1
+    },
+    {
+      "type": "price",
+      "name": "t:sections.main-product.blocks.price.name",
+      "limit": 1
+    },
+    {
+      "type": "quantity_selector",
+      "name": "t:sections.main-product.blocks.quantity_selector.name",
+      "limit": 1
+    },
+    {
+      "type": "buy_buttons",
+      "name": "t:sections.main-product.blocks.buy_buttons.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_dynamic_checkout",
+          "default": true,
+          "label": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.label",
+          "info": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.info"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_gift_card_recipient",
+          "default": true,
+          "label": "t:sections.main-product.blocks.buy_buttons.settings.show_gift_card_recipient.label",
+          "info": "t:sections.main-product.blocks.buy_buttons.settings.show_gift_card_recipient.info"
+        }
+      ]
+    },
+    {
+      "type": "description",
+      "name": "t:sections.main-product.blocks.description.name",
+      "limit": 1
+    },
+    {
+      "type": "custom_liquid",
+      "name": "t:sections.custom-liquid.name",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "custom_liquid",
+          "label": "t:sections.custom-liquid.settings.custom_liquid.label",
+          "info": "t:sections.custom-liquid.settings.custom_liquid.info"
+        }
+      ]
+    },
+    {
+      "type": "info_popup",
+      "name": "Info Popup",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "info_text",
+          "label": "Info Text"
+        },
+        {
+          "type": "text",
+          "id": "trigger_text",
+          "label": "Trigger Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "popup_image",
+          "label": "Popup Image"
+        },
+        {
+          "type": "richtext",
+          "id": "popup_text",
+          "label": "Popup Text"
+        }
+      ]
+    },
+    {
+      "type": "popup_form",
+      "name": "Popup Form",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+         {
+          "type": "text",
+          "id": "popup_discount",
+          "label": "Discount",
+          "default": "UP TO 60% OFF"
+        },
+        {
+          "type": "text",
+          "id": "popup_button",
+          "label": "Button Text",
+          "default": "Try it now"
+        }
+      ]
+    },
+    {
+      "type": "gift_banner",
+      "name": "Gift banner",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Gift image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "title",
+          "default": "Get The Gift From Us"
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Price",
+          "default": "FREE"
+        },
+        {
+          "type": "text",
+          "id": "compare_at_price",
+          "label": "Compare at price",
+          "default": "$35"
+        },
+        {
+          "type": "richtext",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "<p>Sea moss reduces inflammation, all.</p>"
+        },
+        {
+          "type": "header",
+          "content": "Color settings"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background",
+          "default": "#EDFCFA"
+        },
+        {
+          "type": "color",
+          "id": "border_color",
+          "label": "Border",
+          "default": "#15504D"
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title",
+          "default": "#599236"
+        },
+        {
+          "type": "color",
+          "id": "sub_title_color",
+          "label": "Subtitle",
+          "default": "#35403D"
+        },
+        {
+          "type": "color",
+          "id": "price_color",
+          "label": "Price",
+          "default": "#DE5050"
+        },
+        {
+          "type": "color",
+          "id": "compare_price_color",
+          "label": "Compare price",
+          "default": "#929292"
+        }
+      ]
+    },
+    {
+      "type": "product_tabs",
+      "name": "Product tabs",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_1",
+          "label": "Tab 1",
+          "default": "How it works"
+        },
+        {
+          "id": "flavours_nutrition_1",
+          "type": "checkbox",
+          "label": "Enable Flavour Collection",
+          "default": false
+        },
+        {
+          "id": "open_by_default",
+          "type": "checkbox",
+          "label": "Accordion open",
+          "default": false
+        },
+        {
+          "id": "title",
+          "type": "inline_richtext",
+          "label": "Accordion Title"
+        },
+        {
+          "type": "richtext",
+          "id": "tab_content_1",
+          "label": "Content",
+          "default": "<p>Wildcrafted Sea Moss is a natural algae superfood that contains over 90 essential nutrients and minerals, helping the human body to cover vitamin gaps that occur throughout daily life. The true magic of sea moss lies not just in its individual nutrients but in the synergy they create together.</p>"
+        },
+        {
+          "type": "text",
+          "id": "tab_2",
+          "label": "Tab 2",
+          "default": "Benefits"
+        },
+        {
+          "type": "richtext",
+          "id": "tab_content_2",
+          "label": "Content",
+          "default": "<p>Wildcrafted Sea Moss is a natural algae superfood that contains over 90 essential nutrients and minerals.</p>"
+        },
+        {
+          "type": "text",
+          "id": "tab_3",
+          "label": "Tab 3",
+          "default": "How to take"
+        },
+        {
+          "type": "richtext",
+          "id": "tab_content_3",
+          "label": "Content",
+          "default": "<p>The true magic of sea moss lies not just in its individual nutrients but in the synergy they create together.</p>"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_sticky_info",
+      "default": true,
+      "label": "t:sections.main-product.settings.enable_sticky_info.label"
+    },
+    {
+      "type": "color_background",
+      "id": "section_background",
+      "label": "Section background",
+      "default": "#FAFAFA"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.main-product.settings.header.content"
+    },
+    {
+      "type": "select",
+      "id": "image_size",
+      "label": "Image size",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "checkbox",
+      "id": "constrain_to_viewport",
+      "default": true,
+      "label": "t:sections.main-product.settings.constrain_to_viewport.label"
+    },
+    {
+      "type": "select",
+      "id": "media_fit",
+      "options": [
+        {
+          "value": "contain",
+          "label": "t:sections.main-product.settings.media_fit.options__1.label"
+        },
+        {
+          "value": "cover",
+          "label": "t:sections.main-product.settings.media_fit.options__2.label"
+        }
+      ],
+      "default": "contain",
+      "label": "t:sections.main-product.settings.media_fit.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_zoom",
+      "label": "Enable zoom",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_variants",
+      "default": false,
+      "label": "t:sections.main-product.settings.hide_variants.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_video_looping",
+      "default": false,
+      "label": "t:sections.main-product.settings.enable_video_looping.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "media-review",
+      "label": "Metafield Reviews",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Gel 2 Step BF"
+    }
+  ]
+}
+{% endschema %}

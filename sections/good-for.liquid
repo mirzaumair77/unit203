@@ -1,0 +1,557 @@
+{% liquid
+  assign padding_top = section.settings.padding_top
+  assign padding_bottom = section.settings.padding_bottom
+  assign padding_top_mobile = section.settings.padding_top-mobile
+  assign padding_bottom_mobile = section.settings.padding_bottom-mobile
+
+  assign background_image = section.settings.background_image
+  assign image = section.settings.image
+  assign mobile_image = section.settings.mobile_image | default: section.settings.image
+  assign alt_desktop = image.alt | default: 'What its good for'
+  assign alt_mobile = mobile_image.alt | default: 'What its good for'
+  assign heading = section.settings.heading
+
+  assign heading_color = section.settings.heading_color
+  assign list_background_color = section.settings.list_background_color
+  assign list_heading_color = section.settings.list_heading_color
+  assign list_description_color = section.settings.list_description_color
+  assign line_background_color = section.settings.line_background_color
+  assign line_title_color = section.settings.line_title_color
+  assign marquee_speed = section.settings.marquee_speed
+%}
+
+<style>
+.good-for__{{ section.id }} {
+  background-image: url({{ background_image | image_url: width: 2000 }});
+  padding-top: {{ padding_top_mobile }}px;
+  padding-bottom: {{ padding_bottom_mobile }}px;
+}
+
+.good-for__{{ section.id }} .good-for__content--heading h2 {
+  color: {{ heading_color }};
+}
+
+.good-for__{{ section.id }} .good-for__list--element {
+  background: {{ list_background_color }};
+}
+
+.good-for__{{ section.id }} .good-for__list--heading h4 {
+  color: {{ list_heading_color }};
+}
+
+.good-for__{{ section.id }} .good-for__list--description * {
+  color: {{ list_description_color }};
+}
+
+.good-for__{{ section.id }} .good-for__marquee--main, .good-for__{{ section.id }} .good-for__marquee--icon {
+  background: {{ line_background_color }};
+}
+
+.good-for__{{ section.id }} .good-for__marquee--title h4 {
+  color: {{ line_title_color }};
+}
+
+@media only screen and (min-width: 769px) {
+
+  .good-for__{{ section.id }} {
+    padding-top: {{ padding_top }}px;
+    padding-bottom: {{ padding_bottom }}px;
+  }
+}
+
+.good-for__section {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.good-for__section .mobile-hide {
+  display: none;
+}
+
+.good-for__main {
+  display: flex;
+  align-items: center;
+  flex-direction: column-reverse;
+}
+
+.good-for__image, .good-for__content {
+  width: 100%;
+}
+
+.good-for__image--wrapper {
+  position: relative;
+}
+
+.good-for__image {
+  position: relative;
+  z-index: 1;
+  max-width: 75%;
+  margin-top: -12px;
+}
+
+.good-for__image img {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.good-for__content {
+  max-width: 100%;
+  padding: 0 15px;
+}
+
+.good-for__content--heading h2 {
+  font-family: Yanone Kaffeesatz, sans-serif;
+  font-size: 45px;
+  line-height: 1;
+  font-weight: 500;
+  text-align: center;
+  margin: 0;
+}
+
+.good-for__list--wrapper {
+  padding-top: 25px;
+  display: grid;
+  row-gap: 12px;
+}
+
+.good-for__list--element {
+  border-radius: 15px;
+  padding: 16px 22px;
+  display: grid;
+  grid-template-columns: 51px auto;
+  align-items: center;
+  gap: 8px;
+}
+
+.good-for__list--icon img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1/1;
+  display: flex;
+}
+
+.good-for__list--heading h4 {
+  font-family: var(--FONT-STACK-BODY);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.good-for__list--description * {
+  font-family: var(--FONT-STACK-BODY);
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0;
+}
+
+.good-for__marquee--main {
+  width: 100%;
+  padding: 10px 0;
+  overflow: hidden;
+  position: absolute;
+  top: 33%;
+  left: 0;
+}
+
+.good-for__marquee--track, .good-for__marquee--group, .good-for__marquee {
+  gap: 8px;
+}
+
+.good-for__marquee {
+  display: grid;
+  grid-template-columns: auto 15px;
+  align-items: center;
+}
+
+.good-for__marquee--title {
+  position: relative;
+  top: 2px;
+}
+
+.good-for__marquee--title h4 {
+  font-family: var(--FONT-STACK-BODY);
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.good-for__marquee--icon {
+  border-radius: 100px;
+  width: 100%;
+  max-width: 15px;
+  height: 15px;
+  display: flex;
+}
+
+.good-for__marquee--icon svg {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1/1;
+  display: flex;
+}
+
+@media only screen and (min-width: 576px) {
+
+  .good-for__main {
+    row-gap: 20px;
+  }
+
+  .good-for__list--heading h4 {
+    font-size: 20px;
+  }
+
+  .good-for__list--description * {
+    font-size: 20px;
+  }
+
+  .good-for__image {
+    max-width: calc(100% - 20px);
+    margin-top: 0px;
+  }
+
+  .good-for__marquee {
+    grid-template-columns: auto 28px;
+  }
+
+  .good-for__marquee--track, .good-for__marquee--group, .good-for__marquee {
+    gap: 15px;
+  }
+
+  .good-for__marquee--title h4 {
+    font-size: 22.5px;
+  }
+
+  .good-for__marquee--icon {
+    max-width: 28px;
+    height: 28px;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+
+  .good-for__section .desktop-hide {
+    display: none;
+  }
+
+  .good-for__section .mobile-hide {
+    display: flex;
+  }
+
+  .good-for__main {
+    flex-direction: row;
+    column-gap: 20px;
+  }
+
+  .good-for__image--wrapper {
+    max-width: calc(100% - 20px);
+  }
+
+  .good-for__image {
+    max-width: 100%;
+    margin-top: 0px;
+  }
+
+  .good-for__content {
+    max-width: 655px;
+    padding: 0 15px 0 0;
+  }
+
+  .good-for__content--heading h2 {
+    font-size: 64px;
+    text-align: left;
+  }
+
+  .good-for__marquee--main {
+    position: relative;
+    margin-top: 60px;
+  }
+}
+
+@media only screen and (min-width: 1281px) {
+
+  .good-for__main {
+    column-gap: 60px;
+  }
+
+  .good-for__image--wrapper {
+    max-width: calc(50% - 60px);
+  }
+}
+</style>
+
+{% capture marquee %}
+  <div class="good-for__marquee--track marquee--track marquee" style="--marquee-speed-pps: {{ section.settings.marquee_speed }}" aria-label="Scrolling marquee" data-direction="left" data-pause="hover">
+    <div class="marquee__viewport">
+    <div class="good-for__marquee--group marquee--group marquee__track" role="presentation">
+      <div class="marquee__segment">
+      {%- for block in section.blocks -%}
+        {% if block.type == 'running_element' %}
+          <div class="good-for__marquee">
+            <div class="good-for__marquee--title">
+              <h4>{{ block.settings.title }}</h4>
+            </div>
+            <div class="good-for__marquee--icon">
+              <!-- svg -->
+              <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="13.25" y="7.9364" width="1.875" height="13.125" fill="white"></rect>
+                <rect x="7.625" y="15.4378" width="1.875" height="13.125" transform="rotate(-90 7.625 15.4378)" fill="white"></rect>
+              </svg>
+            </div>
+          </div>
+        {% endif %}
+      {%- endfor -%}
+    </div>
+    </div>
+  </div>
+  </div>
+{% endcapture %}
+<div class="good-for__section overflow-x good-for__{{ section.id }}">
+  <div class="good-for__container">
+    <div class="good-for__main">
+      {% if image != blank %}
+      <div class="good-for__image--wrapper">
+        <div class="good-for__image">
+          {{ image 
+            | image_url: width: 1200 
+            | image_tag: 
+                alt: alt_desktop , 
+                class: "mobile-hide", 
+                loading: "lazy", 
+                widths: "360, 480, 600, 720, 900, 1200" 
+          }}
+          {{ mobile_image 
+            | image_url: width: 850 
+            | image_tag: 
+                alt: alt_mobile, 
+                class: "desktop-hide", 
+                loading: "lazy", 
+                widths: "360, 480, 600, 720, 850" 
+          }}
+        </div>
+        <div class="good-for__marquee--main js-marquee desktop-hide" data-marquee-speed="{{ marquee_speed }}">
+          {{ marquee }}
+        </div>
+      </div>
+      {% endif %}
+      <div class="good-for__content">
+        {% if heading != blank %}
+        <div class="good-for__content--heading">
+          <h2>{{ heading }}</h2>
+        </div>
+        {% endif %}
+        <div class="good-for__list--wrapper">
+          {% for block in section.blocks %}
+            {% assign icon = block.settings.icon %}
+            {% assign alt = icon.alt | default: 'What its good for' %}
+            {% assign heading = block.settings.heading %}
+            {% assign description = block.settings.description %}
+
+            {% if block.type == 'list' %}
+              <div class="good-for__list--element">
+                {% if icon != blank %}
+                <div class="good-for__list--icon">
+                  {{ icon
+                    | image_url: width: 150
+                    | image_tag:
+                        alt: alt,
+                        loading: "lazy",
+                        widths: "75, 100, 150",
+                        sizes: "(max-width: 480px) 50vw, 150px"
+                  }}
+                </div>              
+                {% endif %}   
+                {% if heading != blank or description != blank %}
+                <div class="good-for__list--content">
+                  <div class="good-for__list--heading">
+                    <h4>{{ heading }}</h4>  
+                  </div>                 
+                  <div class="good-for__list--description">
+                    {{ description }}
+                  </div>                 
+                </div>
+                {% endif %}                 
+              </div> 
+            {% endif %}    
+          {% endfor %}     
+        </div>
+      </div>
+    </div>
+    <div class="good-for__marquee--main js-marquee mobile-hide" data-marquee-speed="{{ marquee_speed }}">
+      {{ marquee }}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Good for",
+  "class": "good--for",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What it's good for?"
+    },
+    {
+      "type": "header",
+      "content": "Color settings"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#A5D05A"
+    },
+    {
+      "type": "color_background",
+      "id": "list_background_color",
+      "label": "List background",
+      "default": "linear-gradient(#FFFFFF, #E0B979)"
+    },
+    {
+      "type": "color",
+      "id": "list_heading_color",
+      "label": "List heading color",
+      "default": "#222222"
+    },
+    {
+      "type": "color",
+      "id": "list_description_color",
+      "label": "List description color",
+      "default": "#4B4B4B"
+    },
+    {
+      "type": "color_background",
+      "id": "line_background_color",
+      "label": "Line background",
+      "default": "linear-gradient(#000000, #000000)"
+    },
+    {
+      "type": "color",
+      "id": "line_title_color",
+      "label": "Line title color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Autoplay speed"
+    },
+    {
+      "type": "range",
+      "id": "marquee_speed",
+      "label": "Marquee Speed (pixels per second)",
+      "default": 120,
+      "min": 20,
+      "max": 500,
+      "step": 10
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_top-mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding top mobile",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom-mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding bottom mobile",
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "type": "list",
+      "name": "List",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "description"
+        }
+      ]
+    },
+    {
+      "type": "running_element",
+      "name": "Running element",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Good for"
+    }
+  ]
+}
+{% endschema %}

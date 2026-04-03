@@ -1,0 +1,393 @@
+{% liquid
+  assign padding_top = section.settings.padding_top
+  assign padding_bottom = section.settings.padding_bottom
+  assign padding_top_mobile = section.settings['padding_top-mobile']
+  assign padding_bottom_mobile = section.settings['padding_bottom-mobile']
+
+  assign background = section.settings.background_color
+  assign image = section.settings.image
+  assign subheading = section.settings.subheading
+  assign heading = section.settings.heading
+  assign button_text = section.settings.button_text
+  assign button_url = section.settings.button_url
+  assign guarantee_text = section.settings.guarantee_text
+%}
+
+{% style %}
+  .how-to-use__{{ section.id }} {
+    background: {{ background }};
+    padding-top: {{ padding_top_mobile }}px;
+    padding-bottom: {{ padding_bottom_mobile }}px;
+  }
+
+  @media only screen and (min-width: 769px) {
+
+    .how-to-use__{{ section.id }} {
+      padding-top: {{ padding_top }}px;
+      padding-bottom: {{ padding_bottom }}px;
+    }
+  }
+
+  .how-to-use .mobile-hide {
+    display: none;
+  }
+
+  .how-to-use__main {
+    background-color: #E7F0E4;
+    border-radius: 32px;
+    padding: 32px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .how-to-use__image,
+  .how-to-use__content {
+    width: 100%;
+  }
+
+  .how-to-use__image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .how-to-use__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 32px;
+  }
+
+  .how-to-use__content-header {
+    text-align: center;
+  }
+
+  .how-to-use__step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .how-to-use__step-item:not(:last-child) {
+    padding-bottom: 12px;
+  }
+
+  .how-to-use__step-number {
+    width: 100%;
+    max-width: 19px;
+    height: 19px;
+    background-color: #49827C;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .how-to-use__step-number span {
+    display: block;
+    color: #FAF7F3;
+    font-size: 16px;
+    line-height: 11px;
+    font-weight: 700;
+  }
+
+  .how-to-use__step-text p {
+    color: #253937;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  .how-to-use__button-main.button-main {
+    margin: 0 auto;
+  }
+
+  @media only screen and (min-width: 769px) {
+
+    .how-to-use__main {
+      padding: 32px;
+    }
+    
+    .how-to-use__image img {
+      border-radius: 32px;
+    }
+
+    .how-to-use__step-item {
+      gap: 8px;
+    }
+    
+    .how-to-use__step-item:not(:last-child) {
+      padding-bottom: 16px;
+    }
+
+    .how-to-use__step-number {
+      max-width: 25px;
+      height: 25px;
+      border-radius: 8px;
+    }
+    
+    .how-to-use__step-number span {
+      font-size: 18px;
+      line-height: 13px;
+    }
+
+    .how-to-use__step-text p {
+      font-size: 18px;
+      line-height: 27px;
+    }
+
+    .how-to-use__button-main.button-main {
+      margin: 0;
+    }
+  }
+
+  @media only screen and (min-width: 991px) {
+    
+    .how-to-use .desktop-hide {
+      display: none;
+    }
+
+    .how-to-use .mobile-hide {
+      display: block;
+    }
+    
+    .how-to-use__content-header {
+      text-align: left;
+    }
+
+    .how-to-use__main {
+      flex-direction: row;
+    }
+
+    .how-to-use__image,
+    .how-to-use__content {
+      max-width: 50%;
+    }
+
+    .how-to-use__content {
+      row-gap: 48px;
+      align-items: flex-start;
+    }
+  }
+
+  @media only screen and (min-width: 1281px) {
+
+    .how-to-use__main {
+      border-radius: 48px;
+      padding: 48px;
+      gap: 48px;
+    }
+  }
+
+  @media only screen and (max-width: 416px) {
+
+    .how-to-use__button-main.button-main {
+      max-width: 100%;
+    }
+
+    .how-to-use__button .button-primary {
+      padding: 18px 20px;
+      font-size: 4.087vw;
+    }
+  }
+{% endstyle %}
+
+{% capture arrow_icon %}
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+    <path d="M7.5 4.1665L12.5 9.99984L7.5 15.8332" stroke="#FAF7F3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+{% endcapture %}
+
+{% capture check_icon %}
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M10 0.833496C4.93743 0.833496 0.833374 4.93755 0.833374 10.0002C0.833374 15.0628 4.93743 19.1668 10 19.1668C15.0626 19.1668 19.1667 15.0628 19.1667 10.0002C19.1667 4.93755 15.0626 0.833496 10 0.833496ZM14.3393 8.08942C14.6647 7.76398 14.6647 7.23634 14.3393 6.91091C14.0139 6.58547 13.4862 6.58547 13.1608 6.91091L8.75004 11.3217L6.8393 9.41091C6.51386 9.08547 5.98622 9.08547 5.66078 9.41091C5.33535 9.73634 5.33535 10.264 5.66078 10.5894L8.16078 13.0894C8.48622 13.4149 9.01386 13.4149 9.3393 13.0894L14.3393 8.08942Z" fill="#49827C"/>
+  </svg>
+{% endcapture %}
+
+<div class="how-to-use how-to-use__{{ section.id }}">
+  <div class="wrapper">
+    <div class="how-to-use__main">
+      {% if image != blank %}
+        <div class="how-to-use__image mobile-hide">
+          {{ image | image_url: width: 1200 | image_tag: alt: image.alt }}
+        </div>
+      {% endif %}
+      <div class="how-to-use__content">
+        {% if subheading != blank or heading != blank %}
+          <div class="how-to-use__content-header">
+            {% if subheading != blank %}
+              <div class="how-to-use__subheading section-heading__label">
+                <span class="section-heading__label-text">{{ subheading }}</span>
+              </div>
+            {% endif %}
+            {% if heading != blank %}
+              <div class="how-to-use__heading section-heading__title">
+                {{ heading }}
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+        {% if image != blank %}
+          <div class="how-to-use__image desktop-hide">
+            {{ image | image_url: width: 1200 | image_tag: alt: image.alt }}
+          </div>
+        {% endif %}
+        <div class="how-to-use__step-forwards">
+          {% for block in section.blocks %}
+            {% if block.settings.step != blank %}
+              <div class="how-to-use__step-item">
+                <div class="how-to-use__step-number">
+                  <span>{{ forloop.index }}</span>
+                </div>
+                <div class="how-to-use__step-text">
+                  {{ block.settings.step }}
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        {% if button_text != blank or guarantee_text != blank %}
+          <div class="how-to-use__button-main button-main">
+            {% if button_text != blank %}
+              <div class="how-to-use__button">
+                <a href="{{ button_url }}" class="button-primary">
+                  <span class="how-to-use__button-text">{{ button_text }}</span>
+                  <div class="how-to-use__button-icon button-primary__arrow-icon">{{ arrow_icon }}</div>
+                </a>
+              </div>
+            {% endif %}
+            {% if guarantee_text != blank %}
+              <div class="how-to-use__guarantee-icon button-primary__guarantee">
+                <div class="how-to-use__guarantee-icon">{{ check_icon }}</div>
+                <div class="how-to-use__guarantee-text">
+                  <p>{{ guarantee_text }}</p>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "How To Use",
+  "class": "section-how-to-use",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "color_background",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FAF7F3"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Daily Ritual, Made Easy"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<h2>Daily Routine, <strong>Made Easy</strong></h2>"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "TRY SEA MOSS Gummies Today"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button url"
+    },
+    {
+      "type": "text",
+      "id": "guarantee_text",
+      "label": "Guarantee text",
+      "default": "30-Day Money Back Guarantee"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_top-mobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding top mobile",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom-mobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding bottom mobile",
+      "default": 32
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Item",
+      "type": "item",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "step",
+          "label": "Step",
+          "default": "<p>Take 1-2 tablespoons of Sea Moss Gel.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How To Use"
+    }
+  ]
+}
+{% endschema %}

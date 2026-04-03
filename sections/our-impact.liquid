@@ -1,0 +1,908 @@
+{% liquid
+  assign padding_top = section.settings.padding_top
+  assign padding_bottom = section.settings.padding_bottom
+  assign padding_top_mobile = section.settings['padding_top-mobile']
+  assign padding_bottom_mobile = section.settings['padding_bottom-mobile']
+
+  assign background_color = section.settings.background_color
+  assign main_heading_color = section.settings.main_heading_color
+  assign block_height_desktop = section.settings.block_height_desktop
+  assign block_height_mobile = section.settings.block_height_mobile
+
+  assign size_title = section.settings.size_title
+  assign size_title_mobile = section.settings['size_title-mobile']
+  assign size_text = section.settings.size_text
+  assign size_text_mobile = section.settings['size_text-mobile']
+
+  assign main_heading = section.settings.main_heading
+%}
+
+<style>
+  .our-impact__{{ section.id }} {
+    background: {{ background_color }};
+    padding-top: {{ padding_top_mobile }}px;
+    padding-bottom: {{ padding_bottom_mobile }}px;
+  }
+
+  .our-impact__{{ section.id }} .our-impact__heading h2 {
+    color: {{ main_heading_color }};
+  }
+
+  .our-impact__{{ section.id }} .our-impact__block {
+    min-height: {{ block_height_mobile }}px;
+  }
+
+  .our-impact__{{ section.id }} .our-impact__block.height-m-2 {
+    min-height: {{ block_height_mobile | times: 2 }}px;
+  }
+
+  .our-impact__{{ section.id }} .our-impact__block--title h4 {
+    font-size: {{ size_title_mobile }}px;
+  }
+  
+  .our-impact__{{ section.id }} .our-impact__block--text * {
+    font-size: {{ size_text_mobile }}px;
+  }
+
+  @media only screen and (min-width: 769px) {
+
+    .our-impact__{{ section.id }} {
+      padding-top: {{ padding_top }}px;
+      padding-bottom: {{ padding_bottom }}px;
+    }
+
+    .our-impact__{{ section.id }} .our-impact__block {
+      min-height: {{ block_height_desktop }}px;
+    }
+
+    .our-impact__{{ section.id }} .our-impact__block.height-2 {
+      min-height: {{ block_height_desktop | times: 2 }}px;
+    }
+
+    .our-impact__{{ section.id }} .our-impact__block--title h4 {
+      font-size: {{ size_title }}px;
+    }
+    
+    .our-impact__{{ section.id }} .our-impact__block--text * {
+      font-size: {{ size_text }}px;
+    }
+  }
+
+  {% for block in section.blocks %}
+
+    {% if block.settings.hide_mobile == true %}
+    .our-impact__block.block-{{ block.id }} {
+      display: none;
+    }
+    {% endif %}
+
+    .our-impact__block.block-{{ block.id }} {
+      background: {{ block.settings.block_background }};
+      {% if block.settings.mobile_order != blank %}
+        order: {{ block.settings.mobile_order }};
+      {% endif %}
+      grid-column: span {{ block.settings.mobile_width }};
+      grid-row: span {{ block.settings.mobile_height }};
+    }
+
+    .our-impact__block.block-{{ block.id }} .our-impact__block--content.align--top {
+      justify-content: flex-start;
+    }
+
+    .our-impact__block.block-{{ block.id }}.vertical--mobile {
+      flex-direction: column-reverse;
+    }
+    
+    .our-impact__block.block-{{ block.id }}.vertical--mobile .our-impact__block--image {
+      width: 100%;
+    }
+    
+    .our-impact__block.block-{{ block.id }}.vertical--mobile .our-impact__block--image img {
+      height: auto;
+      max-height: 100%;
+    }
+
+    .our-impact__block.block-{{ block.id }} .our-impact__block--subtitle h3 {
+      color: {{ block.settings.sub_title_color }};
+    }
+
+    .our-impact__block.block-{{ block.id }} .our-impact__block--title h4 {
+      color: {{ block.settings.title_color }};
+    }
+
+    .our-impact__block.block-{{ block.id }} .our-impact__block--text * {
+      color: {{ block.settings.text_color }};
+    }
+
+    @media only screen and (min-width: 769px) {
+
+      {% if block.settings.hide_mobile == true %}
+        .our-impact__block.block-{{ block.id }} {
+          display: flex;
+        }
+      {% endif %}
+
+      .our-impact__block.block-{{ block.id }} {
+        order: unset;
+        grid-column: span {{ block.settings.desktop_width }};
+        grid-row: span {{ block.settings.desktop_height }};
+      }
+      
+      .our-impact__block.block-{{ block.id }}.vertical--mobile {
+        flex-direction: row;
+      }
+    }
+  {% endfor %}
+
+  .our-impact .mobile-hide {
+    display: none;
+  }
+
+  .our-impact__heading {
+    padding-bottom: 15px;
+  }
+
+  .our-impact__heading h2 {
+    font-family: "Yanone Kaffeesatz", sans-serif;
+    font-size: 32px;
+    line-height: 1;
+    text-align: center;
+    margin: 0;
+  }
+
+  .our-impact__main {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .our-impact__block {
+    padding: 12px;
+    box-shadow: 0px 7px 11px 0px rgba(209,209,209,.4);
+    -webkit-box-shadow: 0px 7px 11px 0px rgba(209,209,209,.4);
+    -moz-box-shadow: 0px 7px 11px 0px rgba(209,209,209,.4);
+    background-color: #FFFFFF;
+    border-radius: 17px;
+    display: flex;
+    gap: 5px;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .our-impact__block--content {
+    width: 54%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    row-gap: 8px;
+  }
+
+  .our-impact__block.image-background .our-impact__block--content {
+    width: 70%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .our-impact__block--subtitle h3 {
+    font-family: var(--FONT-STACK-BODY);
+    font-size: 10px;
+    line-height: 1;
+    font-weight: 400;
+    opacity: .6;
+    margin: 0;
+  }
+
+  .our-impact__block--title h4 {
+    font-family: var(--FONT-STACK-BODY);
+    line-height: 120%;
+    letter-spacing: 0;
+    font-weight: 700;
+    margin: 0;
+    text-wrap: nowrap;
+  }
+
+  .our-impact__block--text * {
+    font-family: var(--FONT-STACK-BODY);
+    line-height: 1;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  .our-impact__block--text strong {
+    font-weight: 600;
+  }
+
+  .our-impact__block--image {
+    width: 46%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: end;
+  }
+
+  .our-impact__block.image-half .our-impact__block--image img {
+    max-width: 100%;
+    max-height: 127px;
+    width: auto;
+    object-fit: cover;
+    margin: 0 0 0 auto;
+  }
+
+  .our-impact__block.image-background .our-impact__block--image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+  }
+
+  .our-impact__block.image-background .our-impact__block--image img {
+    height: 100%;
+  }
+
+  .our-impact__block--image img {
+    display: flex;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  @media only screen and (min-width: 769px) {
+
+    .our-impact .desktop-hide {
+      display: none;
+    }
+
+    .our-impact .mobile-hide {
+      display: flex;
+    }
+
+    .our-impact__heading h2 {
+      font-size: 64px;
+    }
+
+    .our-impact__main {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .our-impact__block {
+      padding: 20px 30px;
+      gap: 0px;
+    }
+
+    .our-impact__block--content {
+      width: 48%;
+      row-gap: 20px;
+    }
+
+    .our-impact__block--subtitle h3 {
+      font-size: 14px;
+    }
+
+    .our-impact__block--image {
+      width: 52%;
+      align-items: center;
+    }
+
+    .our-impact__block.image-half.width-1.height-1 {
+      padding: 20px;
+    }
+  }
+
+  {% if template.suffix contains 'about' %}
+    {% for block in section.blocks %}
+
+    .our-impact__block {
+      padding: 15px !important;
+    }
+    
+    .our-impact__block.block-{{ block.id }}.block--1 {
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    
+    .our-impact__block.block-{{ block.id }}.block--5  {
+      flex-direction: column;
+    }
+
+    .our-impact__block.block-{{ block.id }}.block--1 .our-impact__block--content {
+      width: auto;
+      max-width: 160px;
+    }
+
+    .our-impact__block.block-{{ block.id }}.block--3 .our-impact__block--content, .our-impact__block.block-{{ block.id }}.block--7 .our-impact__block--content {
+      width: 100%;
+      max-width: 138px;
+    }
+
+    .our-impact__block.block-{{ block.id }}.block--1 .our-impact__block--content,
+    .our-impact__block.block-{{ block.id }}.block--2 .our-impact__block--content,
+    .our-impact__block.block-{{ block.id }}.block--3 .our-impact__block--content,
+    .our-impact__block.block-{{ block.id }}.block--4 .our-impact__block--content,
+    .our-impact__block.block-{{ block.id }}.block--5 .our-impact__block--content,
+    .our-impact__block.block-{{ block.id }}.block--6 .our-impact__block--content,
+    .our-impact__block.block-{{ block.id }}.block--7 .our-impact__block--content,
+    .our-impact__block.block-{{ block.id }}.block--8 .our-impact__block--content {
+      justify-content: flex-start;
+      gap: 0px;
+    }
+    
+    .our-impact__block.block-{{ block.id }}.block--2 .our-impact__block--content {
+      width: 100%;
+      max-width: 130px;
+    }
+
+    .our-impact__block.block-{{ block.id }}.block--4 .our-impact__block--content {
+      width: 100%;
+      max-width: 145px;
+    }
+
+    .our-impact__block.block-{{ block.id }}.block--5 .our-impact__block--content {
+      width: 100%;
+      max-width: 120px;
+    }
+    
+    .our-impact__block.block-{{ block.id }}.block--3 .our-impact__block--image {
+      max-width: 70%;
+      left: unset;
+      right: 0;
+    }
+
+    .our-impact__block.block-{{ block.id }}.block--5 .our-impact__block--image {
+      width: 100%;
+    }
+
+    .our-impact__block--image img, .our-impact__block.block-{{ block.id }}.block--5.image-half .our-impact__block--image img {
+      max-height: 100%;
+    }
+
+    .our-impact__block.block-{{ block.id }}.block--6 .our-impact__block--content {
+      width: 100%;
+      max-width: 165px;
+    }  
+    
+    .our-impact__block.block-{{ block.id }}.block--1 .our-impact__block--image {
+      width: 100%;
+      max-width: 233px;
+    }
+      
+    .our-impact__block.block-{{ block.id }}.block--1 .our-impact__block--image img {
+      width: 100%;
+      height: 100%;
+      max-height: unset;
+    }
+    
+    .our-impact__block.block-{{ block.id }}.block--5 .our-impact__block--image {
+      width: calc(100% + 15px);
+      position: relative;
+      left: -15px;
+    }
+
+    .our-impact__block.block-{{ block.id }}.block--7 .our-impact__block--image {
+      max-width: 60%;
+      width: 100%;
+      left: unset;
+      right: 0;
+    }
+
+    .our-impact__block.block-{{ block.id }}.block--7 .our-impact__block--image img,
+    .our-impact__block.block-{{ block.id }}.block--8 .our-impact__block--image img {
+      object-fit: contain;
+    }
+
+    .our-impact__block.block-{{ block.id }}.block--8 .our-impact__block--content {
+      width: 100%;
+      max-width: 176px;
+      gap: 0px;
+    }
+
+    @media only screen and (min-width: 769px) {
+
+      .our-impact__block.block-{{ block.id }}.block--1 {
+        padding: 20px 30px !important;
+      }
+
+      .our-impact__block.block-{{ block.id }}.block--2,
+      .our-impact__block.block-{{ block.id }}.block--3,
+      .our-impact__block.block-{{ block.id }}.block--4,
+      .our-impact__block.block-{{ block.id }}.block--5,
+      .our-impact__block.block-{{ block.id }}.block--6,
+      .our-impact__block.block-{{ block.id }}.block--7,
+      .our-impact__block.block-{{ block.id }}.block--8 {
+        padding: 25px 30px 20px !important;
+      }
+      
+      .our-impact__block.block-{{ block.id }}.block--4,
+      .our-impact__block.block-{{ block.id }}.block--5 {
+        min-height: 168px;
+      }
+      
+      .our-impact__block.block-{{ block.id }}.block--1 .our-impact__block--content {
+        width: 100%;
+      } 
+
+      .our-impact__block.block-{{ block.id }}.block--2 .our-impact__block--content {
+        gap: 10px;
+      }
+
+      .our-impact__block.block-{{ block.id }}.block--3 .our-impact__block--content,
+      .our-impact__block.block-{{ block.id }}.block--4 .our-impact__block--content,
+      .our-impact__block.block-{{ block.id }}.block--7 .our-impact__block--content {
+        max-width: 195px;
+      }
+
+      .our-impact__block.block-{{ block.id }}.block--1 .our-impact__block--content,
+      .our-impact__block.block-{{ block.id }}.block--3 .our-impact__block--content,
+      .our-impact__block.block-{{ block.id }}.block--4 .our-impact__block--content,
+      .our-impact__block.block-{{ block.id }}.block--5 .our-impact__block--content,
+      .our-impact__block.block-{{ block.id }}.block--6 .our-impact__block--content,
+      .our-impact__block.block-{{ block.id }}.block--7 .our-impact__block--content {
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .our-impact__block.block-{{ block.id }}.block--2 .our-impact__block--content {
+        gap: 10px;
+      }
+
+      .our-impact__block.block-{{ block.id }}.block--5 {
+        flex-direction: row;
+      }
+      
+      .our-impact__block.block-{{ block.id }}.block--4 .our-impact__block--content,
+      .our-impact__block.block-{{ block.id }}.block--5 .our-impact__block--content {
+        position: relative;
+        z-index: 1;
+      }
+
+      .our-impact__block.block-{{ block.id }}.block--5 .our-impact__block--content {
+        width: 100%;
+        max-width: 130px;
+      }
+      
+      .our-impact__block.block-{{ block.id }}.block--6 .our-impact__block--content {
+        width: 70%;
+        max-width: 100%;
+      }  
+
+      .our-impact__block.block-{{ block.id }}.block--3 .our-impact__block--image {
+        max-width: 100%;
+        top: 0;
+        left: 0;
+      }
+
+      .our-impact__block.block-{{ block.id }}.block--4 .our-impact__block--image, .our-impact__block.block-{{ block.id }}.block--5 .our-impact__block--image {
+        width: 100%;
+        position: absolute;
+        right: 15px;
+      }
+
+      .our-impact__block.block-{{ block.id }}.block--4 .our-impact__block--image {
+        max-width: 50%;
+        top: 20px;
+      }
+      
+      .our-impact__block.block-{{ block.id }}.block--5 .our-impact__block--image {
+        width: 100%;
+        left: unset;
+      }
+
+      .our-impact__block.block-{{ block.id }}.block--5 .our-impact__block--image {
+        max-width: 60%;
+        bottom: 5px;
+      }
+
+      .our-impact__block.block-{{ block.id }}.block--7 .our-impact__block--image {
+        max-width: 100%;
+      }
+
+      .our-impact__block.block-{{ block.id }}.block--3 .our-impact__block--image img {
+        object-fit: contain;
+      }
+      
+      .our-impact__block.block-{{ block.id }}.block--7 .our-impact__block--image img,
+      .our-impact__block.block-{{ block.id }}.block--8 .our-impact__block--image img {
+        object-fit: cover;
+      }
+    }
+    {% endfor %}
+
+    @media only screen and (min-width: 769px) {
+
+      .our-impact__main {
+        gap: 20px;
+      }
+    }
+  {% endif %}
+</style>
+
+<div class="our-impact our-impact__{{ section.id }}">
+  <div class="wrapper">
+    {% if main_heading != blank %}<div class="our-impact__wrapper">{% endif %}
+    {% if main_heading != blank %}
+      <div class="our-impact__heading">
+        <h2>{{ main_heading }}</h2>
+      </div>
+    {% endif %}
+    <div class="our-impact__main">
+      {% for block in section.blocks %}
+        {% assign vertical_mobile = block.settings.vertical_mobile %}
+        {% assign hide_mobile = block.settings.hide_mobile %}
+        {% assign image_style = block.settings.image_style %}
+        {% assign desktop_width = block.settings.desktop_width %}
+        {% assign mobile_width = block.settings.mobile_width %}
+        {% assign desktop_height = block.settings.desktop_height %}
+        {% assign mobile_height = block.settings.mobile_height %}
+
+        {% assign align_top = block.settings.align_top %}
+        {% assign sub_title = block.settings.sub_title %}
+        {% assign title = block.settings.title %}
+        {% assign text = block.settings.text %}
+        {% assign image_desktop = block.settings.image_desktop %}
+        {% assign image_mobile = block.settings.image_mobile | default: image_desktop | default: shop.name %}
+        {% assign alt = image_desktop.alt | default: 'Sprouts Shops and Retail Chains' %}
+        {% assign mobile_alt = image_mobile.alt | default: 'Sprouts Shops and Retail Chains' %}
+
+        <div class="our-impact__block block-{{ block.id }} block--{{ forloop.index }} {% if vertical_mobile %}vertical--mobile{% endif %} {% if hide_mobile %}hide--mobile{% endif %} image-{{ image_style }} width-{{ desktop_width }} width-m-{{ mobile_width }} height-{{ desktop_height }} height-m-{{ mobile_height }}">
+          <div class="our-impact__block--content {% if align_top %}align--top{% endif %}">
+            <div class="our-impact__block--head">
+              {% if sub_title != blank %}
+                <div class="our-impact__block--subtitle">
+                  <h3>{{ sub_title }}</h3>
+                </div>
+              {% endif %}
+              {% if title != blank %}
+                <div class="our-impact__block--title">
+                  <h4>{{ title }}</h4>
+                </div>
+              {% endif %}
+            </div>
+            {% if text != blank %}
+              <div class="our-impact__block--text">
+                {{ text }}
+              </div>
+            {% endif %}
+          </div>
+          <div class="our-impact__block--image">
+            {{
+              image_desktop
+              | image_url: width: 800
+              | image_tag: alt: alt, loading: 'lazy', widths: '360, 480, 600, 720, 800', class: 'mobile-hide'
+            }}
+            {{
+              image_mobile
+              | image_url: width: 800
+              | image_tag: alt: mobile_alt, loading: 'lazy', widths: '360, 480, 600, 720, 800', class: 'desktop-hide'
+            }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    {% if main_heading != blank %}</div>{% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Our Impact",
+  "class": "our--impact",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "main_heading",
+      "label": "Main Heading"
+    },
+    {
+      "type": "header",
+      "content": "Section colors"
+    },
+    {
+      "type": "color",
+      "id": "main_heading_color",
+      "label": "Main heading color",
+      "default": "#3B7865"
+    },
+    {
+      "type": "color_background",
+      "id": "background_color",
+      "label": "Background",
+      "default": "linear-gradient(#ffffff, #ffffff)"
+    },
+    {
+      "type": "header",
+      "content": "Block height"
+    },
+    {
+      "type": "range",
+      "id": "block_height_desktop",
+      "min": 100,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Min block height desktop",
+      "default": 160
+    },
+    {
+      "type": "range",
+      "id": "block_height_mobile",
+      "min": 80,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Min block height mobile",
+      "default": 105
+    },
+    {
+      "type": "header",
+      "content": "Section font size"
+    },
+    {
+      "type": "range",
+      "id": "size_title",
+      "min": 20,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Size title",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "size_title-mobile",
+      "min": 10,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Size title mobile",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "size_text",
+      "min": 20,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Size text",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "size_text-mobile",
+      "min": 10,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Size text mobile",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_top-mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding top mobile",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom-mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding bottom mobile",
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "type": "block",
+      "name": "Block element",
+      "settings": [
+        {
+          "type": "number",
+          "id": "mobile_order",
+          "label": "Mobile order block"
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_mobile",
+          "label": "Hide block on mobile",
+          "default": false
+        },
+        {
+          "type": "image_picker",
+          "id": "image_desktop",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Mobile image"
+        },
+        {
+          "type": "select",
+          "id": "desktop_height",
+          "label": "Desktop height",
+          "options": [
+            {
+              "value": "1",
+              "label": "1"
+            },
+            {
+              "value": "2",
+              "label": "2"
+            }
+          ],
+          "default": "1"
+        },
+        {
+          "type": "select",
+          "id": "mobile_height",
+          "label": "Mobile height",
+          "options": [
+            {
+              "value": "1",
+              "label": "1"
+            },
+            {
+              "value": "2",
+              "label": "2"
+            }
+          ],
+          "default": "1"
+        },
+        {
+          "type": "select",
+          "id": "desktop_width",
+          "label": "Desktop width",
+          "options": [
+            {
+              "value": "1",
+              "label": "1"
+            },
+            {
+              "value": "2",
+              "label": "2"
+            },
+            {
+              "value": "3",
+              "label": "3"
+            },
+            {
+              "value": "4",
+              "label": "4"
+            }
+          ],
+          "default": "1"
+        },
+        {
+          "type": "select",
+          "id": "mobile_width",
+          "label": "Mobile width",
+          "options": [
+            {
+              "value": "1",
+              "label": "1"
+            },
+            {
+              "value": "2",
+              "label": "2"
+            }
+          ],
+          "default": "1"
+        },
+        {
+          "type": "select",
+          "id": "image_style",
+          "label": "Image style",
+          "options": [
+            {
+              "value": "background",
+              "label": "Background"
+            },
+            {
+              "value": "half",
+              "label": "Half"
+            }
+          ],
+          "default": "half"
+        },
+        {
+          "type": "text",
+          "id": "sub_title",
+          "label": "Subtitle"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "checkbox",
+          "id": "align_top",
+          "label": "Align top content",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "vertical_mobile",
+          "label": "Mobile vertical direction block",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Block colors"
+        },
+        {
+          "type": "color_background",
+          "id": "block_background",
+          "label": "Background color",
+          "default": "#FFF"
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title color",
+          "default": "#3B7865"
+        },
+        {
+          "type": "color",
+          "id": "sub_title_color",
+          "label": "Subtitle color",
+          "default": "#4b4b4b"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+          "default": "#4B4B4B"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Our Impact"
+    }
+  ]
+}
+{% endschema %}

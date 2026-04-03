@@ -1,0 +1,348 @@
+<style>
+  .choose-flavour__heading {
+    padding-bottom: 16px;
+  }
+
+  .choose-flavour__heading h4 {
+    font-family: var(--outfit-font);
+    color: #253937;
+    font-size: 18px;
+    line-height: normal;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .choose-flavour__wrapper {
+    display: flex;
+    gap: 8px;
+  }
+
+  .choose-flovour__card,
+  .choose-flovour__card-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .choose-flovour__card {
+    width: 100%;
+    max-width: 33.3%;
+    background-color: #FFF;
+    border: 2px solid #E7F0E4;
+    border-radius: 16px;
+    padding: 16px 12px 16px;
+    gap: 16px;
+    justify-content: space-between;
+    transition: 0.3s ease;
+  }
+
+  .choose-flovour__card-wrapper {
+    width: 100%;
+    gap: 12px;
+  }
+
+  .choose-flovour__card.active,
+  .choose-flovour__card:hover {
+    background-color: #E7F0E4;
+    border: 2px solid #49827C;
+  }
+
+  .choose-flovour__card.active .choose-flovour__image,
+  .choose-flovour__card:hover .choose-flovour__image {
+    background-color: #FFF;
+  }
+
+  .choose-flovour__image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #E7F0E4;
+    border-radius: 8px;
+    width: 100%;
+    height: 80px;
+  }
+
+  .choose-flovour__image img {
+    height: 60px;
+    object-fit: contain;
+  }
+
+  .choose-flavour__title h4 {
+    font-family: var(--outfit-font);
+    color: #253937;
+    font-size: 14px;
+    line-height: normal;
+    font-weight: 700;
+    text-align: center;
+    margin: 0;
+  }
+
+  .choose-flovour__add-btn,
+  .choose-flovour__quanitity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .choose-flovour__card.active .choose-flovour__add {
+    display: none;
+  }
+
+  .choose-flovour__add-btn {
+    background: linear-gradient(90deg, #79A39E 0%, #49827C 100%);
+    border: none;
+    border-radius: 9999px;
+    padding: 8px 20px;
+    gap: 4px;
+    cursor: pointer;
+  }
+
+  .choose-flovour__card:not(.active) .choose-flovour__quanitity {
+    display: none;
+  }
+
+  .choose-flovour__quanitity button {
+    padding: 0;
+    width: 100%;
+    max-width: 24px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .choose-flovour__quanitity input {
+    -moz-appearance: textfield;
+    width: 100%;
+    max-width: 24px;
+    background-color: transparent;
+    border: none;
+    pointer-events: none;
+    color: #253937;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 700;
+    text-align: center;
+    padding: 0;
+  }
+
+  .choose-flovour__quanitity input[type=number]::-webkit-inner-spin-button,
+  .choose-flovour__quanitity input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .quantity--button {
+    width: 100%;
+    max-width: 24px;
+  }
+
+  .quantity--button svg {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1/1;
+    display: block;
+  }
+
+  .choose-flovour__add-text span {
+    display: block;
+    color: #FAF7F3;
+    font-size: 18px;
+    line-height: 16px;
+    font-weight: 700;
+  }
+
+  .choose-flovour__add-icon {
+    width: 100%;
+    max-width: 14px;
+  }
+
+  .choose-flovour__add-icon svg {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1/1;
+    display: block;
+  }
+  
+  @media only screen and (min-width: 769px) {
+
+    .choose-flavour__heading {
+      padding-bottom: 20px;
+    }
+    
+    .choose-flavour__heading h4 {
+      font-size: 20px;
+    }
+    
+    .choose-flavour__wrapper {
+      gap: 16px;
+    }
+
+    .choose-flovour__card, 
+    .choose-flovour__card-wrapper {
+      gap: 16px;
+    }
+    
+    .choose-flovour__card {
+      border-radius: 16px;
+      padding: 20px 16px 16px;
+    }
+    
+    .choose-flovour__image {
+      border-radius: 12px;
+      height: 100px;
+    }
+    
+    .choose-flovour__image img {
+      height: 80px;
+    }
+
+    .choose-flavour__title h4 {
+      font-size: 20px;
+    }
+    
+    .choose-flovour__add-btn {
+      padding: 10px 24px;
+      gap: 4px;
+    }
+    
+    .choose-flovour__add-text span {
+      font-size: 20px;
+      line-height: 16px;
+    }
+
+    .choose-flovour__quanitity button {
+      max-width: 24px;
+    }
+
+    .choose-flovour__quanitity input {
+      font-size: 20px;
+    }
+  }
+</style>
+
+{% assign list_variant = product.metafields.custom.product_list_for_tastes.value %}
+
+<div class="choose-flavour__main">
+  {% if block.settings.heading != blank %}
+    <div class="choose-flavour__heading">
+      <h4>{{ block.settings.heading }}</h4>
+    </div>
+  {% endif %}
+
+  <div class="choose-flavour__wrapper">
+    {% for item in list_variant limit: 3 %}
+      {%- liquid
+        assign index = forloop.index
+        assign extra_index = extra_index | plus: 1
+        assign current_variant = item
+
+        assign product_title = ''
+        if current_variant.product.metafields.custom.title_for_taste != blank
+          assign product_title = current_variant.product.metafields.custom.title_for_taste
+        else
+          assign product_title = current_variant.product.title
+        endif
+
+        assign product_badge = current_variant.product.metafields.custom.badge_for_taste
+        assign product_badge_new = current_variant.product.metafields.custom.badge_flavors
+
+        assign sellingObj = current_variant.selling_plan_allocations
+        assign selling_plan_id = ''
+        for itemSell in sellingObj
+          assign selling_plan_id = itemSell.selling_plan.id
+          assign priceSelling = item.price | divided_by: 100.0
+        endfor
+
+        if current_variant.product.metafields.custom.featured_image_for_taste != blank
+          assign product_img = current_variant.product.metafields.custom.featured_image_for_taste
+        else
+          assign product_img = current_variant.product.featured_image
+        endif
+
+        if current_variant.product.metafields.custom.picture_of_a_can != blank
+          assign dataImage = current_variant.product.metafields.custom.picture_of_a_can.value | image_url
+        else
+          assign dataImage = ''
+        endif
+
+        assign variant_available = current_variant.available
+        assign variant_price = current_variant.price | divided_by: 100.0
+        assign variant_id = current_variant.id
+
+        for tag in current_variant.product.tags
+          assign tag_lower_case = tag | downcase
+          if tag_lower_case == 'new'
+            assign new_variant = true
+            break
+          else
+            assign new_variant = false
+          endif
+        endfor
+
+        assign isSelling_plan = current_variant.selling_plan_allocations
+      -%}
+
+      <div class="choose-flovour__card {% if forloop.first %}active{% endif %}">
+        <div class="choose-flovour__card-wrapper">
+          {% if product_img != blank %}
+            <div class="choose-flovour__image">
+              {{
+                product_img
+                | image_url: width: 200
+                | image_tag:
+                  alt: product_img.alt,
+                  loading: 'lazy',
+                  widths: '100, 150, 200, 300, 400',
+                  sizes: '(max-width: 480px) 150px, (max-width: 768px) 200px, 200px'
+              }}
+            </div>
+          {% endif %}
+          <div class="choose-flavour__title">
+            <h4>{{ product_title | capitalize }}</h4>
+          </div>
+        </div>
+        <div class="choose-flovour__add">
+          <button class="choose-flovour__add-btn">
+            <div class="choose-flovour__add-text">
+              <span>Add</span>
+            </div>
+            <div class="choose-flovour__add-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+              >
+                <path d="M7 1V13M13 7L1 7" stroke="#FAF7F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </button>
+        </div>
+        <div class="choose-flovour__quanitity">
+          <button class="quantity--button quantity--minus" type="button" name="minus">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M18 12L6 12" stroke="#253937" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <input
+            type="number"
+            name="items[{{index}}][quantity]"
+            class="quantity-value"
+            min="0"
+            value="1"
+            onkeydown="return false"
+            readonly
+            data-quantity
+            data-image="{{ dataImage }}"
+          >
+          <button class="quantity--button quantity--add" type="button" name="plus">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M12 6V18M18 12L6 12" stroke="#253937" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

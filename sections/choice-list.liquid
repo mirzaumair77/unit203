@@ -1,0 +1,509 @@
+{% liquid
+  assign padding_top = section.settings.padding_top
+  assign padding_bottom = section.settings.padding_bottom
+  assign padding_top_mobile = section.settings['padding_top-mobile']
+  assign padding_bottom_mobile = section.settings['padding_bottom-mobile']
+
+  assign background_color = section.settings.background_color
+  assign background_color_mobile = section.settings.background_color_mobile
+  assign heading_color = section.settings.heading_color
+  assign subheading_color = section.settings.subheading_color
+  assign button_color = section.settings.button_color
+  assign button_text_color = section.settings.button_text_color
+  assign button_color_hover = section.settings.button_color_hover
+  assign button_text_color_hover = section.settings.button_text_color_hover
+  assign card_background_color = section.settings.card_background_color
+  assign card_border_color = section.settings.card_border_color
+
+  assign image = section.settings.image
+  assign mobile_image = section.settings.mobile_image | default: image
+  assign alt = image.alt | default: 'Thinking on which one to choose'
+  assign alt = mobile_image.alt | default: 'Thinking on which one to choose'
+  assign heading = section.settings.heading
+  assign subheading = section.settings.subheading
+  assign button_text = section.settings.button_text
+  assign button_link = section.settings.button_link
+  assign marquee_speed = section.settings.marquee_speed
+%}
+
+<style>
+.choice-list__{{ section.id }} {
+  background: {{ background_color_mobile }};
+  padding-top: {{ padding_top_mobile }}px;
+  padding-bottom: {{ padding_bottom_mobile }}px;
+}
+
+.choice-list__{{ section.id }} .choice-list__section--heading h2 {
+  color: {{ heading_color }};
+}
+
+.choice-list__{{ section.id }} .choice-list__section--subheading h3 {
+  color: {{ subheading_color }};
+} 
+
+.choice-list__{{ section.id }} .choice-list__section--button a {
+  background-color: {{ button_color }};
+  color: {{ button_text_color }};
+}
+
+.choice-list__{{ section.id }} .choice-list__section--button a:hover {
+  background-color: {{ button_color_hover }};
+  color: {{ button_text_color_hover }};
+}
+
+.choice-list__{{ section.id }} .choice-list__block {
+  background: {{ card_background_color }};
+  border: 2px solid {{ card_border_color }};
+}
+
+@media only screen and (min-width: 769px) {
+
+  .choice-list__{{ section.id }} {
+    background: {{ background_color }};
+    padding-top: {{ padding_top }}px;
+    padding-bottom: {{ padding_bottom }}px;
+  }
+}
+
+.choice-list .desktop-image {
+  display: none;
+}
+
+.choice-list__section--head {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.choice-list__section--heading h2 {
+  font-family: Yanone Kaffeesatz, sans-serif;
+  font-size: 45px;
+  line-height: 1;
+  font-weight: 400;
+  margin: 0;
+}
+
+.choice-list__section--subheading {
+  padding-top: 10px;
+}
+
+.choice-list__section--subheading h3 {
+  font-family: var(--FONT-STACK-BODY);
+  font-size: 18px;
+  line-height: 21.6px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.choice-list__section--button {
+  width: 100%;
+  max-width: 140px;
+}
+
+.choice-list__section--button a {
+  border-radius: 10px;
+  min-height: 50px;
+  width: 100%;
+  padding: 6px 10px 3px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Yanone Kaffeesatz, sans-serif;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 600;
+  transition: all .3s;
+}
+
+.choice-list__marquee--wrapper {
+  padding: 35px 0 40px;
+  position: relative;
+  display: grid;
+  row-gap: 10px;
+}
+
+.choice-list__marquee--wrapper .marquee__track, .choice-list__marquee--wrapper .marquee__segment {
+  gap: 6px;
+}
+
+.choice-list__image {
+  width: 100%;
+  max-width: 204px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.choice-list__image img {
+  width: 100%;
+  height: auto;
+  display: flex;
+}
+
+.choice-list__block {
+  border-radius: 10px;
+  padding: 9px;
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.choice-list__block img {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  object-fit: contain;
+}
+
+@media only screen and (min-width: 576px) {
+
+  .choice-list .desktop-image {
+    display: flex;
+  }
+
+  .choice-list .mobile-image {
+    display: none;
+  }
+
+  .choice-list__marquee--wrapper {
+    padding: 105px 0 90px;
+    row-gap: 15px;
+  }
+
+  .choice-list__image {
+    max-width: 405px;
+  }
+
+  .choice-list__marquee--wrapper .marquee__track, .choice-list__marquee--wrapper .marquee__segment {
+    gap: 14px;
+  } 
+
+  .choice-list__block {
+    border-radius: 20px;
+    padding: 15px;
+    width: 182px;
+    height: 182px;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  
+  .choice-list__section--head {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 30px;
+    text-align: left;
+  }
+
+  .choice-list__section--button {
+    max-width: 200px;
+  }
+}
+
+@media only screen and (min-width: 990px) {
+
+  .choice-list__section--heading h2 {
+    font-size: 64px;
+  }
+
+  .choice-list__section--subheading h3 {
+    font-size: 22px;
+    line-height: 26.4px;
+  }
+
+  .choice-list__section--button {
+    max-width: 362px;    
+  }
+
+  .choice-list__section--button a {
+    min-height: 80px;
+    font-size: 24px;
+  }
+
+  .choice-list__marquee--wrapper {
+    padding: 90px 0;
+  }
+}
+</style>
+
+<div class="choice-list overflow-x choice-list__{{ section.id }}">
+  <div class="choice-list__wrapper wrapper">
+    <div class="choice-list__section--head">
+      <div class="choice-list__header--wrapper">
+        <div class="choice-list__section--heading">
+          <h2>{{ heading }}</h2>
+        </div>
+        <div class="choice-list__section--subheading">
+          <h3>{{ subheading }}</h3>
+        </div>
+      </div>
+      <div class="choice-list__section--button">
+        <a href="{{ button_link }}">
+          {{ button_text }}
+        </a>
+      </div>
+    </div>
+    <div class="choice-list__marquee--wrapper">
+      {% if image != blank %}
+      <div class="choice-list__image">
+        {{ image 
+          | image_url: width: 650 
+          | image_tag: 
+              alt: alt, 
+              loading: "lazy", 
+              widths: "320, 480, 650", 
+              sizes: "(min-width: 769px) 650px, 100vw", 
+              class: "desktop-image"
+        }}
+        {{ mobile_image 
+          | image_url: width: 500 
+          | image_tag: 
+              alt: alt, 
+              loading: "lazy", 
+              widths: "320, 400, 500", 
+              sizes: "(max-width: 768px) 100vw, 500px", 
+              class: "mobile-image"
+        }}
+      </div>
+      {% endif %}
+      <div class="choice-list__main js-marquee marquee" style="--marquee-speed-pps: {{ section.settings.marquee_speed }}" aria-label="Scrolling marquee" data-direction="left" data-pause="hover">
+        <div class="choice-list__left--block marquee--track marquee__viewport">
+          <div class="choice-list__marquee--group marquee--group marquee__track" role="presentation">
+            <div class="marquee__segment">
+              {% for i in (1..5) %}
+                {% for block in section.blocks %}
+                {% assign image = block.settings.image %}
+                {% assign alt = image.alt | default: 'Thinking on which one to choose' %}
+                
+                <div class="choice-list__block loop-{{ i }}">
+                  {{
+                    image
+                    | image_url: width: 250
+                    | image_tag:
+                      alt: alt,
+                      loading: 'lazy',
+                      widths: '150, 200, 250',
+                      sizes: '(max-width: 480px) 100vw, 250px'
+                    }}
+                  </div>
+                {% endfor %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="choice-list__main js-marquee marquee" style="--marquee-speed-pps: {{ section.settings.marquee_speed }}" aria-label="Scrolling marquee" data-direction="right" data-pause="hover">
+        <div class="choice-list__left--block marquee--track marquee__viewport">
+          <div class="choice-list__marquee--group marquee--group marquee__track" role="presentation">
+            <div class="marquee__segment">
+            {% for i in (1..5) %}
+              {% for block in section.blocks %}
+                {% assign image = block.settings.image %}
+
+                <div class="choice-list__block loop-{{ i }}">
+                  {{
+                    image
+                    | image_url: width: 250
+                    | image_tag:
+                      alt: alt,
+                      loading: 'lazy',
+                      widths: '150, 200, 250',
+                      sizes: '(max-width: 480px) 100vw, 250px'
+                  }}
+                </div>
+              {% endfor %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+  
+{% schema %}
+{
+  "name": "Choice list",
+  "class": "choice--list",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Thinking on which one to choose?"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Get Your Personalized Recommendations!"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Take the quiz"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Play speed"
+    },
+    {
+      "type": "range",
+      "id": "marquee_speed",
+      "label": "Marquee Speed (pixels per second)",
+      "default": 120,
+      "min": 20,
+      "max": 500,
+      "step": 10
+    },
+    {
+      "type": "header",
+      "content": "Color settings"
+    },
+    {
+      "type": "color_background",
+      "id": "background_color",
+      "label": "Background",
+      "default": "linear-gradient(#ffffff, #ffffff)"
+    },
+    {
+      "type": "color_background",
+      "id": "background_color_mobile",
+      "label": "Background mobile",
+      "default": "linear-gradient(#D3EEB9, #D3EEB9)"
+    },
+    {
+      "type": "color_background",
+      "id": "card_background_color",
+      "label": "Card background",
+      "default": "linear-gradient(#ffffff, #ffffff)"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card border",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button background"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text"
+    },
+    {
+      "type": "color",
+      "id": "button_color_hover",
+      "label": "Button background hover"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color_hover",
+      "label": "Button text hover"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_top-mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding top mobile",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom-mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding bottom mobile",
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Choice list"
+    }
+  ]
+}
+{% endschema %}

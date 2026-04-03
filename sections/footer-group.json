@@ -1,0 +1,84 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "sea_moss_footer_XED8dP": {
+      "type": "sea-moss-footer",
+      "blocks": {
+        "menu_HjcPgT": {
+          "type": "menu",
+          "settings": {
+            "menu_1": "new-footer-1",
+            "menu_2": "new-footer-2",
+            "menu_3": ""
+          }
+        },
+        "subscribe_nQnkxi": {
+          "type": "subscribe",
+          "settings": {
+            "subscribe_title": "Newsletter Subscription",
+            "subscribe_text": "<p>Sign up for our newsletter to receive exclusive offers and updates straight to your inbox</p>"
+          }
+        },
+        "social_7ddzRD": {
+          "type": "social",
+          "settings": {
+            "social_title": "Our Social",
+            "social_text": "<p>Follow us on social media for updates and promotions</p>",
+            "show_social": true
+          }
+        }
+      },
+      "block_order": [
+        "menu_HjcPgT",
+        "subscribe_nQnkxi",
+        "social_7ddzRD"
+      ],
+      "name": "Footer",
+      "settings": {
+        "round_top_corners": true,
+        "logo": "shopify://shop_images/trueseamoss-footer__logo.png",
+        "show_payment_icons": true,
+        "background_color": "#285234",
+        "text_color": "#ffffff",
+        "copyright_color": "#a9baae",
+        "padding_top": 45,
+        "padding_bottom": 45,
+        "padding_top-mobile": 45,
+        "padding_bottom-mobile": 45,
+        "copyright_text": "<p>\"These statements have not been evaluated by the Food and Drug Administration.</p><p>This product is not intended to diagnose, treat, or prevent any disease.\"<br/><br/></p><p></p><p>© 2025, <a href=\"https://trueseamoss.com/pages/about-us\" title=\"https://trueseamoss.com/pages/about-us\">TrueSeaMoss</a>.</p>"
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "scheme-1",
+        "newsletter_enable": true,
+        "newsletter_heading": "Subscribe to our emails",
+        "enable_follow_on_shop": true,
+        "show_social": true,
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "payment_enable": true,
+        "show_policy": true,
+        "margin_top": 0,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "sea_moss_footer_XED8dP",
+    "footer"
+  ]
+}

@@ -1,0 +1,733 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_slider_PHjMAD": {
+      "type": "hero-slider",
+      "blocks": {
+        "slide_Up4ifY": {
+          "type": "slide",
+          "settings": {
+            "deskstop_image": "shopify://shop_images/Desktop_3.webp",
+            "mobile_image": "shopify://shop_images/Mobile_3.webp",
+            "heading": "Fuel Your Body & Mind",
+            "description": "<p>Enjoy sea moss powered wellness that helps boost energy, sharpen focus, and support digestion. Don’t miss out on our <strong>Sale </strong>& enjoy free gifts + <strong>up to 50% OFF</strong>!</p>",
+            "button_text": "GET STARTED",
+            "button_link": "shopify://products/sea-moss-gel-trueseamoss",
+            "guarantee_text": "30 Days Money Back Guarantee"
+          }
+        },
+        "slide_wt9eTY": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "deskstop_image": "shopify://shop_images/Hero_Banner_-_Desktop-new.webp",
+            "mobile_image": "shopify://shop_images/Hero_Banner_-_Mobile-new.webp",
+            "heading": "Sea Moss Gel Superfood",
+            "description": "<p>Experience tasty holistic wellness with over 90 minerals in a Jar.</p>",
+            "button_text": "GET STARTED",
+            "button_link": "shopify://products/sea-moss-gel-trueseamoss",
+            "guarantee_text": "30 Days Money Back Guarantee"
+          }
+        },
+        "slide_MEpfkn": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "deskstop_image": "shopify://shop_images/main-home-banner.png",
+            "mobile_image": "shopify://shop_images/main-home-banner-mob.png",
+            "heading": "Sea Moss Gel Superfood",
+            "description": "<p>Experience tasty holistic wellness with over 90 minerals in a Jar.</p>",
+            "button_text": "SHOP NOW",
+            "button_link": "shopify://products/true-sea-moss-gel-powerful-superfood",
+            "guarantee_text": "30 Days Money Back Guarantee"
+          }
+        }
+      },
+      "block_order": [
+        "slide_Up4ifY",
+        "slide_wt9eTY",
+        "slide_MEpfkn"
+      ],
+      "custom_css": [
+        "@media only screen and (min-width: 769px) and (max-width: 1280px) {.hero-slider__template--20009593700507__hero_slider_PHjMAD .hero-slider__content--description p {font-size: 20px; max-width: 400px; } .hero-slider__template--20009593700507__hero_slider_PHjMAD .hero-slider__content--heading h2 {font-size: 48px; }}"
+      ],
+      "name": "Hero Slider",
+      "settings": {
+        "slider_height": "large",
+        "slider_height-mobile": "extra-large",
+        "heading_color": "#ffffff",
+        "description_color": "#ffffff",
+        "button_color": "#4f4f4f",
+        "button_background": "#ffdc60",
+        "button_color-hover": "#060606",
+        "button_background-hover": "#ffffff",
+        "heading_size": 86,
+        "heading_size-mobile": 50,
+        "description_size": 30,
+        "description_size-mobile": 14
+      }
+    },
+    "running_line_W6Ltmf": {
+      "type": "running-line",
+      "blocks": {
+        "block_7LbGWG": {
+          "type": "block",
+          "settings": {
+            "text": "GLUTEN FREE"
+          }
+        },
+        "block_Tcj6bn": {
+          "type": "block",
+          "settings": {
+            "text": "100% VEGAN"
+          }
+        },
+        "block_JY7pzm": {
+          "type": "block",
+          "settings": {
+            "text": "NON GMO"
+          }
+        },
+        "block_Hykjyb": {
+          "type": "block",
+          "settings": {
+            "text": "DAIRY FREE"
+          }
+        },
+        "block_GVmxwJ": {
+          "type": "block",
+          "settings": {
+            "text": "SOY FREE"
+          }
+        },
+        "block_KKVWJK": {
+          "type": "block",
+          "settings": {
+            "text": "PALEO DIET"
+          }
+        }
+      },
+      "block_order": [
+        "block_7LbGWG",
+        "block_Tcj6bn",
+        "block_JY7pzm",
+        "block_Hykjyb",
+        "block_GVmxwJ",
+        "block_KKVWJK"
+      ],
+      "name": "Running line",
+      "settings": {
+        "background_color": "linear-gradient(247deg, rgba(213, 86, 14, 1), rgba(213, 86, 14, 1) 100%)",
+        "text_color": "#ffffff",
+        "marquee_speed": 60,
+        "text_size": 16,
+        "mobile_text_size": 16,
+        "padding_top": 10,
+        "padding_bottom": 10,
+        "padding_top-mobile": 10,
+        "padding_bottom-mobile": 10
+      }
+    },
+    "our_impact_6VXUhP": {
+      "type": "our-impact",
+      "blocks": {
+        "block_gjGEc6": {
+          "type": "block",
+          "settings": {
+            "hide_mobile": false,
+            "image_desktop": "shopify://shop_images/seamoss-sprouts-bristol.webp",
+            "desktop_height": "1",
+            "mobile_height": "1",
+            "desktop_width": "2",
+            "mobile_width": "2",
+            "image_style": "half",
+            "sub_title": "",
+            "title": "460+",
+            "text": "<p>Sprouts Shops and Retail Chains</p>",
+            "align_top": false,
+            "vertical_mobile": false,
+            "block_background": "#FFF",
+            "title_color": "#3b7865",
+            "sub_title_color": "#4b4b4b",
+            "text_color": "#4b4b4b"
+          }
+        },
+        "block_MHH9gK": {
+          "type": "block",
+          "settings": {
+            "hide_mobile": true,
+            "image_desktop": "shopify://shop_images/seamoss-happy-customers.webp",
+            "desktop_height": "2",
+            "mobile_height": "1",
+            "desktop_width": "1",
+            "mobile_width": "1",
+            "image_style": "background",
+            "sub_title": "",
+            "title": "500k+",
+            "text": "<p>Happy customers globally</p>",
+            "align_top": false,
+            "vertical_mobile": false,
+            "block_background": "#FFF",
+            "title_color": "#3b7865",
+            "sub_title_color": "#4b4b4b",
+            "text_color": "#4b4b4b"
+          }
+        },
+        "block_EEJ6K6": {
+          "type": "block",
+          "settings": {
+            "hide_mobile": true,
+            "image_desktop": "shopify://shop_images/seamoss-active-subscribers.webp",
+            "desktop_height": "2",
+            "mobile_height": "1",
+            "desktop_width": "1",
+            "mobile_width": "1",
+            "image_style": "background",
+            "sub_title": "",
+            "title": "100k+",
+            "text": "<p>Active subscribers who trust our brand</p>",
+            "align_top": false,
+            "vertical_mobile": false,
+            "block_background": "#FFF",
+            "title_color": "#3b7865",
+            "sub_title_color": "#4b4b4b",
+            "text_color": "#4b4b4b"
+          }
+        },
+        "block_N4GNci": {
+          "type": "block",
+          "settings": {
+            "hide_mobile": false,
+            "image_desktop": "shopify://shop_images/seamoss-social-icons.webp",
+            "image_mobile": "shopify://shop_images/tiktok-icon.webp",
+            "desktop_height": "1",
+            "mobile_height": "1",
+            "desktop_width": "1",
+            "mobile_width": "1",
+            "image_style": "half",
+            "sub_title": "",
+            "title": "250M",
+            "text": "<p>Views on social media</p>",
+            "align_top": false,
+            "vertical_mobile": false,
+            "block_background": "#FFF",
+            "title_color": "#3b7865",
+            "sub_title_color": "#4b4b4b",
+            "text_color": "#4b4b4b"
+          }
+        },
+        "block_gW9drp": {
+          "type": "block",
+          "settings": {
+            "hide_mobile": false,
+            "image_desktop": "shopify://shop_images/seamoss-best-seller.webp",
+            "image_mobile": "shopify://shop_images/amazon-icon.webp",
+            "desktop_height": "1",
+            "mobile_height": "1",
+            "desktop_width": "1",
+            "mobile_width": "1",
+            "image_style": "half",
+            "sub_title": "",
+            "title": "#1",
+            "text": "<p>Best Seller Amazon</p>",
+            "align_top": false,
+            "vertical_mobile": false,
+            "block_background": "#FFF",
+            "title_color": "#3b7865",
+            "sub_title_color": "#4b4b4b",
+            "text_color": "#4b4b4b"
+          }
+        }
+      },
+      "block_order": [
+        "block_gjGEc6",
+        "block_MHH9gK",
+        "block_EEJ6K6",
+        "block_N4GNci",
+        "block_gW9drp"
+      ],
+      "name": "Our Impact",
+      "settings": {
+        "main_heading": "",
+        "main_heading_color": "#3b7865",
+        "background_color": "linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(249, 239, 218, 1) 100%)",
+        "block_height_desktop": 160,
+        "block_height_mobile": 105,
+        "size_title": 48,
+        "size_title-mobile": 40,
+        "size_text": 20,
+        "size_text-mobile": 14,
+        "padding_top": 35,
+        "padding_bottom": 30,
+        "padding_top-mobile": 20,
+        "padding_bottom-mobile": 35
+      }
+    },
+    "featured_in_NeGHEE": {
+      "type": "featured-in",
+      "blocks": {
+        "featured_kCQqB4": {
+          "type": "featured",
+          "settings": {
+            "image": "shopify://shop_images/featured-in-icon-icon-new-york-weekly.webp",
+            "description": "<p>True Sea Moss, one of the leading providers of sea moss in the USA.</p>",
+            "star_rating": 5
+          }
+        },
+        "featured_aHMphR": {
+          "type": "featured",
+          "settings": {
+            "image": "shopify://shop_images/2024-10-15_09.36.38_1.jpg",
+            "description": "<p>The launch of True Sea Moss at Sprouts Farmers Market represents a celebration of health, wellness, and accessibility.</p>",
+            "star_rating": 5
+          }
+        },
+        "featured_6ewN3R": {
+          "type": "featured",
+          "settings": {
+            "image": "shopify://shop_images/buisness.svg",
+            "description": "<p>The product which is affordable to all customers while maintaining its commitment to naturalness, freshness, and customer service.</p>",
+            "star_rating": 5
+          }
+        },
+        "featured_f7W48n": {
+          "type": "featured",
+          "settings": {
+            "image": "shopify://shop_images/good-men-project.webp",
+            "description": "<p>True Sea Moss has made the Earth’s true natural minerals available to everyone.</p>",
+            "star_rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "featured_kCQqB4",
+        "featured_aHMphR",
+        "featured_6ewN3R",
+        "featured_f7W48n"
+      ],
+      "name": "Featured in",
+      "settings": {
+        "heading": "Featured In",
+        "heading_color": "#3b7865",
+        "background_color": "linear-gradient(180deg, rgba(249, 239, 218, 1), rgba(234, 206, 160, 1) 56%, rgba(244, 229, 195, 1) 97.122%)",
+        "card_background_color": "#ffffff",
+        "image_background_color": "#f5f5f5",
+        "description_color": "#4b4b4b",
+        "padding_top": 20,
+        "padding_bottom": 25,
+        "padding_top-mobile": 25,
+        "padding_bottom-mobile": 25
+      }
+    },
+    "why_it_works_kLaHAm": {
+      "type": "why-it-works",
+      "blocks": {
+        "info_left_7QtVgk": {
+          "type": "info-left",
+          "settings": {
+            "title": "Wildcrafted Ocean Algae",
+            "text": "<p>Sustainably harvested from pristine ocean waters.</p>"
+          }
+        },
+        "info_left_ikQ7wp": {
+          "type": "info-left",
+          "settings": {
+            "title": "Designed By Nature",
+            "text": "<p>Carries minerals and nutrients in whole-food form</p>"
+          }
+        },
+        "info_left_7Hg9dH": {
+          "type": "info-left",
+          "settings": {
+            "title": "Trusted By Generations",
+            "text": "<p>A staple in coastal diets for thousands of years.</p>"
+          }
+        },
+        "content_image_68MeA8": {
+          "type": "content-image",
+          "settings": {
+            "image": "shopify://shop_images/wildcrafted-sea-moss-gel-superfood-desk.webp",
+            "mobile_image": "shopify://shop_images/wildcrafted-sea-moss-gel-superfood-mob.webp",
+            "title": "Wildcrafted Ocean Algae",
+            "text": "<p>Sustainably harvested from pristine ocean waters.</p>"
+          }
+        },
+        "content_image_PcJ8rE": {
+          "type": "content-image",
+          "settings": {
+            "image": "shopify://shop_images/elderberry-sea-moss-gel-superfood-desk.webp",
+            "mobile_image": "shopify://shop_images/elderberry-sea-moss-gel-superfood-mob.webp",
+            "title": "Designed By Nature",
+            "text": "<p>Carries minerals and nutrients in whole-food form.</p>"
+          }
+        },
+        "content_image_FkinnX": {
+          "type": "content-image",
+          "settings": {
+            "image": "shopify://shop_images/spirulina-sea-moss-gel-superfood-desk.webp",
+            "mobile_image": "shopify://shop_images/spirulina-sea-moss-gel-superfood-mob.webp",
+            "title": "Trusted By Generations",
+            "text": "<p>A staple in coastal diets for thousands of years.</p>"
+          }
+        },
+        "content_image_PhKGJC": {
+          "type": "content-image",
+          "settings": {
+            "image": "shopify://shop_images/mango-sea-moss-gel-superfood-desk.webp",
+            "mobile_image": "shopify://shop_images/mango-sea-moss-gel-superfood-mob.webp",
+            "title": "Antioxidant Power",
+            "text": "<p>Helps defend cells with antioxidants like vitamins A & C.</p>"
+          }
+        },
+        "content_image_H76VEA": {
+          "type": "content-image",
+          "settings": {
+            "image": "shopify://shop_images/cherry-sea-moss-gel-superfood-desk.webp",
+            "mobile_image": "shopify://shop_images/cherry-sea-moss-gel-superfood-mob.webp",
+            "title": "Digestive Health",
+            "text": "<p>Supports a balanced microbiome with natural prebiotics.</p>"
+          }
+        },
+        "content_image_neXf74": {
+          "type": "content-image",
+          "settings": {
+            "image": "shopify://shop_images/strawberry-sea-moss-gel-superfood-desk.webp",
+            "mobile_image": "shopify://shop_images/strawberry-sea-moss-gel-superfood-mob.webp",
+            "title": "All-Day Energy",
+            "text": "<p>Helps sustain natural energy with ocean minerals.</p>"
+          }
+        },
+        "info_right_93ij6k": {
+          "type": "info-right",
+          "settings": {
+            "title": "Antioxidant Power",
+            "text": "<p>Helps defend cells with antioxidants like vitamins A & C.</p>"
+          }
+        },
+        "info_right_PeLj8d": {
+          "type": "info-right",
+          "settings": {
+            "title": "Digestive Health",
+            "text": "<p>Supports a balanced microbiome with natural prebiotics.</p>"
+          }
+        },
+        "info_right_X7Jwre": {
+          "type": "info-right",
+          "settings": {
+            "title": "All-Day Energy",
+            "text": "<p>Helps sustain natural energy with ocean minerals.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "info_left_7QtVgk",
+        "info_left_ikQ7wp",
+        "info_left_7Hg9dH",
+        "content_image_68MeA8",
+        "content_image_PcJ8rE",
+        "content_image_FkinnX",
+        "content_image_PhKGJC",
+        "content_image_H76VEA",
+        "content_image_neXf74",
+        "info_right_93ij6k",
+        "info_right_PeLj8d",
+        "info_right_X7Jwre"
+      ],
+      "name": "Why it Works",
+      "settings": {
+        "main_heading": "What is Sea Moss Known For",
+        "background_color": "linear-gradient(180deg, rgba(244, 229, 195, 1), rgba(240, 218, 178, 1) 22%, rgba(249, 250, 229, 1) 61%, rgba(241, 239, 219, 1) 95%)",
+        "heading_color": "#3b7865",
+        "text_color": "#4b4b4b",
+        "divider_color": "#ffc360",
+        "padding_top": 25,
+        "padding_bottom": 35,
+        "padding_top-mobile": 25,
+        "padding_bottom-mobile": 35
+      }
+    },
+    "best_sellers_kmqUGD": {
+      "type": "best-sellers",
+      "blocks": {
+        "product_DRXEPR": {
+          "type": "product",
+          "settings": {
+            "product": "sea-moss-gummies",
+            "custom_image": "shopify://shop_images/Perfect_Sea_Moss_On-the-Go_True_Sea_Moss_Gummies.webp",
+            "custom_title": "",
+            "image_background": ""
+          }
+        },
+        "product_74jN7p": {
+          "type": "product",
+          "disabled": true,
+          "settings": {
+            "product": "green-powder",
+            "custom_image": "shopify://shop_images/green-powder_sea_moss.webp",
+            "custom_title": "",
+            "image_background": ""
+          }
+        },
+        "product_HFakWU": {
+          "type": "product",
+          "settings": {
+            "product": "sea-moss-gel-trueseamoss",
+            "custom_image": "shopify://shop_images/sea-moss-gel-catalog.webp",
+            "custom_title": "",
+            "image_background": ""
+          }
+        },
+        "product_d9C7Qh": {
+          "type": "product",
+          "settings": {
+            "product": "sea-moss-elderberry-gummies",
+            "custom_image": "shopify://shop_images/eld-gummies3.webp",
+            "custom_title": "",
+            "image_background": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_DRXEPR",
+        "product_74jN7p",
+        "product_HFakWU",
+        "product_d9C7Qh"
+      ],
+      "name": "Best Sellers",
+      "settings": {
+        "round_section_corners": true,
+        "heading": "True Best Sellers",
+        "button_text": "View product",
+        "heading_color": "#d3eeb9",
+        "heading_color-mobile": "#3b7865",
+        "background_color": "linear-gradient(180deg, rgba(44, 83, 63, 1), rgba(44, 83, 63, 1) 19%, rgba(248, 246, 236, 1) 49%, rgba(248, 244, 235, 1) 100%)",
+        "background_color_mobile": "linear-gradient(180deg, rgba(248, 244, 235, 1), rgba(248, 244, 235, 1) 100%)",
+        "text_color": "#404040",
+        "button_color": "#444444",
+        "button_background": "#ffdc60",
+        "button_color-hover": "#444444",
+        "button_background-hover": "#ffffff",
+        "padding_top": 35,
+        "padding_bottom": 50,
+        "padding_top-mobile": 45,
+        "padding_bottom-mobile": 50
+      }
+    },
+    "good_for_LrTETB": {
+      "type": "good-for",
+      "blocks": {
+        "list_cYJaNq": {
+          "type": "list",
+          "settings": {
+            "icon": "shopify://shop_images/output-onlinegiftools.gif",
+            "heading": "Immunity Boost",
+            "description": "<p>Helps maintain your body’s natural defenses.</p>"
+          }
+        },
+        "list_jY3kA4": {
+          "type": "list",
+          "settings": {
+            "icon": "shopify://shop_images/output-onlinegiftools_1.gif",
+            "heading": "Gut Health",
+            "description": "<p>Aids digestive balance with natural prebiotic fibers.</p>"
+          }
+        },
+        "list_dR8QD3": {
+          "type": "list",
+          "settings": {
+            "icon": "shopify://shop_images/output-onlinegiftools_2.gif",
+            "heading": "Energy Metabolism",
+            "description": "<p>Carries key minerals that help turn food into steady fuel.</p>"
+          }
+        },
+        "list_6PUhPy": {
+          "type": "list",
+          "settings": {
+            "icon": "shopify://shop_images/output-onlinegiftools_3.gif",
+            "heading": "Daily Reset",
+            "description": "<p>Traditionally used to support gentle detox.</p>"
+          }
+        },
+        "list_AEh7dW": {
+          "type": "list",
+          "settings": {
+            "icon": "shopify://shop_images/output-onlinegiftools_792a7c9f-1e07-4e46-b042-b7b18f3aedaa.gif",
+            "heading": "Balanced Eating",
+            "description": "<p>Helps maintain satiety and mindful eating habits.</p>"
+          }
+        },
+        "running_element_bwwD8z": {
+          "type": "running_element",
+          "settings": {
+            "title": "GLUTEN FREE"
+          }
+        },
+        "running_element_MBEygY": {
+          "type": "running_element",
+          "settings": {
+            "title": "100% VEGAN"
+          }
+        },
+        "running_element_FtiRcz": {
+          "type": "running_element",
+          "settings": {
+            "title": "NON GMO"
+          }
+        },
+        "running_element_NHrzaQ": {
+          "type": "running_element",
+          "settings": {
+            "title": "DAIRY FREE"
+          }
+        },
+        "running_element_bPMQYc": {
+          "type": "running_element",
+          "settings": {
+            "title": "SOY FREE"
+          }
+        },
+        "running_element_RJpMDU": {
+          "type": "running_element",
+          "settings": {
+            "title": "PALEO DIET"
+          }
+        }
+      },
+      "block_order": [
+        "list_cYJaNq",
+        "list_jY3kA4",
+        "list_dR8QD3",
+        "list_6PUhPy",
+        "list_AEh7dW",
+        "running_element_bwwD8z",
+        "running_element_MBEygY",
+        "running_element_FtiRcz",
+        "running_element_NHrzaQ",
+        "running_element_bPMQYc",
+        "running_element_RJpMDU"
+      ],
+      "name": "Good for",
+      "settings": {
+        "background_image": "shopify://shop_images/hand_section_bg_a2f8107d-bc03-4d1f-8284-5f6cb4688628.webp",
+        "image": "shopify://shop_images/hand_superfood_gel.webp",
+        "heading": "One Ritual. All the Benefits.",
+        "heading_color": "#a5d05a",
+        "list_background_color": "linear-gradient(91deg, rgba(255, 255, 255, 1), rgba(224, 185, 121, 1) 100%)",
+        "list_heading_color": "#222222",
+        "list_description_color": "#4b4b4b",
+        "line_background_color": "linear-gradient(180deg, rgba(255, 255, 255, 0.23) 1%, rgba(255, 255, 255, 0.13) 96%)",
+        "line_title_color": "#ffffff",
+        "marquee_speed": 70,
+        "padding_top": 65,
+        "padding_bottom": 0,
+        "padding_top-mobile": 50,
+        "padding_bottom-mobile": 50
+      }
+    },
+    "choice_list_RCQEdP": {
+      "type": "choice-list",
+      "blocks": {
+        "image_e87r39": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/wildcrafted-nofon.webp"
+          }
+        },
+        "image_NaqwNy": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/strawberry-nofon.webp"
+          }
+        },
+        "image_rQFTTM": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/mango-nofon.webp"
+          }
+        },
+        "image_pX8GAD": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/cherry-nofon.webp"
+          }
+        },
+        "image_EWCczN": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/mangopineapple-nobg.webp"
+          }
+        },
+        "image_qgTj3b": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/blue-spirulina-nofon.webp"
+          }
+        },
+        "image_8TLqRT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/soursop-nofon.webp"
+          }
+        },
+        "image_6DGCPt": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Lemon_pie_-_new.webp"
+          }
+        }
+      },
+      "block_order": [
+        "image_e87r39",
+        "image_NaqwNy",
+        "image_rQFTTM",
+        "image_pX8GAD",
+        "image_EWCczN",
+        "image_qgTj3b",
+        "image_8TLqRT",
+        "image_6DGCPt"
+      ],
+      "name": "Choice list",
+      "settings": {
+        "image": "shopify://shop_images/black-woman.webp",
+        "mobile_image": "shopify://shop_images/black-woman-mobile.webp",
+        "heading": "Thinking on which one to choose?",
+        "subheading": "Get Your Personalized Recommendations!",
+        "button_text": "TAKE THE QUIZ",
+        "button_link": "shopify://pages/quiz",
+        "marquee_speed": 80,
+        "background_color": "linear-gradient(180deg, rgba(211, 238, 185, 0.2) 4%, rgba(211, 238, 185, 1) 18%, rgba(211, 238, 185, 1) 97%)",
+        "background_color_mobile": "linear-gradient(180deg, rgba(211, 238, 185, 1), rgba(211, 238, 185, 1) 100%)",
+        "card_background_color": "linear-gradient(180deg, rgba(253, 253, 253, 0.47), rgba(255, 255, 255, 0.35) 100%)",
+        "card_border_color": "#ffffff",
+        "heading_color": "#3b7865",
+        "subheading_color": "#222222",
+        "button_color": "#f5742b",
+        "button_text_color": "#ffffff",
+        "button_color_hover": "#ffffff",
+        "button_text_color_hover": "#ffc360",
+        "padding_top": 50,
+        "padding_bottom": 0,
+        "padding_top-mobile": 50,
+        "padding_bottom-mobile": 0
+      }
+    }
+  },
+  "order": [
+    "hero_slider_PHjMAD",
+    "running_line_W6Ltmf",
+    "our_impact_6VXUhP",
+    "featured_in_NeGHEE",
+    "why_it_works_kLaHAm",
+    "best_sellers_kmqUGD",
+    "good_for_LrTETB",
+    "choice_list_RCQEdP"
+  ]
+}

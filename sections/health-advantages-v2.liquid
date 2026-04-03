@@ -1,0 +1,521 @@
+<style>
+.health-advantage-{{ section.id }} {
+  background:{{ section.settings.background_color  }};
+  padding-top:{{ section.settings.padding_top_mobile }}px;
+  padding-bottom:{{ section.settings.padding_bottom_mobile }}px;
+}
+
+.health-advantage-{{ section.id }}  .health_advantage_main-heading h2 {
+  color:{{ section.settings.heading_color }};
+}
+
+.health-advantage-{{ section.id }} .unique_global--button a {
+  background-color:{{ section.settings.button_bg_color }};
+  color:{{ section.settings.button_text_color }};
+}
+
+.health-advantage-{{ section.id }} .unique_global--button a:hover {
+  color:{{ section.settings.button_text_hover_color }};
+}
+
+.health-advantage-{{ section.id }} .unique_global--button a:before {
+  background-color: {{ section.settings.button_bg_hover_color }};
+}
+
+@media only screen and (min-width: 768px) {
+
+  .health-advantage-{{ section.id }} {
+    padding-top:{{ section.settings.padding_top }}px;
+    padding-bottom:{{ section.settings.padding_bottom }}px;
+  }
+}
+
+.health_advantage_section {
+  overflow: hidden;
+}
+
+.health_advantage_section .wrapper {
+  position: relative;
+}
+
+.health_advantage_section .health_advantage_image {
+  display: none;
+  width: 66%;
+  position: absolute;
+  right: -22%;
+  bottom: 157px;
+  z-index: 2;
+}
+
+.health_advantage_section .health_advantage_image img {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.health_advantage_main-heading {
+  padding: 0 15px 32px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.health_advantage_main-heading h2 {
+  font-size: 40px;
+  line-height: normal;
+  font-weight: 800;
+  text-align: center;
+  margin: 0;
+}
+
+.health_advantage_main-heading strong {
+  color: #49827C;
+  text-decoration-line: underline;
+  text-decoration-skip-ink: none;
+  text-underline-position: from-font;
+}
+
+.health_advantage_block--item {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 24px;
+  padding: 24px;
+	box-sizing: border-box;
+}
+
+.health_advantage_block--item-title {
+  padding-bottom: 12px;
+}
+
+.health_advantage_block--item-title h3 {
+  font-family: var(--body-font);
+  font-size: 20px;
+  line-height: normal;
+  font-weight: 700;
+  margin: 0;
+}
+
+.health_advantage_block--title-wrapper .mouse_icon {
+  display: none;
+  width: 30px;
+  height: 30px;
+}
+
+.health_advantage_block--title-wrapper .mouse_icon img {
+  max-width: 100%;
+  width: 100%;
+}
+
+.health_advantage_block--item-text p {
+  font-size: 16px;
+  line-height: normal;
+  font-weight: 400;
+  margin: 0;
+}
+
+.health_advantage_block--item-number {
+  margin-top: auto;
+}
+
+.health_advantage_block--item-number span {
+  color: #49827C;
+  font-size: 48px;
+  line-height: normal;
+  font-weight: 400;
+}
+
+.health_advantage_section .unique_global--button {
+  padding: 32px 15px 0;
+}
+
+.health_advantage_section .unique_global--button a {
+  min-height: 78px;
+  width: 100%;
+  max-width: 526px;
+  margin: 0 auto;
+  background: linear-gradient(90deg, #FF934F 0%, #FF7340 100%);
+  border-radius: 20px;
+  padding: 24px;
+  font-family: var(--body-font);
+  color: #FFF;
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.health_advantage_section .unique_global--button a:hover {
+  border: 1px solid #fff;
+}
+
+.health-advantage-{{ section.id }} .health_advantage_block--item {
+  height: 260px;
+}
+
+@media only screen and (min-width: 769px) {
+
+  .health_advantage_wrapper_block {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+  }
+  
+  .health-advantage-{{ section.id }} .health_advantage_block--item {
+    height: 314px;
+  }
+
+  .health_advantage_block--item {
+    max-width: calc(50% - 24px);
+    padding: 32px;
+    border-radius: 32px;
+  }
+
+  .health_advantage_section .unique_global--button {
+    padding: 48px 0 0;
+  }
+
+  .health_advantage_section .unique_global--button a {
+    min-height: 102px;
+    border-radius: 24px;
+    padding: 32px;
+    font-size: 30px;
+  }
+
+  .health_advantage_section .health_advantage_image {
+    display: block;
+  }
+
+  .health_advantage_main-heading {
+    padding: 0 0px 48px;
+  }
+
+  .health_advantage_main-heading h2 {
+    font-size: 48px;
+  }
+
+  .health_advantage_block--item-title {
+    padding-bottom: 16px;
+  }
+
+  .health_advantage_block--item-title h3 {
+    font-size: 24px;
+  }
+
+  .health_advantage_block--item-text p {
+    font-size: 20px;
+  }
+
+  .health_advantage_block--item-number span {
+    font-size: 64px;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+
+  .health_advantage_section .health_advantage_image {
+    right: -18%;
+    width: 46%;
+    bottom: 153px;
+  }
+
+  .health_advantage_block--item {
+    max-width: calc(33.3333% - 24px);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  
+  .health_advantage_section .wrapper {
+    padding: 0;
+  }
+
+  .health_advantage_block--title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+
+  .health_advantage_block--title-wrapper .mouse_icon {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+
+  .health_advantage_main-heading {
+    max-width: 380px;
+    margin: 0 auto;
+  }
+} 
+
+@media only screen and (min-width: 1100px) and (max-width: 1340px) {
+
+  .health-advantage-{{ section.id }} .health_advantage_block--item {
+    height: 404px;
+  }
+}
+</style>
+
+<div class="health_advantage_section health-advantage-{{ section.id }}">
+  <div class="wrapper">
+    {% if section.settings.image != blank %}
+      <div class="health_advantage_image">
+        <img src="{{ section.settings.image | image_url: width: 950 }}" loading="lazy" alt="{{ section.settings.image.alt }}">
+      </div>
+    {% endif %}
+    {% if section.settings.heading != blank %}
+      <div class="health_advantage_main-heading">
+        {{ section.settings.heading | remove: '<p>' | remove: '</p>' }}
+      </div>
+    {% endif %}
+    <div class="health_advantage_wrapper">
+      <div class="swiper swiper-{{ section.id }}">
+        <div class="swiper-wrapper health_advantage_wrapper_block">
+          {% for block in section.blocks %}
+            <div class="health_advantage_block--item swiper-slide" style="background-color:{{ block.settings.card_bg_color }}">
+              <div class="health_advantage_block--item-content">
+                {% if block.settings.title != blank %}
+                  <div class="health_advantage_block--title-wrapper">
+                    <div class="health_advantage_block--item-title">
+                      <h3 style="color:{{ block.settings.title_color }}">{{ block.settings.title }}</h3>
+                    </div>
+                    {% if block.settings.icon != blank %}
+                    <div class="mouse_icon">
+                      <img src="{{ block.settings.icon | image_url }}" alt="{{ block.settings.icon.alt | default: 'With Sea Moss You may notice and feel significant differences'}}">
+                    </div>
+                {% endif %}
+                  </div>
+                {% endif %}
+                {% if block.settings.text != blank %}
+                  <div class="health_advantage_block--item-text">
+                    <p style="color:{{ block.settings.text_color }}">
+                      {{ block.settings.text | replace: '<p>', '' | replace: '</p>', '' }}
+                    </p>
+                  </div>
+                {% endif %}
+              </div>
+              {% if block.settings.text != blank %}
+                <div class="health_advantage_block--item-number">
+                  <span>
+                    {%- if forloop.index <= 9 %} 0{{ forloop.index }}{% else %} {{ forloop.index }} {% endif -%}
+                  </span>
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% if section.settings.button_label != blank %}
+      <div class="unique_global--button">
+        <a href="{{ section.settings.button_link }}" class="scrollable--button">{{ section.settings.button_label -}}</a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<script>
+  const section_scripts_{{ section.id | replace: "-", "" | replace: "--", "" }} = {
+    section: document.querySelector(".health-advantage-{{ section.id }}"),
+    slider: null,
+
+    init() {
+      if (window.innerWidth >= 769 || this.slider) return;
+      this.slider = new Swiper(this.section.querySelector(".swiper-{{ section.id }}"), {
+        speed: 1000,
+        grabCursor: true,
+        loop: false,
+        slidesPerView: 1.2,
+        slidesOffsetBefore: 15,
+        slidesOffsetAfter: 15,
+        spaceBetween: 15,
+      });
+    },
+
+    destroy() {
+      if (this.slider) {
+        this.slider.destroy(true, true);
+        this.slider = null;
+      }
+    },
+  };
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const sec = section_scripts_{{ section.id | replace: "-", "" | replace: "--", "" }};
+
+    function handleResize() {
+      if (window.innerWidth < 769) {
+        sec.init();
+      } else {
+        sec.destroy();
+      }
+    }
+
+    handleResize(); 
+    window.addEventListener("resize", handleResize);
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Health Advantage",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Select a image"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "heading"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "button Link"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color_background",
+      "id": "background_color",
+      "label": "Background",
+      "default": "linear-gradient(#FBF4DC,#fbf9de, #bde2d6)"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#4b4b4b"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background Color",
+      "default": "#FF790B"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_hover_color",
+      "label": "Button Background Hover Color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "button_text_hover_color",
+      "label": "Button Text Hover Color",
+      "default": "#FF790B"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 116
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top mobile",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding bottom mobile",
+      "default": 25
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Card",
+      "settings": [
+        {
+        "type": "image_picker",
+        "id": "icon",
+        "label": "Select a icon"
+       },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "color",
+          "id": "card_bg_color",
+          "label": "Card Background Color",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title Color",
+          "default": "#f5742b"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#4b4b4b"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Health Advantage"
+    }
+  ]
+}
+{% endschema %}

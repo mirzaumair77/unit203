@@ -1,0 +1,1057 @@
+{{ 'section-gel-drawer.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'gel.js' | asset_url }}" defer="defer"></script>
+
+{% if product.metafields.custom.redirect %}
+  <script>
+      window.location.href = "{{ product.metafields.custom.redirect }}";
+  </script>
+{% endif %}
+
+{% liquid
+  assign chose_pack_size = section.settings.chose_pack_size
+  assign process_text_taste_step = section.settings.process_text_taste_step
+  assign final_text_taste_step = section.settings.final_text_taste_step
+  assign global_max_quantity = section.settings.global_max_quantity
+  assign plug_image = section.settings.plug_image
+  assign quantity_heading = section.settings.quantity_heading
+  assign flavour_heading = section.settings.flavour_heading
+
+  assign productSellingObj = product.selected_or_first_available_variant.selling_plan_allocations
+
+  for item_prop in productSellingObj
+    assign productPriceSelling = item_prop.price
+  endfor
+
+  assign cart_quantity = 0
+  assign cart_quantity_sub = 0
+  assign id_variant = ''
+  for product in section.settings.product_list_gel
+    for variant in product.variants
+      assign id_variant = id_variant | append: variant.id
+    endfor
+  endfor
+
+  for line_item in cart.items
+    if id_variant contains line_item.id
+      if line_item.selling_plan_allocation != blank
+        assign cart_quantity_sub = cart_quantity_sub | plus: line_item.quantity
+      else
+        assign cart_quantity = cart_quantity | plus: line_item.quantity
+      endif
+    endif
+  endfor
+%}
+
+<gel-drawer
+  data-clarity-try-it-now-id="{{ section.settings.clarity_try_it_now_id }}"
+  data-clarity-try-it-now-theme="{{ section.settings.clarity_try_it_now_theme }}"
+  data-clarity-choose-flavor-id="{{ section.settings.clarity_choose_flavor_id }}"
+  data-clarity-choose-flavor-theme="{{ section.settings.clarity_choose_flavor_theme }}"
+  data-clarity-add-to-cart-first-id="{{ section.settings.clarity_add_to_cart_first_id }}"
+  data-clarity-add-to-cart-first-theme="{{ section.settings.clarity_add_to_cart_first_theme }}"
+  data-clarity-add-to-cart-id="{{ section.settings.clarity_add_to_cart_id }}"
+  data-clarity-add-to-cart-theme="{{ section.settings.clarity_add_to_cart_theme }}"
+  data-clarity-show-cart-id="{{ section.settings.clarity_show_cart_id }}"
+  data-clarity-show-cart-theme="{{ section.settings.clarity_show_cart_theme }}"
+  data-datalayer-try-it-now="{{ section.settings.datalayer_try_it_now }}"
+  data-datalayer-choose-flavor="{{ section.settings.datalayer_choose_flavor }}"
+  data-datalayer-add-to-cart-first="{{ section.settings.datalayer_add_to_cart_first }}"
+  data-datalayer-add-to-cart="{{ section.settings.datalayer_add_to_cart }}"
+  data-datalayer-show-cart="{{ section.settings.datalayer_show_cart }}"
+>
+  {% assign free_gifts = product.metafields.custom.dawn_free_gifts.value %}
+
+  {% for free_gift in free_gifts %}
+    {% assign free_gift_in_cart = false %}
+    {% for line_item in cart.items %}
+      {% if id_variant contains line_item.id %}
+        {% if line_item.properties.Free == 'Product sea moss gel trueseamoss' and line_item.product_id == free_gift.id %}
+          {% assign free_gift_in_cart = true %}
+          {% break %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    <input
+      data-free-product
+      type="hidden"
+      class="free-input"
+      data-handle="{{product.handle}}"
+      {% if free_gift_in_cart %}
+        data-quantity="0"
+      {% else %}
+        data-quantity="1"
+      {% endif %}
+      value="{{ free_gift.selected_or_first_available_variant.id }}"
+      name="id"
+    >
+  {% endfor %}
+
+  <div id="GelDrawer-Overlay" class="gel-bf-drawer__overlay"></div>
+  <div class="gel-bf-drawer" data-drawer>
+    <div class="gel-bf-drawer__main" data-productid="{{ product.id }}">
+      <div class="gel-bf-drawer__images--container">
+        <div class="gel-bf-drawer__images--wrapper">
+          <div class="gel-bf--drawer__close-quantity--header">
+            <div class="gel-bf-drawer__close--button" data-close>
+              <svg width="22" height="16" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 9C21.5523 9 22 8.55228 22 8C22 7.44772 21.5523 7 21 7V9ZM0.292893 7.29289C-0.0976311 7.68342 -0.0976311 8.31658 0.292893 8.70711L6.65685 15.0711C7.04738 15.4616 7.68054 15.4616 8.07107 15.0711C8.46159 14.6805 8.46159 14.0474 8.07107 13.6569L2.41421 8L8.07107 2.34315C8.46159 1.95262 8.46159 1.31946 8.07107 0.928932C7.68054 0.538408 7.04738 0.538408 6.65685 0.928932L0.292893 7.29289ZM21 7H1V9H21V7Z" fill="#4B4B4B"></path>
+              </svg>
+            </div>
+            {% if quantity_heading != blank %}
+              <div class="gel-bf--drawer__list--quantity--heading active desktop--hide" data-quantity-heading>
+                <h4>{{ quantity_heading }}</h4>
+              </div>
+            {% endif %}
+            {% if flavour_heading != blank %}
+              <div class="gel-bf--drawer__list--flavour--heading desktop--hide" data-flavour-heading>
+                <h4>{{ flavour_heading }}</h4>
+              </div>
+            {% endif %}
+            <div class="gel-bf--drawer__step-progress--wrapper desktop--hide">
+              <div class="gel-bf--drawer__bar--progress" data-step-progress-bar></div>
+              <div class="gel-bf--drawer__step-progress" data-step-progress>
+                <span>1 of 2</span>
+              </div>
+            </div>
+          </div>
+          <div class="gel-bf-drawer__images--main">
+            {% for i in (1..global_max_quantity) %}
+              {% if plug_image != blank %}
+                <div class="gel-bf-drawer__image" data-preview-image>
+                  <div class="plug" data-plug-image>
+                    {{
+                      plug_image
+                      | image_url: width: 500
+                      | image_tag:
+                        alt: plug_image.alt,
+                        loading: 'lazy',
+                        widths: '360, 480, 600, 800, 1000',
+                        sizes: '(max-width: 768px) 100vw, 500px'
+                    }}
+                  </div>
+                  <div class="variant">
+                    <img
+                      class="variant-image"
+                      data-name=""
+                      src="{{ plug_image | img_url: 'master' }}"
+                      alt="{{ product.title }}"
+                      loading="lazy"
+                    >
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div class="gel-bf-drawer__step--information">
+            {% if chose_pack_size != blank %}
+              <div class="gel-bf-drawer__data--serving-size" >
+                <span>{{ chose_pack_size }}</span>
+              </div>
+            {% endif %}
+            {% if process_text_taste_step != blank %}
+              <div class="gel-bf-drawer__data--taste-step" >
+                <span data-default="{{ process_text_taste_step }}" data-final="{{ final_text_taste_step }}">{{ process_text_taste_step }}</span>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="gel-bf-drawer__form--wrapper">
+        <div class="gel-bf-drawer__form--main">
+          <div class="gel-bf--drawer__list--quantity-header mobile--hide">
+            {% if quantity_heading != blank %}
+              <div class="gel-bf--drawer__list--quantity--heading active" data-quantity-heading>
+                <h4>{{ quantity_heading }}</h4>
+              </div>
+            {% endif %}
+            {% if flavour_heading != blank %}
+              <div class="gel-bf--drawer__list--flavour--heading" data-flavour-heading>
+                <h4>{{ flavour_heading }}</h4>
+              </div>
+            {% endif %}
+            <div class="gel-bf--drawer__step-progress--wrapper">
+              <div class="gel-bf--drawer__bar--progress" data-step-progress-bar></div>
+              <div class="gel-bf--drawer__step-progress" data-step-progress>
+                <span>1 of 2</span>
+              </div>
+            </div>
+          </div>
+          <div class="gel-bf-drawer__quantity--flavour--wrapper">
+            <div class="messages-errors">
+              <div class="notification__picker" data-quantity-exceeded-error>Change The Quantity</div>
+              <div class="notification__error-picker" data-quantity-low-error>Not enough flavors selected</div>
+            </div>
+
+            {% liquid
+              assign badge_image = section.settings.badge_image
+
+              assign name_quantity_1 = section.settings.name_quantity_1
+              assign name_quantity_2 = section.settings.name_quantity_2
+              assign name_quantity_3 = section.settings.name_quantity_3
+
+              assign sub_quantity_1 = section.settings.sub_name_quantity_1
+              assign sub_quantity_2 = section.settings.sub_name_quantity_2
+              assign sub_quantity_3 = section.settings.sub_name_quantity_3
+
+              assign text_badge_1 = section.settings.text_badge_1
+              assign text_badge_2 = section.settings.text_badge_2
+              assign text_badge_3 = section.settings.text_badge_3
+
+              assign text_badge_one_time_1 = section.settings['text_badge_one-time_1']
+              assign text_badge_one_time_2 = section.settings['text_badge_one-time_2']
+              assign text_badge_one_time_3 = section.settings['text_badge_one-time_3']
+
+              assign bg_color_1 = section.settings.bg_color_1
+              assign bg_color_2 = section.settings.bg_color_2
+              assign bg_color_3 = section.settings.bg_color_3
+
+              assign text_color_1 = section.settings.text_color_1
+              assign text_color_2 = section.settings.text_color_2
+              assign text_color_3 = section.settings.text_color_3
+
+              assign ex_text_badge_1 = section.settings.ex_text_badge_1
+              assign ex_text_badge_2 = section.settings.ex_text_badge_2
+              assign ex_text_badge_3 = section.settings.ex_text_badge_3
+
+              assign ex_bg_color_1 = section.settings.ex_bg_color_1
+              assign ex_bg_color_2 = section.settings.ex_bg_color_2
+              assign ex_bg_color_3 = section.settings.ex_bg_color_3
+
+              assign ex_text_color_1 = section.settings.ex_text_color_1
+              assign ex_text_color_2 = section.settings.ex_text_color_2
+              assign ex_text_color_3 = section.settings.ex_text_color_3
+            %}
+
+            <form method="post" action="/cart/add">
+              <div class="gel-bf-drawer__quantity--selector">
+                {% for variant in product.variants %}
+                  {% unless variant.title == '5 Packs' %}
+                    {% if variant.title == '2 Packs' %}
+                      <div
+                        class="gel-bf-drawer__bundle--wrapper active"
+                        data-variant="{{ variant.id }}"
+                        data-bundle-quantity="{{ variant.title | replace:'Pack', '' | replace:'s','' | strip }}"
+                      >
+                        {% if ex_text_badge_2 != blank %}
+                          <div
+                            class="gel-bf-drawer__bundle--tag"
+                            style="--color-text: {{ ex_text_color_2 }}; --background-color: {{ ex_bg_color_2 }}"
+                          >
+                            <span>{{ ex_text_badge_2 }}</span>
+                          </div>
+                        {% endif %}
+
+                        <input type="radio" id="pack_{{ variant.id }}" name="pack" checked value="{{ variant.id }}">
+                        <label for="pack_{{ variant.id }}">
+                          <div class="gel-bf-drawer__bundle--main">
+                            <div class="gel-bf-drawer__bundle--quantity">
+                              {% if name_quantity_2 != blank %}
+                                <span>{{ name_quantity_2 }}</span>
+                              {% else %}
+                                <span>{{ variant.title }}</span>
+                              {% endif %}
+                            </div>
+                            <div class="gel-bf-drawer__bundle--price" data-bundle-price>
+                              <span>{{ variant.price | money }}</span>
+                            </div>
+                            <div class="gel-bf-drawer__bundle--compare--price" data-bundle-compare-price>
+                              <span>{{ variant.compare_at_price | money }}</span>
+                            </div>
+                            <div class="gel-bf-drawer__bundle--discount">
+                              {% if text_badge_2 != blank %}
+                                <span>{{ text_badge_2 }}</span>
+                              {% else %}
+                                <span>
+                                  {% assign discount_amount = variant.compare_at_price | minus: variant.price %}
+                                  {% assign discount_percent = discount_amount
+                                    | times: 100
+                                    | divided_by: variant.compare_at_price
+                                  %}
+                                  {{ discount_percent | round }}% OFF
+                                </span>
+                              {% endif %}
+                            </div>
+                            {% if text_badge_one_time_2 != blank %}
+                              <div
+                                class="gel-bf-drawer__quantity--badge"
+                                data-badge-one-time
+                                style="--color-text: {{ text_color_2 }}; --background-color: {{ bg_color_2 }}"
+                              >
+                                <span>{{ text_badge_one_time_2 }}</span>
+                              </div>
+                            {% endif %}
+                            {% if sub_quantity_2 != blank %}
+                              <div class="gel-bf-drawer__bundle--subquantity">
+                                <span>{{ sub_quantity_2 }}</span>
+                              </div>
+                            {% endif %}
+                          </div>
+
+                          {% if badge_image != blank %}
+                            <div class="gel-bf-drawer__bundle--badge">
+                              {{
+                                badge_image
+                                | image_url: width: 130
+                                | image_tag:
+                                  alt: badge_image.alt,
+                                  loading: 'lazy',
+                                  widths: '65, 100, 130, 160',
+                                  sizes: '(max-width: 480px) 100px, 130px'
+                              }}
+                            </div>
+                          {% endif %}
+                        </label>
+                      </div>
+                    {% else %}
+                      <div
+                        class="gel-bf-drawer__bundle--wrapper"
+                        data-variant="{{ variant.id }}"
+                        data-bundle-quantity="{{ variant.title | replace:'Pack', '' | replace:'s','' | strip }}"
+                      >
+                        {% if variant.title == '1 Pack' %}
+                          {% if ex_text_badge_1 != blank %}
+                            <div
+                              class="gel-bf-drawer__bundle--tag"
+                              style="--color-text: {{ ex_text_color_1 }}; --background-color: {{ ex_bg_color_1 }}"
+                            >
+                              <span>{{ ex_text_badge_1 }}</span>
+                            </div>
+                          {% endif %}
+                        {% else %}
+                          {% if ex_text_badge_3 != blank %}
+                            <div
+                              class="gel-bf-drawer__bundle--tag"
+                              style="--color-text: {{ ex_text_color_3 }}; --background-color: {{ ex_bg_color_3 }}"
+                            >
+                              <span>{{ ex_text_badge_3 }}</span>
+                            </div>
+                          {% endif %}
+                        {% endif %}
+
+                        <input type="radio" id="pack_{{ variant.id }}" name="pack" value="{{ variant.id }}">
+                        <label for="pack_{{ variant.id }}">
+                          <div class="gel-bf-drawer__bundle--main">
+                            <div class="gel-bf-drawer__bundle--quantity">
+                              {% if variant.title == '1 Pack' %}
+                                <span>{{ name_quantity_1 }}</span>
+                              {% elsif variant.title == '3 Packs' %}
+                                <span>{{ name_quantity_3 }}</span>
+                              {% else %}
+                                <span>{{ variant.title }}</span>
+                              {% endif %}
+                            </div>
+                            <div class="gel-bf-drawer__bundle--price" data-bundle-price>
+                              <span>{{ variant.price | money }}</span>
+                            </div>
+                            <div class="gel-bf-drawer__bundle--compare--price" data-bundle-compare-price>
+                              <span>{{ variant.compare_at_price | money }}</span>
+                            </div>
+                            <div class="gel-bf-drawer__bundle--discount">
+                              {% if variant.title == '1 Pack' %}
+                                <span>{{ text_badge_1 }}</span>
+                              {% elsif variant.title == '3 Packs' %}
+                                <span>{{ text_badge_3 }}</span>
+                              {% else %}
+                                <span>
+                                  {% assign discount_amount = variant.compare_at_price | minus: variant.price %}
+                                  {% assign discount_percent = discount_amount
+                                    | times: 100
+                                    | divided_by: variant.compare_at_price
+                                  %}
+                                  {{ discount_percent | round }}% OFF
+                                </span>
+                              {% endif %}
+                            </div>
+                            {% if variant.title == '1 Pack' %}
+                              {% if text_badge_one_time_1 != blank %}
+                                <div
+                                  class="gel-bf-drawer__quantity--badge"
+                                  data-badge-one-time
+                                  style="--color-text: {{ text_color_1 }}; --background-color: {{ bg_color_1 }}"
+                                >
+                                  <span>{{ text_badge_one_time_1 }}</span>
+                                </div>
+                              {% endif %}
+                            {% elsif variant.title == '3 Packs' %}
+                              {% if text_badge_one_time_3 != blank %}
+                                <div
+                                  class="gel-bf-drawer__quantity--badge"
+                                  data-badge-one-time
+                                  style="--color-text: {{ text_color_3 }}; --background-color: {{ bg_color_3 }}"
+                                >
+                                  <span>{{ text_badge_one_time_3 }}</span>
+                                </div>
+                              {% endif %}
+                            {% endif %}
+                            {% if sub_quantity_1 != blank %}
+                              {% if variant.title == '1 Pack' %}
+                                <div class="gel-bf-drawer__bundle--subquantity">
+                                  <span>{{ sub_quantity_1 }}</span>
+                                </div>
+                              {% endif %}
+                            {% endif %}
+                            {% if sub_quantity_3 != blank %}
+                              {% if variant.title == '3 Packs' %}
+                                <div class="gel-bf-drawer__bundle--subquantity">
+                                  <span>{{ sub_quantity_3 }}</span>
+                                </div>
+                              {% endif %}
+                            {% endif %}
+                          </div>
+                        </label>
+                      </div>
+                    {% endif %}
+                  {% endunless %}
+                {% endfor %}
+              </div>
+              <div class="gel-bf-drawer__pick--flavour--main" data-list-variant>
+                <input
+                  type="hidden"
+
+                  data-max-selected="{{section.settings.initial_variant_order |  default: 4}}"
+                  data-full-price
+                  data-main-product="0"
+                  data-general-quantity="0"
+
+                  data-cart-quantity="{{ cart_quantity }}"
+                  data-cart-quantity-sub="{{ cart_quantity_sub }}"
+
+                  data-value-sub="{{ productPriceSelling }}"
+                  data-value="{{ product.price }}"
+                  data-price-sub="{{ productPriceSelling }}"
+
+                  value="{{ product.price }}"
+                  data-subscribe="true"
+                  data-select-variant="false"
+                >
+                {% assign list_variant = product.metafields.custom.product_list_for_tastes.value %}
+
+                {% for item in list_variant %}
+                  {%- liquid
+                    assign index = forloop.index
+                    assign extra_index = extra_index | plus: 1
+                    assign current_variant = item
+
+                    assign product_title = ''
+                    if current_variant.product.metafields.custom.title_for_taste != blank
+                      assign product_title = current_variant.product.metafields.custom.title_for_taste
+                    else
+                      assign product_title = current_variant.product.title
+                    endif
+
+                    assign product_badge = current_variant.product.metafields.custom.badge_for_taste
+                    assign product_badge_new = current_variant.product.metafields.custom.badge_flavors
+
+                    assign sellingObj = current_variant.selling_plan_allocations
+                    assign selling_plan_id = ''
+                    for itemSell in sellingObj
+                      assign selling_plan_id = itemSell.selling_plan.id
+                      assign priceSelling = item.price | divided_by: 100.0
+                    endfor
+
+                    if current_variant.product.metafields.custom.featured_image_for_taste != blank
+                      assign product_img = current_variant.product.metafields.custom.featured_image_for_taste
+                    else
+                      assign product_img = current_variant.product.featured_image
+                    endif
+
+                    if current_variant.product.metafields.custom.picture_of_a_can != blank
+                      assign dataImage = current_variant.product.metafields.custom.picture_of_a_can.value | image_url
+                    else
+                      assign dataImage = ''
+                    endif
+
+                    assign variant_available = current_variant.available
+                    assign variant_price = current_variant.price | divided_by: 100.0
+                    assign variant_id = current_variant.id
+
+                    for tag in current_variant.product.tags
+                      assign tag_lower_case = tag | downcase
+                      if tag_lower_case == 'new'
+                        assign new_variant = true
+                        break
+                      else
+                        assign new_variant = false
+                      endif
+                    endfor
+
+                    assign isSelling_plan = current_variant.selling_plan_allocations
+                  -%}
+
+                  {% if variant_available and isSelling_plan != blank %}
+                    <variant-item
+                      class="variant_item {{classToggleMode}} {{ forloop.index }} gel-bf-drawer__pick--flavour--card"
+                      data-image="{{ dataImage }}"
+                    >
+                      <script data-json type="application/json">
+                        {{current_variant | json }}
+                      </script>
+                      <script data-json-product type="application/json">
+                        {{current_variant.product | json }}
+                      </script>
+                      <input type="hidden" data-variant-id name="items[{{index}}][id]" value="{{variant_id}}">
+                      <input
+                        type="hidden"
+                        data-selling
+                        name="items[{{index}}][selling_plan]"
+                        value="{{selling_plan_id}}"
+                      >
+                      <input type="hidden" data-price name="price" data-value="{{variant_price}}" value="0">
+                      <input
+                        type="hidden"
+                        data-price-selling
+                        name="price-selling"
+                        data-value="{{priceSelling}}"
+                        value="0"
+                      >
+                      <input
+                        data-ver-id
+                        type="hidden"
+                        data-cart-el="{{current_variant.product.id}}"
+                        data-key-cart=""
+                        value="0"
+                        data-change="false"
+                        data-old-variant=""
+                        data-new-variant=""
+                      >
+                      <input
+                        data-ver-id-sub
+                        type="hidden"
+                        data-cart-el-sub="{{ current_variant.product.id }}"
+                        data-key-cart=""
+                        value="0"
+                        data-change="false"
+                        data-old-variant=""
+                        data-new-variant=""
+                      >
+                      <div class="gel-bf-drawer__pick--flavour--card-wrapper" data-image="{{ dataImage }}">
+                        <link rel="preload" as="image" href="{{ dataImage }}">
+                        <div class="gel-bf-drawer__pick--flavour" for="flavour_{{ current_variant.id }}">
+                          <div class="gel-bf-drawer__pick-flavour-image--wrapper">
+                            <div class="gel-bf-drawer__pick--flavour--image">
+                              {{
+                                product_img
+                                | image_url: width: 200
+                                | image_tag:
+                                  alt: product_img.alt,
+                                  loading: 'lazy',
+                                  widths: '100, 150, 200, 300, 400',
+                                  sizes: '(max-width: 480px) 150px, (max-width: 768px) 200px, 200px'
+                              }}
+                            </div>
+
+                            <button class="gel-bf-drawer__pick--flavour--add" name="button">
+                              <span class="gel-bf-drawer__pick--flavour--add-icon">+</span>
+                            </button>
+
+                            <div class="gel-bf-drawer__pick--flavour--quantity">
+                              <button class="quantity--button quantity--minus" type="button" name="minus">-</button>
+                              <input
+                                type="number"
+                                name="items[{{index}}][quantity]"
+                                class="quantity-value"
+                                min="0"
+                                value="0"
+                                onkeydown="return false"
+                                readonly
+                                data-quantity
+                                data-image="{{ dataImage }}"
+                              >
+                              <button class="quantity--button quantity--add" type="button" name="plus">+</button>
+                            </div>
+
+                            <input type="hidden" name="items[{{index}}][id]" value="{{variant_id}}">
+                            {% comment %} <input
+                              type="hidden"
+                              name="items[{{index}}][selling_plan]"
+                              value="{{ selling_plan_id }}"
+                              data-popup-flavour-selling-plan
+                            > {% endcomment %}
+                            <input
+                              type="hidden"
+                              name="items[{{index}}]properties[_main_bundle-id]"
+                              value="{{product.selected_or_first_available_variant.id}}"
+                              data-popup-flavour-main-bundle-id
+                            >
+                          </div>
+
+                          {% if product_badge != blank %}
+                            <div class="gel-bf-drawer__pick--flavour-badge">
+                              {{
+                                product_badge
+                                | image_url: width: 120
+                                | image_tag:
+                                  alt: product_badge.alt,
+                                  loading: 'lazy',
+                                  widths: '60, 90, 120, 150',
+                                  sizes: '(max-width: 480px) 90px, 120px'
+                              }}
+                            </div>
+                          {% endif %}
+
+                          <div class="gel-bf-drawer__pick--flavour-title">
+                            <h4>{{ product_title | capitalize }}</h4>
+                          </div>
+                        </div>
+                      </div>
+                    </variant-item>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gel-bf-drawer__footer--container">
+      <div class="gel-bf-drawer__footer--main">
+        <div class="gel-bf-drawer__guarantee--main">
+          {% for i in (1..4) %}
+            {% assign guarantee_text_key = 'guarantee_text_' | append: i %}
+            {% assign gurantee_text = section.settings[guarantee_text_key] %}
+
+            {% if gurantee_text != blank %}
+              <div class="gel-bf-drawer__guarantee--item">
+                <div class="gel-bf-drawer__guarantee--icon">
+                  <svg width="9" height="7" viewBox="0 0 9 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 3.5L3.33333 6L8 1" stroke="#357A57" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div class="gel-bf-drawer__guarantee--text">
+                  <span>{{ gurantee_text }}</span>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="gel-bf-drawer__price--button-wrapper">
+          <div class="gel-bf-drawer__price--switch">
+            <div
+              class="gel-bf-drawer__price--main active"
+            >
+              <div class="gel-bf-drawer__price" data-total-price>
+                <span></span>
+              </div>
+              <div class="gel-bf-drawer__compare--price" data-total-compare-price>
+                <span></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gel-bf-drawer__switch--tag">
+            <div class="gel-bf-drawer__switch--text one-time-switch-text">
+              <p>Switch to one time</p>
+            </div>
+            <div class="gel-bf-drawer__switch--text subscription-switch-text">
+              <p>Switch to subscription</p>
+            </div>
+            <button class="gel-bf-drawer__switch--button" id="subscribe-switch">
+              <span class="round_element"></span>
+            </button>
+          </div>
+          <div class="gel-bf-drawer__button--actions">
+            <button class="gel-bf-drawer__button gel-bf-drawer__button--flavor" type="button" data-next-step>
+              <span>Choose Flavor</span>
+              <div class="gel-bf-drawer__button--icon">
+                <svg width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M25.0607 10.9393C25.6464 11.5251 25.6464 12.4749 25.0607 13.0607L15.5147 22.6066C14.9289 23.1924 13.9792 23.1924 13.3934 22.6066C12.8076 22.0208 12.8076 21.0711 13.3934 20.4853L21.8787 12L13.3934 3.51472C12.8076 2.92893 12.8076 1.97919 13.3934 1.3934C13.9792 0.807611 14.9289 0.807611 15.5147 1.3934L25.0607 10.9393ZM0 10.5L24 10.5V13.5L0 13.5L0 10.5Z" fill="white"></path>
+                </svg>
+              </div>
+            </button>
+
+            <button class="gel-bf-drawer__button gel-bf-drawer__button--checkout" type="button" data-checkout>
+              <span>Checkout</span>
+              <div class="gel-bf-drawer__button--icon">
+                <svg width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M25.0607 10.9393C25.6464 11.5251 25.6464 12.4749 25.0607 13.0607L15.5147 22.6066C14.9289 23.1924 13.9792 23.1924 13.3934 22.6066C12.8076 22.0208 12.8076 21.0711 13.3934 20.4853L21.8787 12L13.3934 3.51472C12.8076 2.92893 12.8076 1.97919 13.3934 1.3934C13.9792 0.807611 14.9289 0.807611 15.5147 1.3934L25.0607 10.9393ZM0 10.5L24 10.5V13.5L0 13.5L0 10.5Z" fill="white"></path>
+                </svg>
+              </div>
+            </button>
+                
+              {% comment %}
+              <button class="gel-bf-drawer__button gel-bf-drawer__button--add" type="submit" {% unless settings.cart_type == 'drawer_unit' %}data-add-to-cart{% endunless %}>
+                <span>Checkout</span>
+                <div class="gel-bf-drawer__button--icon">
+                  <svg width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M25.0607 10.9393C25.6464 11.5251 25.6464 12.4749 25.0607 13.0607L15.5147 22.6066C14.9289 23.1924 13.9792 23.1924 13.3934 22.6066C12.8076 22.0208 12.8076 21.0711 13.3934 20.4853L21.8787 12L13.3934 3.51472C12.8076 2.92893 12.8076 1.97919 13.3934 1.3934C13.9792 0.807611 14.9289 0.807611 15.5147 1.3934L25.0607 10.9393ZM0 10.5L24 10.5V13.5L0 13.5L0 10.5Z" fill="white"></path>
+                  </svg>
+                </div>
+              </button>
+            {% endcomment %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</gel-drawer>
+
+{% schema %}
+{
+  "name": "Gel BF Drawer",
+  "class": "gel-drawer-section",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Text quantity step"
+    },
+    {
+      "type": "text",
+      "id": "chose_pack_size",
+      "label": "Chose pack size",
+      "info": "Text on start quantity step",
+      "default": "Choose Serving Size"
+    },
+    {
+      "type": "header",
+      "content": "Text taste step"
+    },
+    {
+      "type": "text",
+      "id": "process_text_taste_step",
+      "label": "Process text",
+      "info": " '|' symbol will replace with dynamic count",
+      "default": "Choose | more"
+    },
+    {
+      "type": "text",
+      "id": "final_text_taste_step",
+      "label": "Final text",
+      "info": "Text after reach count",
+      "default": "Good choice!"
+    },
+    {
+      "type": "paragraph",
+      "content": "Global maximum quantity"
+    },
+    {
+      "type": "number",
+      "id": "global_max_quantity",
+      "label": "Value for quantity",
+      "default": 3,
+      "info": "The maximum quantity for all quantity options"
+    },
+    {
+      "type": "paragraph",
+      "content": "Empty image state"
+    },
+    {
+      "type": "image_picker",
+      "id": "plug_image",
+      "label": "Step image empty state",
+      "info": "The image that will be displayed as Plug image empty state"
+    },
+    {
+      "type": "text",
+      "id": "guarantee_text_1",
+      "label": "Guarantee Text"
+    },
+    {
+      "type": "text",
+      "id": "guarantee_text_2",
+      "label": "Guarantee Text"
+    },
+    {
+      "type": "text",
+      "id": "guarantee_text_3",
+      "label": "Guarantee Text"
+    },
+    {
+      "type": "text",
+      "id": "guarantee_text_4",
+      "label": "Guarantee Text"
+    },
+    {
+      "type": "header",
+      "content": "Quantity"
+    },
+    {
+      "type": "text",
+      "id": "quantity_heading",
+      "label": "Quantity Heading",
+      "default": "Select Quantity"
+    },
+    {
+      "type": "text",
+      "id": "flavour_heading",
+      "label": "Flavour Heading",
+      "default": "Select taste"
+    },
+    {
+      "type": "image_picker",
+      "id": "badge_image",
+      "label": "Badge Image"
+    },
+    {
+      "type": "paragraph",
+      "content": "The first quantity option"
+    },
+    {
+      "type": "text",
+      "id": "name_quantity_1",
+      "label": "Name quantity"
+    },
+    {
+      "type": "text",
+      "id": "sub_name_quantity_1",
+      "label": "Subtitle quantity"
+    },
+    {
+      "type": "text",
+      "id": "text_badge_1",
+      "label": "Text for badge"
+    }, 
+    {
+      "type": "text",
+      "id": "text_badge_one-time_1",
+      "label": "Text for badge one time"
+    },
+    {
+      "type": "color",
+      "id": "bg_color_1",
+      "label": "Background color",
+      "default": "#599236"
+    },
+    {
+      "type": "color",
+      "id": "text_color_1",
+      "label": "Text color",
+      "default": "#fff"
+    },
+    {
+      "type": "text",
+      "id": "ex_text_badge_1",
+      "label": "Extra text for badge",
+      "info": "Type 'Badge-icon' to show badge icon instead of text"
+    },
+    {
+      "type": "color",
+      "id": "ex_bg_color_1",
+      "label": "Extra background color",
+      "default": "#A3DB7C"
+    },
+    {
+      "type": "color",
+      "id": "ex_text_color_1",
+      "label": "Extra text color",
+      "default": "#285234"
+    },
+    {
+      "type": "paragraph",
+      "content": "The second quantity option"
+    },
+    {
+      "type": "text",
+      "id": "name_quantity_2",
+      "label": "Name quantity"
+    },
+    {
+      "type": "text",
+      "id": "sub_name_quantity_2",
+      "label": "Subtitle quantity"
+    },
+    {
+      "type": "text",
+      "id": "text_badge_2",
+      "label": "Text for badge"
+    },
+    {
+      "type": "text",
+      "id": "text_badge_one-time_2",
+      "label": "Text for badge one time 2"
+    },
+    {
+      "type": "color",
+      "id": "bg_color_2",
+      "label": "Background color",
+      "default": "#599236"
+    },
+    {
+      "type": "color",
+      "id": "text_color_2",
+      "label": "Text color",
+      "default": "#fff"
+    },
+    {
+      "type": "text",
+      "id": "ex_text_badge_2",
+      "label": "Extra text for badge",
+      "info": "Type 'Badge-icon' to show badge icon instead of text"
+    },
+    {
+      "type": "color",
+      "id": "ex_bg_color_2",
+      "label": "Extra background color",
+      "default": "#A3DB7C"
+    },
+    {
+      "type": "color",
+      "id": "ex_text_color_2",
+      "label": "Extra text color",
+      "default": "#285234"
+    },
+    {
+      "type": "paragraph",
+      "content": "The third quantity option"
+    },
+    {
+      "type": "text",
+      "id": "name_quantity_3",
+      "label": "Name quantity"
+    },
+    {
+      "type": "text",
+      "id": "sub_name_quantity_3",
+      "label": "Subtitle quantity"
+    },
+    {
+      "type": "text",
+      "id": "text_badge_3",
+      "label": "Text for badge"
+    },
+    {
+      "type": "text",
+      "id": "text_badge_one-time_3",
+      "label": "Text for badge one time"
+    },
+    {
+      "type": "color",
+      "id": "bg_color_3",
+      "label": "Background color",
+      "default": "#599236"
+    },
+    {
+      "type": "color",
+      "id": "text_color_3",
+      "label": "Text color",
+      "default": "#fff"
+    },
+    {
+      "type": "text",
+      "id": "ex_text_badge_3",
+      "label": "Extra text for badge",
+      "info": "Type 'Badge-icon' to show badge icon instead of text"
+    },
+    {
+      "type": "color",
+      "id": "ex_bg_color_3",
+      "label": "Extra background color",
+      "default": "#A3DB7C"
+    },
+    {
+      "type": "color",
+      "id": "ex_text_color_3",
+      "label": "Extra text color",
+      "default": "#285234"
+    },
+    {
+      "type": "header",
+      "content": "Event names"
+    },
+    {
+      "type": "header",
+      "content": "Clarity Events"
+    },
+    {
+      "type": "text",
+      "id": "clarity_try_it_now_id",
+      "label": "Try It Now - Clarity Event Name (ID)",
+      "default": "try_it_now_id"
+    },
+    {
+      "type": "text", 
+      "id": "clarity_try_it_now_theme",
+      "label": "Try It Now - Clarity Event Name (Theme)",
+      "default": "try_it_now_theme"
+    },
+    {
+      "type": "text",
+      "id": "clarity_choose_flavor_id",
+      "label": "Choose Flavor - Clarity Event Name (ID)",
+      "default": "choose_flavor_id"
+    },
+    {
+      "type": "text",
+      "id": "clarity_choose_flavor_theme",
+      "label": "Choose Flavor - Clarity Event Name (Theme)", 
+      "default": "choose_flavor_theme"
+    },
+    {
+      "type": "text",
+      "id": "clarity_add_to_cart_first_id",
+      "label": "Add to Cart First - Clarity Event Name (ID)",
+      "default": "add_to_cart_first_id"
+    },
+    {
+      "type": "text",
+      "id": "clarity_add_to_cart_first_theme",
+      "label": "Add to Cart First - Clarity Event Name (Theme)",
+      "default": "add_to_cart_first_theme"
+    },
+    {
+      "type": "text",
+      "id": "clarity_add_to_cart_id",
+      "label": "Add to Cart - Clarity Event Name (ID)",
+      "default": "add_to_cart_id"
+    },
+    {
+      "type": "text",
+      "id": "clarity_add_to_cart_theme",
+      "label": "Add to Cart - Clarity Event Name (Theme)",
+      "default": "add_to_cart_theme"
+    },
+    {
+      "type": "text",
+      "id": "clarity_show_cart_id",
+      "label": "Show Cart - Clarity Event Name (ID)",
+      "default": "show_cart_id"
+    },
+    {
+      "type": "text",
+      "id": "clarity_show_cart_theme",
+      "label": "Show Cart - Clarity Event Name (Theme)",
+      "default": "show_cart_theme"
+    },
+    {
+      "type": "header",
+      "content": "DataLayer Events"
+    },
+    {
+      "type": "text",
+      "id": "datalayer_try_it_now",
+      "label": "Try It Now - DataLayer Event Name",
+      "default": "try_it_now_id"
+    },
+    {
+      "type": "text",
+      "id": "datalayer_choose_flavor",
+      "label": "Choose Flavor - DataLayer Event Name", 
+      "default": "choose_flavor_id"
+    },
+    {
+      "type": "text",
+      "id": "datalayer_add_to_cart_first",
+      "label": "Add to Cart First - DataLayer Event Name",
+      "default": "add_to_cart_first_id"
+    },
+    {
+      "type": "text",
+      "id": "datalayer_add_to_cart",
+      "label": "Add to Cart - DataLayer Event Name",
+      "default": "add_to_cart_id"
+    },
+    {
+      "type": "text", 
+      "id": "datalayer_show_cart",
+      "label": "Show Cart - DataLayer Event Name",
+      "default": "show_cart_id"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gel BF Drawer"
+    }
+  ]
+}
+{% endschema %}

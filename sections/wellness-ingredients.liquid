@@ -1,0 +1,780 @@
+<style>
+      .wellness_ingredient--{{ section.id }}{
+        background:{{ section.settings.background_color  }};
+        padding-top:{{ section.settings.padding_top_mobile }}px;
+        padding-bottom:{{ section.settings.padding_bottom_mobile }}px;
+      }
+
+        @media only screen and (min-width:769px){
+        .wellness_ingredient--{{ section.id }}{
+          padding-top:{{ section.settings.padding_top }}px;
+          padding-bottom:{{ section.settings.padding_bottom }}px;
+        }
+      }
+
+  .wellness_ingredient_section {
+    overflow: hidden;
+  }
+
+  .wellness_ingredient_header {
+    max-width: 720px;
+    margin: 0 auto 32px;
+    text-align: center;
+  }
+
+  .wellness_ingredient_header--sub-heading {
+    background: linear-gradient(90deg, #49827C 0%, #79A39E 100%);
+    width: fit-content;
+    border-radius: 99px;
+    padding: 10px 12px;
+    margin: 0 auto 12px;
+  }
+
+  .wellness_ingredient_header--sub-heading p {
+    color: #FAF7F3;
+    font-size: 18px;
+    line-height: 13px;
+    font-weight: 800;
+    letter-spacing: 0;
+    margin: 0;
+    text-transform: uppercase;
+
+  }
+
+  .wellness_ingredient_header--heading h2 {
+    color: #253937;
+    font-size: 40px;
+    line-height: normal;
+    font-weight: 800;
+    letter-spacing: 0;
+    margin: 0;
+  }
+
+  .wellness_ingredient_header--heading h2 strong {
+    color: #49827C;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    text-decoration-thickness: 3px;
+  }
+
+  .wellness_ingredient_header--description {
+    padding-top: 28px;
+  }
+
+  .wellness_ingredient_header--description p {
+    color: #253937;
+    font-size: 16px;
+    line-height: 27px;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  .wellness_ingredient_bottom {
+    padding-top: 32px;
+    margin: 0 auto;
+  }
+
+  .wellness_ingredient--card-block {
+    display: flex;
+  }
+
+  .wellness_ingredient--card-item {
+    display: flex;
+    align-items: center;
+    column-gap: 8.26px;
+    background-color: #FAF7F3;
+    border-radius: 24px;
+    padding: 28px 24px 28px 128px;
+    position: relative;
+      overflow: hidden;
+  }
+
+  .wellness_ingredient--card-item-block {
+    display: flex;
+  }
+
+  .wellness_ingredient--card-image {
+    max-width: 156px;
+    width: 100%;
+    position: absolute;
+      left: -31px;
+  }
+
+  .wellness_ingredient--card-image img {
+    max-width: 100%;
+    width: 100%;
+    display: flex;
+  }
+
+  .wellness_ingredient--card-content {
+    display: grid;
+    row-gap: 16px;
+    max-width: 188px;
+    width: 100%;
+  }
+
+  .wellness_ingredient--card-content-heading h2 {
+    font-family: var(--body-font);
+    font-size: 20px;
+    line-height: normal;
+    font-weight: 700;
+    letter-spacing: 0;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  .wellness_ingredient--card-content-sub-heading p {
+    color: #49827C;
+    font-size: 18px;
+    line-height: normal;
+    font-weight: 700;
+    letter-spacing: 0;
+    margin: 0;
+    text-transform: capitalize;
+  }
+
+  .wellness_ingredient--card-content-description p {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    letter-spacing: 0;
+    margin: 0;
+  }
+
+
+  .wellness_ingredient_wrapper--desktop {
+    display: none;
+  }
+
+  .wellness_ingredient--mobile {
+    display: block;
+  }
+
+
+  .wellness_ingredient_section .swiper-horizontal>.swiper-pagination-bullets {
+    bottom: unset;
+  }
+
+  .wellness_ingredient--{{ section.id }} .swiper-pagination {
+    position: relative;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .wellness_ingredient--{{ section.id }} .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background-color: #C7CCD3;
+    opacity: 1;
+    margin: 0 !important;
+  }
+
+  .wellness_ingredient--{{ section.id }} .swiper-pagination-bullet-active {
+    background-color: #49827C;
+  }
+
+  .wellness_ingredient--{{ section.id }} .wellness_ingredient--mobile .swiper-slide {
+    width: 340px ;
+      min-height: 232px;
+  }
+
+    @media only screen and (min-width: 769px) {
+
+  .wellness_ingredient_header {
+    margin: 0 auto 48px;
+  }
+
+  .wellness_ingredient_header--sub-heading {
+    padding: 12px 16px;
+    margin: 0 auto 16px;
+  }
+
+  .wellness_ingredient_header--sub-heading p {
+    font-size: 20px;
+    line-height: 14px;
+  }
+
+  .wellness_ingredient_header--heading h2 {
+    font-size: 48px;
+  }
+
+  .wellness_ingredient_header--description {
+    padding-top: 32px;
+  }
+
+  .wellness_ingredient_header--description p {
+    font-size: 18px;
+  }
+
+  .wellness_ingredient_wrapper {
+    display: flex;
+    gap: 24px;
+  }
+
+  .wellness_ingredient--mobile {
+    display: none;
+  }
+
+  .wellness_ingredient--card-block {
+    max-width: 50%;
+    width: 100%;
+    display: flex;
+    gap: 24px;
+  }
+
+  .wellness_ingredient--card-block.wellness_ingredient--column {
+    flex-direction: column;
+
+  }
+
+  .wellness_ingredient--card-block.wellness_ingredient--column-reverse {
+    flex-direction: column-reverse;
+
+  }
+
+  .wellness_ingredient--card-item {
+    display: grid;
+    grid-template-columns: 140px auto;
+  }
+
+  .wellness_ingredient--card-item-vertical {
+    padding: 20px;
+    border-radius: 20px;
+    column-gap: 20px;
+    min-height: 257px;
+  }
+
+
+  .wellness_ingredient--card-horizontal {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: transparent;
+    column-gap: 24px;
+  }
+
+  .wellness_ingredient--card-horizontal .wellness_ingredient--card-item {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 20px;
+    border-radius: 20px;
+    row-gap: 20px;
+  }
+
+
+  .wellness_ingredient--card-image {
+    position: unset;
+    max-width: 200px;
+  }
+
+  .wellness_ingredient--card-content {
+    row-gap: 24px;
+    max-width: 100%;
+  }
+
+  .wellness_ingredient--card-content-heading h2 {
+    font-size: 20px;
+  }
+
+  .wellness_ingredient--card-content-sub-heading p {
+    font-size: 20px;
+  }
+
+  .wellness_ingredient--card-content-description p {
+    font-size: 16px;
+  }
+  }
+
+  @media only screen and (min-width: 1200px) {
+    .wellness_ingredient--card-item {
+      grid-template-columns: 200px auto;
+    }
+
+
+    .wellness_ingredient--card-item-vertical {
+      padding: 32px;
+      border-radius: 32px;
+      column-gap: 32px;
+    }
+
+
+    .wellness_ingredient--card-horizontal .wellness_ingredient--card-item {
+      padding: 32px;
+      border-radius: 32px;
+      row-gap: 32px;
+    }
+
+
+    .wellness_ingredient--card-content-heading h2 {
+      font-size: 24px;
+    }
+
+    .wellness_ingredient--card-content-description p {
+      font-size: 18px;
+    line-height: 27px;
+    }
+
+
+  }
+</style>
+
+<div class="wellness_ingredient_section wellness_ingredient--{{ section.id }}">
+  <div class="wrapper">
+    <div class="wellness_ingredient_header">
+      {% if section.settings.sub_heading != blank %}
+        <div class="wellness_ingredient_header--sub-heading">
+          <p>{{ section.settings.sub_heading }}</p>
+        </div>
+      {% endif %}
+      {% if section.settings.heading != blank %}
+        <div class="wellness_ingredient_header--heading larken-extrabold">
+          {{ section.settings.heading }}
+        </div>
+      {% endif %}
+      {% if section.settings.description != blank %}
+        <div class="wellness_ingredient_header--description">
+          {{ section.settings.description }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="wellness_ingredient_wrapper wellness_ingredient_wrapper--desktop">
+      {% for block in section.blocks %}
+        <div
+          class="wellness_ingredient--card-block {% if block.settings.column_direction == "column-reverse" %}wellness_ingredient--column-reverse {% else %}wellness_ingredient--column {% endif %}"
+          {{ block.shopify_attributes }}
+        >
+          <div class="wellness_ingredient--card-item wellness_ingredient--card-item-vertical">
+            {% if block.settings.image_1 != blank %}
+              <div class="wellness_ingredient--card-image">
+                <img
+                  src="{{ block.settings.image_1 | image_url: width: 300 }}"
+                  loading="lazy"
+                  alt="{{ block.settings.image_1.alt }}"
+                >
+              </div>
+            {% endif %}
+            <div class="wellness_ingredient--card-content">
+              {% if block.settings.heading_1 != blank %}
+                <div class="wellness_ingredient--card-content-heading">
+                  <h2>{{ block.settings.heading_1 }}</h2>
+                </div>
+              {% endif %}
+              {% if block.settings.subheading_1 != blank %}
+                <div class="wellness_ingredient--card-content-sub-heading">
+                  <p>{{ block.settings.subheading_1 }}</p>
+                </div>
+              {% endif %}
+              {% if block.settings.description_1 != blank %}
+                <div class="wellness_ingredient--card-content-description">
+                  {{ block.settings.description_1 }}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="wellness_ingredient--card-item-block wellness_ingredient--card-horizontal">
+            <div class="wellness_ingredient--card-item">
+              {% if block.settings.image_2 != blank %}
+                <div class="wellness_ingredient--card-image">
+                  <img
+                    src="{{ block.settings.image_2 | image_url: width: 300 }}"
+                    loading="lazy"
+                    alt="{{ block.settings.image_2.alt }}"
+                  >
+                </div>
+              {% endif %}
+              <div class="wellness_ingredient--card-content">
+                {% if block.settings.heading_2 != blank %}
+                  <div class="wellness_ingredient--card-content-heading">
+                    <h2>{{ block.settings.heading_2 }}</h2>
+                  </div>
+                {% endif %}
+                {% if block.settings.subheading_2 != blank %}
+                  <div class="wellness_ingredient--card-content-sub-heading">
+                    <p>{{ block.settings.subheading_2 }}</p>
+                  </div>
+                {% endif %}
+                {% if block.settings.description_2 != blank %}
+                  <div class="wellness_ingredient--card-content-description">
+                    {{ block.settings.description_2 }}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+
+            <div class="wellness_ingredient--card-item">
+              {% if block.settings.image_3 != blank %}
+                <div class="wellness_ingredient--card-image">
+                  <img
+                    src="{{ block.settings.image_3 | image_url: width: 300 }}"
+                    loading="lazy"
+                    alt="{{ block.settings.image_3.alt }}"
+                  >
+                </div>
+              {% endif %}
+              <div class="wellness_ingredient--card-content">
+                {% if block.settings.heading_3 != blank %}
+                  <div class="wellness_ingredient--card-content-heading">
+                    <h2>{{ block.settings.heading_3 }}</h2>
+                  </div>
+                {% endif %}
+                {% if block.settings.subheading_3 != blank %}
+                  <div class="wellness_ingredient--card-content-sub-heading">
+                    <p>{{ block.settings.subheading_3 }}</p>
+                  </div>
+                {% endif %}
+                {% if block.settings.description_3 != blank %}
+                  <div class="wellness_ingredient--card-content-description">
+                    {{ block.settings.description_3 }}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% comment %} mobile {% endcomment %}
+
+    <div class="wellness_ingredient_wrapper wellness_ingredient--mobile">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          <div class="swiper-slide wellness_ingredient--card-block" {{ block.shopify_attributes }}>
+            <div class="wellness_ingredient--card-item wellness_ingredient--card-item-vertical">
+              {% if block.settings.image_1 != blank %}
+                <div class="wellness_ingredient--card-image">
+                  <img
+                    src="{{ block.settings.image_1 | image_url: width: 300 }}"
+                    loading="lazy"
+                    alt="{{ block.settings.image_1.alt }}"
+                  >
+                </div>
+              {% endif %}
+              <div class="wellness_ingredient--card-content">
+                {% if block.settings.heading_1 != blank %}
+                  <div class="wellness_ingredient--card-content-heading">
+                    <h2>{{ block.settings.heading_1 }}</h2>
+                  </div>
+                {% endif %}
+                {% if block.settings.subheading_1 != blank %}
+                  <div class="wellness_ingredient--card-content-sub-heading">
+                    <p>{{ block.settings.subheading_1 }}</p>
+                  </div>
+                {% endif %}
+                {% if block.settings.description_1 != blank %}
+                  <div class="wellness_ingredient--card-content-description">{{ block.settings.description_1 }}</div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide wellness_ingredient--card-block">
+            <div class="wellness_ingredient--card-item wellness_ingredient--card-item-vertical">
+              {% if block.settings.image_2 != blank %}
+                <div class="wellness_ingredient--card-image">
+                  <img
+                    src="{{ block.settings.image_2 | image_url: width: 300 }}"
+                    loading="lazy"
+                    alt="{{ block.settings.image_2.alt }}"
+                  >
+                </div>
+              {% endif %}
+              <div class="wellness_ingredient--card-content">
+                {% if block.settings.heading_2 != blank %}
+                  <div class="wellness_ingredient--card-content-heading">
+                    <h2>{{ block.settings.heading_2 }}</h2>
+                  </div>
+                {% endif %}
+                {% if block.settings.subheading_2 != blank %}
+                  <div class="wellness_ingredient--card-content-sub-heading">
+                    <p>{{ block.settings.subheading_2 }}</p>
+                  </div>
+                {% endif %}
+                {% if block.settings.description_2 != blank %}
+                  <div class="wellness_ingredient--card-content-description">{{ block.settings.description_2 }}</div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide wellness_ingredient--card-block">
+            <div class="wellness_ingredient--card-item wellness_ingredient--card-item-vertical">
+              {% if block.settings.image_3 != blank %}
+                <div class="wellness_ingredient--card-image">
+                  <img
+                    src="{{ block.settings.image_3 | image_url: width: 300 }}"
+                    loading="lazy"
+                    alt="{{ block.settings.image_3.alt }}"
+                  >
+                </div>
+              {% endif %}
+              <div class="wellness_ingredient--card-content">
+                {% if block.settings.heading_3 != blank %}
+                  <div class="wellness_ingredient--card-content-heading">
+                    <h2>{{ block.settings.heading_3 }}</h2>
+                  </div>
+                {% endif %}
+                {% if block.settings.subheading_3 != blank %}
+                  <div class="wellness_ingredient--card-content-sub-heading">
+                    <p>{{ block.settings.subheading_3 }}</p>
+                  </div>
+                {% endif %}
+                {% if block.settings.description_3 != blank %}
+                  <div class="wellness_ingredient--card-content-description">{{ block.settings.description_3 }}</div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+    {% if section.settings.button_label != blank or section.settings.guarantee_text != blank %}
+      <div class="wellness_ingredient_bottom button-main">
+        {% if section.settings.button_label != blank %}
+          <div class="wellness_ingredient--button button-primary__main">
+            <a href="{{ section.settings.button_link }}" class="scrollable--button button-primary">
+              {{ section.settings.button_label -}}
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M7.5 4.16675L12.5 10.0001L7.5 15.8334" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        {% endif %}
+        {% if section.settings.guarantee_text != blank %}
+          <div class="button-primary__guarantee">
+            <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5 0.833496C5.43737 0.833496 1.33331 4.93755 1.33331 10.0002C1.33331 15.0628 5.43737 19.1668 10.5 19.1668C15.5626 19.1668 19.6666 15.0628 19.6666 10.0002C19.6666 4.93755 15.5626 0.833496 10.5 0.833496ZM14.8392 8.08942C15.1647 7.76398 15.1647 7.23634 14.8392 6.91091C14.5138 6.58547 13.9862 6.58547 13.6607 6.91091L9.24998 11.3217L7.33923 9.41091C7.0138 9.08547 6.48616 9.08547 6.16072 9.41091C5.83529 9.73634 5.83529 10.264 6.16072 10.5894L8.66072 13.0894C8.98616 13.4149 9.5138 13.4149 9.83924 13.0894L14.8392 8.08942Z" fill="#49827C"/>
+            </svg>
+            <p>{{ section.settings.guarantee_text }}</p>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<script>
+  var swiperInstance_{{ section.id | replace: "-", "" }} = null;
+
+  function initWellnessSlider_{{ section.id | replace: "-", "" }}() {
+    try {
+      if (typeof Swiper === 'undefined') {
+        setTimeout(initWellnessSlider_{{ section.id | replace: "-", "" }}, 100);
+        return;
+      }
+
+      const swiperContainer = document.querySelector('.wellness_ingredient--{{ section.id }} .wellness_ingredient--mobile');
+      if (!swiperContainer) return;
+
+      if (window.innerWidth < 991) {
+        if (!swiperInstance_{{ section.id | replace: "-", "" }}) {
+          swiperInstance_{{ section.id | replace: "-", "" }} = new Swiper(swiperContainer, {
+          slidesPerView: 'auto',
+            spaceBetween: 15,
+            centeredSlides: true,
+            loop: true,
+            pagination: {
+              el: '.wellness_ingredient--{{ section.id }} .swiper-pagination',
+              clickable: true,
+            },
+          });
+        }
+      } else {
+        if (swiperInstance_{{ section.id | replace: "-", "" }}) {
+          swiperInstance_{{ section.id | replace: "-", "" }}.destroy(true, true);
+          swiperInstance_{{ section.id | replace: "-", "" }} = null;
+        }
+      }
+    } catch (error) {
+      console.error('Slider error:', error);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', initWellnessSlider_{{ section.id | replace: "-", "" }});
+  window.addEventListener('resize', initWellnessSlider_{{ section.id | replace: "-", "" }});
+</script>
+
+{% schema %}
+{
+  "name": "Wellness Ingredients",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#E7F0E4"
+    },
+    {
+      "type": "text",
+      "id": "sub_heading",
+      "label": "Sub Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "heading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "button Link"
+    },
+    {
+      "type": "text",
+      "id": "guarantee_text",
+      "label": "Guarantee text"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top mobile",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding bottom mobile",
+      "default": 32
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ingredients",
+      "name": "Ingredients",
+      "settings": [
+        {
+          "type": "select",
+          "id": "column_direction",
+          "label": "Column direction",
+          "options": [
+            {
+              "value": "column",
+              "label": "Column"
+            },
+            {
+              "value": "column-reverse",
+              "label": "Column Reverse"
+            }
+          ],
+          "default": "column"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "heading_1",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "subheading_1",
+          "label": "Subheading"
+        },
+        {
+          "type": "richtext",
+          "id": "description_1",
+          "label": "Description"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "heading_2",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "subheading_2",
+          "label": "Subheading"
+        },
+        {
+          "type": "richtext",
+          "id": "description_2",
+          "label": "Description"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_3",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "heading_3",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "subheading_3",
+          "label": "Subheading"
+        },
+        {
+          "type": "richtext",
+          "id": "description_3",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Wellness Ingredients"
+    }
+  ]
+}
+{% endschema %}

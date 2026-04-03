@@ -1,0 +1,682 @@
+{% liquid
+  assign bg_color = section.settings.background_color
+  assign padding_top = section.settings.padding_top
+  assign padding_bottom = section.settings.padding_bottom
+  assign padding_top_mobile = section.settings.padding_top_mobile
+  assign padding_bottom_mobile = section.settings.padding_bottom_mobile
+%}
+
+{% style %}
+  .gummies_real_result_{{ section.id }}{
+  background:{{ bg_color }};
+  padding-top:{{ padding_top_mobile }}px;
+  padding-bottom:{{ padding_bottom_mobile }}px;
+  }
+
+  @media only screen and (min-width: 991px) {
+
+
+  .gummies_real_result_{{ section.id }}{
+  padding-top:{{ padding_top }}px;
+  padding-bottom:{{ padding_bottom }}px;
+  }
+
+  }
+{% endstyle %}
+
+<style>
+   .gummies_real_result--header {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .gummies_real_result--header .section-heading__label-text {
+    margin: 0;
+  }
+
+  .gummies_real_result--header-rating_wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding-top: 28px;
+  }
+
+  .gummies_real_result--header-rating-text p {
+    color: #253937;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0;
+    margin: 0;
+  }
+
+
+  .gummies_real_result--header-icon {
+    max-width: 98px;
+    width: 100%;
+  }
+
+  .gummies_real_result--header-icon img {
+    max-width: 100%;
+    width: 100%;
+    display: flex;
+  }
+
+  .gummies_real_result_slider_wrapper {
+    padding: 0 0 32px;
+    position: relative;
+  }
+
+  .gummies_real_result--block {
+    border-radius: 24px;
+    background: #E7F0E4;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 24px;
+    text-align: center;
+    padding: 24px;
+  }
+
+  .gummies_real_result--block-image {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .gummies_real_result--block-content {
+    max-width: 100%;
+    width: 100%;
+    display: grid;
+    gap: 16px;
+  }
+
+
+  .gummies_real_result--block-image img {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    border-radius: 20px;
+  }
+
+  .gummies_real_result--block-icon {
+    max-width: 98px;
+    margin: 0 auto;
+    width: 100%;
+    padding-bottom: 8px;
+  }
+
+  .gummies_real_result--block-icon img {
+    max-width: 100%;
+    width: 100%;
+    display: flex;
+  }
+
+  .gummies_real_result--block-title p {
+    color: #49827C;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: capitalize;
+    letter-spacing: 0;
+    margin: 0;
+  }
+
+  .gummies_real_result--block-review-content {
+    padding-bottom: 8px;
+  }
+
+  .gummies_real_result--block-review-content * {
+    color: #253937;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0;
+    margin: 0;
+  }
+
+  .gummies_real_result--button-slider {
+    display: none;
+  }
+
+  .gummies_real_result--bottom-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+
+  .gummies_real_result--name p {
+    color: #253937;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 0;
+    letter-spacing: 0;
+  }
+
+
+  .gummies_real_result--verfiy-wrap {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border-radius: 100px;
+    background: #FAF7F3;
+    padding: 6px 8px;
+
+  }
+
+  .gummies_real_result--verfiy-svg {
+    display: flex;
+  }
+
+  .gummies_real_result--vefiy p {
+    color: #253937;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0;
+    margin: 0;
+  }
+
+
+  .gummies_real_result_section .custom-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding-top: 24px;
+  }
+
+  .gummies_real_result_section .custom-pagination .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    background: #ABAFB5;
+    border-radius: 50%;
+    cursor: pointer;
+    border-radius: 999px;
+    margin: 0 !important;
+  }
+
+  .gummies_real_result_section .custom-pagination .swiper-pagination-bullet-active {
+    background: #49827C;
+  }
+
+
+  .gummies_real_result--guarantee-text-icon svg {
+    display: flex;
+  }
+
+  .gummies_real_result_bottom {
+    padding: 0 15px;
+  }
+
+  .gummies_real_result--block.swiper-slide {
+    width: 100%;
+    max-width: 252px;
+  }
+
+  .gummies_real_result_bottom.button-main {
+    margin: 0 auto;
+  }
+
+
+  @media only screen and (min-width: 991px) {
+
+    .gummies_real_result--header-heading * br {
+      display: none;
+
+    }
+
+    .gummies_real_result--header-rating_wrap {
+      padding-top: 32px;
+      gap: 8px;
+    }
+
+    .gummies_real_result--header-icon {
+      max-width: 116px;
+    }
+
+    .gummies_real_result--header-rating-text p {
+      font-size: 18px;
+    }
+
+    .gummies_real_result_slider_wrapper {
+      padding: 0 0 48px;
+    }
+
+    .gummies_real_result_slider_wrapper:before {
+      content: '';
+      position: absolute;
+      top: 0px;
+      background: linear-gradient(270deg, rgba(250, 247, 243, 0.00) 0%, #FAF7F3 80%);
+      width: 200px;
+      height: 500px;
+      z-index: 2;
+    }
+
+    .gummies_real_result_slider_wrapper:after {
+      content: '';
+      position: absolute;
+      top: 0px;
+      right: 0;
+      background: linear-gradient(270deg, rgba(250, 247, 243, 0.00) 0%, #FAF7F3 80%);
+      rotate: 180deg;
+      width: 200px;
+      height: 500px;
+      z-index: 2;
+    }
+
+    .gummies_real_result--block {
+      border-radius: 32px;
+      flex-direction: row;
+      gap: 32px;
+      padding: 32px;
+    }
+
+    .gummies_real_result--block-image {
+      max-width: 50%;
+    }
+
+    .gummies_real_result--block-content {
+      max-width: 50%;
+      gap: 24px;
+    }
+
+    .gummies_real_result--block-image img {
+      border-radius: 24px;
+    }
+
+    .gummies_real_result--block-icon {
+      width: 116px;
+    }
+
+    .gummies_real_result--block-title p {
+      font-size: 24px;
+      line-height: 17px;
+    }
+
+    .gummies_real_result--block-review-content * {
+      font-size: 18px;
+      line-height: 27px;
+    }
+
+    .gummies_real_result--button-slider {
+      display: block;
+      position: absolute;
+      top: 50%;
+      transform: translatey(-50%);
+      z-index: 10;
+      cursor: pointer;
+    }
+
+    .gummies_real_result--button-prev {
+      left: 20px;
+    }
+
+    .gummies_real_result--button-next {
+      right: 20px;
+    }
+
+    .gummies_real_result_section .custom-pagination {
+      display: none;
+    }
+
+    .gummies_real_result--name p {
+      font-size: 20px;
+    }
+
+
+    .gummies_real_result--verfiy-wrap {
+      gap: 6px;
+      padding: 8px 10px;
+    }
+
+    .gummies_real_result--vefiy p {
+      font-size: 18px;
+      line-height: 13px;
+    }
+
+
+    .gummies_real_result--block.swiper-slide {
+      max-width: 450px;
+    }
+
+  }
+
+  @media only screen and (min-width: 992px) {
+    .gummies_real_result--block.swiper-slide {
+      max-width: 656px;
+    }
+  }
+</style>
+
+<section class="gummies_real_result_section gummies_real_result_{{ section.id }}">
+  <div class="wrapper-full">
+    <div class="gummies_real_result--header section-header__main">
+      {% if section.settings.sub_heading != blank %}
+        <div class="gummies_real_result--header-sub-heading section-heading__label">
+          <p class="section-heading__label-text">{{ section.settings.sub_heading }}</p>
+        </div>
+      {% endif %}
+      {% if section.settings.heading != blank %}
+        <div class="gummies_real_result--header-heading section-heading__title">
+          {{ section.settings.heading }}
+        </div>
+      {% endif %}
+      {% if section.settings.description != blank %}
+        <div class="gummies_real_result--header-description section-heading__description">
+          <p>{{ section.settings.description }}</p>
+        </div>
+      {% endif %}
+      {% if section.settings.rating_icon != blank or section.settings.rating_text != blank %}
+        <div class="gummies_real_result--header-rating_wrap">
+          {% if section.settings.rating_icon != blank %}
+            <div class="gummies_real_result--header-icon">
+              <img src="{{ section.settings.rating_icon | image_url }}" alt="{{ section.settings.rating_text }}">
+            </div>
+          {% endif %}
+          {% if section.settings.rating_text != blank %}
+            <div class="gummies_real_result--header-rating-text">
+              <p>{{ section.settings.rating_text }}</p>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="gummies_real_result_slider_wrapper">
+      <div class="gummies_real_result_item swiper">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="gummies_real_result--block swiper-slide" {{ block.shopify_attributes }}>
+              {% if block.settings.image != blank %}
+                <div class="gummies_real_result--block-image">
+                  <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.image.alt }}" loading="lazy">
+                </div>
+              {% endif %}
+              <div class="gummies_real_result--block-content">
+                {% if section.settings.rating_icon != blank %}
+                  <div class="gummies_real_result--block-icon">
+                    <img src="{{ section.settings.rating_icon | image_url }}" alt="{{ section.settings.rating_text }}">
+                  </div>
+                {% endif %}
+                {% if block.settings.title != blank %}
+                  <div class="gummies_real_result--block-title">
+                    <p>{{ block.settings.title }}</p>
+                  </div>
+                {% endif %}
+                {% if block.settings.review_content != blank %}
+                  <div class="gummies_real_result--block-review-content">
+                    {{ block.settings.review_content }}
+                  </div>
+                {% endif %}
+                {% if block.settings.name != blank or block.settings.verify_text != blank %}
+                  <div class="gummies_real_result--bottom-wrap">
+                    {% if block.settings.name != blank %}
+                      <div class="gummies_real_result--name">
+                        <p>{{ block.settings.name }}</p>
+                      </div>
+                    {% endif %}
+                    {% if block.settings.verify_text != blank %}
+                      <div class="gummies_real_result--verfiy-wrap">
+                        <div class="gummies_real_result--verfiy-svg">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="17"
+                            height="17"
+                            viewBox="0 0 17 17"
+                            fill="none"
+                          >
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.773625 8.25C0.773399 8.14963 0.753688 8.04937 0.714487 7.9549L0.173408 6.64481C0.0590962 6.36891 4.79784e-05 6.07274 2.90577e-08 5.77409C-4.77318e-05 5.47528 0.0587818 5.17939 0.173129 4.90332C0.287476 4.62725 0.455099 4.37642 0.666421 4.16516C0.877687 3.95395 1.12849 3.78644 1.4045 3.67217L2.71245 3.13038C2.90187 3.05206 3.05295 2.90165 3.13181 2.71244L3.67372 1.4041C3.90456 0.846788 4.34733 0.403995 4.90465 0.173141C5.46196 -0.0577135 6.08815 -0.0577136 6.64546 0.173141L7.9528 0.714678C8.1425 0.792998 8.35576 0.792898 8.54534 0.714233L8.54682 0.713616L9.85531 0.173938C10.4124 -0.0566029 11.0388 -0.0566785 11.5958 0.174069C12.153 0.404877 12.5957 0.847544 12.8266 1.40471L13.3555 2.68164C13.3602 2.69172 13.3647 2.70194 13.369 2.71231C13.4474 2.90193 13.5978 3.05268 13.7872 3.13147L15.0959 3.67358C15.6533 3.90443 16.096 4.34722 16.3269 4.90454C16.5577 5.46185 16.5577 6.08805 16.3269 6.64536L15.7851 7.95336C15.7458 8.04836 15.7261 8.14956 15.7261 8.25023C15.7261 8.35089 15.7458 8.45164 15.7851 8.54664L16.3269 9.85464C16.5577 10.412 16.5577 11.0381 16.3269 11.5955C16.096 12.1528 15.6533 12.5956 15.0959 12.8264L13.7872 13.3685C13.5978 13.4473 13.4474 13.5981 13.369 13.7877C13.3647 13.7981 13.3602 13.8083 13.3555 13.8184L12.8266 15.0953C12.5957 15.6525 12.153 16.0951 11.5958 16.3259C11.0388 16.5567 10.4124 16.5566 9.85531 16.3261L8.54682 15.7864L8.54534 15.7858C8.35576 15.7071 8.1425 15.707 7.9528 15.7853L6.64546 16.3269C6.08815 16.5577 5.46196 16.5577 4.90465 16.3269C4.34733 16.096 3.90456 15.6532 3.67372 15.0959L3.13181 13.7876C3.05295 13.5984 2.90187 13.4479 2.71245 13.3696L1.4045 12.8278C1.12849 12.7136 0.877687 12.546 0.666421 12.3348C0.455099 12.1236 0.287476 11.8727 0.173129 11.5967C0.0587818 11.3206 -4.77318e-05 11.0247 2.90577e-08 10.7259C4.79784e-05 10.4273 0.0590962 10.1311 0.173408 9.85519L0.714487 8.5451C0.753688 8.45063 0.773399 8.35037 0.773625 8.25ZM11.4053 6.90533C11.6982 6.61244 11.6982 6.13756 11.4053 5.84467C11.1124 5.55178 10.6376 5.55178 10.3447 5.84467L7.5 8.68934L6.53033 7.71967C6.23744 7.42678 5.76256 7.42678 5.46967 7.71967C5.17678 8.01256 5.17678 8.48744 5.46967 8.78033L6.96967 10.2803C7.26256 10.5732 7.73744 10.5732 8.03033 10.2803L11.4053 6.90533Z" fill="#49827C"/>
+                          </svg>
+                        </div>
+                        <div class="gummies_real_result--vefiy">
+                          <p>{{ block.settings.verify_text }}</p>
+                        </div>
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="gummies_real_result--button-prev gummies_real_result--button-slider">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <path d="M44 24C44 33.4281 44 38.1421 41.0711 41.0711C38.1421 44 33.4281 44 24 44C14.5719 44 9.85786 44 6.92893 41.0711C4 38.1421 4 33.4281 4 24C4 14.5719 4 9.85787 6.92894 6.92893C9.85787 4 14.5719 4 24 4C33.4281 4 38.1421 4 41.0711 6.92894C44 9.85787 44 14.5719 44 24Z" fill="#E7F0E4" stroke="#49827C" stroke-width="2.5"/>
+          <path d="M32.0039 24C22.6313 24 25.3765 24 16.0039 24M16.0039 24L22.0039 30M16.0039 24L22.0039 18" stroke="#49827C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="gummies_real_result--button-next gummies_real_result--button-slider">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <path d="M4 24C4 14.5719 4 9.85786 6.92893 6.92893C9.85786 4 14.5719 4 24 4C33.4281 4 38.1421 4 41.0711 6.92893C44 9.85786 44 14.5719 44 24C44 33.4281 44 38.1421 41.0711 41.0711C38.1421 44 33.4281 44 24 44C14.5719 44 9.85786 44 6.92893 41.0711C4 38.1421 4 33.4281 4 24Z" fill="#E7F0E4" stroke="#49827C" stroke-width="2.5"/>
+          <path d="M15.9961 24C25.3687 24 22.6235 24 31.9961 24M31.9961 24L25.9961 18M31.9961 24L25.9961 30" stroke="#49827C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="custom-pagination"></div>
+    </div>
+    {% if section.settings.button_label != blank or section.settings.guarantee_text != blank %}
+      <div class="gummies_real_result_bottom button-main">
+        {% if section.settings.button_label != blank %}
+          <div class="gummies_real_result--button">
+            <a href="{{ section.settings.button_link }}" class="button-primary">
+              {{- section.settings.button_label }}
+              <span class="gummies_real_result--button-arrow button-primary__arrow-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M7.5 4.16675L12.5 10.0001L7.5 15.8334" stroke="#FAF7F3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </a>
+          </div>
+        {% endif %}
+        {% if section.settings.guarantee_text != blank %}
+          <div class="gummies_real_result--guarantee-text button-primary__guarantee">
+            <div class="gummies_real_result--guarantee-text-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M10 0.833252C4.93743 0.833252 0.833374 4.93731 0.833374 9.99992C0.833374 15.0625 4.93743 19.1666 10 19.1666C15.0626 19.1666 19.1667 15.0625 19.1667 9.99992C19.1667 4.93731 15.0626 0.833252 10 0.833252ZM14.3393 8.08917C14.6647 7.76374 14.6647 7.2361 14.3393 6.91066C14.0139 6.58523 13.4862 6.58523 13.1608 6.91066L8.75004 11.3214L6.8393 9.41066C6.51386 9.08523 5.98622 9.08523 5.66078 9.41066C5.33535 9.7361 5.33535 10.2637 5.66078 10.5892L8.16078 13.0892C8.48622 13.4146 9.01386 13.4146 9.3393 13.0892L14.3393 8.08917Z" fill="#49827C"/>
+              </svg>
+            </div>
+            <p>{{ section.settings.guarantee_text }}</p>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<script>
+  function initReviewSlider_{{ section.id | replace: "-", "" | replace: "--", "" }}() {
+    try {
+      if (typeof Swiper === 'undefined') {
+        setTimeout(initReviewSlider_{{ section.id | replace: "-", "" | replace: "--", "" }}, 100);
+        return;
+      }
+
+      const swiperContainer = document.querySelector('.gummies_real_result_{{ section.id }} .gummies_real_result_item');
+      if (!swiperContainer) return;
+
+      const review_slider = new Swiper(swiperContainer, {
+        loop: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        spaceBetween: 24,
+        slidesOffsetBefore: 0,
+        slidesOffsetAfter: 0,
+        pagination: {
+          el: '.gummies_real_result_{{ section.id }} .custom-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.gummies_real_result_{{ section.id }} .gummies_real_result--button-next',
+          prevEl: '.gummies_real_result_{{ section.id }} .gummies_real_result--button-prev'
+        },
+        breakpoints: {
+          320: {
+            spaceBetween: 16,
+          },
+          768: {
+            spaceBetween: 20,
+          },
+          991: {
+            spaceBetween: 24,
+          }
+        }
+      });
+    } catch (error) {
+      setTimeout(initReviewSlider_{{ section.id | replace: "-", "" | replace: "--", "" }}, 100);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', initReviewSlider_{{ section.id | replace: "-", "" | replace: "--", "" }});
+</script>
+
+{% schema %}
+{
+  "name": "Gummies Real Result",
+  "settings": [
+    {
+      "type": "text",
+      "id": "sub_heading",
+      "label": "Sub Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "heading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "rating_icon",
+      "label": "Select a Icon"
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating Text"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "button Link"
+    },
+    {
+      "type": "text",
+      "id": "guarantee_text",
+      "label": "Guarantee text"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#FAF7F3"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding top mobile",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding bottom mobile",
+      "default": 32
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Select the Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "rating_icon",
+          "label": "Select a Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "review_content",
+          "label": "Content"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "text",
+          "id": "verify_text",
+          "label": "verfied"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gummies Real Result"
+    }
+  ]
+}
+{% endschema %}

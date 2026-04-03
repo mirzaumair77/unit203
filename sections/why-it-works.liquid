@@ -1,0 +1,551 @@
+{% liquid
+  assign padding_top = section.settings.padding_top
+  assign padding_bottom = section.settings.padding_bottom
+  assign padding_top_mobile = section.settings['padding_top-mobile']
+  assign padding_bottom_mobile = section.settings['padding_bottom-mobile']
+
+  assign background_color = section.settings.background_color
+  assign heading_color = section.settings.heading_color
+  assign text_color = section.settings.text_color
+  assign divider_color = section.settings.divider_color
+
+  assign main_heading = section.settings.main_heading
+%}
+
+<style>
+  .why-it-works__{{ section.id }} {
+    background: {{ background_color }};
+    padding-top: {{ padding_top_mobile }}px;
+    padding-bottom: {{ padding_bottom_mobile }}px;
+  }
+
+  .why-it-works__{{ section.id }} .why-it-works__main--heading h2 {
+    color: {{ heading_color }};
+  }
+
+  
+  .why-it-works__{{ section.id }} .why-it-works__content *, .why-it-works__{{ section.id }} .why-it-work__content--slide * {
+    color: {{ text_color }};
+  }
+
+  @media only screen and (min-width: 769px) {
+
+    .why-it-works__{{ section.id }} {
+      padding-top: {{ padding_top }}px;
+      padding-bottom: {{ padding_bottom }}px;
+    }
+
+    .why-it-works__{{ section.id }} .why-it-works__content {
+      border-color: {{ divider_color }};
+    }
+  }
+
+  .why-it-works__main .mobile-hide {
+    display: none;
+  }
+  
+  .why-it-works__main--heading {
+    width: 100%;
+    padding: 0 15px;
+    max-width: 240px;
+    margin: 0 auto;
+  }
+
+  .why-it-works__main--heading h2 {
+    font-family: "Yanone Kaffeesatz", sans-serif;
+    font-size: 36px;
+    line-height: 1;
+    font-weight: 500;
+    text-align: center;
+    margin: 0;
+  }
+
+  .why-it-works__main {
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  .why-it-works__{{ section.id }} .button-next, .why-it-works__{{ section.id }} .button-prev {
+    display: none;
+  }
+
+  .why-it-works__image--slide img {
+    width: 100%;
+    height: auto;
+    display: flex;
+  }
+
+  @media only screen and (min-width: 769px) {
+
+    .why-it-works__main .desktop-hide {
+      display: none;
+    }
+
+    .why-it-works__main .mobile-hide {
+      display: flex;
+    }
+
+    .why-it-works__main--heading {
+      padding: 0;
+      max-width: 100%;
+    }
+    
+    .why-it-works__main--heading h2 {
+      font-size: 64px;
+    }
+
+    .why-it-works__content--main {
+      width: 100%;
+      max-width: calc((100% - 210px) / 2);
+      display: flex;
+      flex-direction: column;
+      row-gap: 16px;
+    }
+
+    .why-it-works__content {
+      padding: 0 0 16px;
+      text-align: center;
+      border-bottom-width: 1px;
+      border-style: solid;
+      border-width: 0 0 1px 0;
+    }
+
+    .why-it-works__content--title h3 {
+      font-family: Yanone Kaffeesatz, sans-serif;
+      font-size: 36px;
+      line-height: 1;
+      font-weight: 400;
+      margin: 0;
+    }
+
+    .why-it-works__content--text {
+      padding-top: 8px;
+    }
+
+    .why-it-works__content--text * {
+      font-family: var(--FONT-STACK-BODY);
+      font-size: 20px;
+      line-height: 24px;
+      margin: 0;
+    }
+
+    .why-it-works__slider--main {
+      width: 100%;
+      max-width: 330px;
+    }
+
+    .why-it-works__image--slide {
+      width: 100%;
+      max-width: 270px;
+      margin: 0 auto;
+    }
+
+    .why-it-works__{{ section.id }} .swiper:not(.swiper-initialized) .button-next, .why-it-works__{{ section.id }} .swiper:not(.swiper-initialized) .button-prev {
+      display: none;
+    }
+
+    .why-it-works__{{ section.id }} .button-next.swiper-button-disabled, .why-it-works__{{ section.id }} .button-prev.swiper-button-disabled {
+      display: none;
+    }
+
+    .why-it-works__{{ section.id }} .button-next, .why-it-works__{{ section.id }} .button-prev {
+      height: 34px;
+      width: 34px;
+      border: 1px solid #444444;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      z-index: 5;
+    }
+
+    .why-it-works__{{ section.id }} .button-next {
+      right: 0;
+    }
+
+    .why-it-works__{{ section.id }} .button-prev {
+      left: 0;
+    }
+
+    .why-it-works__{{ section.id }} .custom-pagination {
+      display: none;
+    }
+  }
+
+  @media only screen and (min-width: 1281px) {
+
+    .why-it-works__main {
+      gap: 60px;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+
+    .why-it-works .wrapper {
+      padding: 0;
+    }
+
+    .why-it-works__content--slide-main {
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-left: 15px;
+    }
+
+    .why-it-work__content--slide, .why-it-works__image--slide {
+      width: 50%;
+    }
+
+    .why-it-works__{{ section.id }} .custom-pagination {
+      display: grid;
+      align-items: center;
+      grid-auto-flow: column;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .why-it-works__{{ section.id }} .swiper-pagination-bullet {
+      width: 7px;
+      height: 7px;
+      background-color: #4b4b4b;
+      border-radius: 50%;
+      margin: 0 !important;
+      opacity: .1;
+    }
+
+    .why-it-works__{{ section.id }} .swiper-pagination-bullet-active {
+      opacity: .3;
+    }
+    
+    .why-it-works__title--slide h4 {
+      font-family: Yanone Kaffeesatz, sans-serif;
+      font-size: 20px;
+      line-height: 1;
+      font-weight: 400;
+      margin: 0;
+    }
+
+    .why-it-works__text--slide {
+      padding-top: 10px;
+    }
+    
+    .why-it-works__text--slide * {
+      font-family: var(--FONT-STACK-BODY);
+      font-size: 14px;
+      line-height: 16.8px;
+      font-weight: 400;
+      margin: 0;
+    }
+  }
+</style>
+
+<div class="why-it-works why-it-works__{{ section.id }}">
+  <div class="wrapper">
+    {% if main_heading != blank %}<div class="why-it-works__wrapper">{% endif %}
+    {% if main_heading != blank %}
+      <div class="why-it-works__main--heading">
+        <h2>{{ main_heading }}</h2>
+      </div>
+    {% endif %}
+    <div class="why-it-works__main">
+      <div class="why-it-works__content--main mobile-hide">
+        {% for block in section.blocks %}
+          {% if block.type == 'info-left' %}
+            {% assign title = block.settings.title %}
+            {% assign text = block.settings.text %}
+
+            <div class="why-it-works__content">
+              {% if title != blank %}
+                <div class="why-it-works__content--title">
+                  <h3>{{ title }}</h3>
+                </div>
+              {% endif %}
+              {% if text != blank %}
+                <div class="why-it-works__content--text">
+                  {{ text }}
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="why-it-works__slider--main swiper">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            {% if block.type == 'content-image' %}
+              {% assign title = block.settings.title %}
+              {% assign text = block.settings.text %}
+              {% assign image = block.settings.image %}
+              {% assign mobile_image = block.settings.mobile_image | default: image %}
+              {% assign alt = image.alt | default: 'What is Sea Moss Known For' %}
+              {% assign mobile_alt = mobile_image | default: image.alt %}
+
+              <div class="why-it-works__content--slide-main swiper-slide">
+                <div class="why-it-work__content--slide desktop-hide">
+                  <div class="why-it-works__title--slide">
+                    <h4>{{ title }}</h4>
+                  </div>
+                  <div class="why-it-works__text--slide">
+                    {{ text }}
+                  </div>
+                </div>
+                <div class="why-it-works__image--slide">
+                  {{
+                    image
+                    | image_url: width: 400
+                    | image_tag:
+                      alt: alt,
+                      loading: 'lazy',
+                      class: "mobile-hide",
+                      widths: '180, 360, 400',
+                      sizes: '(max-width: 480px) 100vw, 400px'
+                  }}
+                  {{
+                    mobile_image
+                    | image_url: width: 600
+                    | image_tag:
+                      alt: mobile_alt,
+                      loading: 'lazy',
+                      class: "desktop-hide",
+                      widths: '180, 360, 480, 600',
+                      sizes: '(max-width: 768px) 100vw, 600px'
+                  }}
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="button-prev">
+          <svg width="7" height="10" viewBox="0 0 7 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 1L2 5L6 9" stroke="#444444" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="button-next">
+          <svg width="7" height="10" viewBox="0 0 7 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 1L5 5L1 9" stroke="#444444" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="custom-pagination"></div>
+      </div>
+      <div class="why-it-works__content--main mobile-hide">
+        {% for block in section.blocks %}
+          {% if block.type == 'info-right' %}
+            {% assign title = block.settings.title %}
+            {% assign text = block.settings.text %}
+
+            <div class="why-it-works__content">
+              {% if title != blank %}
+                <div class="why-it-works__content--title">
+                  <h3>{{ title }}</h3>
+                </div>
+              {% endif %}
+              {% if text != blank %}
+                <div class="why-it-works__content--text">
+                  {{ text }}
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    {% if main_heading != blank %}</div>{% endif %}
+  </div>
+</div>
+
+<script>
+  function initWhyItWorksSlider_{{ section.id | replace: "-", "" | replace: "--", "" }}() {
+    try {
+      if (typeof Swiper === 'undefined') {
+        setTimeout(initWhyItWorksSlider_{{ section.id | replace: "-", "" | replace: "--", "" }}, 100);
+        return;
+      }
+
+      const swiperContainer = document.querySelector('.why-it-works__{{ section.id }} .why-it-works__slider--main');
+      if (!swiperContainer) return;
+
+      const factsSlideDesktop = new Swiper(swiperContainer, {
+        slidesPerView: 1,
+        loop: false,
+        navigation: {
+          nextEl: '.why-it-works__{{ section.id }} .button-next',
+          prevEl: '.why-it-works__{{ section.id }} .button-prev',
+        },
+        pagination: {
+          el: '.why-it-works__{{ section.id }} .custom-pagination',
+          type: 'bullets',
+          clickable: true,
+        },
+      });
+    } catch (error) {
+      setTimeout(initWhyItWorksSlider_{{ section.id | replace: "-", "" | replace: "--", "" }}, 100);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', initWhyItWorksSlider_{{ section.id | replace: "-", "" | replace: "--", "" }});
+</script>
+
+{% schema %}
+{
+  "name": "Why it Works",
+  "class": "why-it-works",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "main_heading",
+      "label": "Main Heading",
+      "default": "What is Sea Moss Known For"
+    },
+    {
+      "type": "header",
+      "content": "Section colors"
+    },
+    {
+      "type": "color_background",
+      "id": "background_color",
+      "label": "Background",
+      "default": "linear-gradient(#ffffff, #ffffff)"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#3B7865"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#4B4B4B"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider color",
+      "default": "#FFC360"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_top-mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding top mobile",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom-mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding bottom mobile",
+      "default": 10
+    }
+  ],
+  "blocks": [
+    {
+      "type": "info-left",
+      "name": "Info left",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "type": "info-right",
+      "name": "Info right",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "type": "content-image",
+      "name": "Content & Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Mobile title"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Mobile text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why it Works"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,44 @@
+/* Font */
+@font-face {
+  font-family: 'Mediamoure';
+  src: url('https://cdn.shopify.com/s/files/1/0603/0209/8587/files/Mediamoure.woff2?v=1759439390');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'HarmoniaSansProCyr';
+  src: url('https://cdn.shopify.com/s/files/1/0603/0209/8587/files/HarmoniaSansProCyr-Bold.woff2?v=1759439995');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'HarmoniaSansProCyr';
+  src: url({{ "HarmoniaSansProCyr-Light.woff2" | asset_url }}) format("woff2");
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'HarmoniaSansProCyr';
+  src: url('https://cdn.shopify.com/s/files/1/0603/0209/8587/files/HarmoniaSansProCyr-Regular.woff2?v=1759439995');
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  --FONT-STACK-BODY: "HarmoniaSansProCyr", sans-serif;
+  --FONT-STACK-HEADING: "Mediamoure";
+
+  --FONT-AMERICA-TRIAL: GT America Trial,sans-serif;
+}
+
+h1, h2, h3, h4, h5, .h0, .h1, .h2, .h3, .h4, .h5 {
+  font-family: var(--FONT-STACK-HEADING);
+  letter-spacing: 0;
+}
+
+body {
+  font-family: var(--FONT-STACK-BODY);
+  letter-spacing: 0;
+}
