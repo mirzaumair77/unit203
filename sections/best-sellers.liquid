@@ -341,7 +341,6 @@
 
     variantID.forEach((vID) => {
       const productID = vID.dataset.variant;
-    })
 
     fetch("/cart/add.js", {
       Method: "POST", body: {
@@ -349,6 +348,8 @@
       }
       .then(res => console.log(res))
     }) 
+    })
+
 
 
   })
