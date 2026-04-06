@@ -59,7 +59,7 @@
   }
 
   @media only screen and (max-width: 768px) {
-    
+
     {% if section.settings.round_section_corners %}
       .best-sellers__{{ section.id }} {
         border-radius: 15px;
@@ -169,7 +169,7 @@
   .best-sellers__product--star-item svg path {
     fill: #ffa800;
   }
- 
+
   .best-sellers__product--review-text span {
     display: inline-block;
     font-size: 14px;
@@ -194,7 +194,7 @@
   }
 
   @media only screen and (min-width: 576px) {
-  
+
     .best-sellers__heading h2 {
       font-size: 64px;
     }
@@ -207,7 +207,7 @@
       font-size: 20px;
       line-height: 24px;
     }
-    
+
     .best-sllers__product--original-price span {
       font-size: 22px;
       line-height: 26.4px;
@@ -225,7 +225,7 @@
   }
 
   @media only screen and (min-width: 769px) {
-  
+
     .best-sellers__product--star-item {
       max-width: 16px;
     }
@@ -236,7 +236,7 @@
   }
 
   @media only screen and (min-width: 990px) {
-    
+
     .best-sellers_products--main {
       grid-template-columns: repeat(4, 1fr);
     }
@@ -266,7 +266,7 @@
           {% assign product = block.settings.product %}
           {% assign product_url = product.url %}
           {% assign featured_image = block.settings.custom_image | default: product.featured_image %}
-          {% assign alt = featured_image.alt | default:  product.title  %}
+          {% assign alt = featured_image.alt | default: product.title %}
           {% assign title = block.settings.title | default: product.title %}
 
           {% assign variant = product.selected_or_first_available_variant %}
@@ -279,13 +279,14 @@
             <div class="best-sellers__product--card-wrapper">
               <div class="best-sellers__product--image">
                 <a href="{{ product_url }}">
-                  {{ featured_image
+                  {{
+                    featured_image
                     | image_url: width: 550
                     | image_tag:
-                        alt: alt,
-                        loading: "lazy",
-                        widths: "180, 360, 480, 550",
-                        sizes: "(max-width: 600px) 100vw, 550px"
+                      alt: alt,
+                      loading: 'lazy',
+                      widths: '180, 360, 480, 550',
+                      sizes: '(max-width: 600px) 100vw, 550px'
                   }}
                 </a>
               </div>
@@ -318,14 +319,16 @@
                     {%- endif -%}
                   {%- endif -%}
                 </div>
-                <div class='jdgm-widget jdgm-preview-badge' data-id='{{ product.id }}'>
-                    {{ product.metafields.judgeme.badge }}
+                <div class="jdgm-widget jdgm-preview-badge" data-id="{{ product.id }}">
+                  {{ product.metafields.judgeme.badge }}
                 </div>
               </div>
             </div>
             <div class="best-sellers__product--button">
               {% comment %} <a href="{{ product_url }}">{{ button_text }}</a> {% endcomment %}
-               <button class="atcButton" data-variant="{{ product.selected_or_first_available_variant.id }}">ADD TO CART</button>
+              <button class="atcButton" data-variant="{{ product.selected_or_first_available_variant.id }}">
+                ADD TO CART
+              </button>
             </div>
           </div>
         {%- endfor -%}
@@ -335,34 +338,30 @@
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const MainDiv = document.querySelector(".best-sellers");
-    const variantID = MainDiv.querySelectorAll(".atcButton");
+  document.addEventListener('DOMContentLoaded', function () {
+    const MainDiv = document.querySelector('.best-sellers');
+    const variantID = MainDiv.querySelectorAll('.atcButton');
 
     variantID.forEach((vID) => {
       const productID = vID.dataset.variant;
 
-    fetch("/cart/add.js", {
-      method: "POST",
-       headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
         },
-      body:JSON.stringify({
+        body: JSON.stringify({
           id: productID,
-          quantity: 1
-        })
-    }) 
-      .then(res => res.json())
-      .then(data => {
-        console.log(data)
+          quantity: 1,
+        }),
       })
-
-    })
-
-
-
-  })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+        });
+    });
+  });
 </script>
 
 {% schema %}
