@@ -325,7 +325,7 @@
             </div>
             <div class="best-sellers__product--button">
               {% comment %} <a href="{{ product_url }}">{{ button_text }}</a> {% endcomment %}
-               <button data-variant="{{ product.selected_or_first_available_variant.id }}">ADD TO CART</button>
+               <button class="atcButton" data-variant="{{ product.selected_or_first_available_variant.id }}">ADD TO CART</button>
             </div>
           </div>
         {%- endfor -%}
@@ -333,6 +333,8 @@
     </div>
   </div>
 </div>
+
+
 
 {% schema %}
 {
