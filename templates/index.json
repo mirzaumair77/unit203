@@ -458,7 +458,6 @@
       "blocks": {
         "product_DRXEPR": {
           "type": "product",
-          "disabled": true,
           "settings": {
             "product": "sea-moss-gummies",
             "custom_image": "shopify://shop_images/Perfect_Sea_Moss_On-the-Go_True_Sea_Moss_Gummies.webp",
@@ -468,7 +467,6 @@
         },
         "product_74jN7p": {
           "type": "product",
-          "disabled": true,
           "settings": {
             "product": "green-powder",
             "custom_image": "shopify://shop_images/green-powder_sea_moss.webp",
@@ -487,7 +485,6 @@
         },
         "product_d9C7Qh": {
           "type": "product",
-          "disabled": true,
           "settings": {
             "product": "sea-moss-elderberry-gummies",
             "custom_image": "shopify://shop_images/eld-gummies3.webp",
