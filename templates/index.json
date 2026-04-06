@@ -207,7 +207,6 @@
           "settings": {
             "hide_mobile": false,
             "image_desktop": "shopify://shop_images/seamoss-social-icons.webp",
-            "image_mobile": "shopify://shop_images/tiktok-icon.webp",
             "desktop_height": "1",
             "mobile_height": "1",
             "desktop_width": "1",
@@ -479,7 +478,7 @@
         "product_HFakWU": {
           "type": "product",
           "settings": {
-            "product": "sea-moss-gel-trueseamoss",
+            "product": "sea-moss-gel-superfood",
             "custom_image": "shopify://shop_images/sea-moss-gel-catalog.webp",
             "custom_title": "",
             "image_background": ""
