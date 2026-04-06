@@ -344,12 +344,19 @@
 
     fetch("/cart/add.js", {
       Method: "POST",
+       headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
       body:JSON.stringify({
           id: productID,
           quantity: 1
         })
     }) 
-      .then(res => console.log(res))
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+      })
     })
 
 
