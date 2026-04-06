@@ -343,7 +343,7 @@
       const productID = vID.dataset.variant;
 
     fetch("/cart/add.js", {
-      Method: "POST",
+      method: "POST",
        headers: {
           "Content-Type": "application/json",
           "Accept": "application/json"
@@ -357,7 +357,7 @@
       .then(data => {
         console.log(data)
       })
-      
+
     })
 
 
