@@ -337,7 +337,11 @@
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     const MainDiv = document.querySelector(".best-sellers");
-    const variantID = MainDiv.querySelector(".atcButton");
+    const variantID = MainDiv.querySelectorAll(".atcButton");
+
+    variantID.forEach((vID) => {
+      
+    })
 
     console.log(variantID, MainDiv);
   })
