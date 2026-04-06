@@ -344,10 +344,10 @@
 
     fetch("/cart/add.js", {
       Method: "POST",
-      body:{
-        Id:productID,
-       Quantity:1
-      }
+      body:JSON.stringify({
+          id: variantId,
+          quantity: 1
+        })
     }) 
       .then(res => console.log(res))
     })
