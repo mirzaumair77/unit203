@@ -342,8 +342,10 @@
     const MainDiv = document.querySelector('.best-sellers');
     const variantID = MainDiv.querySelectorAll('.atcButton');
 
+    
     variantID.forEach((vID) => {
-      const productID = vID.dataset.variant;
+      vID.addEventListener("click", (e) => {
+      const productID = e.target.dataset.variant;
 
       fetch('/cart/add.js', {
         method: 'POST',
@@ -361,6 +363,8 @@
           console.log(data);
         });
     });
+      })  
+
   });
 </script>
 
