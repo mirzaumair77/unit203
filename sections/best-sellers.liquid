@@ -338,6 +338,7 @@
 </div>
 
 <script>
+
   document.addEventListener('DOMContentLoaded', function () {
     const MainDiv = document.querySelector('.best-sellers');
     const variantID = MainDiv.querySelectorAll('.atcButton');
@@ -362,6 +363,10 @@
             console.log(data);
           });
       });
+    });
+    
+    products.forEach(product => {
+      console.log(product.title, product.price);
     });
   });
 </script>
