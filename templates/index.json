@@ -207,7 +207,6 @@
           "settings": {
             "hide_mobile": false,
             "image_desktop": "shopify://shop_images/seamoss-social-icons.webp",
-            "image_mobile": "shopify://shop_images/tiktok-icon.webp",
             "desktop_height": "1",
             "mobile_height": "1",
             "desktop_width": "1",
@@ -457,25 +456,6 @@
     "best_sellers_kmqUGD": {
       "type": "best-sellers",
       "blocks": {
-        "product_DRXEPR": {
-          "type": "product",
-          "settings": {
-            "product": "sea-moss-gummies",
-            "custom_image": "shopify://shop_images/Perfect_Sea_Moss_On-the-Go_True_Sea_Moss_Gummies.webp",
-            "custom_title": "",
-            "image_background": ""
-          }
-        },
-        "product_74jN7p": {
-          "type": "product",
-          "disabled": true,
-          "settings": {
-            "product": "green-powder",
-            "custom_image": "shopify://shop_images/green-powder_sea_moss.webp",
-            "custom_title": "",
-            "image_background": ""
-          }
-        },
         "product_HFakWU": {
           "type": "product",
           "settings": {
@@ -485,20 +465,35 @@
             "image_background": ""
           }
         },
+        "product_DRXEPR": {
+          "type": "product",
+          "settings": {
+            "product": "black-leather-bag",
+            "custom_title": "",
+            "image_background": ""
+          }
+        },
+        "product_74jN7p": {
+          "type": "product",
+          "settings": {
+            "product": "blue-silk-tuxedo",
+            "custom_title": "",
+            "image_background": ""
+          }
+        },
         "product_d9C7Qh": {
           "type": "product",
           "settings": {
-            "product": "sea-moss-elderberry-gummies",
-            "custom_image": "shopify://shop_images/eld-gummies3.webp",
+            "product": "chequered-red-shirt",
             "custom_title": "",
             "image_background": ""
           }
         }
       },
       "block_order": [
+        "product_HFakWU",
         "product_DRXEPR",
         "product_74jN7p",
-        "product_HFakWU",
         "product_d9C7Qh"
       ],
       "name": "Best Sellers",
