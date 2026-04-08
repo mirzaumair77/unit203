@@ -1,0 +1,63 @@
+{% style %}
+.custom-accordion__title {
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.custom-accordion__content {
+  display: none;
+}
+{% endstyle %}
+
+<div class="custom-accordion custom-accordion__{{ section.id }}">
+  <div class="wrapper">
+    <div class="custom-accordion__main">
+      {% for block in section.blocks %}
+        <div class="custom-accordion__item">
+          <h3 class="custom-accordion__title">{{ block.settings.custom_title }}</h3>
+          <div class="custom-accordion__content">
+            {{ block.settings.custom_content }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Custom accordion",
+  "class": "custom-accordion",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [],
+  "blocks": [
+    {
+      "type": "custom",
+      "name": "Accordion",
+      "settings": [
+        {
+          "type": "text",
+          "id": "custom_title",
+          "label": "Custom Title"
+        },
+        {
+          "type": "richtext",
+          "id": "custom_content",
+          "label": "Custom content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom accordion",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
