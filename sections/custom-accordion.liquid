@@ -32,6 +32,19 @@
   </div>
 </div>
 
+<script>
+  document.addEventListener("DOMContentLoaded", funtion() {
+    let mainContent = document.querySelector(".custom-accordion__{{ section.id }}");
+    let triggerBtn = mainContent.querySelectorAll(".custom-accordion__{{ section.id }} .custom-accordion__title");
+
+    triggerBtns.forEach(triggerBtn) {
+      triggerBtn.addEventListener('click', function() {
+        let dataContent = mainContent.querySelector(".custom-accordion__content");
+        dataContent.style.display == "block"
+      })
+    }   
+  })
+</script>
 
 {% schema %}
 {
