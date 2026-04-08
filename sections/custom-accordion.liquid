@@ -37,14 +37,14 @@
     let mainContent = document.querySelector(".custom-accordion__{{ section.id }}");
     let triggerBtns = mainContent.querySelectorAll(".custom-accordion__title");
     
-    triggerBtns.forEach(triggerBtn) => {
-      triggerBtn.addEventListener('click', function() {
+    triggerBtns.forEach((triggerBtn) => {
+    triggerBtn.addEventListener('click', function() {
         let dataContent = this.nextElementSibling;
         dataContent.classList.add("active");
 
         console.log(dataContent);
       })
-    }   
+    })   
   })
 </script>
 
