@@ -36,11 +36,12 @@
   document.addEventListener("DOMContentLoaded", function() {
     let mainContent = document.querySelector(".custom-accordion__{{ section.id }}");
     let triggerBtns = mainContent.querySelectorAll(".custom-accordion__title");
-    let dataContent = mainContent.querySelector(".custom-accordion__content");
     
-    triggerBtns.forEach(triggerBtn) {
+    triggerBtns.forEach(triggerBtn) => {
       triggerBtn.addEventListener('click', function() {
-        dataContent.classList.add(.active);
+        let dataContent = this.nextElementSibling;
+        dataContent.classList.add("active");
+
         console.log(dataContent);
       })
     }   
