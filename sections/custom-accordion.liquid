@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
   let triggerBtns = mainContent.querySelectorAll(".custom-accordion__title");
   let dataContents = mainContent.querySelectorAll(".custom-accordion__content");
 
-  triggerBtns.forEach((triggerBtn) => {
+  triggerBtns.forEach((triggerBtn, index) => {
     triggerBtn.addEventListener("click", function() {
       dataContents[index].classList.toggle("active");
 
