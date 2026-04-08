@@ -40,7 +40,7 @@
     triggerBtns.forEach(triggerBtn) {
       triggerBtn.addEventListener('click', function() {
         let dataContent = mainContent.querySelectorAll(".custom-accordion__content");
-        dataContent.style.display == "block"
+        dataContent.classList.add(.active);
         console.log(dataContent);
       })
     }   
