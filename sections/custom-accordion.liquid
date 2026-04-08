@@ -40,8 +40,11 @@
     triggerBtns.forEach((triggerBtn) => {
     triggerBtn.addEventListener('click', function() {
         let dataContent = this.nextElementSibling;
-        dataContent.classList.add("active");
-
+        if (dataContent)
+          dataContent.classList.add("active");
+        else
+          dataContent.classList.remove("active");
+          
         console.log(dataContent);
       })
     })   
