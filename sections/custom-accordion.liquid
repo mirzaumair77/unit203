@@ -35,8 +35,8 @@
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   let mainContent = document.querySelector(".custom-accordion__{{ section.id }}");
-  let triggerBtns = mainContent.querySelectorAll(".custom-accordion__title");
   let dataContents = mainContent.querySelectorAll(".custom-accordion__item");
+  let triggerBtns = mainContent.querySelectorAll(".custom-accordion__title");
 
   triggerBtns.forEach((triggerBtn, index) => {
     triggerBtn.addEventListener("click", function() {
