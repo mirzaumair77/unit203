@@ -33,22 +33,19 @@
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    let mainContent = document.querySelector(".custom-accordion__{{ section.id }}");
-    let triggerBtns = mainContent.querySelectorAll(".custom-accordion__title");
-    
-    triggerBtns.forEach((triggerBtn) => {
-    triggerBtn.addEventListener('click', function() {
-        let dataContent = this.nextElementSibling;
-        if (dataContent)
-          dataContent.classList.add("active");
-        else
-          dataContent.classList.remove("active");
-          
-        console.log(dataContent);
-      })
-    })   
-  })
+document.addEventListener("DOMContentLoaded", function() {
+  let mainContent = document.querySelector(".custom-accordion__{{ section.id }}");
+  let triggerBtns = mainContent.querySelectorAll(".custom-accordion__title");
+  let dataContents = mainContent.querySelectorAll(".custom-accordion__content");
+
+  triggerBtns.forEach((triggerBtn) => {
+    triggerBtn.addEventListener("click", function() {
+      dataContent[index].classList.toggle("active");
+
+      console.log(dataContent);
+    });
+  });
+});
 </script>
 
 {% schema %}
