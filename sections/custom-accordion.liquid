@@ -38,11 +38,9 @@ document.addEventListener("DOMContentLoaded", function () {
   let mainContent = document.querySelector(".custom-accordion__{{ section.id }}");
 
   if (!mainContent) return;
-
   let items = mainContent.querySelectorAll(".custom-accordion__item");
 
   items.forEach((item) => {
-    console.log(item)
 
     let btn = item.querySelector(".custom-accordion__title");
     let content = item.querySelector(".custom-accordion__content");
