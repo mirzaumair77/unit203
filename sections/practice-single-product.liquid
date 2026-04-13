@@ -271,10 +271,10 @@
     let mainDiv = document.querySelector(".single-product__{{ section.id }}");
 
     if (!mainDiv) return;
-    let qItems = mainDiv.querySelectorAll(".single-product__variant-item");
+    let qItems = document.querySelectorAll(".single-product__variant-item");
 
     qItems.forEach(qitem) => {
-      let qitem = mainDiv.querySelector(".single-product__variant-item label");
+      let qitem = document.querySelector(".single-product__variant-item label");
         
       qitem.addEventListener("click", function () {
         qitem.classlist.add("active")
