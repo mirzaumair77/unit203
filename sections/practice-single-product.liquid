@@ -269,6 +269,12 @@
   document.addEventListener("DOMContentLoaded", function () {
     
     let mainDiv = document.querySelector(".single-product__{{ section.id }}");
+
+    if (!mainDiv) return;
+    let qItems = mainDiv.querySelectorAll(".single-product__{{ section.id }}");
+
+
+    
   })
 </script>
 
