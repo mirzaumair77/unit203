@@ -12,7 +12,11 @@
   margin: 0;
 }
 
-.custom-accordion__item:has(.active) .custom-accordion__content {
+.custom-accordion__content {
+  display: none;
+}
+
+.custom-accordion__content.active {
   display: none;
 }
 {% endstyle %}
