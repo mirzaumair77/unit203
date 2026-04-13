@@ -270,11 +270,11 @@
     let mainDiv = document.querySelector(".single-product__{{ section.id }}");
 
     if (!mainDiv) return;
-    let qItems = mainDiv.querySelectorAll(".single-product__variant-item");
+    let qItems = mainDiv.querySelectorAll(".single-product__variant-item input");
 
     qItems.forEach((qitem) => {
         
-      qitem.addEventListener("click", function () {
+      qitem.addEventListener("change", function () {
         qitem.classList.toggle("active")
         console.log(qitem)
       })
