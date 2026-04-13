@@ -199,8 +199,18 @@
                       <h3>{{ variant.title }}</h3>
                     </div>
                     <div class="single-proudct__variant-price">
-                      <span>{{ variant.price | money }}</span>
-                      <span>{{ variant.compare_at_price | money }}</span>
+                      {% if variant.compare_at_price > variant.price %}
+                        <div class="single-product__price">
+                          <span>{{ variant.price | money }}</span>
+                        </div>
+                        <div class="single-product__original-price">
+                          <span>{{ variant.compare_at_price | money }}</span>
+                        </div>
+                      {% else %}
+                        <div class="single-product__price">
+                          <span>{{ variant.price | money }}</span>
+                        </div>
+                      {% endif %}
                     </div>
                   </label>
                 </variant-item>
@@ -212,8 +222,18 @@
                       <h3>{{ variant.title }}</h3>
                     </div>
                     <div class="single-proudct__variant-price">
-                      <span>{{ variant.price | money }}</span>
-                      <span>{{ variant.compare_at_price | money }}</span>
+                      {% if variant.compare_at_price > variant.price %}
+                        <div class="single-product__price">
+                          <span>{{ variant.price | money }}</span>
+                        </div>
+                        <div class="single-product__original-price">
+                          <span>{{ variant.compare_at_price | money }}</span>
+                        </div>
+                      {% else %}
+                        <div class="single-product__price">
+                          <span>{{ variant.price | money }}</span>
+                        </div>
+                      {% endif %}
                     </div>
                   </label>
                 </variant-item>
