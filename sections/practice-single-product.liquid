@@ -281,11 +281,12 @@ document.addEventListener("DOMContentLoaded", function () {
   let qItems = mainDiv.querySelectorAll(".single-product__variant-item input");
   let activePack = qItems[1].closest(".single-product__variant-item");
   if(activePack){
-activePack.classList.add("active");
-totalPriceEl.innerText = activePack.querySelector(".single-product__original-price span")?.textContent;
-
-  
+    activePack.classList.add("active");
+    totalPriceEl.innerText = activePack.querySelector(".single-product__original-price span")?.textContent;
   }
+
+  console.log(testVar);
+
   qItems.forEach((qitem) => {
     qitem.addEventListener("change", function () {
 
