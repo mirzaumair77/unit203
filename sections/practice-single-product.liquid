@@ -158,7 +158,9 @@
       </div>
       <div class="single-product__details">
         <div class="single-product__title">
-          <h2>{{ product.title }}</h2>
+          <a href="{{ product.url }}">
+            <h2>{{ product.title }}</h2>
+          </a>
         </div>
         <div class="single-product__description">
           {{ product.description }}
@@ -177,7 +179,7 @@
             </div>
           {% endif %}
         </div>
-        <div class="single-product__atc">
+        <div class="single-product__atc button-primary__main">
           <button class="button-primary">Add to cart</button>
         </div>
       </div>
