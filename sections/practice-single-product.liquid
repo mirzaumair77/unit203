@@ -265,22 +265,30 @@
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    
-    let mainDiv = document.querySelector(".single-product__{{ section.id }}");
+document.addEventListener("DOMContentLoaded", function () {
+  
+  let mainDiv = document.querySelector(".single-product__{{ section.id }}");
+  if (!mainDiv) return;
 
-    if (!mainDiv) return;
-    let qItems = mainDiv.querySelectorAll(".single-product__variant-item input");
+  let qItems = mainDiv.querySelectorAll(".single-product__variant-item input");
 
-    qItems.forEach((qitem) => {
-        
-      qitem.addEventListener("change", function () {
-        qitem.classList.toggle("active")
-        console.log(qitem)
-      })
-    })
-    
-  })
+  qItems.forEach((qitem) => {
+      
+    qitem.addEventListener("change", function () {
+
+      mainDiv.querySelectorAll(".single-product__variant-item")
+        .forEach(item => item.classList.remove("active"));
+
+      let parent = qitem.closest(".single-product__variant-item");
+      if (parent) {
+        parent.classList.add("active");
+      }
+
+      console.log(parent);
+    });
+  });
+
+});
 </script>
 
 {% schema %}
