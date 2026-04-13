@@ -21,13 +21,19 @@
   display: block;
 }
 
+.single-product__details {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
 {%- endstyle -%}
 
 <div class="single-product single-product__{{ section.id }}">
   <div class="wrapper">
     <div class="single-product__main">
       <div class="single-product__image">
-        {{ product.featured_image | image_url: width: 2250 | image_tag: product.featured_image.alt }}
+        {% render 'product-media-gallery-v2', product: product %}
       </div>
       <div class="single-product__details">
         <div class="single-product__title">
