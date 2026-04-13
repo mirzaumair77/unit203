@@ -607,7 +607,7 @@ body.pswp-open {
   width: 100%;
 }
 
-.button-primary,
+.,
 .button-white-color {
   width: 100%;
   padding: 18px 24px;
@@ -622,13 +622,13 @@ body.pswp-open {
   text-transform: uppercase;
 }
 
-.button-primary__main {
+.__main {
   background: linear-gradient(90deg, #FF934F 0%, #FF7340 100%);
   border-radius: 14px;
   padding: 2px;
 }
 
-.button-primary {
+. {
   background: linear-gradient(90deg, #FF934F 0%, #FF7340 100%);
   border: none;
   color: #FAF7F3;
@@ -640,7 +640,7 @@ body.pswp-open {
   color: #49827C;
 }
 
-.button-primary__guarantee,
+.__guarantee,
 .button-white__guarantee {
   padding-top: 12px;
   display: flex;
@@ -649,7 +649,7 @@ body.pswp-open {
   gap: 4px;
 }
 
-.button-primary__guarantee p,
+.__guarantee p,
 .button-white__guarantee p {
   color: #253937;
   font-size: 16px;
@@ -662,9 +662,9 @@ body.pswp-open {
   color: #FAF7F3;
 }
 
-.button-primary__arrow-icon svg,
+.__arrow-icon svg,
 .button-white__arrow-icon svg,
-.button-primary__guarantee svg,
+.__guarantee svg,
 .button-white__guarantee svg {
   width: 100%;
   max-width: 18px;
@@ -674,7 +674,7 @@ body.pswp-open {
 
 @media only screen and (min-width: 390px) {
 
-  .button-primary,
+  .,
   .button-white-color {
     font-size: 18px;
   }
@@ -709,11 +709,11 @@ body.pswp-open {
     line-height: 27px;
   }
 
-  .button-primary__main {
+  .__main {
     border-radius: 18px;
   }
 
-  .button-primary,
+  .,
   .button-white-color {
     border-radius: 16px;
     padding: 24px 32px;
@@ -722,18 +722,18 @@ body.pswp-open {
     font-weight: 800;
   }
 
-  .button-primary__guarantee,
+  .__guarantee,
   .button-white__guarantee {
     gap: 6px;
   }
 
-  .button-primary__guarantee p,
+  .__guarantee p,
   .button-white__guarantee p {
     font-size: 18px;
   }
 
-  .button-primary__arrow-icon svg,
-  .button-primary__guarantee svg,
+  .__arrow-icon svg,
+  .__guarantee svg,
   .button-white__arrow-icon svg,
   .button-white__guarantee svg {
     max-width: 20px;
