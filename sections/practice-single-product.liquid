@@ -278,8 +278,13 @@ document.addEventListener("DOMContentLoaded", function () {
   let totalCompareEl = mainDiv.querySelector(".data-total-compare-price span");
 
   let qItems = mainDiv.querySelectorAll(".single-product__variant-item input");
-qItems[1].closest(".single-product__variant-item").classList.add("active");
+  let activePack = qItems[1].closest(".single-product__variant-item");
+  if*(activePack){
+activePack.classList.add("active");
 totalPriceEl.innerText = "test";
+
+  
+  }
   qItems.forEach((qitem) => {
     qitem.addEventListener("change", function () {
 
