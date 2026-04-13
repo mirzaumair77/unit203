@@ -78,7 +78,7 @@
     justify-content: space-between;
     gap: 16px;
   }
-  
+
   .single-product__variant-item input:checked + label,
   .single-product__variant-item.active label {
     background-color: #BdE2D6B2;
@@ -191,18 +191,34 @@
         <div class="single-proudct__variants">
           {%- for variant in product.variants -%}
             {% unless variant.title == '5 Packs' %}
-              <variant-item class="single-product__variant-item">
-                <input type="radio" id="pack_{{ variant.id }}" name="pack" value="{{ variant.id }}">
-                <label for="pack_{{ variant.id }}">
-                  <div class="single-proudct__variant-title">
-                    <h3>{{ variant.title }}</h3>
-                  </div>
-                  <div class="single-proudct__variant-price">
-                    <span>{{ variant.price | money }}</span>
-                    <span>{{ variant.compare_at_price | money }}</span>
-                  </div>
-                </label>
-              </variant-item>
+              {% if variant.title == '2 Packs' %}
+                <variant-item class="single-product__variant-item">
+                  <input type="radio" id="pack_{{ variant.id }}" checked name="pack" value="{{ variant.id }}">
+                  <label for="pack_{{ variant.id }}">
+                    <div class="single-proudct__variant-title">
+                      <h3>{{ variant.title }}</h3>
+                    </div>
+                    <div class="single-proudct__variant-price">
+                      <span>{{ variant.price | money }}</span>
+                      <span>{{ variant.compare_at_price | money }}</span>
+                    </div>
+                  </label>
+                </variant-item>
+                <variant-item class="single-product__variant-item">
+                  <input type="radio" id="pack_{{ variant.id }}" name="pack" value="{{ variant.id }}">
+                  <label for="pack_{{ variant.id }}">
+                    <div class="single-proudct__variant-title">
+                      <h3>{{ variant.title }}</h3>
+                    </div>
+                    <div class="single-proudct__variant-price">
+                      <span>{{ variant.price | money }}</span>
+                      <span>{{ variant.compare_at_price | money }}</span>
+                    </div>
+                  </label>
+                </variant-item>
+              {% else %}
+
+              {% endif %}
             {% endunless %}
           {%- endfor -%}
         </div>
