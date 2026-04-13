@@ -174,7 +174,12 @@
         <div class="single-proudct__variants">
           {%- for variant in product.variants -%}
             {% unless variant.title == '5 Packs' %}
-              <variant-item> </variant-item>
+              <variant-item class="single-product__variant-item">
+                <div class="single-proudct__variant-title">
+                  <h3>{{ variant.title }}</h3>
+                </div>
+                <div class="single-proudct__variant-price"></div>
+              </variant-item>
             {% endunless %}
           {%- endfor -%}
         </div>
