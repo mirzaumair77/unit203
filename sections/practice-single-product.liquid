@@ -281,7 +281,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let activePack = qItems[1].closest(".single-product__variant-item");
   if(activePack){
 activePack.classList.add("active");
-totalPriceEl.innerText = querySelector(".single-product__original-price span")?.textContent;
+totalPriceEl.innerText = activePack.querySelector(".single-product__original-price span")?.textContent;
 
   
   }
