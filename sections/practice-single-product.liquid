@@ -274,11 +274,11 @@
     let qItems = document.querySelectorAll(".single-product__variant-item");
 
     qItems.forEach(qitem) => {
-      let qitem = document.querySelector(".single-product__variant-item label");
+      let btn = document.querySelector(".single-product__variant-item label");
         
-      qitem.addEventListener("click", function () {
-        qitem.classlist.add("active")
-        console.log(qitem)
+      btn.addEventListener("click", function () {
+        btn.classlist.add("active")
+        console.log(btn)
       })
     }
     
