@@ -178,7 +178,10 @@
                 <div class="single-proudct__variant-title">
                   <h3>{{ variant.title }}</h3>
                 </div>
-                <div class="single-proudct__variant-price"></div>
+                <div class="single-proudct__variant-price">
+                  <span>{{ variant.price | money }}</span>
+                  <span>{{ variant.compare_at_price | money }}</span>
+                </div>
               </variant-item>
             {% endunless %}
           {%- endfor -%}
@@ -186,14 +189,14 @@
         <div class="single-product__price-main">
           {% if product.compare_at_price > product.price %}
             <div class="single-product__price">
-              <span>{{ product.price | money_with_currency }}</span>
+              <span>{{ product.price | money }}</span>
             </div>
             <div class="single-product__original-price">
-              <span>{{ product.compare_at_price | money_with_currency }}</span>
+              <span>{{ product.compare_at_price | money }}</span>
             </div>
           {% else %}
             <div class="single-product__price">
-              <span>{{ product.price | money_with_currency }}</span>
+              <span>{{ product.price | money }}</span>
             </div>
           {% endif %}
         </div>
