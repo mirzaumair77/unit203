@@ -274,11 +274,10 @@
     let qItems = mainDiv.querySelectorAll(".single-product__variant-item");
 
     qItems.forEach(qitem) => {
-      let btn = mainDiv.querySelector(".single-product__variant-wrapper");
         
-      btn.addEventListener("click", function () {
-        btn.classList.add("active")
-        console.log(btn)
+      qitem.addEventListener("click", function () {
+        qitem.classList.add("active")
+        console.log(qitem)
       })
     }
     
