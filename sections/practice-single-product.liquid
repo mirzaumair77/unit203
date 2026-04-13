@@ -166,6 +166,10 @@
         <div class="single-product__description">
           {{ product.description }}
         </div>
+        <div class="single-proudct__variants">
+          {%- for variant in product.variants -%}
+          {%- endfor -%}
+        </div>
         <div class="single-product__price-main">
           {% if product.compare_at_price > product.price %}
             <div class="single-product__price">
