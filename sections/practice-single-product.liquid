@@ -270,16 +270,14 @@ document.addEventListener("DOMContentLoaded", function () {
   let mainDiv = document.querySelector(".single-product__{{ section.id }}");
   if (!mainDiv) return;
 
-  let priceEl = mainDiv.querySelectorAll(".data-total-price");
-  let comparePriceEl = mainDiv.querySelectorAll(".data-total-compare-price");
-
-  console.log(priceEl, comparePriceEl);
-  
+  let totalPriceEl = mainDiv.querySelector(".total .single-product__price span");
+  let totalCompareEl = mainDiv.querySelector(".total .single-product__original-price span");
 
   let qItems = mainDiv.querySelectorAll(".single-product__variant-item input");
 
   qItems.forEach((qitem) => {
     qitem.addEventListener("change", function () {
+
       mainDiv.querySelectorAll(".single-product__variant-item")
         .forEach(item => item.classList.remove("active"));
 
@@ -287,9 +285,22 @@ document.addEventListener("DOMContentLoaded", function () {
       if (parent) {
         parent.classList.add("active");
       }
-      console.log(parent);
+
+      let price = parent.querySelector(".single-product__price span")?.textContent;
+      let comparePrice = parent.querySelector(".single-product__original-price span")?.textContent;
+
+      if (price && totalPriceEl) {
+        totalPriceEl.textContent = price;
+      }
+
+      if (comparePrice && totalCompareEl) {
+        totalCompareEl.textContent = comparePrice;
+      }
+
+      console.log(price, comparePrice);
     });
   });
+
 });
 </script>
 
