@@ -160,7 +160,7 @@
           watchSlidesProgress: true,
         });
 
-      {% elsif template.suffix contains 'gel-2-step-module-bf-v2' %}
+      {% else %}
         const seeMossThumbImages = new Swiper(thumbsContainer, {
           spaceBetween: 5,
           slidesPerView: 12,
@@ -178,28 +178,6 @@
             1024: {
               spaceBetween: 16,
               slidesPerView: 5
-            }
-          }
-        });
-
-      {% else %}
-        const seeMossThumbImages = new Swiper(thumbsContainer, {
-          spaceBetween: 10,
-          slidesPerView: 7,
-          freeMode: true,
-          watchSlidesProgress: true,
-          breakpoints: {
-            300: {
-              spaceBetween: 14,
-              slidesPerView: 'auto'
-            },
-            768: {
-              spaceBetween: 20,
-              slidesPerView: 8
-            },
-            1024: {
-              spaceBetween: 20,
-              slidesPerView: 6
             }
           }
         });
