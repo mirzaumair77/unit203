@@ -278,7 +278,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let totalCompareEl = mainDiv.querySelector(".data-total-compare-price span");
 
   let qItems = mainDiv.querySelectorAll(".single-product__variant-item input");
-mainDiv[1].classList.add("active");
+qItems[1].closest(".single-product__variant-item").classList.add("active");
   qItems.forEach((qitem) => {
     qitem.addEventListener("change", function () {
 
