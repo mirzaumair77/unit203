@@ -42,6 +42,12 @@
   font-weight: 400;
   margin: 0;
 }
+
+.single-product__price-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 {%- endstyle -%}
 
 <div class="single-product single-product__{{ section.id }}">
@@ -57,7 +63,7 @@
         <div class="single-product__description">
           {{ product.description }}
         </div>
-        <div class="single-product__price">
+        <div class="single-product__price-main">
           {% if product.compare_at_price < product.price %}
             <div class="single-product__price">
               <span>{{ product.price | money_with_currency }}</span>
