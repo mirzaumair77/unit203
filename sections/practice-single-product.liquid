@@ -3,159 +3,164 @@
 -%}
 
 {%- style -%}
-.single-product {
-  padding: 80px 16px;
-}
+  .single-product {
+    padding: 80px 16px;
+  }
 
-.single-product__main {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-}
+  .single-product__main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
 
-.single-product__image img {
-  width: 100%;
-  height: auto;
-  border-radius: 24px;
-  object-fit: cover;
-  display: block;
-}
+  .single-product__image img {
+    width: 100%;
+    height: auto;
+    border-radius: 24px;
+    object-fit: cover;
+    display: block;
+  }
 
-.single-product__details {
-  display: flex;
-  flex-direction: column;
-  row-gap: 16px;
-}
+  .single-product__details {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+  }
 
-.single-product__title h2 {
-  color: #222;
-  font-size: 32px;
-  line-height: 48px;
-  font-weight: 500;
-  margin: 0;
-}
+  .single-product__title h2 {
+    color: #222;
+    font-size: 32px;
+    line-height: 48px;
+    font-weight: 500;
+    margin: 0;
+  }
 
-.single-product__description p {
-  color: #222;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
-  margin: 0;
-}
+  .single-product__description p {
+    color: #222;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    margin: 0;
+  }
 
-.single-product__price-main {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
+  .single-product__price-main {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
 
-.single-product__price {
-  display: block;
-  color: #222;
-  font-size: 18px;
-  line-height: 26px;
-  font-weight: 600;
-  margin: 0;
-}
+  .single-product__price {
+    display: block;
+    color: #222;
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 600;
+    margin: 0;
+  }
 
-.single-product__original-price span {
-  display: block;
-  color: #222;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 500;
-  text-decoration: line-through;
-  margin: 0;
-}
-
-.button-primary {
-  width: 100%;
-  padding: 20px 24px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-size: 4.6vw;
-  line-height: 13px;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.button-primary__main {
-  background: linear-gradient(90deg, #FF934F 0%, #FF7340 100%);
-  border-radius: 14px;
-  padding: 2px;
-}
-
-.button-primary {
-  background: linear-gradient(90deg, #FF934F 0%, #FF7340 100%);
-  border: none;
-  color: #FAF7F3;
-}
-
-.button-primary__guarantee {
-  padding-top: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 4px;
-}
-
-.button-primary__guarantee p {
-  color: #253937;
-  font-size: 16px;
-  line-height: normal;
-  font-weight: 500;
-  margin: 0;
-}
-
-.button-primary__guarantee svg {
-  width: 100%;
-  max-width: 18px;
-  height: 18px;
-}
-@media only screen and (min-width: 372px) {
+  .single-product__original-price span {
+    display: block;
+    color: #222;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    text-decoration: line-through;
+    margin: 0;
+  }
 
   .button-primary {
-    font-size: 18px;
+    width: 100%;
+    padding: 20px 24px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 4.6vw;
+    line-height: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
   }
-}
-
-@media only screen and (min-width: 769px) {
 
   .button-primary__main {
-    border-radius: 18px;
+    background: linear-gradient(90deg, #FF934F 0%, #FF7340 100%);
+    border-radius: 14px;
+    padding: 2px;
   }
 
   .button-primary {
-    border-radius: 16px;
-    padding: 24px 32px;
-    font-size: 20px;
-    line-height: 14px;
-    font-weight: 800;
+    background: linear-gradient(90deg, #FF934F 0%, #FF7340 100%);
+    border: none;
+    color: #FAF7F3;
   }
 
-  .button-primary__guarantee{
-    gap: 6px;
+  .button-primary__guarantee {
+    padding-top: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
   }
 
-  .button-primary__guarantee p{
-    font-size: 18px;
+  .button-primary__guarantee p {
+    color: #253937;
+    font-size: 16px;
+    line-height: normal;
+    font-weight: 500;
+    margin: 0;
   }
 
   .button-primary__guarantee svg {
-    max-width: 20px;
-    height: 20px;
+    width: 100%;
+    max-width: 18px;
+    height: 18px;
   }
-}
+  @media only screen and (min-width: 372px) {
+
+    .button-primary {
+      font-size: 18px;
+    }
+  }
+
+  @media only screen and (min-width: 769px) {
+
+    .button-primary__main {
+      border-radius: 18px;
+    }
+
+    .button-primary {
+      border-radius: 16px;
+      padding: 24px 32px;
+      font-size: 20px;
+      line-height: 14px;
+      font-weight: 800;
+    }
+
+    .button-primary__guarantee{
+      gap: 6px;
+    }
+
+    .button-primary__guarantee p{
+      font-size: 18px;
+    }
+
+    .button-primary__guarantee svg {
+      max-width: 20px;
+      height: 20px;
+    }
+  }
 {%- endstyle -%}
 
 <div class="single-product single-product__{{ section.id }}">
   <div class="wrapper">
     <div class="single-product__main">
       <div class="single-product__image">
-        {{ product.featured_image | image_url: width: 2000 | image_tag: alt: product.featured_image.alt | default: product.title  }}
+        {{
+          product.featured_image
+          | image_url: width: 2000
+          | image_tag: alt: product.featured_image.alt
+          | default: product.title
+        }}
       </div>
       <div class="single-product__details">
         <div class="single-product__title">
@@ -168,6 +173,9 @@
         </div>
         <div class="single-proudct__variants">
           {%- for variant in product.variants -%}
+            {% unless variant.title == '5 Packs' %}
+              <variant-item> </variant-item>
+            {% endunless %}
           {%- endfor -%}
         </div>
         <div class="single-product__price-main">
