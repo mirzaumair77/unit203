@@ -1,3 +1,18 @@
+{% style %}
+
+{% endstyle %}
+
+<div class="single-product single-product__{{ section.id }}">
+  <div class="wrapper">
+    <div class="single-product__main">
+      <div class="single-product__image">
+        {{  }}
+      </div>
+      <div class="single-product__details"></div>
+    </div>
+  </div>
+</div>
+
 {% schema %}
 {
   "name": "Practice single product",
@@ -5,7 +20,13 @@
   "disabled_on": {
     "groups": ["header", "footer"]
   },
-  "settings": [],
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    }
+  ],
   "blocks": [],
   "presets": [
     {
