@@ -154,7 +154,7 @@
   <div class="wrapper">
     <div class="single-product__main">
       <div class="single-product__image">
-        {% render 'product-media-gallery-v2', product: product %}
+        {{ product.featured_image | image_url: width: 2000 | image_tag: alt: product.featured_image.alt | default: product.title  }}
       </div>
       <div class="single-product__details">
         <div class="single-product__title">
