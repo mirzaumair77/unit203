@@ -1,14 +1,41 @@
-{% style %}
+{%- liquid
+  assign product = section.settings.product
+-%}
 
+{% style %}
 {% endstyle %}
 
 <div class="single-product single-product__{{ section.id }}">
   <div class="wrapper">
     <div class="single-product__main">
       <div class="single-product__image">
-        {{  }}
+        {{ product.featured_image | image_url: width: 2250 | image_tag: product.featured_image.alt }}
       </div>
-      <div class="single-product__details"></div>
+      <div class="single-product__details">
+        <div class="single-product__title">
+          <h2>{{ product.title }}</h2>
+        </div>
+        <div class="single-product__description">
+          {{ product.description }}
+        </div>
+        <div class="single-product__price">
+          {% if product.compare_at_price < product.price %}
+            <div class="single-product__price">
+              <span>{{ product.price | money_with_currency }}</span>
+            </div>
+            <div class="single-product__original-price">
+              <span>{{ product.compare_at_price | money_with_currency }}</span>
+            </div>
+          {% else %}
+            <div class="single-product__price">
+              <span>{{ product.price | money_with_currency }}</span>
+            </div>
+          {% endif %}
+        </div>
+        <div class="single-product__atc">
+          <button>Add to cart</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
