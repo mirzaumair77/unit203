@@ -202,7 +202,7 @@
               {% if variant.title == '2 Packs' %}
                 <variant-item class="single-product__variant-item">
                   <input type="radio" id="pack_{{ variant.id }}" checked name="pack" value="{{ variant.id }}">
-                  <label for="pack_{{ variant.id }}">
+                  <label for="pack_{{ variant.id }}" class="single-product__variant-wrapper">
                     <div class="single-proudct__variant-title">
                       <h3>{{ variant.title }}</h3>
                     </div>
@@ -225,7 +225,7 @@
               {% else %}
                 <variant-item class="single-product__variant-item">
                   <input type="radio" id="pack_{{ variant.id }}" name="pack" value="{{ variant.id }}">
-                  <label for="pack_{{ variant.id }}">
+                  <label for="pack_{{ variant.id }}" class="single-product__variant-wrapper">
                     <div class="single-proudct__variant-title">
                       <h3>{{ variant.title }}</h3>
                     </div>
@@ -271,10 +271,10 @@
     let mainDiv = document.querySelector(".single-product__{{ section.id }}");
 
     if (!mainDiv) return;
-    let qItems = document.querySelectorAll(".single-product__variant-item");
+    let qItems = mainDiv.querySelectorAll(".single-product__variant-item");
 
     qItems.forEach(qitem) => {
-      let btn = document.querySelector(".single-product__variant-item label");
+      let btn = mainDiv.querySelector(".single-product__variant-wrapper");
         
       btn.addEventListener("click", function () {
         btn.classlist.add("active")
