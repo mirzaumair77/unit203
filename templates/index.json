@@ -752,8 +752,16 @@
         "custom_w3jKq9",
         "custom_e9MyhD"
       ],
+      "disabled": true,
       "name": "Custom accordion",
       "settings": {}
+    },
+    "practice_single_product_KLHKRw": {
+      "type": "practice-single-product",
+      "name": "Practice single product",
+      "settings": {
+        "product": "sea-moss-gel-trueseamoss"
+      }
     }
   },
   "order": [
@@ -765,6 +773,7 @@
     "best_sellers_kmqUGD",
     "good_for_LrTETB",
     "choice_list_RCQEdP",
-    "custom_accordion_QeQGYf"
+    "custom_accordion_QeQGYf",
+    "practice_single_product_KLHKRw"
   ]
 }
