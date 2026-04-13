@@ -242,7 +242,7 @@
                           </div>
                         {% endif %}
 
-                        <input type="radio" id="pack_{{ variant.id }}" name="pack" checked value="{{ variant.id }}">
+                        <input type="radio" id="pack_{{ variant.id }}" name="pack" value="{{ variant.id }}">
                         <label for="pack_{{ variant.id }}">
                           <div class="gel-bf-drawer__bundle--main">
                             <div class="gel-bf-drawer__bundle--quantity">
@@ -301,6 +301,104 @@
                               }}
                             </div>
                           {% endif %}
+                        </label>
+                      </div>
+                    {% elsif variant.title == '3 Packs' %}
+                      <div
+                        class="gel-bf-drawer__bundle--wrapper"
+                        data-variant="{{ variant.id }}"
+                        data-bundle-quantity="{{ variant.title | replace:'Pack', '' | replace:'s','' | strip }}"
+                      >
+                        {% if variant.title == '1 Pack' %}
+                          {% if ex_text_badge_1 != blank %}
+                            <div
+                              class="gel-bf-drawer__bundle--tag"
+                              style="--color-text: {{ ex_text_color_1 }}; --background-color: {{ ex_bg_color_1 }}"
+                            >
+                              <span>{{ ex_text_badge_1 }}</span>
+                            </div>
+                          {% endif %}
+                        {% else %}
+                          {% if ex_text_badge_3 != blank %}
+                            <div
+                              class="gel-bf-drawer__bundle--tag"
+                              style="--color-text: {{ ex_text_color_3 }}; --background-color: {{ ex_bg_color_3 }}"
+                            >
+                              <span>{{ ex_text_badge_3 }}</span>
+                            </div>
+                          {% endif %}
+                        {% endif %}
+
+                        <input type="radio" id="pack_{{ variant.id }}" checked name="pack" value="{{ variant.id }}">
+                        <label for="pack_{{ variant.id }}">
+                          <div class="gel-bf-drawer__bundle--main">
+                            <div class="gel-bf-drawer__bundle--quantity">
+                              {% if variant.title == '1 Pack' %}
+                                <span>{{ name_quantity_1 }}</span>
+                              {% elsif variant.title == '3 Packs' %}
+                                <span>{{ name_quantity_3 }}</span>
+                              {% else %}
+                                <span>{{ variant.title }}</span>
+                              {% endif %}
+                            </div>
+                            <div class="gel-bf-drawer__bundle--price" data-bundle-price>
+                              <span>{{ variant.price | money }}</span>
+                            </div>
+                            <div class="gel-bf-drawer__bundle--compare--price" data-bundle-compare-price>
+                              <span>{{ variant.compare_at_price | money }}</span>
+                            </div>
+                            <div class="gel-bf-drawer__bundle--discount">
+                              {% if variant.title == '1 Pack' %}
+                                <span>{{ text_badge_1 }}</span>
+                              {% elsif variant.title == '3 Packs' %}
+                                <span>{{ text_badge_3 }}</span>
+                              {% else %}
+                                <span>
+                                  {% assign discount_amount = variant.compare_at_price | minus: variant.price %}
+                                  {% assign discount_percent = discount_amount
+                                    | times: 100
+                                    | divided_by: variant.compare_at_price
+                                  %}
+                                  {{ discount_percent | round }}% OFF
+                                </span>
+                              {% endif %}
+                            </div>
+                            {% if variant.title == '1 Pack' %}
+                              {% if text_badge_one_time_1 != blank %}
+                                <div
+                                  class="gel-bf-drawer__quantity--badge"
+                                  data-badge-one-time
+                                  style="--color-text: {{ text_color_1 }}; --background-color: {{ bg_color_1 }}"
+                                >
+                                  <span>{{ text_badge_one_time_1 }}</span>
+                                </div>
+                              {% endif %}
+                            {% elsif variant.title == '3 Packs' %}
+                              {% if text_badge_one_time_3 != blank %}
+                                <div
+                                  class="gel-bf-drawer__quantity--badge"
+                                  data-badge-one-time
+                                  style="--color-text: {{ text_color_3 }}; --background-color: {{ bg_color_3 }}"
+                                >
+                                  <span>{{ text_badge_one_time_3 }}</span>
+                                </div>
+                              {% endif %}
+                            {% endif %}
+                            {% if sub_quantity_1 != blank %}
+                              {% if variant.title == '1 Pack' %}
+                                <div class="gel-bf-drawer__bundle--subquantity">
+                                  <span>{{ sub_quantity_1 }}</span>
+                                </div>
+                              {% endif %}
+                            {% endif %}
+                            {% if sub_quantity_3 != blank %}
+                              {% if variant.title == '3 Packs' %}
+                                <div class="gel-bf-drawer__bundle--subquantity">
+                                  <span>{{ sub_quantity_3 }}</span>
+                                </div>
+                              {% endif %}
+                            {% endif %}
+                          </div>
                         </label>
                       </div>
                     {% else %}
