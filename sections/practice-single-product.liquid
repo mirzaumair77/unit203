@@ -276,7 +276,7 @@
     qItems.forEach((qitem) => {
         
       qitem.addEventListener("click", function () {
-        qitem.classList.add("active")
+        qitem.classList.toggle("active")
         console.log(qitem)
       })
     })
