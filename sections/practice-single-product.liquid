@@ -3,6 +3,12 @@
 -%}
 
 {% style %}
+.single-product__main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+
 {% endstyle %}
 
 <div class="single-product single-product__{{ section.id }}">
