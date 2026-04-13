@@ -4,7 +4,10 @@
 
 {%- style -%}
   .single-product {
-    background: linear-gradient(180deg, rgba(251, 244, 220, 1), rgba(248, 251, 223, 1) 60%, rgba(248, 251, 223, 1) 90%, rgba(251, 244, 220, 0.9) 100%);
+    background: linear-gradient(180deg, rgba(251, 244, 220, 1), 
+    rgba(248, 251, 223, 1) 60%, 
+    rgba(248, 251, 223, 1) 90%, 
+    rgba(251, 244, 220, 0.9) 100%);
     padding: 80px 16px;
   }
 
@@ -275,7 +278,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let totalCompareEl = mainDiv.querySelector(".data-total-compare-price span");
 
   let qItems = mainDiv.querySelectorAll(".single-product__variant-item input");
-
+mainDiv[1].classList.add("active");
   qItems.forEach((qitem) => {
     qitem.addEventListener("change", function () {
 
