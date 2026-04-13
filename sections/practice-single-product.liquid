@@ -175,13 +175,16 @@
           {%- for variant in product.variants -%}
             {% unless variant.title == '5 Packs' %}
               <variant-item class="single-product__variant-item">
-                <div class="single-proudct__variant-title">
-                  <h3>{{ variant.title }}</h3>
-                </div>
-                <div class="single-proudct__variant-price">
-                  <span>{{ variant.price | money }}</span>
-                  <span>{{ variant.compare_at_price | money }}</span>
-                </div>
+                <input type="radio" id="pack_{{ variant.id }}" name="pack" value="{{ variant.id }}">
+                <label for="pack_{{ variant.id }}">
+                  <div class="single-proudct__variant-title">
+                    <h3>{{ variant.title }}</h3>
+                  </div>
+                  <div class="single-proudct__variant-price">
+                    <span>{{ variant.price | money }}</span>
+                    <span>{{ variant.compare_at_price | money }}</span>
+                  </div>
+                </label>
               </variant-item>
             {% endunless %}
           {%- endfor -%}
