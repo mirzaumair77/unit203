@@ -75,6 +75,13 @@
         "description_size-mobile": 14
       }
     },
+    "practice_single_product_KLHKRw": {
+      "type": "practice-single-product",
+      "name": "Practice single product",
+      "settings": {
+        "product": "sea-moss-gel-trueseamoss"
+      }
+    },
     "running_line_W6Ltmf": {
       "type": "running-line",
       "blocks": {
@@ -755,25 +762,18 @@
       "disabled": true,
       "name": "Custom accordion",
       "settings": {}
-    },
-    "practice_single_product_KLHKRw": {
-      "type": "practice-single-product",
-      "name": "Practice single product",
-      "settings": {
-        "product": "sea-moss-gel-trueseamoss"
-      }
     }
   },
   "order": [
     "hero_slider_PHjMAD",
     "running_line_W6Ltmf",
+    "practice_single_product_KLHKRw",
     "our_impact_6VXUhP",
     "featured_in_NeGHEE",
     "why_it_works_kLaHAm",
     "best_sellers_kmqUGD",
     "good_for_LrTETB",
     "choice_list_RCQEdP",
-    "custom_accordion_QeQGYf",
-    "practice_single_product_KLHKRw"
+    "custom_accordion_QeQGYf"
   ]
 }
