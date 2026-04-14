@@ -6,9 +6,9 @@
 
 {%- style -%}
   .single-product {
-    background: linear-gradient(180deg, rgba(251, 244, 220, 1), 
-    rgba(248, 251, 223, 1) 60%, 
-    rgba(248, 251, 223, 1) 90%, 
+    background: linear-gradient(180deg, rgba(251, 244, 220, 1),
+    rgba(248, 251, 223, 1) 60%,
+    rgba(248, 251, 223, 1) 90%,
     rgba(251, 244, 220, 0.9) 100%);
     padding: 80px 16px;
   }
@@ -202,7 +202,32 @@
           {{ product.description }}
         </div>
         <div class="single-product__image-container">
-          <div class=""></div>
+            {% for i in (1..global_max_quantity) %}
+              {% if plug_image != blank %}
+                <div class="single-product__image data-preview-image">
+                  <div class="plug data-plug-image">
+                    {{
+                      plug_image
+                      | image_url: width: 500
+                      | image_tag:
+                        alt: plug_image.alt,
+                        loading: 'lazy',
+                        widths: '360, 480, 600, 800, 1000',
+                        sizes: '(max-width: 768px) 100vw, 500px'
+                    }}
+                  </div>
+                  <div class="variant">
+                    <img
+                      class="variant-image"
+                      data-name=""
+                      src="{{ plug_image | img_url: 'master' }}"
+                      alt="{{ product.title }}"
+                      loading="lazy"
+                    >
+                  </div>
+              {% endif %}
+            {% endfor %}
+          </div>
         </div>
         <div class="single-proudct__variants">
           {%- for variant in product.variants -%}
@@ -274,52 +299,48 @@
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-  
-  let mainDiv = document.querySelector(".single-product__{{ section.id }}");
-  let testVar = 0;
-  if (!mainDiv) return;
+  document.addEventListener('DOMContentLoaded', function () {
+    let mainDiv = document.querySelector('.single-product__{{ section.id }}');
+    let testVar = 0;
+    if (!mainDiv) return;
 
-  let totalPriceEl = mainDiv.querySelector(".data-total-price span");
-  let totalCompareEl = mainDiv.querySelector(".data-total-compare-price span");
+    let totalPriceEl = mainDiv.querySelector('.data-total-price span');
+    let totalCompareEl = mainDiv.querySelector('.data-total-compare-price span');
 
-  let qItems = mainDiv.querySelectorAll(".single-product__variant-item input");
-  let activePack = qItems[1].closest(".single-product__variant-item");
-  if(activePack){
-    activePack.classList.add("active");
-    totalPriceEl.innerText = activePack.querySelector(".single-product__original-price span")?.textContent;
-  }
+    let qItems = mainDiv.querySelectorAll('.single-product__variant-item input');
+    let activePack = qItems[1].closest('.single-product__variant-item');
+    if (activePack) {
+      activePack.classList.add('active');
+      totalPriceEl.innerText = activePack.querySelector('.single-product__original-price span')?.textContent;
+    }
 
-  console.log(testVar);
+    console.log(testVar);
 
-  qItems.forEach((qitem) => {
-    qitem.addEventListener("change", function () {
+    qItems.forEach((qitem) => {
+      qitem.addEventListener('change', function () {
+        mainDiv.querySelectorAll('.single-product__variant-item').forEach((item) => item.classList.remove('active'));
 
-      mainDiv.querySelectorAll(".single-product__variant-item")
-        .forEach(item => item.classList.remove("active"));
+        let parent = qitem.closest('.single-product__variant-item');
+        if (parent) {
+          parent.classList.add('active');
+        }
 
-      let parent = qitem.closest(".single-product__variant-item");
-      if (parent) {
-        parent.classList.add("active");
-      }
+        let price = parent.querySelector('.single-product__price span')?.textContent;
+        let comparePrice = parent.querySelector('.single-product__original-price span')?.textContent;
 
-      let price = parent.querySelector(".single-product__price span")?.textContent;
-      let comparePrice = parent.querySelector(".single-product__original-price span")?.textContent;
+        if (price && totalPriceEl) {
+          totalPriceEl.textContent = price;
+        }
 
-      if (price && totalPriceEl) {
-        totalPriceEl.textContent = price;
-      }
+        if (comparePrice && totalCompareEl) {
+          totalCompareEl.textContent = comparePrice;
+        }
 
-      if (comparePrice && totalCompareEl) {
-        totalCompareEl.textContent = comparePrice;
-      }
-
-      testVar = 1;
-      console.log(price, comparePrice, testVar);
+        testVar = 1;
+        console.log(price, comparePrice, testVar);
+      });
     });
   });
-
-});
 </script>
 
 {% schema %}
