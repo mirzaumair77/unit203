@@ -201,7 +201,20 @@
         <div class="single-product__description">
           {{ product.description }}
         </div>
-        <div class="single-product__image-container">
+        <div class="single-product__price-main">
+          <div class="single-product__price data-total-price">
+            <span></span>
+          </div>
+          <div class="single-product__original-price data-total-compare-price">
+            <span></span>
+          </div>
+        </div>
+        <div class="single-product__atc button-primary__main">
+          <button class="button-primary">Add to cart</button>
+        </div>
+      </div>
+    </div>
+            <div class="single-product__image-container">
             {% for i in (1..global_max_quantity) %}
               {% if plug_image != blank %}
                 <div class="single-product__image data-preview-image">
@@ -228,7 +241,6 @@
               {% endif %}
             {% endfor %}
           </div>
-        </div>
         <div class="single-proudct__variants">
           {%- for variant in product.variants -%}
             {% unless variant.title == '5 Packs' %}
@@ -282,19 +294,6 @@
             {% endunless %}
           {%- endfor -%}
         </div>
-        <div class="single-product__price-main">
-          <div class="single-product__price data-total-price">
-            <span></span>
-          </div>
-          <div class="single-product__original-price data-total-compare-price">
-            <span></span>
-          </div>
-        </div>
-        <div class="single-product__atc button-primary__main">
-          <button class="button-primary">Add to cart</button>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
