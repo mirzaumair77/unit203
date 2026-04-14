@@ -199,6 +199,9 @@
         <div class="single-product__description">
           {{ product.description }}
         </div>
+        <div class="single-product__image-container">
+          <div class=""></div>
+        </div>
         <div class="single-proudct__variants">
           {%- for variant in product.variants -%}
             {% unless variant.title == '5 Packs' %}
@@ -329,6 +332,18 @@ document.addEventListener("DOMContentLoaded", function () {
       "type": "product",
       "id": "product",
       "label": "Product"
+    },
+    {
+      "type": "image_picker",
+      "id": "plus_image",
+      "label": "Plus image"
+    },
+    {
+      "type": "number",
+      "id": "global_max_quantity",
+      "label": "Value for quantity",
+      "default": 3,
+      "info": "The maximum quantity for all quantity options"
     }
   ],
   "blocks": [],
