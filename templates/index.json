@@ -141,7 +141,7 @@
       "name": "Practice single product",
       "settings": {
         "product": "sea-moss-gel-trueseamoss",
-        "plus_image": "shopify://shop_images/mangopineapple-nobg.webp",
+        "plug_image": "shopify://shop_images/mangopineapple-nobg.webp",
         "global_max_quantity": 3
       }
     },
