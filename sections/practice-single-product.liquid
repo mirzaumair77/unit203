@@ -242,58 +242,60 @@
         {% endif %}
       {% endfor %}
     </div>
-    <div class="single-proudct__variants">
-      {%- for variant in product.variants -%}
-        {% unless variant.title == '5 Packs' %}
-          {% if variant.title == '2 Packs' %}
-            <variant-item class="single-product__variant-item">
-              <input type="radio" id="pack_{{ variant.id }}" checked name="pack" value="{{ variant.id }}">
-              <label for="pack_{{ variant.id }}">
-                <div class="single-proudct__variant-title">
-                  <h3>{{ variant.title }}</h3>
-                </div>
-                <div class="single-proudct__variant-price">
-                  {% if variant.compare_at_price > variant.price %}
-                    <div class="single-product__price data-bundle-price">
-                      <span>{{ variant.price | money }}</span>
-                    </div>
-                    <div class="single-product__original-price data-bundle-compare-price">
-                      <span>{{ variant.compare_at_price | money }}</span>
-                    </div>
-                  {% else %}
-                    <div class="single-product__price data-bundle-price">
-                      <span>{{ variant.price | money }}</span>
-                    </div>
-                  {% endif %}
-                </div>
-              </label>
-            </variant-item>
-          {% else %}
-            <variant-item class="single-product__variant-item">
-              <input type="radio" id="pack_{{ variant.id }}" name="pack" value="{{ variant.id }}">
-              <label for="pack_{{ variant.id }}">
-                <div class="single-proudct__variant-title">
-                  <h3>{{ variant.title }}</h3>
-                </div>
-                <div class="single-proudct__variant-price">
-                  {% if variant.compare_at_price > variant.price %}
-                    <div class="single-product__price data-bundle-price">
-                      <span>{{ variant.price | money }}</span>
-                    </div>
-                    <div class="single-product__original-price data-bundle-price">
-                      <span>{{ variant.compare_at_price | money }}</span>
-                    </div>
-                  {% else %}
-                    <div class="single-product__price data-bundle-price">
-                      <span>{{ variant.price | money }}</span>
-                    </div>
-                  {% endif %}
-                </div>
-              </label>
-            </variant-item>
-          {% endif %}
-        {% endunless %}
-      {%- endfor -%}
+    <div class="single-product__wrapper">
+      <div class="single-proudct__variants">
+        {%- for variant in product.variants -%}
+          {% unless variant.title == '5 Packs' %}
+            {% if variant.title == '2 Packs' %}
+              <variant-item class="single-product__variant-item">
+                <input type="radio" id="pack_{{ variant.id }}" checked name="pack" value="{{ variant.id }}">
+                <label for="pack_{{ variant.id }}">
+                  <div class="single-proudct__variant-title">
+                    <h3>{{ variant.title }}</h3>
+                  </div>
+                  <div class="single-proudct__variant-price">
+                    {% if variant.compare_at_price > variant.price %}
+                      <div class="single-product__price data-bundle-price">
+                        <span>{{ variant.price | money }}</span>
+                      </div>
+                      <div class="single-product__original-price data-bundle-compare-price">
+                        <span>{{ variant.compare_at_price | money }}</span>
+                      </div>
+                    {% else %}
+                      <div class="single-product__price data-bundle-price">
+                        <span>{{ variant.price | money }}</span>
+                      </div>
+                    {% endif %}
+                  </div>
+                </label>
+              </variant-item>
+            {% else %}
+              <variant-item class="single-product__variant-item">
+                <input type="radio" id="pack_{{ variant.id }}" name="pack" value="{{ variant.id }}">
+                <label for="pack_{{ variant.id }}">
+                  <div class="single-proudct__variant-title">
+                    <h3>{{ variant.title }}</h3>
+                  </div>
+                  <div class="single-proudct__variant-price">
+                    {% if variant.compare_at_price > variant.price %}
+                      <div class="single-product__price data-bundle-price">
+                        <span>{{ variant.price | money }}</span>
+                      </div>
+                      <div class="single-product__original-price data-bundle-price">
+                        <span>{{ variant.compare_at_price | money }}</span>
+                      </div>
+                    {% else %}
+                      <div class="single-product__price data-bundle-price">
+                        <span>{{ variant.price | money }}</span>
+                      </div>
+                    {% endif %}
+                  </div>
+                </label>
+              </variant-item>
+            {% endif %}
+          {% endunless %}
+        {%- endfor -%}
+      </div>
     </div>
   </div>
 </div>
