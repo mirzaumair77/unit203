@@ -253,7 +253,7 @@
                     sizes: '(max-width: 768px) 100vw, 500px'
                 }}
               </div>
-              <div class="single-product__image variant">
+              {% comment %} <div class="single-product__image variant">
                 <img
                   class="variant-image"
                   data-name=""
@@ -261,7 +261,7 @@
                   alt="{{ product.title }}"
                   loading="lazy"
                 >
-              </div>
+              </div> {% endcomment %}
             </div>
           {% endif %}
         {% endfor %}
