@@ -75,13 +75,6 @@
         "description_size-mobile": 14
       }
     },
-    "practice_single_product_KLHKRw": {
-      "type": "practice-single-product",
-      "name": "Practice single product",
-      "settings": {
-        "product": "sea-moss-gel-trueseamoss"
-      }
-    },
     "running_line_W6Ltmf": {
       "type": "running-line",
       "blocks": {
@@ -141,6 +134,15 @@
         "padding_bottom": 10,
         "padding_top-mobile": 10,
         "padding_bottom-mobile": 10
+      }
+    },
+    "practice_single_product_KLHKRw": {
+      "type": "practice-single-product",
+      "name": "Practice single product",
+      "settings": {
+        "product": "sea-moss-gel-trueseamoss",
+        "plus_image": "shopify://shop_images/mangopineapple-nobg.webp",
+        "global_max_quantity": 3
       }
     },
     "our_impact_6VXUhP": {
