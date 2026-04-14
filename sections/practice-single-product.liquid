@@ -238,22 +238,22 @@
       </div>
     </div>
     <div class="single-product__wrapper">
-      <div class="single-product__image-container">
+      <div class="single-product__image-main data-preview-image">
         {% for i in (1..global_max_quantity) %}
           {% if plug_image != blank %}
-            <div class="single-product__image-main data-preview-image">
-              <div class="single-product__image plug data-plug-image">
-                {{
-                  plug_image
-                  | image_url: width: 500
-                  | image_tag:
-                    alt: plug_image.alt,
-                    loading: 'lazy',
-                    widths: '360, 480, 600, 800, 1000',
-                    sizes: '(max-width: 768px) 100vw, 500px'
-                }}
-              </div>
-              {% comment %} <div class="single-product__image variant">
+            <div class="single-product__image plug data-plug-image">
+              {{
+                plug_image
+                | image_url: width: 500
+                | image_tag:
+                  alt: plug_image.alt,
+                  loading: 'lazy',
+                  widths: '360, 480, 600, 800, 1000',
+                  sizes: '(max-width: 768px) 100vw, 500px'
+              }}
+            </div>
+            {% comment %}
+              <div class="single-product__image variant">
                 <img
                   class="variant-image"
                   data-name=""
@@ -261,8 +261,8 @@
                   alt="{{ product.title }}"
                   loading="lazy"
                 >
-              </div> {% endcomment %}
-            </div>
+              </div>
+            {% endcomment %}
           {% endif %}
         {% endfor %}
       </div>
