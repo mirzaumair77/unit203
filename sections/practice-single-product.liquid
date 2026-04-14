@@ -98,6 +98,12 @@
     border: 2px solid #4b4b4b;
   }
 
+  .single-product__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+  }
+
   .button-primary {
     width: 100%;
     padding: 20px 24px;
@@ -214,35 +220,35 @@
         </div>
       </div>
     </div>
-    <div class="single-product__image-container">
-      {% for i in (1..global_max_quantity) %}
-        {% if plug_image != blank %}
-          <div class="single-product__image data-preview-image">
-            <div class="plug data-plug-image">
-              {{
-                plug_image
-                | image_url: width: 500
-                | image_tag:
-                  alt: plug_image.alt,
-                  loading: 'lazy',
-                  widths: '360, 480, 600, 800, 1000',
-                  sizes: '(max-width: 768px) 100vw, 500px'
-              }}
-            </div>
-            <div class="variant">
-              <img
-                class="variant-image"
-                data-name=""
-                src="{{ plug_image | img_url: 'master' }}"
-                alt="{{ product.title }}"
-                loading="lazy"
-              >
-            </div>
-          </div>
-        {% endif %}
-      {% endfor %}
-    </div>
     <div class="single-product__wrapper">
+      <div class="single-product__image-container">
+        {% for i in (1..global_max_quantity) %}
+          {% if plug_image != blank %}
+            <div class="single-product__image data-preview-image">
+              <div class="plug data-plug-image">
+                {{
+                  plug_image
+                  | image_url: width: 500
+                  | image_tag:
+                    alt: plug_image.alt,
+                    loading: 'lazy',
+                    widths: '360, 480, 600, 800, 1000',
+                    sizes: '(max-width: 768px) 100vw, 500px'
+                }}
+              </div>
+              <div class="variant">
+                <img
+                  class="variant-image"
+                  data-name=""
+                  src="{{ plug_image | img_url: 'master' }}"
+                  alt="{{ product.title }}"
+                  loading="lazy"
+                >
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
       <div class="single-proudct__variants">
         {%- for variant in product.variants -%}
           {% unless variant.title == '5 Packs' %}
