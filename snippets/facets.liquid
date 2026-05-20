@@ -645,7 +645,7 @@
                             {%- endfor -%}
                           </ul>
 
-                          <div class="mobile-facets__footer gradient">
+                          {% comment %} <div class="mobile-facets__footer gradient">
                             <facet-remove class="mobile-facets__clear-wrapper">
                               <a href="{{ filter.url_to_remove }}" class="mobile-facets__clear underlined-link">
                                 {{- 'products.facets.clear' | t -}}
@@ -658,7 +658,7 @@
                             >
                               {{ 'products.facets.apply' | t }}
                             </button>
-                          </div>
+                          </div> {% endcomment %}
                         </div>
                       </details>
                     {% when 'price_range' %}
