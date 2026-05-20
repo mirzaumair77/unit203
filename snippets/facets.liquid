@@ -679,14 +679,14 @@
                           id="FacetMobile-{{ forloop.index }}-{{ section.id }}"
                           class="gradient"
                         >
-                          {% comment %} <button
+                           <button
                             class="mobile-facets__close-button link link--text focus-inset"
                             aria-expanded="true"
                             type="button"
                           >
                             {{- 'icon-arrow.svg' | inline_asset_content -}}
                             {{ filter.label | escape }}
-                          </button> {% endcomment %}
+                          </button>
 
                           {%- assign max_price_amount = filter.range_max | money | strip_html | escape -%}
                           <p class="mobile-facets__info">
@@ -696,7 +696,7 @@
                           <price-range class="facets__price">
                             {% render 'price-facet', filter: filter, id_prefix: 'Mobile-Filter-' %}
                           </price-range>
-                          <div class="mobile-facets__footer">
+                          {% comment %} <div class="mobile-facets__footer">
                             <facet-remove class="mobile-facets__clear-wrapper">
                               <a href="{{ filter.url_to_remove }}" class="mobile-facets__clear underlined-link">
                                 {{- 'products.facets.clear' | t -}}
@@ -709,7 +709,7 @@
                             >
                               {{ 'products.facets.apply' | t }}
                             </button>
-                          </div>
+                          </div> {% endcomment %}
                         </div>
                       </details>
                   {% endcase %}
