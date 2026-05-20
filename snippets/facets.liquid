@@ -537,7 +537,7 @@
                           id="FacetMobile-{{ forloop.index }}-{{ section.id }}"
                           class=" gradient"
                         >
-                          <button
+                          {% comment %} <button
                             class="mobile-facets__close-button link link--text focus-inset"
                             aria-expanded="true"
                             type="button"
@@ -549,7 +549,7 @@
                                 {{ 'products.facets.filter_and_operator_subtitle' | t }}
                               </span>
                             {%- endif -%}
-                          </button>
+                          </button> {% endcomment %}
                           <ul class="{{ visual_layout_class }} mobile-facets__list list-unstyled" role="list">
                             {%- liquid
                               assign sorted_values = filter.values
@@ -679,14 +679,14 @@
                           id="FacetMobile-{{ forloop.index }}-{{ section.id }}"
                           class="gradient"
                         >
-                          <button
+                          {% comment %} <button
                             class="mobile-facets__close-button link link--text focus-inset"
                             aria-expanded="true"
                             type="button"
                           >
                             {{- 'icon-arrow.svg' | inline_asset_content -}}
                             {{ filter.label | escape }}
-                          </button>
+                          </button> {% endcomment %}
 
                           {%- assign max_price_amount = filter.range_max | money | strip_html | escape -%}
                           <p class="mobile-facets__info">
