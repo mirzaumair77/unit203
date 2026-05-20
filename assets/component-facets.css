@@ -992,9 +992,9 @@ details.menu-opening .mobile-facets__close .svg-wrapper {
   overflow-y: auto;
 }
 
-.js .mobile-facets .submenu-open {
-  visibility: hidden; /* hide menus from screen readers when hidden by submenu */
-}
+/* .js .mobile-facets .submenu-open {
+  visibility: hidden;
+} */
 
 .mobile-facets__item {
   position: relative;
