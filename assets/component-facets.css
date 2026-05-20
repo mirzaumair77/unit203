@@ -899,6 +899,7 @@ details.menu-opening .mobile-facets__close .svg-wrapper {
 }
 
 .mobile-facets__close-button {
+  display: none;
   align-items: center;
   background-color: transparent;
   font-size: 1.4rem;
