@@ -91,17 +91,30 @@
 
             <div class="product-info__title">
               {%- if title_block -%}
-                {% render 'product-title', block: title_block %}
+                <div class="product__title">
+                  <h1>{{ product.title | escape }}</h1>
+                  <a href="{{ product.url }}" class="product__title">
+                    <h2 class="h1">
+                      {{ product.title | escape }}
+                    </h2>
+                  </a>
+                </div>
               {%- endif -%}
             </div>
 
             <div class="product-info__price">
               {%- if price_block -%}
-                {% render 'price', product: product, block: price_block %}
+                {%- render 'price',
+                  product: product,
+                  block: price_block,
+                  use_variant: true,
+                  show_badges: true,
+                  price_class: 'price--large'
+                  -%}}
               {%- endif -%}
             </div>
           </div>
-          
+
           {%- for block in section.blocks -%}
             {%- case block.type -%}
               {%- when '@app' -%}
