@@ -86,32 +86,22 @@
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
           <div class="product-info__main">
-            {%- assign title_block = section.blocks | where: 'type', 'title' | first -%}
-            {%- assign price_block = section.blocks | where: 'type', 'price' | first -%}
+            {%- assign variant_block = section.blocks | where: 'type', 'variant_picker' | first -%}
+            {%- assign buy_buttons = section.blocks | where: 'type', 'buy_buttons' | first -%}
 
             <div class="product-info__title">
-              {%- if title_block -%}
-                <div class="product__title">
-                  <h1>{{ product.title | escape }}</h1>
-                  <a href="{{ product.url }}" class="product__title">
-                    <h2 class="h1">
-                      {{ product.title | escape }}
-                    </h2>
-                  </a>
-                </div>
-              {%- endif -%}
+              Umair
             </div>
+              
+              {% render 'product-variant-picker', product: product, block: variant_block, product_form_id: product_form_id %}
 
-            <div class="product-info__price">
-              {%- if price_block -%}
-                {%- render 'price',
+              {%- render 'buy-buttons',
+                  block: buy_buttons,
                   product: product,
-                  block: price_block,
-                  use_variant: true,
-                  show_badges: true,
-                  price_class: 'price--large'
-                  -%}}
-              {%- endif -%}
+                  product_form_id: product_form_id,
+                  section_id: section.id,
+                  show_pickup_availability: true
+                -%}
             </div>
           </div>
 
