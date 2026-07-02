@@ -85,7 +85,7 @@
         >
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
-          <div class="product-info__main" style="background-color: #F8F8F8;">
+          <div class="product-info__main" style="background-color: #F8F8F8; padding: 24px 16px;">
             {%- assign variant_block = section.blocks | where: 'type', 'variant_picker' | first -%}
             {%- assign buy_buttons = section.blocks | where: 'type', 'buy_buttons' | first -%}
 
