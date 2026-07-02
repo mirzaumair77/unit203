@@ -85,6 +85,23 @@
         >
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
+          <div class="product-info__main">
+            {%- assign title_block = section.blocks | where: 'type', 'title' | first -%}
+            {%- assign price_block = section.blocks | where: 'type', 'price' | first -%}
+
+            <div class="product-info__title">
+              {%- if title_block -%}
+                {% render 'product-title', block: title_block %}
+              {%- endif -%}
+            </div>
+
+            <div class="product-info__price">
+              {%- if price_block -%}
+                {% render 'price', product: product, block: price_block %}
+              {%- endif -%}
+            </div>
+          </div>
+          
           {%- for block in section.blocks -%}
             {%- case block.type -%}
               {%- when '@app' -%}
