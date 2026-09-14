@@ -285,7 +285,7 @@
                 </label>
               </variant-item>
             {% else %}
-              <variant-item class="single-product__variant-item">
+              <variant-item class="single-product__variant-item" data-pack-count="{{ variant.title | remove: ' Packs' | remove: ' Pack' | strip }}">
                 <input type="radio" id="pack_{{ variant.id }}" name="pack" value="{{ variant.id }}">
                 <label for="pack_{{ variant.id }}">
                   <div class="single-proudct__variant-title">
