@@ -241,7 +241,7 @@
       <div class="single-product__image-main data-preview-image">
         {% for i in (1..global_max_quantity) %}
           {% if plug_image != blank %}
-            <div class="single-product__image plug data-plug-image">
+            <div class="single-product__image plug data-plug-image" data-pack-count="{{ i }}">
               {{
                 plug_image
                 | image_url: width: 500
@@ -252,17 +252,6 @@
                   sizes: '(max-width: 768px) 100vw, 500px'
               }}
             </div>
-            {% comment %}
-              <div class="single-product__image variant">
-                <img
-                  class="variant-image"
-                  data-name=""
-                  src="{{ plug_image | img_url: 'master' }}"
-                  alt="{{ product.title }}"
-                  loading="lazy"
-                >
-              </div>
-            {% endcomment %}
           {% endif %}
         {% endfor %}
       </div>
@@ -270,7 +259,10 @@
         {%- for variant in product.variants -%}
           {% unless variant.title == '5 Packs' %}
             {% if variant.title == '2 Packs' %}
-              <variant-item class="single-product__variant-item">
+              <variant-item
+                class="single-product__variant-item"
+                data-pack-count="{{ variant.title | remove: ' Packs' | remove: ' Pack' | strip }}"
+              >
                 <input type="radio" id="pack_{{ variant.id }}" checked name="pack" value="{{ variant.id }}">
                 <label for="pack_{{ variant.id }}">
                   <div class="single-proudct__variant-title">
@@ -334,10 +326,21 @@
 
     let qItems = mainDiv.querySelectorAll('.single-product__variant-item input');
     let activePack = qItems[1].closest('.single-product__variant-item');
-    
+
+    function updatePlugImages(packCount) {
+      let images = mainDiv.querySelectorAll('.data-preview-image .data-plug-image');
+      images.forEach((img) => {
+        let imgCount = parseInt(img.dataset.packCount, 10);
+        img.style.display = imgCount <= packCount ? '' : 'none';
+      });
+    }
+
     if (activePack) {
       activePack.classList.add('active');
       totalPriceEl.innerText = activePack.querySelector('.single-product__original-price span')?.textContent;
+
+      let initialPackCount = parseInt(activePack.dataset.packCount, 10) || 1;
+      updatePlugImages(initialPackCount);
     }
 
     console.log(testVar);
@@ -361,6 +364,9 @@
         if (comparePrice && totalCompareEl) {
           totalCompareEl.textContent = comparePrice;
         }
+
+        let packCount = parseInt(parent.dataset.packCount, 10) || 1;
+        updatePlugImages(packCount);
 
         testVar = 1;
         console.log(price, comparePrice, testVar);
