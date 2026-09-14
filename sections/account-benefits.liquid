@@ -1,0 +1,306 @@
+{%- liquid
+  assign background_color = section.settings.color_background
+  assign padding_top_mobile = section.settings.padding_top_mobile
+  assign padding_bottom_mobile = section.settings.padding_bottom_mobile
+  assign padding_top_desktop = section.settings.padding_top_desktop
+  assign padding_bottom_desktop = section.settings.padding_bottom_desktop
+  assign image = section.settings.image
+  assign heading = section.settings.heading
+  assign description = section.settings.description
+-%}
+
+{%- style -%}
+  #account-benefits-{{ section.id }} {
+    background-color: {{ background_color }};
+    padding-top: {{ padding_top_mobile }}px;
+    padding-bottom: {{ padding_bottom_mobile }}px;
+  }
+
+  @media (min-width: 769px) {
+    #account-benefits-{{ section.id }} {
+      padding-top: {{ padding_top_desktop }}px;
+      padding-bottom: {{ padding_bottom_desktop }}px;
+    }
+  }
+
+  .account-benefits {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .account-benefits__wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: #eef4f8;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .account-benefits__media {
+    width: 100%;
+  }
+
+  .account-benefits__image-wrapper {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+  }
+
+  .account-benefits__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .account-benefits__image-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: #d8e2e8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .account-benefits__image-placeholder svg {
+    width: 25%;
+    opacity: 0.5;
+  }
+
+  .account-benefits__content {
+    padding: 28px 24px 32px;
+  }
+
+  .account-benefits__heading {
+    margin: 0 0 16px;
+  }
+
+  .account-benefits__heading h2 {
+    font-size: 24px;
+    line-height: 1.25;
+    font-weight: 700;
+    color: #1a3a5c;
+    margin: 0;
+  }
+
+  .account-benefits__text {
+    margin: 0 0 16px;
+  }
+
+  .account-benefits__text:last-child {
+    margin-bottom: 0;
+  }
+
+  .account-benefits__text p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #2d3748;
+    margin: 0;
+  }
+
+  .account-benefits__text p strong {
+    font-weight: 700;
+  }
+
+  .account-benefits__text a {
+    color: #2d3748;
+    text-decoration: underline;
+    font-weight: 700;
+    transition: color 0.2s ease;
+  }
+
+  .account-benefits__text a:hover {
+    color: #1a3a5c;
+  }
+
+  @media (min-width: 769px) {
+    .account-benefits__wrapper {
+      flex-direction: row;
+      align-items: stretch;
+    }
+
+    .account-benefits__media {
+      width: 45%;
+      flex-shrink: 0;
+    }
+
+    .account-benefits__image-wrapper {
+      height: 100%;
+      aspect-ratio: auto;
+    }
+
+    .account-benefits__content {
+      width: 55%;
+      padding: 48px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .account-benefits__heading h2 {
+      font-size: 30px;
+    }
+
+    .account-benefits__text p {
+      font-size: 16px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="account-benefits" id="account-benefits-{{ section.id }}">
+  <div class="account-benefits__wrapper">
+    <div class="account-benefits__media">
+      <div class="account-benefits__image-wrapper">
+        {%- if image != blank -%}
+          {{
+            image
+            | image_url: width: 1200
+            | image_tag:
+              loading: 'lazy',
+              class: 'account-benefits__image',
+              widths: '400,600,800,1000,1200',
+              alt: image.alt | default: heading
+          }}
+        {%- else -%}
+          <div class="account-benefits__image-placeholder">
+            {{ 'image' | placeholder_svg_tag }}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="account-benefits__content">
+      <div class="account-benefits__heading">
+        <h2>{{ heading }}</h2>
+      </div>
+
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign text = block.settings.text
+        -%}
+        <div class="account-benefits__text" {{ block.shopify_attributes }}>
+          {{ text }}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Account benefits",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Account Required + Quality Guaranteed"
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Mobile spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "Desktop spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Text block",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>In order to purchase any products from our site, you will be asked to <strong>create an account.</strong> After you create your account, <strong>you'll receive an email with a code to get 20% off your entire purchase!</strong></p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Account benefits",
+      "blocks": [
+        {
+          "type": "text",
+          "settings": {
+            "text": "<p>In order to purchase any products from our site, you will be asked to <strong>create an account.</strong> After you create your account, <strong>you'll receive an email with a code to get 20% off your entire purchase!</strong></p>"
+          }
+        },
+        {
+          "type": "text",
+          "settings": {
+            "text": "<p>Next time you shop with us, <strong>simply log in</strong>. You'll be able to make new purchases, see previous orders, update subscriptions, or reorder past purchases.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
